@@ -1,1 +1,1 @@
-# synthetix-stats
+The stats page for SNX
