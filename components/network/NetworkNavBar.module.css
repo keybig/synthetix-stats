@@ -1,0 +1,36 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 30px;
+}
+
+.network {
+    align-self:flex-start;
+}
+
+.moreStats {
+    align-self: flex-end;
+}
+
+.current {
+    background:#00D1FF;
+    border-radius: 100px;
+    padding: 8px 18px;
+    margin: 0px 2px;
+}
+
+.inactive {
+    color: #00D1FF;
+    border-radius: 100px;
+    padding: 8px 18px;
+    margin: 0px 2px;
+    background: transparent;
+}
+
+.advancedStats {
+    border-radius: 100px;
+    background: #131619;
+    color: white;
+    padding: 8px 18px;
+    margin: 0px 2px;
+}

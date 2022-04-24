@@ -1,7 +1,9 @@
-import React, { PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import Header from '../components/header'
 import Subheader from '../components/subheader'
+import SynthData from '../queries/synthData';
+import styles from '../styles/Home.module.css'
+
 
 const hello = () => {
 
@@ -54,6 +56,7 @@ const hello = () => {
       <>
         <Header />
         <Subheader />
+        <SynthData />
       <ResponsiveContainer width="100%" height={300}>
         <LineChart
          // width={100}
@@ -81,22 +84,3 @@ const hello = () => {
 }
 
 export default hello
-
-/*
-"@synthetixio/queries": "^2.67.0-alpha",
-    "next": "12.1.5",
-    "react": "18.0.0",
-    "react-dom": "18.0.0",
-    "recharts": "^2.1.9",
-    "styled-components": "^5.3.5"
-  },
-  "devDependencies": {
-    "@types/node": "17.0.24",
-    "@types/react": "18.0.5",
-    "@types/react-dom": "18.0.1",
-    "eslint": "8.13.0",
-    "eslint-config-next": "12.1.5",
-    "typescript": "4.6.3"
-  }
-}
-*/

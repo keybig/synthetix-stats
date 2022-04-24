@@ -18,21 +18,20 @@ const Subheader = (props: Props) => {
 
 const StyledHeading = styled.div`
 
-    width: 100%;
-    border-style: solid;
-    border-width: 2px;
-    background-color: #001aff;
+    grid-row: 2;
+    grid-column: 1 / span 3;
+    background-color: #ff0000;
     text-align: center;
+   // justify-self: start;
+   
     
 `
 const Title = styled.h1`
-    text-align: center;
     font-size: large;
     font-weight: 400px;
     color: white;
 `
 const Description = styled.p`
-    text-align: center;
     color: white;
 `
 export default Subheader

@@ -1,0 +1,105 @@
+
+.container {
+
+    display: grid;
+    color: #f9f4f4;
+    grid-template: auto / repeat(5,1fr);
+    grid-template-areas:
+     "snxStaked snxStaked tvl tvl tvl"
+     "stakeAPY stakeAPY tvl tvl tvl"
+     "numStaker numStaker numStaker numStaker numStaker"
+     "trades trades inflation inflation inflation"
+     "trades trades tradeFee tradeFee tradeFee"
+     "moreStats moreStats tradeFee tradeFee tradeFee"
+     "startStaking startStaking tradeFee tradeFee tradeFee";
+     gap: 30px;
+     margin: 30px;
+}
+
+.tvl {
+    grid-area: tvl;
+    background: green;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.stakeAPY {
+    grid-area: stakeAPY;
+    background: rgb(198, 236, 8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.numStaker {
+    grid-area: numStaker;
+    background: rgb(0, 13, 128);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.trades {
+    grid-area: trades;
+    background: rgb(244, 176, 18);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.inflation {
+    grid-area: inflation;
+    background: rgb(74, 211, 242);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.tradeFee {
+    grid-area: tradeFee;
+    background: magenta;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.moreStats {
+    grid-area: moreStats;
+    background: rgb(234, 222, 193);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.startStaking {
+    grid-area: startStaking;
+    background: rgb(5, 82, 2);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media(max-width: 550px){
+    .container {
+        grid-template: auto / 1fr;
+        grid-template-areas: 
+        "snxStaked"
+        "stakeAPY"
+        "tvl"
+        "numStaker"
+        "trades"
+        "inflation"
+        "tradeFee"
+        "moreStats"
+        "startStaking";;
+    }
+  }

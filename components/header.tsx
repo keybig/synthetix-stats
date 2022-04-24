@@ -15,7 +15,7 @@ const StyledHeader = styled.div`
     width: 100%;
     border-style: solid;
     border-width: 2px;
-    background-color: yellow;
+    background-color: #00ffa6;
     text-align: center;
     
 `
