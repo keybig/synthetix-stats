@@ -1,18 +1,119 @@
 import styles from './TotalValueLocked.module.css'
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useState } from 'react';
+
 
 type Props = {}
 
 const TotalValueLocked = (props: Props) => {
+
+  const data = [
+    {
+      name: 'Page A',
+      uv: 4000,
+      pv: 2400,
+      amt: 2400,
+    },
+    {
+      name: 'Page B',
+      uv: 3000,
+      pv: 1398,
+      amt: 2210,
+    },
+    {
+      name: 'Page C',
+      uv: 2000,
+      pv: 9800,
+      amt: 2290,
+    },
+    {
+      name: 'Page D',
+      uv: 2780,
+      pv: 3908,
+      amt: 2000,
+    },
+    {
+      name: 'Page E',
+      uv: 1890,
+      pv: 4800,
+      amt: 2181,
+    },
+    {
+      name: 'Page F',
+      uv: 2390,
+      pv: 3800,
+      amt: 2500,
+    },
+    {
+      name: 'Page G',
+      uv: 3490,
+      pv: 4300,
+      amt: 2100,
+    },
+  ];
+
   return (
-    <div className={styles.snxStaked}>
-    <h3 className={styles.title}>SNX Staked Yo</h3>
-    <p className={styles.percentAPY}>65%</p>
-    <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
-    <p className={styles.values}>100,000,000</p>
-    <h3 className={styles.secondaryHeading}>Staked Value</h3>
-    <p className={styles.values}>$500,000</p>
-</div>
+    <div className={styles.container}>
+
+      <div className={styles.topBar}>
+
+        <h3>Total Value Locked</h3>
+        <p>$1,000,000</p>
+
+      </div>
+
+      <div className={styles.selectors}>
+
+        <button className={styles.button}>All Networks</button>
+        <button className={styles.button}>Mainnet</button>
+        <button className={styles.button}>Optimism</button>
+
+      </div>
+
+      <div className={styles.responsive}>
+
+        <ResponsiveContainer width={'90%'} height={300}>
+        <LineChart
+          data={data}
+          margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }}
+        >
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Legend />
+          <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="uv" stroke="#82ca9d" />
+        </LineChart>
+        </ResponsiveContainer>
+
+        </div>
+        
+      <div className={styles.bottom}>
+        <h5>Staking Debt Pool</h5>
+        <p>$512,345,678</p>
+      </div>
+
+      <div className={styles.bottom}>
+        <h5>Wrappers</h5>
+        <p>$487,654,322</p>
+      </div>
+
+      
+
+      
+
+
+      
+   
+    </div>
   )
 }
+
 
 export default TotalValueLocked

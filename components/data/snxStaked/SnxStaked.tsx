@@ -11,6 +11,7 @@ const SnxStaked = (props: Props) => {
     <p className={styles.values}>100,000,000</p>
     <h3 className={styles.secondaryHeading}>Staked Value</h3>
     <p className={styles.values}>$500,000</p>
+
 </div>
   )
 }

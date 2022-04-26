@@ -14,7 +14,6 @@ type Props = {}
 const Datagrid = (props: Props) => {
   return (
     <div className={styles.container}>
-
         <SnxStaked />
         <TotalValueLocked />
         <StakeAPY />
@@ -24,9 +23,6 @@ const Datagrid = (props: Props) => {
         <TradeFee />
         <MoreStats />
         <StartStaking />
-
-
-
     </div>
   )
 }

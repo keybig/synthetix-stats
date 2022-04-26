@@ -4,9 +4,10 @@
     border-top: 1px solid #eaeaea;
     justify-content: center;
     align-items: center;
-    background: purple;
+    background: transparent;
     text-transform: uppercase;
     flex-direction: column;
+    color: white;
 }
 
 .row {
