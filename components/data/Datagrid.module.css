@@ -18,7 +18,13 @@
 
 @media(max-width: 768px){
     .container {
-        grid-template: auto / 1fr;
+        grid-template-rows: auto;
+        grid-template-columns:max-content;
+        margin:0;
+        gap:2px;
+        min-width:0;
+        max-width: 100%;
+        grid-auto-flow: row;
         grid-template-areas: 
         "snxStaked"
         "stakeAPY"
@@ -28,6 +34,6 @@
         "inflation"
         "tradeFee"
         "moreStats"
-        "startStaking";;
+        "startStaking";
     }
   }

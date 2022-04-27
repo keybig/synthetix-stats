@@ -3,6 +3,7 @@ import { createQueryContext, SynthetixQueryContextProvider } from '@synthetixio/
 import { QueryClient, QueryClientProvider } from 'react-query'
 import '../styles/globals.css'
 import Layout from '../components/layout/Layout'
+import Head from 'next/head'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -10,7 +11,11 @@ function MyApp({ Component, pageProps }: AppProps) {
   const queryClient = new QueryClient()
 
   return (
-
+    <>
+    <Head>
+      <title>The Title</title>
+      <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    </Head>
     <QueryClientProvider client={queryClient}>
     <SynthetixQueryContextProvider
       value={createQueryContext({
@@ -22,6 +27,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     </Layout>
     </SynthetixQueryContextProvider>
     </QueryClientProvider>
+    </>
   )
 }
 
