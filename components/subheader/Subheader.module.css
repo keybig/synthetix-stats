@@ -2,6 +2,7 @@
     display: flex;
     flex-direction: column;
     text-align:center;
+    margin: 30px;
 }
 
 .heading {
@@ -14,5 +15,4 @@
     line-height: 20px;
     font-size: 14px;
     color: #FFFFFF;
-    margin: auto;
 }

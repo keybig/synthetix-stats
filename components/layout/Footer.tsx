@@ -16,9 +16,11 @@ const Footer = (props: Props) => {
 
         <Image src="/Frame.png" height={36} width={46} alt="hello"></Image>
 
-        <p>Built and Maintained by the Grants Council and the Synthetix Community</p>
+        <p className={styles.footerText}>Built and Maintained by the Grants Council and the Synthetix Community</p>
 
-        <p> Logo Placeholder </p>
+        <Image src="/Icons.png" height={50} width={150} alt="hello"></Image>
+
+
     </div>
   )
 }
