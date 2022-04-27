@@ -6,7 +6,7 @@ type Props = {}
 const Header = (props: Props) => {
   return (
     <div className={styles.header}>
-        <Image src="/Logo.png" width={200} height={17}></Image>
+        <Image src="/Logo.png" width={200} height={17} alt="hello"></Image>
     </div>
   )
 }

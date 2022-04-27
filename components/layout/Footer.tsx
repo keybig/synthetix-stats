@@ -14,7 +14,7 @@ const Footer = (props: Props) => {
             <li> Teleporter </li> 
         </ul>
 
-        <Image src="/Frame.png" height={36} width={46}></Image>
+        <Image src="/Frame.png" height={36} width={46} alt="hello"></Image>
 
         <p>Built and Maintained by the Grants Council and the Synthetix Community</p>
 

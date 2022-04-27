@@ -14,7 +14,7 @@ const Grid = (props: Props) => {
     <>
     <Container>
     <Headit>
-      <Image src="/Logo.png" width={200} height={17}></Image>
+      <Image src="/Logo.png" alt="hello" width={200} height={17}></Image>
     </Headit>
     <SubH />
     <NavBar>NavBar</NavBar>
