@@ -1,4 +1,4 @@
-import styles from './Inflation.module.css'
+import styles from './TradeFee.module.css'
 import styled from 'styled-components'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 
@@ -19,14 +19,11 @@ const TradeFee = (props: Props) => {
 
       <Content>
         <h3>Trading Fees (sUSd Rewards)</h3>
-        <h5>Current Epoch</h5>
-        <p>503,389.46</p>
-        <h5>Up to date</h5>
-        <p>100,000,312.99</p>
-      </Content>
+        <StyledButton>Current Epoch</StyledButton>
+        <StyledButton>Total to date</StyledButton>
+     
 
-    
-      <ResponsiveContainer width="99%" height="100%">
+      <ResponsiveContainer width={400} height={400}>
         <PieChart>
           <Pie
             dataKey="value"
@@ -34,13 +31,14 @@ const TradeFee = (props: Props) => {
             data={data}
             cx="50%"
             cy="50%"
-            outerRadius={80}
+            outerRadius={100}
             fill="#8884d8"
             label
           />
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
+      </Content>
     
       
 
@@ -67,8 +65,17 @@ export const Wrapper = styled.div`
 `
 
 const Content = styled.div`
+  width: 100%;
+  height: 100%;
 `
 
 const Chart = styled.div`
   
+`
+
+const StyledButton = styled.button`
+   background:#00D1FF;
+    border-radius: 100px;
+    padding: 8px 18px;
+    margin: 0px 2px;
 `

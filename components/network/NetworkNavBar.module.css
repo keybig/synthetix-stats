@@ -1,15 +1,13 @@
 .container {
     display: flex;
-    justify-content: space-between;
-    margin: 0px 30px;
+    margin: 0px 10px;
 }
 
 .network {
-    align-self:flex-start;
-}
+margin:0px}
 
 .moreStats {
-    align-self: flex-end;
+    margin-left:auto;
 }
 
 .current {

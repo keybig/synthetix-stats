@@ -2,8 +2,7 @@
     grid-area: tvl;
     background: #0B0B22;
     display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
+    flex-direction: column;
     border-radius: 10px;
     padding: 30px 50px 30px 30px;
     border: 2px solid #13f2f2;
@@ -16,7 +15,8 @@
 }
 
 .topBar {
-    color: purple;
+    display: flex;
+    
 }
 
 
@@ -36,7 +36,17 @@
 }
 
 .bottom {
-    align-self: flex-start;
+    display: flex;
+}
+
+.debtPool {
+    padding: 0px 10px;
+    margin: 0px 20px;
+}
+
+.wrapper {
+    padding: 0px 10px;
+    margin: 0px 30px;
 }
 
 .title {
@@ -64,14 +74,36 @@
 }
 
 .values {
-    font-size: 28px;
+    font-size: 3rem;
     font-family: Arial, Helvetica, sans-serif;
     margin: 0.5rem 0;
+    color: #5CC6FF;
 }
 
+.tvl {
+    font-size: 2rem;
+    color: #ffffff
+}
 .responsive {
-    display: flex;
-    min-width: 0;
-    width: 800px;
-    flex-shrink:2;
+    width: 100%;
+    height: 300px;
+}
+
+.info {
+    margin: 0px;
+    padding: 0px;
+    
+    
+}
+
+.selectors {
+    margin-left: auto;
+}
+
+.stakingColor {
+    color: #41C79D;
+}
+
+.wrapperColor {
+    color: #ED1EFF
 }

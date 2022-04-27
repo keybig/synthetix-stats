@@ -56,15 +56,15 @@ const Inflation = (props: Props) => {
     <Wrapper>
 
       <Content>
-        <h3>Inflation Fees (SNX Rewards</h3>
-        <h5>Current Epoch</h5>
-        <p>503,389.46</p>
-        <h5>Up to date</h5>
-        <p>100,000,312.99</p>
+        <h3>Inflation Fees (SNX Rewards)</h3>
+        <SubTitle>Current Epoch</SubTitle>
+        <CurrentEpoch>503,389.46</CurrentEpoch>
+        <SubTitle>Up to date</SubTitle>
+        <ToDate>100,000,312.99</ToDate>
       </Content>
 
     
-      <ResponsiveContainer>
+      <ResponsiveContainer width={500}>
         <LineChart data={data}>
           <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
         </LineChart>
@@ -86,7 +86,7 @@ export const Wrapper = styled.div`
     border-radius: 10px;
     padding: 30px 50px 30px 30px;
     border: 2px solid #ED1EFF;
-    font-family: Inter;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     line-height:normal;
     font-weight: 700;
@@ -99,4 +99,19 @@ const Content = styled.div`
 
 const Chart = styled.div`
   
+`
+
+const SubTitle = styled.h5`
+  color: #828295;
+  font-family: Arial, Helvetica, sans-serif;
+`
+
+const CurrentEpoch = styled.p`
+  color: #ED1EFF;
+  font-size: 2rem;
+`
+
+const ToDate = styled.p`
+  color: #FFFFFF;
+  font-size: 2rem;
 `

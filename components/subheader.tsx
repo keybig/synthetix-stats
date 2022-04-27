@@ -17,7 +17,7 @@ const Subheader = (props: Props) => {
 }
 
 const StyledHeading = styled.div`
-
+    display: flex;
     grid-row: 2;
     grid-column: 1 / span 3;
     background-color: #ff0000;
