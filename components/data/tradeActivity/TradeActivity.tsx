@@ -1,5 +1,6 @@
 import styles from './TradeActivity.module.css'
 import { useState, useMemo } from 'react'
+import CTable from '../../table/CTable'
 import TradeTable from './TradeTable'
 
 type Props = {}
@@ -20,10 +21,10 @@ const TradeActivity = (props: Props) => {
       </div>
 
     <div className={styles.bottom}>
-      <h5>Total N of Trades</h5>
-      <p>6,784,567</p>
-      <h5>Total Volume</h5>
-      <p>$1,000,000,000</p>
+      <h5 className={styles.bottomTitle}>Total N of Trades</h5>
+      <p className={styles.totalTrades}>6,784,567</p>
+      <h5 className={styles.bottomTitle}>Total Volume</h5>
+      <p className={styles.totalVolume}>$1,000,000,000</p>
       </div>
 
 

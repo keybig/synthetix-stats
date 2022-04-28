@@ -18,13 +18,11 @@
 
 @media(max-width: 768px){
     .container {
-        grid-template-rows: auto;
-        grid-template-columns:max-content;
+        grid-template: auto / auto;
         margin:0;
-        gap:2px;
+        gap:0px;
         min-width:0;
-        max-width: 100%;
-        grid-auto-flow: row;
+        max-width: 100vw;
         grid-template-areas: 
         "snxStaked"
         "stakeAPY"

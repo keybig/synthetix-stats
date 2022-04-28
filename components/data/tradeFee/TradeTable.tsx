@@ -60,43 +60,46 @@ const TradeTable = (props: Props) => {
   return (
     
     <table {...getTableProps()}>
-      <thead>
-        {headerGroups.map((headerGroup) => {
-          const { key, ...restHeaderGroupProps } =
-            headerGroup.getHeaderGroupProps();
-          return (
-            <tr key={key} {...restHeaderGroupProps}>
-              {headerGroup.headers.map((column) => {
-                const { key, ...restColumn } = column.getHeaderProps();
-                return (
-                  <th key={key} {...restColumn}>
-                    {column.render("Header")}
-                  </th>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </thead>
-      <tbody {...getTableBodyProps}>
-        {rows.map((row) => {
-          prepareRow(row);
-          const { key, ...restRowProps } = row.getRowProps();
-          return (
-            <tr key={key} {...restRowProps}>
-              {row.cells.map((cell) => {
-                const { key, ...restCellProps } = cell.getCellProps();
-                return (
-                  <td key={key} {...restCellProps}>
-                    {cell.render("Cell")}
-                  </td>
-                );
-              })}
-            </tr>
-          );
-        })}
-      </tbody>
-    </table>
+    <thead>
+      {// Loop over the header rows
+      headerGroups.map(headerGroup => (
+        // Apply the header row props
+        <tr {...headerGroup.getHeaderGroupProps()}>
+          {// Loop over the headers in each row
+          headerGroup.headers.map(column => (
+            // Apply the header cell props
+            <th {...column.getHeaderProps()}>
+              {// Render the header
+              column.render('Header')}
+            </th>
+          ))}
+        </tr>
+      ))}
+    </thead>
+    {/* Apply the table body props */}
+    <tbody {...getTableBodyProps()}>
+      {// Loop over the table rows
+      rows.map(row => {
+        // Prepare the row for display
+        prepareRow(row)
+        return (
+          // Apply the row props
+          <tr {...row.getRowProps()}>
+            {// Loop over the rows cells
+            row.cells.map(cell => {
+              // Apply the cell props
+              return (
+                <td {...cell.getCellProps()}>
+                  {// Render the cell contents
+                  cell.render('Cell')}
+                </td>
+              )
+            })}
+          </tr>
+        )
+      })}
+    </tbody>
+  </table>
   );
 }
 

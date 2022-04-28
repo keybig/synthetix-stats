@@ -1,14 +1,63 @@
 import styles from './TradeFee.module.css'
 import styled from 'styled-components'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import TradeTable from './TradeTable'
+import Table from '../../table/Table'
+import { useMemo } from 'react';
 
 
 type Props = {}
 
 const TradeFee = (props: Props) => {
 
-  const data = [
+  const name = "myName"
+
+  const data = useMemo(
+    () => [
+      {
+        col1: 'Wow',
+        col2: '867,543',
+        col3: '1,000,000,000',
+        col4: 'yoyo'
+      },
+      {
+        col1: 'Thales',
+        col2: '765,432',
+        col3: '1,000,000',
+        col4: "now we on"
+      },
+      {
+        col1: 'Kwenta',
+        col2: '654,321',
+        col3: '1,000,000',
+        col4: 'whats good'
+      },
+    ],
+    []
+  )
+
+  const columns = useMemo(
+    () => [
+      {
+        Header: name,
+        accessor: 'col1', // accessor is the "key" in the data
+      },
+      {
+        Header: 'N of Trades',
+        accessor: 'col2',
+      },
+      {
+        Header: 'Volume',
+        accessor: 'col3',
+      },
+      {
+        Header: "Its good",
+        accessor: 'col4'
+      }
+    ],
+    []
+  )
+
+  const dataChart = [
     { name: "Group A", value: 400 },
     { name: "Group B", value: 300 },
     { name: "Group C", value: 300 },
@@ -37,7 +86,7 @@ const TradeFee = (props: Props) => {
           <Pie
             dataKey="value"
             isAnimationActive={false}
-            data={data}
+            data={dataChart}
             cx="30%"
             cy="50%"
             outerRadius={'80%'}
@@ -51,7 +100,7 @@ const TradeFee = (props: Props) => {
         </PieChart>
       </ResponsiveContainer>
      
-      <TradeTable/>
+      <Table data={data} columns={columns} />
       </Chart>
     
       

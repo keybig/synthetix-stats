@@ -1,6 +1,4 @@
 .table {
     color:azure;
     border: 2px solid pink;
-    display: flex;
-    box-sizing: border-box;
 }
