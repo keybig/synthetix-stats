@@ -24,6 +24,7 @@
     border-radius: 100px;
     padding: 8px 18px;
     margin: 0px 2px;
+    border: none;
 }
 
 .inactive {
@@ -32,6 +33,7 @@
     padding: 8px 18px;
     margin: 0px 2px;
     background: transparent;
+    border: none;
 }
 
 .buttonRow {

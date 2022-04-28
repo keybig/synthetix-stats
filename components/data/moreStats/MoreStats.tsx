@@ -52,4 +52,5 @@ const AdvancedStatsButton = styled.button`
     color: white;
     padding: 8px 18px;
     margin: 0px 2px;
+    border: none;
 `

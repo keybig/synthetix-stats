@@ -62,9 +62,9 @@ const NumStaker = (props: Props) => {
         </div>
      
         <div className={styles.selectors}>
-        <button className={styles.button}>1 Day</button>
-        <button className={styles.button}>1 Week</button>
-        <button className={styles.button}>1 Month</button>
+        <button className={styles.inactive}>1 Day</button>
+        <button className={styles.inactive}>1 Week</button>
+        <button className={styles.inactive}>1 Month</button>
         <button className={styles.button}>1 Year</button>
         </div>
 

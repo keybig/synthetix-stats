@@ -76,7 +76,7 @@ const TradeFee = (props: Props) => {
         <h3>Trading Fees (sUSd Rewards)</h3>
         <Content>
         <StyledButton>Current Epoch</StyledButton>
-        <StyledButton>Total to date</StyledButton>
+        <InactiveButton>Total to date</InactiveButton>
         </Content>
         
      
@@ -142,4 +142,15 @@ const StyledButton = styled.button`
     border-radius: 100px;
     padding: 8px 18px;
     margin: 0px 2px;
+    border: none;
+`
+const InactiveButton = styled.button`
+  
+    color: #00D1FF;
+    border-radius: 100px;
+    padding: 8px 18px;
+    margin: 0px 2px;
+    background: transparent;
+    border: none;
+
 `

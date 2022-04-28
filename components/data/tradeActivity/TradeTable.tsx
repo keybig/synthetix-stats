@@ -31,6 +31,12 @@ const TradeTable = (props: Props) => {
       const columns = useMemo(
         () => [
           {
+            Header: "Index",
+            accessor: (_row: any, i : number) => i + 1,
+            disableSortBy: true,
+            disableFilters: true,
+          },
+          {
             Header: 'Protocol',
             accessor: 'col1', // accessor is the "key" in the data
             Cell: (cellProps:any) => {

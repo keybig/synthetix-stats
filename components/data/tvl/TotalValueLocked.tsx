@@ -60,8 +60,8 @@ const TotalValueLocked = (props: Props) => {
         <div className={styles.selectors}>
 
         <button className={styles.button}>All Networks</button>
-        <button className={styles.button}>Mainnet</button>
-        <button className={styles.button}>Optimism</button>
+        <button className={styles.inactive}>Mainnet</button>
+        <button className={styles.inactive}>Optimism</button>
 
         </div>
 
