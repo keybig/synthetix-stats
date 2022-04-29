@@ -1,10 +1,27 @@
 import styles from './numStaker.module.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { useState } from 'react';
 
 
 type Props = {}
 
 const NumStaker = (props: Props) => {
+
+  const buttonMap = [
+    { id: 1, title: "One Day" },
+    { id: 2, title: "One Week" },
+    { id: 3, title: "One Month" },
+    { id: 4, title: "one Year" }
+  ];
+  
+
+    const [click, setClick] = useState(1);
+
+   
+
+    const handleActive = (buttons: any) => {
+      setClick(buttons.id);
+    };
 
   const data = [
     {
@@ -51,6 +68,7 @@ const NumStaker = (props: Props) => {
     },
   ];
 
+
   return (
     <div className={styles.container}>    
     
@@ -62,10 +80,17 @@ const NumStaker = (props: Props) => {
         </div>
      
         <div className={styles.selectors}>
-        <button className={styles.inactive}>1 Day</button>
-        <button className={styles.inactive}>1 Week</button>
-        <button className={styles.inactive}>1 Month</button>
-        <button className={styles.button}>1 Year</button>
+        
+        {buttonMap.map((buttonMap) => (
+        <button
+          key={buttonMap.id}
+          onClick={() => handleActive(buttonMap)}
+          className={ buttonMap.id === click ? styles.button : styles.inactive}
+        >
+          {buttonMap.title}
+        </button>
+      ))}
+      
         </div>
 
 

@@ -7,14 +7,36 @@ type Props = {}
 
 const TradeActivity = (props: Props) => {
 
+  const buttonMap = [
+    { id: 1, title: "Current Epoch" },
+    { id: 2, title: "Total To Date" }
+  ];
+
+
+    const [click, setClick] = useState(1);
+
+
+    const handleActive = (buttons: any) => {
+      setClick(buttons.id);
+    };
+
   return (
     <div className={styles.container}>
 
       <h3 className={styles.title}> Trading Activity</h3>
 
       <div className={styles.buttonRow}>
-        <button className={styles.current}>Current Epoch</button>
-        <button className={styles.inactive}>Total to date</button>
+        
+      {buttonMap.map((buttonMap) => (
+        <button
+          key={buttonMap.id}
+          onClick={() => handleActive(buttonMap)}
+          className={ buttonMap.id === click ? styles.current : styles.inactive}
+        >
+          {buttonMap.title}
+        </button>
+      ))}
+
       </div>
       <div className={styles.table}>
       <TradeTable />

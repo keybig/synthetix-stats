@@ -2,15 +2,28 @@ import styles from './TradeFee.module.css'
 import styled from 'styled-components'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import Table from './TradeTable'
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 
 
 type Props = {
 }
 
+
 const TradeFee = (props: Props) => {
 
-  const name = "myName"
+
+  const buttonMap = [
+    { id: 1, title: "Current Epoch" },
+    { id: 2, title: "Total To Date" }
+  ];
+
+
+    const [click, setClick] = useState(1);
+
+
+    const handleActive = (buttons: any) => {
+      setClick(buttons.id);
+    };
 
   
 
@@ -32,8 +45,17 @@ const TradeFee = (props: Props) => {
       
         <h3>Trading Fees (sUSd Rewards)</h3>
         <Content>
-        <StyledButton>Current Epoch</StyledButton>
-        <InactiveButton>Total to date</InactiveButton>
+
+        {buttonMap.map((buttonMap) => (
+        <button
+          key={buttonMap.id}
+          onClick={() => handleActive(buttonMap)}
+          className={ buttonMap.id === click ? styles.current : styles.inactive}
+        >
+          {buttonMap.title}
+        </button>
+      ))}
+        
         </Content>
         
      

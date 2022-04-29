@@ -7,6 +7,22 @@ type Props = {}
 
 const TotalValueLocked = (props: Props) => {
 
+
+  const buttonMap = [
+    { id: 1, title: "One Day" },
+    { id: 2, title: "One Week" },
+    { id: 3, title: "One Month" }
+  ];
+  
+
+    const [click, setClick] = useState(1);
+
+   
+
+    const handleActive = (buttons: any) => {
+      setClick(buttons.id);
+    };
+
   const data = [
     {
       name: '0:00',
@@ -52,11 +68,18 @@ const TotalValueLocked = (props: Props) => {
 
      
 
+
         <div className={styles.selectors}>
 
-        <button className={styles.button}>One Day</button>
-        <button className={styles.inactive}>One Week</button>
-        <button className={styles.inactive}>One Month</button>
+        {buttonMap.map((buttonMap) => (
+        <button
+          key={buttonMap.id}
+          onClick={() => handleActive(buttonMap)}
+          className={ buttonMap.id === click ? styles.button : styles.inactive}
+        >
+          {buttonMap.title}
+        </button>
+      ))}
 
         </div>
 
