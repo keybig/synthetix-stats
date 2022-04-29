@@ -26,33 +26,33 @@ const TotalValueLocked = (props: Props) => {
   const data = [
     {
       name: '0:00',
-      uv: 4000,
-      pv: 1000,
+      mainnet: 4000,
+      optimism: 1000,
     },
     {
       name: '4:00',
-      uv: 5000,
-      pv: 1500,
+      mainnet: 5000,
+      optimism: 1500,
     },
     {
       name: '8:00',
-      uv: 3000,
-      pv: 1000,
+      mainnet: 3000,
+      optimism: 1000,
     },
     {
       name: '12:00',
-      uv: 3780,
-      pv: 1508,
+      mainnet: 3780,
+      optimism: 1508,
     },
     {
       name: '16:00',
-      uv: 2890,
-      pv: 1200,
+      mainnet: 2890,
+      optimism: 1200,
     },
     {
       name: '20:00',
-      uv: 5390,
-      pv: 3800,
+      mainnet: 5390,
+      optimism: 3800,
     },
   ];
 
@@ -94,8 +94,8 @@ const TotalValueLocked = (props: Props) => {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <Area type="monotone" dataKey="uv" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
-          <Area type="monotone" dataKey="pv" stackId="1" stroke="#41C79D" fill="#41C79D" />
+          <Area type="monotone" dataKey="mainnet" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
+          <Area type="monotone" dataKey="optimism" stackId="1" stroke="#41C79D" fill="#41C79D" />
         </AreaChart>
         </ResponsiveContainer>
 

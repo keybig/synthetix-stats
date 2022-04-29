@@ -27,11 +27,11 @@ const TradeFee = (props: Props) => {
   
 
   const data = [
-    { name: "Group A", value: 400 },
-    { name: "Group B", value: 300 },
-    { name: "Group C", value: 300 },
-    { name: "Group D", value: 200 },
-    { name: "Group F", value: 100 }
+    { name: "Wrappers", value: 400 },
+    { name: "Protocol", value: 300 },
+    { name: "Protocol", value: 300 },
+    { name: "Other", value: 200 },
+    { name: "Protocol", value: 100 }
   ];
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#f60ce6'];
@@ -59,14 +59,14 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-      <ResponsiveContainer>
+      <ResponsiveContainer height={340} width={'50%'}>
         <PieChart>
           <Pie
             dataKey="value"
             isAnimationActive={false}
             data={data}
-            cx="30%"
-            cy="50%"
+            cx="40%"
+            cy="60%"
             outerRadius={'80%'}
           >
 
@@ -133,27 +133,27 @@ const TradeFee = (props: Props) => {
 
 export default TradeFee
 
+
 export const Wrapper = styled.div`
    grid-area: tradeFee;
    background: rgba(11, 11, 34, 0.5);
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    padding: 30px 50px 30px 30px;
-    border: 2px solid #FFD75C;
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: left;
+   display: flex;
+   flex-direction: column;
+   border-radius: 10px;
+   padding: 30px 50px 30px 30px;
+   border: 2px solid #FFD75C;
+   font-family: Arial, Helvetica, sans-serif;
+   text-align: left;
+   max-width: 100%;
 `
 
 const Content = styled.div`
-  display: flex;
 
 `
 
 const Chart = styled.div`
-  display: flex;
   margin: 0 0;
-  min-width: 10rem;
+  display: flex;
   
 `
 
@@ -178,7 +178,6 @@ const InactiveButton = styled.button`
 const ChartKey = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 `
 
 const KeyWrappers = styled.div`
@@ -217,4 +216,7 @@ const TotalSupplyAmount = styled.p`
   font-weight: bold;
   text-align: right;
   margin:0px;
+`
+const ResponsiveWrapper = styled.div`
+  display: flex;  
 `
