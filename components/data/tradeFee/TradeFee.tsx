@@ -1,7 +1,6 @@
 import styles from './TradeFee.module.css'
 import styled from 'styled-components'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import Table from './TradeTable'
 import { useMemo, useState } from 'react';
 
 
@@ -60,7 +59,7 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-      <ResponsiveContainer width={'50%'} height={300}>
+      <ResponsiveContainer>
         <PieChart>
           <Pie
             dataKey="value"
@@ -80,7 +79,6 @@ const TradeFee = (props: Props) => {
       </ResponsiveContainer>
      
       <ChartKey>
-        <div>
         <KeyWrappers>
                 <StyledP color="#00D1FF">Wrappers</StyledP>
                 <StyledP color="white">$286,228,739</StyledP>
@@ -118,7 +116,6 @@ const TradeFee = (props: Props) => {
 
                 
         </KeyOther>
-        </div>
         <TotalSynthSupply>Total Synth Supply</TotalSynthSupply>
         <TotalSupplyAmount>$23,077,796</TotalSupplyAmount>
 
@@ -156,9 +153,7 @@ const Content = styled.div`
 const Chart = styled.div`
   display: flex;
   margin: 0 0;
-  flex: 10%;
-  justify-content: flex-start;
-  align-items: center;
+  min-width: 10rem;
   
 `
 

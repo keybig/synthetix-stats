@@ -2,6 +2,7 @@ import React, { useMemo } from 'react'
 import { useTable, useSortBy } from 'react-table'
 import styles from './TradeTable.module.css'
 import Image from 'next/image'
+import { keyframes } from 'styled-components'
 
 type Props = {}
 
@@ -32,9 +33,7 @@ const TradeTable = (props: Props) => {
         () => [
           {
             Header: "Index",
-            accessor: (_row: any, i : number) => i + 1,
-            disableSortBy: true,
-            disableFilters: true,
+            accessor: (_row: any, i : number) => i + 1
           },
           {
             Header: 'Protocol',
@@ -90,16 +89,15 @@ const TradeTable = (props: Props) => {
     
     <table {...getTableProps()} className={styles.mainTable}>
     <thead>
-      {// Loop over the header rows
-      headerGroups.map(headerGroup => (
-        // Apply the header row props
-        <tr {...headerGroup.getHeaderGroupProps()} className={styles.headRow}>
-          {// Loop over the headers in each row
-          headerGroup.headers.map(column => (
-            // Apply the header cell props
-            <th {...column.getHeaderProps(column.getSortByToggleProps())} className={styles.headKey}>
-              {// Render the header
-              column.render('Header')}
+      {headerGroups.map((headerGroup) => {
+        const { key, ...restHeaderGroupProps } = headerGroup.getHeaderGroupProps()
+      return (
+        <tr key={key} {...restHeaderGroupProps} className={styles.headRow}>
+        {headerGroup.headers.map((column) => {
+          const { key, ...restColumn } = column.getHeaderProps(column.getSortByToggleProps());
+          return (
+            <th key={key} {...restColumn} className={styles.headKey}>
+              {column.render("Header")}
               <span>
                        {column.isSorted
                            ? column.isSortedDesc
@@ -108,32 +106,30 @@ const TradeTable = (props: Props) => {
                            : ''}
                     </span>
             </th>
-          ))}
-        </tr>
-      ))}
+          );
+        })}
+      </tr>
+      )})}
+      
     </thead>
-    {/* Apply the table body props */}
     <tbody {...getTableBodyProps()}>
-      {// Loop over the table rows
-      rows.map((row, i) => {
-        // Prepare the row for display
-        prepareRow(row)
-        return (
-          // Apply the row props
-          <tr {...row.getRowProps()} className={styles.mainRow}>
-            {// Loop over the rows cells
-            row.cells.map(cell => {
-              // Apply the cell props
-              return (
-                <td {...cell.getCellProps()} className={styles.mainKey}>
-                  {// Render the cell contents
-                  cell.render('Cell')}
-                </td>
-              )
-            })}
-          </tr>
-        )
-      })}
+     
+    {rows.map((row) => {
+          prepareRow(row);
+          const { key, ...restRowProps } = row.getRowProps();
+          return (
+            <tr key={key} {...restRowProps} className={styles.mainRow}>
+              {row.cells.map((cell) => {
+                const { key, ...restCellProps } = cell.getCellProps();
+                return (
+                  <td key={key} {...restCellProps} className={styles.mainKey}>
+                    {cell.render("Cell")}
+                  </td>
+                );
+              })}
+            </tr>
+          );
+        })}
     </tbody>
   </table>
   );

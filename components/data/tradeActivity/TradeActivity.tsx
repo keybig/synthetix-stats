@@ -1,6 +1,5 @@
 import styles from './TradeActivity.module.css'
 import { useState, useMemo } from 'react'
-import CTable from '../../table/CTable'
 import TradeTable from './TradeTable'
 
 type Props = {}
