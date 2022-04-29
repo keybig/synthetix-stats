@@ -59,14 +59,12 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-      <ResponsiveContainer height={340} width={'50%'}>
+      <ResponsiveContainer width={'100%'}>
         <PieChart>
           <Pie
             dataKey="value"
             isAnimationActive={false}
             data={data}
-            cx="40%"
-            cy="60%"
             outerRadius={'80%'}
           >
 
