@@ -9,39 +9,34 @@ const TotalValueLocked = (props: Props) => {
 
   const data = [
     {
-      name: 'Page A',
+      name: '0:00',
       uv: 4000,
-      pv: 2400,
+      pv: 1000,
     },
     {
-      name: 'Page B',
+      name: '4:00',
+      uv: 5000,
+      pv: 1500,
+    },
+    {
+      name: '8:00',
       uv: 3000,
-      pv: 1398,
+      pv: 1000,
     },
     {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
+      name: '12:00',
+      uv: 3780,
+      pv: 1508,
     },
     {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
+      name: '16:00',
+      uv: 2890,
+      pv: 1200,
     },
     {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
+      name: '20:00',
+      uv: 5390,
       pv: 3800,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
     },
   ];
 
@@ -59,9 +54,9 @@ const TotalValueLocked = (props: Props) => {
 
         <div className={styles.selectors}>
 
-        <button className={styles.button}>All Networks</button>
-        <button className={styles.inactive}>Mainnet</button>
-        <button className={styles.inactive}>Optimism</button>
+        <button className={styles.button}>One Day</button>
+        <button className={styles.inactive}>One Week</button>
+        <button className={styles.inactive}>One Month</button>
 
         </div>
 
@@ -73,7 +68,6 @@ const TotalValueLocked = (props: Props) => {
         <AreaChart
           data={data}
         >
-          <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />

@@ -15,3 +15,7 @@ body {
   text-transform: uppercase;
 
 }
+
+._next {
+  width: 100vw;
+}

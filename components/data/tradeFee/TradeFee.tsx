@@ -1,63 +1,20 @@
 import styles from './TradeFee.module.css'
 import styled from 'styled-components'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
-import Table from '../../table/Table'
+import Table from './TradeTable'
 import { useMemo } from 'react';
 
 
-type Props = {}
+type Props = {
+}
 
 const TradeFee = (props: Props) => {
 
   const name = "myName"
 
-  const data = useMemo(
-    () => [
-      {
-        col1: 'Wow',
-        col2: '867,543',
-        col3: '1,000,000,000',
-        col4: 'yoyo'
-      },
-      {
-        col1: 'Thales',
-        col2: '765,432',
-        col3: '1,000,000',
-        col4: "now we on"
-      },
-      {
-        col1: 'Kwenta',
-        col2: '654,321',
-        col3: '1,000,000',
-        col4: 'whats good'
-      },
-    ],
-    []
-  )
+  
 
-  const columns = useMemo(
-    () => [
-      {
-        Header: name,
-        accessor: 'col1', // accessor is the "key" in the data
-      },
-      {
-        Header: 'N of Trades',
-        accessor: 'col2',
-      },
-      {
-        Header: 'Volume',
-        accessor: 'col3',
-      },
-      {
-        Header: "Its good",
-        accessor: 'col4'
-      }
-    ],
-    []
-  )
-
-  const dataChart = [
+  const data = [
     { name: "Group A", value: 400 },
     { name: "Group B", value: 300 },
     { name: "Group C", value: 300 },
@@ -86,7 +43,7 @@ const TradeFee = (props: Props) => {
           <Pie
             dataKey="value"
             isAnimationActive={false}
-            data={dataChart}
+            data={data}
             cx="30%"
             cy="50%"
             outerRadius={'80%'}
@@ -100,7 +57,53 @@ const TradeFee = (props: Props) => {
         </PieChart>
       </ResponsiveContainer>
      
-      <Table data={data} columns={columns} />
+      <ChartKey>
+        <div>
+        <KeyWrappers>
+                <StyledP color="#00D1FF">Wrappers</StyledP>
+                <StyledP color="white">$286,228,739</StyledP>
+                <StyledP color="#00D1FF">37%</StyledP>
+        </KeyWrappers>
+
+        <KeyProtocol>
+                <StyledP color="#ED1EFF">Protocol</StyledP>
+                <StyledP color="white">$286,228,739</StyledP>
+                <StyledP color="#ED1EFF">37%</StyledP>
+              
+
+        </KeyProtocol>
+
+        <KeyProtocol>
+               
+                <StyledP color="#31D8A4">Protocol</StyledP>
+                <StyledP color="white">$286,228,739</StyledP>
+                <StyledP color="#31D8A4">37%</StyledP>
+
+        </KeyProtocol>
+
+        <KeyProtocol>
+                
+                <StyledP color="#FFD75C">Protocol</StyledP>
+                <StyledP color="white">$286,228,739</StyledP>
+                <StyledP color="#FFD75C">37%</StyledP>
+
+        </KeyProtocol>
+
+        <KeyOther>
+                <StyledP color="#FC8738">Other   </StyledP>
+                <StyledP color="white">$286,228,739</StyledP>
+                <StyledP color="#FC8738">37%</StyledP>
+
+                
+        </KeyOther>
+        </div>
+        <TotalSynthSupply>Total Synth Supply</TotalSynthSupply>
+        <TotalSupplyAmount>$23,077,796</TotalSupplyAmount>
+
+      </ChartKey>
+
+
+
       </Chart>
     
       
@@ -153,4 +156,48 @@ const InactiveButton = styled.button`
     background: transparent;
     border: none;
 
+`
+
+const ChartKey = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+
+const KeyWrappers = styled.div`
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+`
+
+const KeyProtocol = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+const KeyOther = styled.div`
+  display:flex;
+  justify-content: space-between;
+  text-align: right;
+`
+
+const StyledP = styled.p`
+  color: ${props => props.color};
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin: 1rem;
+  padding: 0 0.5rem;
+`
+
+const TotalSynthSupply = styled.p`
+  color: rgba(255,255,255,0.5);
+  font-size: 1.5rem;
+  text-align: right;
+  padding-top: 1rem;
+`
+const TotalSupplyAmount = styled.p`
+  color: #FFD753;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: right;
+  margin:0px;
 `
