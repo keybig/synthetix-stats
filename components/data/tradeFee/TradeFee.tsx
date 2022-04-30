@@ -41,10 +41,9 @@ const TradeFee = (props: Props) => {
   return (
     <Wrapper>
 
-        <Buttons>
-        <h3>Trading Fees (sUSd Rewards)</h3>
-        
+<StyledH3>Trading Fees (sUSd Rewards)</StyledH3>
 
+        <Buttons>
         {buttonMap.map((buttonMap) => (
         <button
           key={buttonMap.id}
@@ -54,18 +53,16 @@ const TradeFee = (props: Props) => {
           {buttonMap.title}
         </button>
       ))}
-        
         </Buttons>
         
-     
       <Chart>
-      <ResponsiveContainer width={'99%'} height={400}>
+      <ResponsiveContainer width={'99%'} aspect={1}>
         <PieChart>
           <Pie
             dataKey="value"
             isAnimationActive={false}
             data={data}
-            outerRadius={'70%'}
+            outerRadius={'80%'}
           >
 
               {data.map((entry, index) => (
@@ -119,12 +116,6 @@ const TradeFee = (props: Props) => {
         <TotalSupplyAmount>$23,077,796</TotalSupplyAmount>
 
       </ChartKey>
-
-
-
-    
-      
-
     </Wrapper>
   )
 }
@@ -143,19 +134,20 @@ export const Wrapper = styled.div`
   
    display: grid;
    grid-template: auto / repeat(2,minmax(0,1fr));
-   grid-template-areas:
-     "title data"
-     "title data"
-     "chart data";
+   grid-auto-flow: row dense;
 `
 
 const Buttons = styled.div`
-  grid-area: title;
-  align-self: top;
+grid-area: 2 / 1 / 2 / 1;
+`
+
+const StyledH3 = styled.h3`
+  grid-area: 1 / 1 / 1 / 1;
 `
 
 const Chart = styled.div`
-  grid-area:chart;
+grid-area: 3 / 1 / 3 / 1;  
+opacity: 0.6;
   
 `
 
@@ -178,24 +170,23 @@ const InactiveButton = styled.button`
 `
 
 const ChartKey = styled.div`
-  grid-area:data;
-  align-self:center;
+  grid-area: 3 / 2 / 3 / 2;
+  display: flex;
+  flex-direction: column;
+  align-items:self-end;
+  
+ 
 `
 
 const KeyWrappers = styled.div`
   display: flex;
-  justify-content: space-between;
-  text-align: right;
 `
 
 const KeyProtocol = styled.div`
   display: flex;
-  justify-content: space-between;
 `
 const KeyOther = styled.div`
   display:flex;
-  justify-content: space-between;
-  text-align: right;
 `
 
 const StyledP = styled.p`
@@ -204,6 +195,7 @@ const StyledP = styled.p`
   font-weight: bold;
   margin: 1rem;
   padding: 0 0.5rem;
+  text-align: right;
 `
 
 const TotalSynthSupply = styled.p`
