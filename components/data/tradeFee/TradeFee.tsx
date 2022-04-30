@@ -41,9 +41,9 @@ const TradeFee = (props: Props) => {
   return (
     <Wrapper>
 
-      
+        <Buttons>
         <h3>Trading Fees (sUSd Rewards)</h3>
-        <Content>
+        
 
         {buttonMap.map((buttonMap) => (
         <button
@@ -55,17 +55,17 @@ const TradeFee = (props: Props) => {
         </button>
       ))}
         
-        </Content>
+        </Buttons>
         
      
       <Chart>
-      <ResponsiveContainer width={'100%'}>
+      <ResponsiveContainer width={'99%'} height={400}>
         <PieChart>
           <Pie
             dataKey="value"
             isAnimationActive={false}
             data={data}
-            outerRadius={'80%'}
+            outerRadius={'70%'}
           >
 
               {data.map((entry, index) => (
@@ -75,6 +75,7 @@ const TradeFee = (props: Props) => {
           <Tooltip />
         </PieChart>
       </ResponsiveContainer>
+      </Chart>
      
       <ChartKey>
         <KeyWrappers>
@@ -121,7 +122,6 @@ const TradeFee = (props: Props) => {
 
 
 
-      </Chart>
     
       
 
@@ -135,23 +135,27 @@ export default TradeFee
 export const Wrapper = styled.div`
    grid-area: tradeFee;
    background: rgba(11, 11, 34, 0.5);
-   display: flex;
-   flex-direction: column;
    border-radius: 10px;
    padding: 30px 50px 30px 30px;
    border: 2px solid #FFD75C;
    font-family: Arial, Helvetica, sans-serif;
-   text-align: left;
-   max-width: 100%;
+  
+  
+   display: grid;
+   grid-template: auto / repeat(2,minmax(0,1fr));
+   grid-template-areas:
+     "title data"
+     "title data"
+     "chart data";
 `
 
-const Content = styled.div`
-
+const Buttons = styled.div`
+  grid-area: title;
+  align-self: top;
 `
 
 const Chart = styled.div`
-  margin: 0 0;
-  display: flex;
+  grid-area:chart;
   
 `
 
@@ -174,8 +178,8 @@ const InactiveButton = styled.button`
 `
 
 const ChartKey = styled.div`
-  display: flex;
-  flex-direction: column;
+  grid-area:data;
+  align-self:center;
 `
 
 const KeyWrappers = styled.div`
@@ -214,7 +218,4 @@ const TotalSupplyAmount = styled.p`
   font-weight: bold;
   text-align: right;
   margin:0px;
-`
-const ResponsiveWrapper = styled.div`
-  display: flex;  
 `
