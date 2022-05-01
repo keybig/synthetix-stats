@@ -41,8 +41,8 @@ const TradeFee = (props: Props) => {
   return (
     <Wrapper>
 
-      
         <h3>Trading Fees (sUSd Rewards)</h3>
+
         <Content>
 
         {buttonMap.map((buttonMap) => (
@@ -59,7 +59,7 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-      <ResponsiveContainer width={'100%'}>
+      <ResponsiveContainer width={'50%'} aspect={1} height={400}>
         <PieChart>
           <Pie
             dataKey="value"
@@ -152,6 +152,8 @@ const Content = styled.div`
 const Chart = styled.div`
   margin: 0 0;
   display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
   
 `
 
