@@ -1,7 +1,7 @@
 .mainTable {
- color:pink;
  border-collapse: collapse;
  border-spacing: 2rem;
+ width: 100%;
 }
 
 .headRow {

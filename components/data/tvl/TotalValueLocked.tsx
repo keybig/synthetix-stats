@@ -7,7 +7,6 @@ type Props = {}
 
 const TotalValueLocked = (props: Props) => {
 
-
   const buttonMap = [
     { id: 1, title: "One Day" },
     { id: 2, title: "One Week" },
@@ -23,7 +22,7 @@ const TotalValueLocked = (props: Props) => {
       setClick(buttons.id);
     };
 
-  const data = [
+  const day = [
     {
       name: '0:00',
       mainnet: 4000,
@@ -51,6 +50,77 @@ const TotalValueLocked = (props: Props) => {
     },
     {
       name: '20:00',
+      mainnet: 5390,
+      optimism: 3800,
+    },
+  ];
+
+  const week = [
+    {
+      name: '4/23',
+      mainnet: 4000,
+      optimism: 1000,
+    },
+    {
+      name: '4/24',
+      mainnet: 5000,
+      optimism: 1500,
+    },
+    {
+      name: '4/25',
+      mainnet: 3000,
+      optimism: 7000,
+    },
+    {
+      name: '4/26',
+      mainnet: 2780,
+      optimism: 4508,
+    },
+    {
+      name: '4/27',
+      mainnet: 5890,
+      optimism: 1200,
+    },
+    {
+      name: '4/28',
+      mainnet: 3390,
+      optimism: 3800,
+    },
+    {
+      name: '4/29',
+      mainnet: 6105,
+      optimism: 4200,
+    }
+  ];
+
+  const month = [
+    {
+      name: '1',
+      mainnet: 4000,
+      optimism: 1000,
+    },
+    {
+      name: '1',
+      mainnet: 5000,
+      optimism: 1500,
+    },
+    {
+      name: '7',
+      mainnet: 3000,
+      optimism: 1000,
+    },
+    {
+      name: '14',
+      mainnet: 3780,
+      optimism: 1508,
+    },
+    {
+      name: '28',
+      mainnet: 2890,
+      optimism: 1200,
+    },
+    {
+      name: '30',
       mainnet: 5390,
       optimism: 3800,
     },
@@ -87,17 +157,43 @@ const TotalValueLocked = (props: Props) => {
 
       <div className={styles.responsive}>
 
+        {click === 1 ? 
+      (
         <ResponsiveContainer>
         <AreaChart
-          data={data}
+          data={day}
         >
           <XAxis dataKey="name" />
-          <YAxis />
+         
           <Tooltip />
           <Area type="monotone" dataKey="mainnet" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
           <Area type="monotone" dataKey="optimism" stackId="1" stroke="#41C79D" fill="#41C79D" />
         </AreaChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>) : 
+
+        click === 2 ? (
+          <ResponsiveContainer>
+        <AreaChart
+          data={week}
+        >
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Area type="monotone" dataKey="mainnet" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
+          <Area type="monotone" dataKey="optimism" stackId="1" stroke="#41C79D" fill="#41C79D" />
+        </AreaChart>
+        </ResponsiveContainer>) 
+         : (
+          <ResponsiveContainer>
+        <AreaChart
+          data={month}
+        >
+          <XAxis dataKey="name" />
+          <Tooltip />
+          <Area type="monotone" dataKey="mainnet" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
+          <Area type="monotone" dataKey="optimism" stackId="1" stroke="#41C79D" fill="#41C79D" />
+        </AreaChart>
+        </ResponsiveContainer>) 
+        }
 
         </div>
         

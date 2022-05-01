@@ -23,50 +23,119 @@ const NumStaker = (props: Props) => {
       setClick(buttons.id);
     };
 
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      pv: 2400,
-      amt: 2400,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      pv: 1398,
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      pv: 9800,
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      pv: 3908,
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      pv: 4800,
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      pv: 3800,
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      pv: 4300,
-      amt: 2100,
-    },
-  ];
+    const day = [
+      {
+        name: '0:00',
+        stakers: 4000,
+      },
+      {
+        name: '4:00',
+        stakers: 5000,
+      },
+      {
+        name: '8:00',
+        stakers: 3000,
+      },
+      {
+        name: '12:00',
+        stakers: 3780,
+      },
+      {
+        name: '16:00',
+        stakers: 2890,
+      },
+      {
+        name: '20:00',
+        stakers: 5390,
+      },
+    ];
+  
+    const week = [
+      {
+        name: '4/23',
+        stakers: 4000,
+      },
+      {
+        name: '4/24',
+        stakers: 5000,
+      },
+      {
+        name: '4/25',
+        stakers: 3000,
+      },
+      {
+        name: '4/26',
+        stakers: 2780,
+      },
+      {
+        name: '4/27',
+        stakers: 5890,
+      },
+      {
+        name: '4/28',
+        stakers: 3390,
+      },
+      {
+        name: '4/29',
+        stakers: 6105,
+      }
+    ];
+  
+    const month = [
+      {
+        name: '1',
+        stakers: 4000,
+      },
+      {
+        name: '1',
+        stakers: 5000,
+      },
+      {
+        name: '7',
+        stakers: 3000,
+      },
+      {
+        name: '14',
+        stakers: 3780,
+      },
+      {
+        name: '28',
+        stakers: 2890,
+      },
+      {
+        name: '30',
+        stakers: 5390,
+      },
+    ];
+
+    const year = [
+      {
+        name: '1',
+        stakers: 2000,
+      },
+      {
+        name: '3',
+        stakers: 4000,
+      },
+      {
+        name: '5',
+        stakers: 3000,
+      },
+      {
+        name: '7',
+        stakers: 5780,
+      },
+      {
+        name: '9',
+        stakers: 4890,
+      },
+      {
+        name: '12',
+        stakers: 6390,
+      },
+    ];
+
+  
 
 
   return (
@@ -96,11 +165,35 @@ const NumStaker = (props: Props) => {
 
       </div>
       
+      {click === 1 ? (
         <ResponsiveContainer height={300} width='100%'>
-        <LineChart data={data}>
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
+        <LineChart data={day}>
+          <Line type="monotone" dataKey="stakers" stroke="#8884d8" strokeWidth={2} />
         </LineChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer>) :
+
+        click === 2 ? (
+          <ResponsiveContainer height={300} width='100%'>
+          <LineChart data={week}>
+            <Line type="monotone" dataKey="stakers" stroke="#8884d8" strokeWidth={2} />
+          </LineChart>
+          </ResponsiveContainer>) 
+
+          : 
+          
+          click === 3 ? (
+            <ResponsiveContainer height={300} width='100%'>
+            <LineChart data={month}>
+              <Line type="monotone" dataKey="stakers" stroke="#8884d8" strokeWidth={2} />
+            </LineChart>
+            </ResponsiveContainer>) 
+            
+          : (
+            <ResponsiveContainer height={300} width='100%'>
+            <LineChart data={year}>
+              <Line type="monotone" dataKey="stakers" stroke="#8884d8" strokeWidth={2} />
+            </LineChart>
+            </ResponsiveContainer>)}
         
       </div>
      

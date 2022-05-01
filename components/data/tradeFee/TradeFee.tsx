@@ -26,12 +26,20 @@ const TradeFee = (props: Props) => {
 
   
 
-  const data = [
+  const current = [
     { name: "Wrappers", value: 400 },
     { name: "Protocol", value: 300 },
     { name: "Protocol", value: 300 },
     { name: "Other", value: 200 },
     { name: "Protocol", value: 100 }
+  ];
+
+  const total = [
+    { name: "Wrappers", value: 200 },
+    { name: "Protocol", value: 500 },
+    { name: "Protocol", value: 200 },
+    { name: "Other", value: 200 },
+    { name: "Protocol", value: 200 }
   ];
 
   const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#f60ce6'];
@@ -59,61 +67,82 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
+        {click === 1 ? (
       <ResponsiveContainer width='50%' height={300}>
         <PieChart>
           <Pie
             dataKey="value"
             isAnimationActive={false}
-            data={data}
+            data={current}
             outerRadius={'80%'}
           >
 
-              {data.map((entry, index) => (
+              {current.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
           </Pie>
           <Tooltip />
         </PieChart>
-      </ResponsiveContainer>
+      </ResponsiveContainer>)
+      : 
+      (<ResponsiveContainer width='50%' height={300}>
+        <PieChart>
+          <Pie
+            dataKey="value"
+            isAnimationActive={false}
+            data={total}
+            outerRadius={'80%'}
+          >
+
+              {total.map((entry, index) => (
+              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+            ))}
+          </Pie>
+          <Tooltip />
+        </PieChart>
+      </ResponsiveContainer>)}
      
       <ChartKey>
         <KeyWrappers>
                 <StyledP color="#00D1FF">Wrappers</StyledP>
-                <StyledP color="white">$286,228,739</StyledP>
-                <StyledP color="#00D1FF">37%</StyledP>
+                {click === 1 ? 
+                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#00D1FF">37%</StyledP></>)
+                :
+                (<><StyledP color="white">$586,128,832</StyledP><StyledP color="#00D1FF">27%</StyledP></>)}
         </KeyWrappers>
 
         <KeyProtocol>
                 <StyledP color="#ED1EFF">Protocol</StyledP>
-                <StyledP color="white">$286,228,739</StyledP>
-                <StyledP color="#ED1EFF">37%</StyledP>
-              
-
+                {click === 1 ? 
+                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#ED1EFF">37%</StyledP></>)
+                :
+                (<><StyledP color="white">$186,218,123</StyledP><StyledP color="#ED1EFF">97%</StyledP></>)}
         </KeyProtocol>
 
         <KeyProtocol>
-               
                 <StyledP color="#31D8A4">Protocol</StyledP>
-                <StyledP color="white">$286,228,739</StyledP>
-                <StyledP color="#31D8A4">37%</StyledP>
-
+                {click === 1 ? 
+                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#31D8A4">37%</StyledP></>)
+                :
+                (<><StyledP color="white">$986,218,923</StyledP><StyledP color="#31D8A4">57%</StyledP></>)}
         </KeyProtocol>
 
         <KeyProtocol>
-                
                 <StyledP color="#FFD75C">Protocol</StyledP>
-                <StyledP color="white">$286,228,739</StyledP>
-                <StyledP color="#FFD75C">37%</StyledP>
-
+                {click === 1 ? 
+                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#FFD75C">37%</StyledP></>)
+                :
+                (<><StyledP color="white">$555,218,553</StyledP><StyledP color="#FFD75C">81%</StyledP></>)}
         </KeyProtocol>
 
         <KeyOther>
-                <StyledP color="#FC8738">Other   </StyledP>
-                <StyledP color="white">$286,228,739</StyledP>
-                <StyledP color="#FC8738">37%</StyledP>
-
-                
+                <StyledP color="#FC8738">Other</StyledP>
+                {click === 1 ? 
+                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#FC8738">37%</StyledP></>)
+                :
+                (<><StyledP color="white">$100,111,123</StyledP><StyledP color="#FC8738">17%</StyledP></>)}
         </KeyOther>
+
         </ChartKey>
 
       </Chart>
