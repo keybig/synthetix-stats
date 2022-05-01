@@ -49,6 +49,7 @@ const Inflation = (props: Props) => {
       pv: 4300,
       amt: 2100,
     },
+  
   ];
 
 
@@ -65,9 +66,9 @@ const Inflation = (props: Props) => {
       </Content>
 
       <ChartWrapper>
-      <ResponsiveContainer>
+      <ResponsiveContainer width={'100%'} height={330}>
         <LineChart data={data}>
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
+          <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={3} />
         </LineChart>
       </ResponsiveContainer>
       </ChartWrapper>
@@ -94,6 +95,7 @@ export const Wrapper = styled.div`
     font-weight: 700;
     letter-spacing: 0px;
     text-align: left;
+    flex-wrap: wrap;
 `
 
 const Content = styled.div`
@@ -118,6 +120,6 @@ const ToDate = styled.p`
   font-size: 2rem;
 `
 const ChartWrapper = styled.div`
-  width: 100%;
-  height: 20rem;
+  width:50%;
+  flex-grow:2;
 `
