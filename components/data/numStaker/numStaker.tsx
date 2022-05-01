@@ -99,7 +99,6 @@ const NumStaker = (props: Props) => {
         <ResponsiveContainer height={300} width='100%'>
         <LineChart data={data}>
           <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={2} />
-          <Legend />
         </LineChart>
         </ResponsiveContainer>
         
