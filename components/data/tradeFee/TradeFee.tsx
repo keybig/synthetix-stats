@@ -59,7 +59,7 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-      <ResponsiveContainer width={'50%'} aspect={1} height={400}>
+      <ResponsiveContainer width='50%' height={300}>
         <PieChart>
           <Pie
             dataKey="value"
@@ -114,16 +114,14 @@ const TradeFee = (props: Props) => {
 
                 
         </KeyOther>
-        <TotalSynthSupply>Total Synth Supply</TotalSynthSupply>
-        <TotalSupplyAmount>$23,077,796</TotalSupplyAmount>
-
-      </ChartKey>
-
-
+        </ChartKey>
 
       </Chart>
     
-      
+      <div>
+        <TotalSynthSupply>Total Synth Supply</TotalSynthSupply>
+        <TotalSupplyAmount>$23,077,796</TotalSupplyAmount>
+        </div>
 
     </Wrapper>
   )
@@ -143,6 +141,10 @@ export const Wrapper = styled.div`
    font-family: Arial, Helvetica, sans-serif;
    text-align: left;
    max-width: 100%;
+   @media(max-width: 768px){
+    margin:0;
+    padding:0;
+  }
 `
 
 const Content = styled.div`
@@ -209,6 +211,9 @@ const TotalSynthSupply = styled.p`
   font-size: 1.5rem;
   text-align: right;
   padding-top: 1rem;
+  @media(max-width: 768px){
+    padding:1rem;
+  }
 `
 const TotalSupplyAmount = styled.p`
   color: #FFD753;
@@ -216,6 +221,9 @@ const TotalSupplyAmount = styled.p`
   font-weight: bold;
   text-align: right;
   margin:0px;
+  @media(max-width: 768px){
+    padding:1rem;
+  }
 `
 const ResponsiveWrapper = styled.div`
   display: flex;  

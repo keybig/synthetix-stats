@@ -16,3 +16,12 @@ body {
   text-transform: uppercase;
 
 }
+
+@media(max-width: 768px){
+  *, html, body {
+    margin:0;
+    padding:0;
+  }
+
+  
+}

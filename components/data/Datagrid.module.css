@@ -18,11 +18,10 @@
 
 @media(max-width: 768px){
     .container {
-        grid-template: auto / auto;
+        grid-template: auto / 1fr;
         margin:0;
-        gap:0px;
+        column-gap:10px;
         min-width:0;
-        max-width: 100vw;
         grid-template-areas: 
         "snxStaked"
         "stakeAPY"
@@ -34,4 +33,6 @@
         "moreStats"
         "startStaking";
     }
+
+    
   }
