@@ -161,7 +161,7 @@ export default TradeFee
 
 export const Wrapper = styled.div`
    grid-area: tradeFee;
-   background: rgba(11, 11, 34, 0.5);
+   background: rgba(11, 11, 34, 1);
    display: flex;
    flex-direction: column;
    border-radius: 10px;
