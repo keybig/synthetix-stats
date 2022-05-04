@@ -96,6 +96,9 @@ export const Wrapper = styled.div`
     letter-spacing: 0px;
     text-align: left;
     flex-wrap: wrap;
+    @media(max-width: 960px){
+        padding:2rem 1rem; 
+    }
 `
 
 const Content = styled.div`
@@ -108,6 +111,10 @@ const Chart = styled.div`
 const SubTitle = styled.h5`
   color: #828295;
   font-family: Arial, Helvetica, sans-serif;
+
+  @media(max-width: 960px){
+        padding: 1rem 0;
+    }
 `
 
 const CurrentEpoch = styled.p`

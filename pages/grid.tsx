@@ -57,7 +57,7 @@ const Container = styled.div`
       "footer footer footer";
   text-align: center;
   transition: all 0.25s ease-in-out;
-  @media (max-width: 550px) {
+  @media (max-width: 960px) {
     grid-template-columns: 1fr;
     grid-template-rows: 0.4fr 0.4fr 2.2fr 1.2fr 1fr;
     grid-template-areas:
@@ -94,7 +94,7 @@ const ContentBox = styled.div`
   align-items: center;
   grid-area: content;
   justify-content: center;
-  @media (max-width: 550px) {
+  @media (max-width: 960px) {
     flex-direction: column;
   }
 `;

@@ -44,3 +44,18 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0.1rem 0;
 }
+
+@media(max-width:960px){
+    .snxStaked {
+        padding: 2rem;
+    }
+
+    .percentAPY {
+        padding: 0.5rem 0;
+    }
+
+    .secondaryHeading {
+        padding: 0.5rem 0;
+    }
+    
+}

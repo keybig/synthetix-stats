@@ -8,7 +8,7 @@ const MoreStats = (props: Props) => {
     <Wrapper>
       <Info>
       <StatsTitle>Start Staking Synthetix</StatsTitle>
-      <p> Stack that Synthetix </p>
+      <StyledP> Stack that Synthetix </StyledP>
       </Info>
       <div>
         <AdvancedStatsButton>Staking App</AdvancedStatsButton>
@@ -16,6 +16,7 @@ const MoreStats = (props: Props) => {
     </Wrapper>
   )
 }
+
 
 export default MoreStats
 
@@ -32,18 +33,24 @@ const Wrapper = styled.div`
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     line-height:normal;
-    font-weight: 700;
     letter-spacing: 0px;
     text-align: left;
 `
 
-const StatsTitle = styled.h5`
+const StatsTitle = styled.h4`
 color:white;
+text-transform:capitalize;
 `
 
 const Info = styled.div`
-  justify-content: flex-end;
   
+`
+
+const StyledP = styled.p`
+  font-size:1rem;
+  color:rgba(255,255,255,0.5);
+  text-transform: capitalize;
+  padding:0.5rem 0;
 `
 
 const AdvancedStatsButton = styled.button`

@@ -23,6 +23,7 @@
     margin-left:auto;
 }
 
+
 .button {
     background:#00D1FF;
     border-radius: 100px;
@@ -49,4 +50,20 @@
     color: #9f6ad1;
     font-size: 2.5rem;
     
+}
+
+
+@media(max-width: 960px){
+    .container {
+        padding: 2rem;
+    }
+
+    .button {
+        padding: 0.5rem;
+
+    }
+
+    .inactive {
+        padding: 0.5rem;
+    }
 }

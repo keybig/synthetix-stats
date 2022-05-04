@@ -3,15 +3,16 @@ import Image from 'next/image'
 
 type Props = {}
 
+
 const Footer = (props: Props) => {
   return (
     <div className={styles.footer}>
 
         <ul className={styles.row}>
-            <li> Synthetix </li>
-            <li> Grants Council </li>
-            <li> Tools </li>
-            <li> Teleporter </li> 
+            <li className={styles.li}> Synthetix </li>
+            <li className={styles.li}> Grants Council </li>
+            <li className={styles.li}> Tools </li>
+            <li className={styles.li}> Teleporter </li> 
         </ul>
 
         <Image src="/Frame.png" height={36} width={46} alt="hello"></Image>

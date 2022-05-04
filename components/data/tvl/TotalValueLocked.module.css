@@ -109,3 +109,15 @@
 .wrapperColor {
     color: #ED1EFF
 }
+
+@media(max-width: 960px){
+    .container {
+      padding:2rem 0 2rem;
+    }
+
+    .topBar {
+      padding:2rem;
+    }
+
+    
+  }

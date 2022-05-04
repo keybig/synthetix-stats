@@ -41,9 +41,6 @@
 
 .table {
     font-family:Arial, Helvetica, sans-serif;
-}
-
-.table {
     margin: 0px;
 }
 
@@ -72,10 +69,18 @@
     margin: 1rem;
 }
 
-@media(max-width: 768px){
+@media(max-width: 960px){
     .container {
       margin:0;
-      padding:0;
+      padding:2rem 0;
       font-size:1rem;
+    }
+
+    .title {
+        padding: 0 1rem;
+    }
+
+    .buttonRow {
+        padding: 1rem 0.5rem;
     }
 }

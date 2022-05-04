@@ -68,7 +68,8 @@ const TradeFee = (props: Props) => {
      
       <Chart>
         {click === 1 ? (
-      <ResponsiveContainer width='50%' height={300}>
+          <PieWrap>
+      <ResponsiveContainer height={300}>
         <PieChart>
           <Pie
             dataKey="value"
@@ -83,9 +84,13 @@ const TradeFee = (props: Props) => {
           </Pie>
           <Tooltip />
         </PieChart>
-      </ResponsiveContainer>)
+      </ResponsiveContainer>
+      </PieWrap>
+      )
       : 
-      (<ResponsiveContainer width='50%' height={300}>
+      (
+        <PieWrap>
+      <ResponsiveContainer height={300}>
         <PieChart>
           <Pie
             dataKey="value"
@@ -100,7 +105,8 @@ const TradeFee = (props: Props) => {
           </Pie>
           <Tooltip />
         </PieChart>
-      </ResponsiveContainer>)}
+      </ResponsiveContainer>
+      </PieWrap>)}
      
       <ChartKey>
         <KeyWrappers>
@@ -170,13 +176,16 @@ export const Wrapper = styled.div`
    font-family: Arial, Helvetica, sans-serif;
    text-align: left;
    max-width: 100%;
-   @media(max-width: 768px){
+   @media(max-width: 960px){
     margin:0;
-    padding:0;
+    padding:2rem;
   }
 `
 
 const Content = styled.div`
+@media(max-width: 960px){
+        padding: 1rem 0;
+    }
 
 `
 
@@ -185,7 +194,18 @@ const Chart = styled.div`
   display: flex;
   justify-content: flex-start;
   flex-wrap: wrap;
+  @media(max-width: 960px){
+        display:flex;
+        flex-direction: column;
+        width: 100%;
+    }
   
+`
+const PieWrap = styled.div`
+  width:50%;
+  @media(max-width:960px){
+    width:100%;
+  }
 `
 
 const StyledButton = styled.button`
@@ -209,6 +229,9 @@ const InactiveButton = styled.button`
 const ChartKey = styled.div`
   display: flex;
   flex-direction: column;
+  @media(max-width: 960px){
+    width:100%;
+  }
 `
 
 const KeyWrappers = styled.div`
@@ -233,6 +256,10 @@ const StyledP = styled.p`
   font-weight: bold;
   margin: 1rem;
   padding: 0 0.5rem;
+  @media(max-width: 960px){
+    padding:0;
+    font-size:1rem;
+  }
 `
 
 const TotalSynthSupply = styled.p`
@@ -240,7 +267,7 @@ const TotalSynthSupply = styled.p`
   font-size: 1.5rem;
   text-align: right;
   padding-top: 1rem;
-  @media(max-width: 768px){
+  @media(max-width: 960px){
     padding:1rem;
   }
 `
@@ -250,7 +277,7 @@ const TotalSupplyAmount = styled.p`
   font-weight: bold;
   text-align: right;
   margin:0px;
-  @media(max-width: 768px){
+  @media(max-width: 960px){
     padding:1rem;
   }
 `

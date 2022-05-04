@@ -3,12 +3,13 @@ import Img from './Group.png'
 
 type Props = {}
 
+
 const MoreStats = (props: Props) => {
   return (
     <Wrapper>
       <Info>
       <StatsTitle>More Advanced Stats</StatsTitle>
-      <p> Get granular on Synthetix </p>
+      <StyledP> Get granular on Synthetix </StyledP>
       </Info>
       <div>
         <AdvancedStatsButton>Visit Grafana</AdvancedStatsButton>
@@ -32,18 +33,28 @@ const Wrapper = styled.div`
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
     line-height:normal;
-    font-weight: 700;
     letter-spacing: 0px;
     text-align: left;
+    @media(max-width:960px){
+      padding: 2rem;
+      
+    }
+
 `
 
-const StatsTitle = styled.h5`
+const StatsTitle = styled.h4`
 color:white;
+text-transform: capitalize;
 `
 
 const Info = styled.div`
-  justify-content: flex-end;
   
+`
+const StyledP = styled.p`
+  font-size:1rem;
+  color:rgba(255,255,255,0.5);
+  text-transform: capitalize;
+  padding:0.5rem 0;
 `
 
 const AdvancedStatsButton = styled.button`

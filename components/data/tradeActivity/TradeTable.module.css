@@ -2,12 +2,12 @@
  border-collapse: collapse;
  border-spacing: 2rem;
  width: 100%;
+ table-layout: fixed;
 }
 
 .headRow {
     color: #828295;
     font-size: 0.8rem;
-    margin: 25px;
 }
 .headKey {
     text-transform: capitalize;
@@ -19,6 +19,7 @@
 
 .mainRow {
     color: #ffffff;
+    font-size:1rem;
 }
 
 .mainKey {
@@ -62,7 +63,9 @@
 
 }
 
-.iconWrapper {
-    display: flex;
+@media(max-width: 960px){
+    .mainTable {
+      margin:0;
+      padding:0;
+    }
 }
-
