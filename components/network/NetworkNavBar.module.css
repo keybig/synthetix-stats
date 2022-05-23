@@ -1,19 +1,19 @@
-.container {
+.navContainer {
     display: flex;
     margin: 0px 30px;
     box-sizing: border-box;
 }
 
-.network {
+.navNetwork {
     margin:20px;
 }
 
-.moreStats {
+.navMoreStats {
     margin: 20px 20px 20px auto;  
 }
 
 
-.current {
+.navCurrent {
     background:#00D1FF;
     border-radius: 100px;
     padding: 8px 18px;
@@ -21,7 +21,7 @@
     border: none;
 }
 
-.inactive {
+.navInactive {
     color: #00D1FF;
     border-radius: 100px;
     padding: 8px 18px;
@@ -30,7 +30,7 @@
     border: none;
 }
 
-.advancedStats {
+.navAdvancedStats {
     border-radius: 100px;
     background: #131619;
     color: white;

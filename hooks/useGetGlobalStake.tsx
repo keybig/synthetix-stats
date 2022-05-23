@@ -1,14 +1,10 @@
-import styles from './SnxStaked.module.css'
 import useSynthetixQueries from '@synthetixio/queries'
-import Wei from '@synthetixio/wei'
-import useGetGlobalStake from '../../../hooks/useGetGlobalStake'
-
 
 type Props = {}
 
-const SnxStaked = (props: Props) => {
+const useGetGlobalStake = () => {
 
-  const { subgraph } = useSynthetixQueries()
+    const { subgraph } = useSynthetixQueries()
 
   const totalofSNX = subgraph.useGetSynthetixById(
     {id: "1"},
@@ -58,7 +54,7 @@ const SnxStaked = (props: Props) => {
 
   const collat:any = []
   const transfer:any = []
-  console.log(`transfer:  ${transfer}`)
+  console.log(`collat:  ${collat}`)
 
 
   allStaked.data?.forEach(item => {
@@ -70,33 +66,25 @@ const SnxStaked = (props: Props) => {
     }
   });
 
+  const totalCollat = collat.reduce((sum:number,current:number) => sum + current, 0)
+
   const stakeCalc = (collat.reduce((sum:number, current:number) => sum + current, 0))-(transfer.reduce((sum:number, current:number) => sum + current, 0))
 
-
-  const stakeAmount:any = stakeCalc.toFixed(2)
+  const stakeCalcAmt = stakeCalc.toFixed(2)
   //@ts-ignore
-  const stakedVal = stakeAmount * snxPrice
 
-  return (
-    <div className={styles.snxStaked}>
-    <h3 className={styles.title}>SNX Staked</h3>
-    <p className={styles.percentAPY}>{`${(stakeAmount / totalBal).toFixed(2).substring(2)}%`}</p>
-    <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
-    <p className={styles.values}>
-      {
-        formatValue.format(stakeAmount)
-      }
-    </p>
-    <h3 className={styles.secondaryHeading}>Staked Value</h3>
-    <p className={styles.values}>
-      {
-        formatMoney.format(stakedVal)
-      }
-    </p>
-  
+  const stakeAmount = formatValue.format(stakeCalcAmt)
+  //@ts-ignore
+  const stakedVal = formatMoney.format(stakeAmount*snxPrice)
 
-</div>
-  )
+  const percentStaked = `${(stakeCalc / totalBal).toFixed(2).substring(2)}%`
+
+  return {
+      stakeAmount,
+      stakedVal,
+      percentStaked,
+      stakeCalc
+  }
 }
 
-export default SnxStaked
+export default useGetGlobalStake

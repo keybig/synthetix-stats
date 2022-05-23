@@ -2,10 +2,14 @@ import styles from './TradeActivity.module.css'
 import { useState, useMemo } from 'react'
 import TradeTable from './TradeTable'
 import TotalTable from './TotalTable'
+import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 
 type Props = {}
 
 const TradeActivity = (props: Props) => {
+
+  const  {totalTrades}  = useGetTradeActivity()
+  const  {totalVol}  = useGetTradeActivity()
 
   const buttonMap = [
     { id: 1, title: "Current Epoch" },
@@ -47,13 +51,13 @@ const TradeActivity = (props: Props) => {
       {click === 1 ?
       <p className={styles.totalTrades}>6,784,567</p>
       :
-      <p className={styles.totalTrades}>12,184,481</p>}
+      <p className={styles.totalTrades}>{totalTrades}</p>}
 
       <h5 className={styles.bottomTitle}>Total Volume</h5>
       {click === 1 ?
       <p className={styles.totalVolume}>1,784,567</p>
       :
-      <p className={styles.totalVolume}>42,184,481,922</p>}
+      <p className={styles.totalVolume}>{totalVol}</p>}
       </div>
 
 

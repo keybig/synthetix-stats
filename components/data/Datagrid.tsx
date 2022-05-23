@@ -8,10 +8,14 @@ import Inflation from './inflation/Inflation'
 import TradeFee from './tradeFee/TradeFee'
 import MoreStats from './moreStats/MoreStats'
 import StartStaking from './startStaking/StartStaking'
+import { useContext } from 'react'
 
 type Props = {}
 
 const Datagrid = (props: Props) => {
+
+
+
   return (
     <div className={styles.container}>
         <SnxStaked />

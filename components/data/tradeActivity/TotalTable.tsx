@@ -3,31 +3,19 @@ import { useTable, useSortBy } from 'react-table'
 import styles from './TradeTable.module.css'
 import Image from 'next/image'
 import { keyframes } from 'styled-components'
+import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 
 type Props = {}
 
 const TradeTable = (props: Props) => {
 
+  const { tradeDataArr } = useGetTradeActivity()
+
     const data = useMemo(
-        () => [
-          {
-            col1: 'Lyra',
-            col2: '967,543,123',
-            col3: '8,000,000,000'
-          },
-          {
-            col1: 'Thales',
-            col2: '132,765,432',
-            col3: '1,000,000,000'
-          },
-          {
-            col1: 'Kwenta',
-            col2: '925,654,321',
-            col3: '14,000,000,000'
-          },
-        ],
+        () => tradeDataArr,
         []
       )
+      
     
       const columns = useMemo(
         () => [

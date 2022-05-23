@@ -1,0 +1,292 @@
+ Staking APY
+
+"queryText": "query {
+    \n  data:feePeriods(orderBy:startTime,orderDirection:desc, first:1)
+    {\n    feesToDistribute\n    feesClaimed\n    rewardsToDistribute\n    rewardsClaimed\n  }\n  
+    
+    data2:rateUpdates(where: 
+    { synth:\"SNX\", timestamp_gt: \"${__from:date:seconds}\", timestamp_lt: \"${__to:date:seconds}\"}, 
+    orderBy:timestamp,orderDirection:desc,first: 1) 
+    {\n    rate\n  }\n  
+    
+    data3:snxholders(where:{initialDebtOwnership_not:\"0\"},
+    orderBy:collateral,orderDirection:desc,first: 1000) {\ncollateral\n  }\n}",
+
+TVL
+
+"queryText": "query {\n      
+    data:synths(where: {symbol:\"SNX\"}) 
+    {\ntotalSupply\n      }\n      
+    
+    data2:rateUpdates(where: 
+    {synth:\"SNX\",timestamp_gt: \"${__from:date:seconds}\", timestamp_lt: \"${__to:date:seconds}\"}, 
+    orderBy:timestamp,orderDirection:desc,first: 1) {\nrate\n      }\n}",
+
+
+TRADING VOLUME
+
+      "queryText": "query {\n      
+        data:totals(first:1000,
+            where: { synth:null, period:86400,bucketMagnitude:0, timestamp_gt: \"${__from:date:seconds}\", timestamp_lt: \"${__to:date:seconds}\"}, orderBy:timestamp,orderDirection: asc) {\n
+            exchangeUSDTally\n
+            timestamp\n     
+             }\n}",
+
+PRICE
+
+      "queryText": "query {\n      data:candles(where: {synth:\"SNX\",timestamp_gt: \"${__from:date:seconds}\", timestamp_lt: \"${__to:date:seconds}\",period:86400}, orderBy:timestamp,orderDirection:desc,first: 1000) {\nclose\ntimestamp\n      }\n}",
+
+Total Staked
+
+      "queryText": "query {\n      data:snxholders(where:{initialDebtOwnership_not:\"0\"},orderBy:collateral,orderDirection:desc,first: 1000) {\ncollateral\ntransferable\n      }\n}",
+
+
+====================
+
+playground query:
+
+{
+  synths(where:{symbol: "SNX"}) {
+    id
+    name
+    symbol
+    totalSupply
+  }
+  totalActiveStakers(first:1){
+    count
+  }
+  synthetixes{
+    id
+    issuers
+    snxHolders
+  }
+  feePeriods(orderBy:startTime, orderDirection: desc first:5){
+    id
+    startTime
+    feesClaimed
+    feesToDistribute
+    rewardsClaimed
+    rewardsToDistribute
+  }
+
+  // get staking info at point in time. number is the elements from optimistic.etherscan
+  synthetixes(block: {number: 7634670}){
+    issuers
+    snxHolders
+  }
+}
+
+  // Use the mainnet
+const network = "homestead";
+
+// Specify your own API keys
+// Each is optional, and if you omit it the default
+// API key for that service will be used.
+const provider = ethers.getDefaultProvider(network, {
+    etherscan: "4YCUHXX2TCJPD6IFYSSI7DCX62QUZCSIUC",
+});
+
+
+514 snapshot:
+
+{
+  
+  synths(where:{symbol:"SNX"}){
+    totalSupply
+    name
+    symbol
+    id
+  }
+  
+   debtStates(first:1){
+    id
+    period
+    timestamp
+    debtEntry
+    totalIssuedSynths
+    debtRatio
+  }
+  
+  issuers(first:3){
+    id
+  }
+  
+  debtSnapshots(first:3 ){
+    block
+    collateral
+    id
+  }
+  
+  totalActiveStakers(first:1){
+    id
+    count
+  }
+  latestRate(id:"SNX"){
+    rate
+  }
+  synthetixes(first:5){
+    id
+    issuers
+    snxHolders
+  }
+  synthetix(id:2){
+    issuers
+    snxHolders
+  }
+  
+ 
+  
+  totals(first:2){
+    period
+    totalFeesGeneratedInUSD
+    timestamp
+    
+  }
+  
+  snxholders(where:{initialDebtOwnership_not:0}orderBy:collateral,orderDirection:desc,first:1){
+    collateral
+    transferable
+    initialDebtOwnership
+    id
+    block
+  }
+  
+ 
+  
+  
+
+}
+
+
+      "queryText": "query {\n  
+      data:feePeriods(orderBy:startTime,orderDirection:desc, first:1){\n    
+        feesToDistribute\n    
+        feesClaimed\n    
+        rewardsToDistribute\n    
+        rewardsClaimed\n  }\n  
+        
+        data2:rateUpdates(where: { synth:\"SNX\", timestamp_gt: \"${__from:date:seconds}\", timestamp_lt: \"${__to:date:seconds}\"}, orderBy:timestamp,orderDirection:desc,first: 1) {\n    
+          rate\n  }\n  
+          
+        data3:snxholders(where:{initialDebtOwnership_not:\"0\"},orderBy:collateral,orderDirection:desc,first: 1000) {\n
+          collateral\n  }\n}",
+
+{
+  feePeriods(orderBy:startTime orderDirection:desc first:1){
+    feesToDistribute
+    feesClaimed
+    rewardsToDistribute
+    rewardsClaimed
+  }
+  
+  rateUpdates(where:{synth:"SNX"} orderDirection:desc orderBy:timestamp){
+    rate
+    currencyKey
+  }
+}
+
+
+---------
+snxstakedplaceholder
+
+import styles from './SnxStaked.module.css'
+import useSynthetixQueries from '@synthetixio/queries'
+import Wei from '@synthetixio/wei'
+
+
+type Props = {}
+
+const SnxStaked = (props: Props) => {
+
+  const { subgraph } = useSynthetixQueries()
+
+  const totalofSNX = subgraph.useGetSynthetixById(
+    {id: "1"},
+    {issuers:true, snxHolders:true}
+  )
+
+  const snxRate = subgraph.useGetLatestRateById(
+    {id: "SNX"},
+    {rate:true}
+  )
+
+  const snxPrice = snxRate?.data?.rate.toNumber()
+  
+  const totalStaked = totalofSNX?.data?.issuers.toNumber()
+  
+  const totalHolder = totalofSNX?.data?.snxHolders.toNumber()
+  
+  const formatValue = Intl.NumberFormat("en-US")
+  const formatMoney = Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+});
+
+  const bal:any = []
+ 
+
+  const totalSnxHolders = subgraph.useGetSNXHolders(
+    {orderBy:'balanceOf',orderDirection:"desc", first:totalHolder},
+    { timestamp:true, balanceOf:true},
+  )
+
+  totalSnxHolders.data?.forEach(item => {
+    for (let key in item) {
+       key === "balanceOf" ? 
+        bal.push(item[key]?.toNumber()) : 
+        null
+    }
+  });
+
+  const totalBal = bal.reduce((sum:number, current:number) => sum + current, 0)
+
+
+  const allStaked = subgraph.useGetSNXHolders(
+    {where:{initialDebtOwnership_not:0},orderBy:'collateral',orderDirection:"desc",first:8000},
+    { collateral:true, transferable:true, balanceOf:true},
+  )
+
+  const collat:any = []
+  const transfer:any = []
+  console.log(`collat:  ${collat}`)
+
+
+  allStaked.data?.forEach(item => {
+    for (let key in item) {
+       key === "collateral" ? 
+        collat.push(item[key]?.toNumber()) : 
+        key === "transferable" ? transfer.push(item[key]?.toNumber()) : 
+        null
+    }
+  });
+
+  const stakeCalc = (collat.reduce((sum:number, current:number) => sum + current, 0))-(transfer.reduce((sum:number, current:number) => sum + current, 0))
+
+
+  const stakeAmount:any = stakeCalc.toFixed(2)
+  //@ts-ignore
+  const stakedVal = stakeAmount * snxPrice
+
+  return (
+    <div className={styles.snxStaked}>
+    <h3 className={styles.title}>SNX Staked</h3>
+    <p className={styles.percentAPY}>{`${(stakeAmount / totalBal).toFixed(2).substring(2)}%`}</p>
+    <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
+    <p className={styles.values}>
+      {
+        formatValue.format(stakeAmount)
+      }
+    </p>
+    <h3 className={styles.secondaryHeading}>Staked Value</h3>
+    <p className={styles.values}>
+      {
+        formatMoney.format(stakedVal)
+      }
+    </p>
+  
+
+</div>
+  )
+}
+
+export default SnxStaked

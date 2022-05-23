@@ -1,52 +1,57 @@
 import styles from './Inflation.module.css'
 import styled from 'styled-components'
-import { Line, LineChart, ResponsiveContainer } from 'recharts';
+import { Legend, Line, LineChart, ResponsiveContainer, Tooltip } from 'recharts';
+import useGetAPY from '../../../hooks/useGetAPY'
 
 type Props = {}
 
 const Inflation = (props: Props) => {
 
+  const { currentReward } = useGetAPY()
+  const { allTimeInflation } = useGetAPY()
+  const { rewardsAmt } = useGetAPY()
+
   const data = [
     {
       name: 'Page A',
       uv: 4000,
-      pv: 2400,
-      amt: 2400,
+      snx_rewards: rewardsAmt[6],
+      amt: 10,
     },
     {
       name: 'Page B',
       uv: 3000,
-      pv: 1398,
+      snx_rewards: rewardsAmt[5],
       amt: 2210,
     },
     {
       name: 'Page C',
       uv: 2000,
-      pv: 9800,
+      snx_rewards: rewardsAmt[4],
       amt: 2290,
     },
     {
       name: 'Page D',
       uv: 2780,
-      pv: 3908,
+      snx_rewards: rewardsAmt[3],
       amt: 2000,
     },
     {
       name: 'Page E',
       uv: 1890,
-      pv: 4800,
+      snx_rewards: rewardsAmt[2],
       amt: 2181,
     },
     {
       name: 'Page F',
       uv: 2390,
-      pv: 3800,
+      snx_rewards: rewardsAmt[1],
       amt: 2500,
     },
     {
       name: 'Page G',
       uv: 3490,
-      pv: 4300,
+      snx_rewards: rewardsAmt[0],
       amt: 2100,
     },
   
@@ -60,15 +65,20 @@ const Inflation = (props: Props) => {
       <Content>
         <h3>Inflation Fees (SNX Rewards)</h3>
         <SubTitle>Current Epoch</SubTitle>
-        <CurrentEpoch>503,389.46</CurrentEpoch>
+        <CurrentEpoch>
+          {currentReward}
+        </CurrentEpoch>
         <SubTitle>Up to date</SubTitle>
-        <ToDate>100,000,312.99</ToDate>
+        <ToDate>
+          {allTimeInflation}
+        </ToDate>
       </Content>
 
       <ChartWrapper>
       <ResponsiveContainer width={'100%'} height={330}>
         <LineChart data={data}>
-          <Line type="monotone" dataKey="pv" stroke="#8884d8" strokeWidth={3} />
+          <Line type="monotone" dataKey="snx_rewards" stroke="#8884d8" strokeWidth={3} />
+          <Tooltip/>
         </LineChart>
       </ResponsiveContainer>
       </ChartWrapper>
