@@ -15,7 +15,8 @@ const useGetAPY = () => {
 
 const currentFeePeriods = subgraph.useGetFeePeriods(
   {orderBy:"startTime", orderDirection:"desc"},
-  { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true})
+  { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true},
+  )
 
     
 

@@ -1,30 +1,53 @@
-import { useState } from 'react'
+import { NetworkId } from '@synthetixio/contracts-interface';
+import { createQueryContext, SynthetixQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries';
+import { useContext, useState } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 import styles from './NetworkNavBar.module.css'
+import { useRouter } from 'next/router'
+
 
 type Props = {
+  children?:any;
+  
 }
 
-const NetworkNavBar = (props: Props) => {
+const NetworkNavBar = (props:Props) => {
 
   const buttonMap = [
-    { id: 100, title: "All Networks" },
-    { id: 1, title: "Mainnet" },
-    { id: 10, title: "Optimism" }
+    { id: 100, netId: 10, title: "All Networks" },
+    { id: 1, netId: 1, title: "Mainnet" },
+    { id: 10, netId: 10, title: "Optimism" }
   ];
 
 
+  const router = useRouter()
 
-    const [click, setClick] = useState(10);
 
+
+    const [network, setNetwork] = useState<NetworkId>(10);
+  
+   
 
     const handleActive = (buttons: any) => {
-      setClick(buttons.id);
+      setNetwork(buttons.id);
+      //router.reload()
     };
     
-    
+    const test = createQueryContext({
+      networkId: network, // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
+      
+      })
+
+      
 
   return (
+    <div>
+       
 
+<SynthetixQueryContextProvider
+value={test}
+>
     <div className={styles.navContainer}>
 
         <div className={styles.navNetwork}>
@@ -34,7 +57,7 @@ const NetworkNavBar = (props: Props) => {
         <button
           key={buttonMap.id}
           onClick={() => handleActive(buttonMap)}
-          className={ buttonMap.id === click ? styles.navCurrent : styles.navInactive}
+          className={ buttonMap.id === network ? styles.navCurrent : styles.navInactive}
         >
           {buttonMap.title}
         </button>
@@ -47,7 +70,16 @@ const NetworkNavBar = (props: Props) => {
             <button className={styles.navAdvancedStats}>Advanced Stats</button>
             
         </div>
+        </div>
+       
 
+      {props.children}
+
+    </SynthetixQueryContextProvider>
+  
+
+
+   
     </div>
 
   )

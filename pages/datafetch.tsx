@@ -30,7 +30,7 @@ type Props = {
 const Datafetch = (props: Props) => {
 
 
-
+/*
 const letsgo = useRateUpdateQuery("SBTC")
 
 console.log(letsgo)
@@ -147,7 +147,7 @@ newWrapperCall.data?.forEach(item =>{
 
 })
 
-
+*/
 
   return (
     <Background>

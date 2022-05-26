@@ -10,9 +10,7 @@ type Props = {}
 const home2 = (props: Props) => {
   return (
     <div>
-      <Subheader />
-      <NetworkNavBar />
-      <Datagrid />
+    
     </div>
   )
 }

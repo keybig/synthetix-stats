@@ -11,9 +11,11 @@ import { NetworkId } from '@synthetixio/contracts-interface'
 
 function MyApp({ Component, pageProps }: AppProps) {
 
+
+  //const [netId, setNetId] = useState<NetworkId>(10)
+
   const queryClient = new QueryClient()
 
-  const [netId, setNetId] = useState<NetworkId>(10)
 
   
   return (
@@ -22,18 +24,15 @@ function MyApp({ Component, pageProps }: AppProps) {
       <title>The Title</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
-    <QueryClientProvider client={queryClient}>
-    <SynthetixQueryContextProvider
-      value={createQueryContext({
-        networkId: netId // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
-      })}
-    >
+    
     <Layout>
+    <QueryClientProvider client={queryClient}>
     <Component {...pageProps} />
-    </Layout>
     <ReactQueryDevtools />
-    </SynthetixQueryContextProvider>
+    
     </QueryClientProvider>
+    </Layout>
+   
     </>
   )
 }

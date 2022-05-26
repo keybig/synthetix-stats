@@ -14,36 +14,14 @@ import useNetwork from '../hooks/useNetwork'
 import useGetTradeActivity from '../hooks/useGetTradeActivity'
 
 
-
-const queryClient = new QueryClient()
-
-
-
 const Home = (props:any) => {
-//@ts-ignore
-  const { netId } = useNetwork()
-
-  const arr:any[] = [1,3, "yo"]
-  let id:NetworkId = 10
-
-
-  //@ts-ignore
-  const test = useContext<NetworkId>(id)
 
   return (
     <div>
       <Subheader />
-      
-    
-      <NetworkNavBar />
+      <NetworkNavBar>
       <Datagrid />
- 
-          <div>
-         
-            {arr}
-          </div>
-      
-
+      </NetworkNavBar>
     </div>
   )
 }
