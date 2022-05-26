@@ -12,15 +12,18 @@ type Props = {
 const TotalTable = (props: Props) => {
 
   const { tradeDataArr } = useGetTradeActivity()
+  const  {totalVol}  = useGetTradeActivity()
+
 
  // const tableData = props.tableId === 1 ? currentData : tradeDataArr
 
 
     const data = useMemo(
         () => tradeDataArr,
-        []
+        [totalVol]
       )
       
+
     
       const columns = useMemo(
         () => [

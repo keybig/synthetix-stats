@@ -9,13 +9,14 @@ type Props = {}
 const useGetAPY = () => {
 
   const { stakeCalc } = useGetGlobalStake()
-    const { subgraph } = useSynthetixQueries()
+  const { subgraph } = useSynthetixQueries()
 
 
 
 const currentFeePeriods = subgraph.useGetFeePeriods(
   {orderBy:"startTime", orderDirection:"desc"},
   { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true},
+  { queryKey:"currentFeePeriods"}
   )
 
     
@@ -32,18 +33,30 @@ const currentFeePeriods = subgraph.useGetFeePeriods(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
           synth:"SNX",
         }},
-        { timestamp:true, block:true, rate:true}
+        { timestamp:true, block:true, rate:true},
+        {queryKey:"currentRate"}
       )
       
       const rewardsAmt:number[] = []
       const feeAmt:number[] = []
       const currentRateSNX:number[] = []
       const inflationAmt:number[] = []
+      const inflationData:any[]=[]
       
-      const getFeeData = currentFeePeriods.data?.forEach(item=>{
+      const getFeeData = currentFeePeriods.data?.forEach((item, i)=>{
         rewardsAmt.push(item.rewardsToDistribute.toNumber())
         feeAmt.push(item.feesToDistribute.toNumber())
+        const obj = {
+          timestamp: item.startTime.toString(),
+          snx_rewards: item.rewardsToDistribute.toNumber()
+        }
+        i < 7 ?
+        inflationData.unshift(obj)
+        : null
       })
+
+    
+
 
       const currentPriceSNX = currentRate.data?.forEach(item=>{
           currentRateSNX.push(item.rate.toNumber())
@@ -66,12 +79,15 @@ const currentFeePeriods = subgraph.useGetFeePeriods(
       const currentReward = formatNumber.format(rewardsAmt[0])
       
       const APY = formatPercent.format(stakeAPYAmt)
+
+
   return {
       APY,
       currentReward,
       allTimeInflation,
       rewardsAmt,
-      startTime
+      startTime,
+      inflationData
   }
 }
 

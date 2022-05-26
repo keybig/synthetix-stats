@@ -24,7 +24,7 @@ const TradeActivity = (props: Props) => {
   ];
 
 
-    const [click, setClick] = useState(1);
+    const [click, setClick] = useState(2);
 
 
     const handleActive = (buttons: any) => {
@@ -53,21 +53,19 @@ const TradeActivity = (props: Props) => {
 
       </div>
       <div className={styles.table}>
-      {click === 1 ? <TradeTable/> : <TotalTable/>}
+        <TradeTable tableId={click}/>
       </div>
 
     <div className={styles.bottom}>
       <h5 className={styles.bottomTitle}>Total N of Trades</h5>
-      {click === 1 ?
-      <p className={styles.totalTrades}>{currentTotalTrades}</p>
-      :
-      <p className={styles.totalTrades}>{totalTrades}</p>}
+    
+      <p className={styles.totalTrades}>{click === 1 ? currentTotalTrades : totalTrades}</p>
+   
 
       <h5 className={styles.bottomTitle}>Total Volume</h5>
-      {click === 1 ?
-      <p className={styles.totalVolume}>{currentTotalVol}</p>
-      :
-      <p className={styles.totalVolume}>{totalVol}</p>}
+    
+      <p className={styles.totalVolume}>{click === 1 ? currentTotalVol : totalVol}</p>
+      
       </div>
 
 

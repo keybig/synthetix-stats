@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react'
-import { useTable, useSortBy, useGroupBy } from 'react-table'
+import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
 import styles from './TradeTable.module.css'
 import Image from 'next/image'
 import { keyframes } from 'styled-components'
@@ -7,18 +7,26 @@ import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 import useGetCurrentTrade from '../../../hooks/useCurrentTrade'
 
 
-type Props = {}
+type Props = {
+  tableId?: number;
+}
 
 
 const TradeTable = (props: Props) => {
 
   const { realResult } = useGetCurrentTrade()
+  const { totalVolSum } = useGetCurrentTrade()
+  const { tradeDataArr } = useGetTradeActivity()
+  const  {totalVol}  = useGetTradeActivity()
 
+  const tradeTable = props.tableId === 1 ? realResult : tradeDataArr
+  const tradeDep = props.tableId === 1 ? totalVolSum : totalVol
 
     const data = useMemo(
-      () => realResult,
-      []
+      () => tradeTable,
+      [tradeDep]
     )
+
     
       const columns = useMemo(
         () => [
@@ -62,15 +70,21 @@ const TradeTable = (props: Props) => {
                 desc: true,
               },
             ],  
+            pageSize: 4
           }
         },  
-        useSortBy,)
+        useSortBy,
+        usePagination)
 
       const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        rows,
+        page,
+        canNextPage,
+        nextPage,
+        canPreviousPage,
+        previousPage,
         prepareRow,
       } = tableInstance
 
@@ -78,7 +92,7 @@ const TradeTable = (props: Props) => {
 
       
   return (
-
+    <div>
     <table {...getTableProps()} className={styles.mainTable}>
     <thead>
       {headerGroups.map((headerGroup) => {
@@ -106,7 +120,7 @@ const TradeTable = (props: Props) => {
     </thead>
     <tbody {...getTableBodyProps()}>
      
-    {rows.map((row) => {
+    {page.map((row) => {
           prepareRow(row);
           const { key, ...restRowProps } = row.getRowProps();
           return (
@@ -124,6 +138,14 @@ const TradeTable = (props: Props) => {
         })}
     </tbody>
   </table>
+  {tradeTable.length > 4 ? 
+      
+    <><button onClick={() => previousPage()} disabled={!canPreviousPage}>
+        {'<'}
+      </button><button onClick={() => nextPage()} disabled={!canNextPage}>
+          {'>'}
+        </button></> : null}
+  </div>
     
 )
     

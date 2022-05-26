@@ -10,6 +10,7 @@ type Props = {
 }
 
 
+
 const TradeFee = (props: Props) => {
 
   const { tradeFeeArr } = useGetTradeFee()

@@ -10,10 +10,12 @@ type Props = {
   tableId?:Number
 }
 
+
 const TradeFeeTable = (tableId: Props) => {
 
     const { tradeFeeArr } = useGetTradeFee()
     const { currentFeeData } = useGetTradeFee()
+    const { currentTotalFee } = useGetTradeFee()
 
 
  
@@ -22,8 +24,10 @@ const TradeFeeTable = (tableId: Props) => {
 
     const data = useMemo(
         () => tableData,
-        []
+        [currentTotalFee]
       )
+
+      console.log(`data ${typeof tableData.length}`)
       
     
       const columns = useMemo(
@@ -129,12 +133,16 @@ const TradeFeeTable = (tableId: Props) => {
                   )
               })}
           </tbody>
-      </table><button onClick={() => previousPage()} disabled={!canPreviousPage}>
-              {'<'}
-          </button>
- <button onClick={() => nextPage()} disabled={!canNextPage}>
-  {'>'}
- </button></>
+      </table>
+
+      {tableData.length > 4 ? 
+      
+      <><button onClick={() => previousPage()} disabled={!canPreviousPage}>
+          {'<'}
+        </button><button onClick={() => nextPage()} disabled={!canNextPage}>
+            {'>'}
+          </button></> : null}
+      </>
     
     
   )

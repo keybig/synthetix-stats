@@ -3,60 +3,14 @@ import styled from 'styled-components'
 import { Legend, Line, LineChart, ResponsiveContainer, Tooltip } from 'recharts';
 import useGetAPY from '../../../hooks/useGetAPY'
 
+// current rewards, all time rewards, inflation data from useGetAPY()
 type Props = {}
 
 const Inflation = (props: Props) => {
 
   const { currentReward } = useGetAPY()
   const { allTimeInflation } = useGetAPY()
-  const { rewardsAmt } = useGetAPY()
-  
-
-  const data = [
-    {
-      name: 'Page A',
-      uv: 4000,
-      snx_rewards: rewardsAmt[6],
-      amt: 10,
-    },
-    {
-      name: 'Page B',
-      uv: 3000,
-      snx_rewards: rewardsAmt[5],
-      amt: 2210,
-    },
-    {
-      name: 'Page C',
-      uv: 2000,
-      snx_rewards: rewardsAmt[4],
-      amt: 2290,
-    },
-    {
-      name: 'Page D',
-      uv: 2780,
-      snx_rewards: rewardsAmt[3],
-      amt: 2000,
-    },
-    {
-      name: 'Page E',
-      uv: 1890,
-      snx_rewards: rewardsAmt[2],
-      amt: 2181,
-    },
-    {
-      name: 'Page F',
-      uv: 2390,
-      snx_rewards: rewardsAmt[1],
-      amt: 2500,
-    },
-    {
-      name: 'Page G',
-      uv: 3490,
-      snx_rewards: rewardsAmt[0],
-      amt: 2100,
-    },
-  
-  ];
+  const { inflationData } = useGetAPY()
 
 
   return (
@@ -77,7 +31,7 @@ const Inflation = (props: Props) => {
 
       <ChartWrapper>
       <ResponsiveContainer width={'100%'} height={330}>
-        <LineChart data={data}>
+        <LineChart data={inflationData}>
           <Line type="monotone" dataKey="snx_rewards" stroke="#8884d8" strokeWidth={3} />
           <Tooltip/>
         </LineChart>

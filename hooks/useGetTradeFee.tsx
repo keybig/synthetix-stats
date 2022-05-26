@@ -60,6 +60,7 @@ const useGetTradeFee = () => {
     const tradeFeeCall = subgraph.useGetExchangePartners(
         {orderBy:"usdVolume", orderDirection:"desc"},
         {id:true, usdFees:true},
+        {queryKey:"tradeFeeCall"}
     )
     
    tradeFeeCall.data?.forEach(item => {
@@ -75,8 +76,10 @@ const useGetTradeFee = () => {
   // current fee call
 
   const currentFeeDataArr:any[] = []
+  const currentTotalFeeArr:number[] = []
 
   const currentFeeCall = currentEpochTradeData.data?.forEach(item=>{
+    currentTotalFeeArr.push(item.usdFees.toNumber())
     const id = item.partner
     const fees = item.usdFees.toNumber()
     const obj = {
@@ -85,6 +88,7 @@ const useGetTradeFee = () => {
     }
     currentFeeDataArr.push(obj)
   })
+
 
   const currentFeeData = currentFeeDataArr.reduce((acc, cur) => {
     const {name, value} = cur;                            
@@ -100,6 +104,8 @@ const useGetTradeFee = () => {
 
   const totalIssuedSynth = totalIssuedSynthCall.isSuccess ? 
         formatNumber.format(totalIssuedSynthCall.data[0].totalIssuedSynths.toNumber()) : null
+  
+  const currentTotalFee = currentTotalFeeArr.reduce((sum:number, current:number)=> sum + current, 0)
 
   
 
@@ -109,7 +115,8 @@ const useGetTradeFee = () => {
   return {
       tradeFeeArr,
       currentFeeData,
-      totalIssuedSynth
+      totalIssuedSynth,
+      currentTotalFee
   }
 }
 
