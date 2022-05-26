@@ -21,6 +21,7 @@ const NetworkNavBar = (props: Props) => {
       setClick(buttons.id);
     };
     
+    
 
   return (
 

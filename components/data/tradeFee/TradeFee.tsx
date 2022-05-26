@@ -2,6 +2,8 @@ import styles from './TradeFee.module.css'
 import styled from 'styled-components'
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import { useMemo, useState } from 'react';
+import useGetTradeFee from '../../../hooks/useGetTradeFee';
+import TradeFeeTable from './TradeFeeTable'
 
 
 type Props = {
@@ -10,7 +12,11 @@ type Props = {
 
 const TradeFee = (props: Props) => {
 
+  const { tradeFeeArr } = useGetTradeFee()
+  const { currentFeeData } = useGetTradeFee()
 
+
+  console.log(tradeFeeArr)
   const buttonMap = [
     { id: 1, title: "Current Epoch" },
     { id: 2, title: "Total To Date" }
@@ -34,8 +40,9 @@ const TradeFee = (props: Props) => {
     { name: "Protocol", value: 100 }
   ];
 
+
   const total = [
-    { name: "Wrappers", value: 200 },
+    { name: "Wrappers", value: 2100 },
     { name: "Protocol", value: 500 },
     { name: "Protocol", value: 200 },
     { name: "Other", value: 200 },
@@ -67,20 +74,21 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-        {click === 1 ? (
+        {click === 2 ? (
           <PieWrap>
-      <ResponsiveContainer height={300}>
+      <ResponsiveContainer height={500}>
         <PieChart>
           <Pie
             dataKey="value"
+            nameKey="name"
             isAnimationActive={false}
-            data={current}
+            data={tradeFeeArr}
             outerRadius={'80%'}
           >
-
-              {current.map((entry, index) => (
+            {total.map((entry, index) => (
               <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
             ))}
+            
           </Pie>
           <Tooltip />
         </PieChart>
@@ -95,7 +103,7 @@ const TradeFee = (props: Props) => {
           <Pie
             dataKey="value"
             isAnimationActive={false}
-            data={total}
+            data={currentFeeData}
             outerRadius={'80%'}
           >
 
@@ -108,46 +116,9 @@ const TradeFee = (props: Props) => {
       </ResponsiveContainer>
       </PieWrap>)}
      
+
       <ChartKey>
-        <KeyWrappers>
-                <StyledP color="#00D1FF">Wrappers</StyledP>
-                {click === 1 ? 
-                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#00D1FF">37%</StyledP></>)
-                :
-                (<><StyledP color="white">$586,128,832</StyledP><StyledP color="#00D1FF">27%</StyledP></>)}
-        </KeyWrappers>
-
-        <KeyProtocol>
-                <StyledP color="#ED1EFF">Protocol</StyledP>
-                {click === 1 ? 
-                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#ED1EFF">37%</StyledP></>)
-                :
-                (<><StyledP color="white">$186,218,123</StyledP><StyledP color="#ED1EFF">97%</StyledP></>)}
-        </KeyProtocol>
-
-        <KeyProtocol>
-                <StyledP color="#31D8A4">Protocol</StyledP>
-                {click === 1 ? 
-                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#31D8A4">37%</StyledP></>)
-                :
-                (<><StyledP color="white">$986,218,923</StyledP><StyledP color="#31D8A4">57%</StyledP></>)}
-        </KeyProtocol>
-
-        <KeyProtocol>
-                <StyledP color="#FFD75C">Protocol</StyledP>
-                {click === 1 ? 
-                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#FFD75C">37%</StyledP></>)
-                :
-                (<><StyledP color="white">$555,218,553</StyledP><StyledP color="#FFD75C">81%</StyledP></>)}
-        </KeyProtocol>
-
-        <KeyOther>
-                <StyledP color="#FC8738">Other</StyledP>
-                {click === 1 ? 
-                (<><StyledP color="white">$286,228,739</StyledP><StyledP color="#FC8738">37%</StyledP></>)
-                :
-                (<><StyledP color="white">$100,111,123</StyledP><StyledP color="#FC8738">17%</StyledP></>)}
-        </KeyOther>
+        <TradeFeeTable tableId={click}/>
 
         </ChartKey>
 

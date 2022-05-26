@@ -1,19 +1,21 @@
 import type { AppProps } from 'next/app'
-import { createQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries'
+import useSynthetixQueries, { createQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
 import '../styles/globals.css'
 import Layout from '../components/layout/Layout'
 import Head from 'next/head'
 import { useState } from 'react'
+import { NetworkId } from '@synthetixio/contracts-interface'
 
 
 function MyApp({ Component, pageProps }: AppProps) {
 
   const queryClient = new QueryClient()
 
-  const [netId, setNetId] = useState(1)
+  const [netId, setNetId] = useState<NetworkId>(1)
 
+  
   return (
     <>
     <Head>
@@ -23,7 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     <QueryClientProvider client={queryClient}>
     <SynthetixQueryContextProvider
       value={createQueryContext({
-        networkId: 10 // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
+        networkId: netId // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
       })}
     >
     <Layout>

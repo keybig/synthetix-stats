@@ -1,22 +1,24 @@
 import React, { useMemo } from 'react'
-import { useTable, useSortBy } from 'react-table'
+import { useTable, useSortBy, useGroupBy } from 'react-table'
 import styles from './TradeTable.module.css'
 import Image from 'next/image'
 import { keyframes } from 'styled-components'
 import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
+import useGetCurrentTrade from '../../../hooks/useCurrentTrade'
 
 
 type Props = {}
 
+
 const TradeTable = (props: Props) => {
 
-  const { currentData } = useGetTradeActivity()
+  const { realResult } = useGetCurrentTrade()
 
 
     const data = useMemo(
-        () => currentData,
-        []
-      )
+      () => realResult,
+      []
+    )
     
       const columns = useMemo(
         () => [
@@ -59,10 +61,10 @@ const TradeTable = (props: Props) => {
                 id: 'col3',
                 desc: true,
               },
-            ]
-           
+            ],  
           }
-        }, useSortBy)
+        },  
+        useSortBy,)
 
       const {
         getTableProps,
@@ -73,9 +75,10 @@ const TradeTable = (props: Props) => {
       } = tableInstance
 
 
+
       
   return (
-    
+
     <table {...getTableProps()} className={styles.mainTable}>
     <thead>
       {headerGroups.map((headerGroup) => {
@@ -121,7 +124,10 @@ const TradeTable = (props: Props) => {
         })}
     </tbody>
   </table>
-  );
-}
-
+    
+)
+    
+    
+      }
 export default TradeTable
+

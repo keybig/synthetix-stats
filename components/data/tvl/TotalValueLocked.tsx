@@ -42,6 +42,7 @@ const TotalValueLocked = (props: Props) => {
     const {timeStamp} = useGetTime()
 
    
+    
 
     const handleActive = (buttons: any) => {
       setClick(buttons.id);

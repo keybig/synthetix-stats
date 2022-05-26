@@ -10,6 +10,7 @@ const Inflation = (props: Props) => {
   const { currentReward } = useGetAPY()
   const { allTimeInflation } = useGetAPY()
   const { rewardsAmt } = useGetAPY()
+  
 
   const data = [
     {

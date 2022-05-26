@@ -1,19 +1,30 @@
 import useSynthetixQueries from '@synthetixio/queries'
+import { useEffect } from 'react'
 import useGetGlobalStake from './useGetGlobalStake'
 
 type Props = {}
 
+
+
 const useGetAPY = () => {
 
-    const { stakeCalc } = useGetGlobalStake()
+  const { stakeCalc } = useGetGlobalStake()
     const { subgraph } = useSynthetixQueries()
 
 
-    const currentFeePeriods = subgraph.useGetFeePeriods(
-        {orderBy:"startTime", orderDirection:"desc"},
-        { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true}
-      )
 
+const currentFeePeriods = subgraph.useGetFeePeriods(
+  {orderBy:"startTime", orderDirection:"desc"},
+  { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true})
+
+    
+
+    const formatPercent = Intl.NumberFormat("en-US", {
+      style: "percent",
+  });
+
+    const formatNumber = Intl.NumberFormat("en-US")
+    
     const startTime = currentFeePeriods.isSuccess ? currentFeePeriods.data[0].startTime.toNumber() : null
 
     const currentRate = subgraph.useGetRateUpdates(
@@ -43,26 +54,17 @@ const useGetAPY = () => {
 
       const feeAPYAmt = (feeAmt[0] / valStake) * 52
 
-
-
       const rewardsAPYAmt = (rewardsAmt[0] / stakeCalc) * 52
 
       const stakeAPYAmt = feeAPYAmt + rewardsAPYAmt
 
       const allTimeRewards = rewardsAmt.reduce((sum:number,current:number) => sum + current, 0)
        
-
-      const formatPercent = Intl.NumberFormat("en-US", {
-        style: "percent",
-    });
-
-      const formatNumber = Intl.NumberFormat("en-US")
-
       const allTimeInflation = formatNumber.format(allTimeRewards)
 
       const currentReward = formatNumber.format(rewardsAmt[0])
       
-    const APY = formatPercent.format(stakeAPYAmt)
+      const APY = formatPercent.format(stakeAPYAmt)
   return {
       APY,
       currentReward,

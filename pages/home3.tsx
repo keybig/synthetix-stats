@@ -8,10 +8,9 @@ import {
 } from '@synthetixio/queries'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { NetworkId } from '@synthetixio/contracts-interface'
 import useNetwork from '../hooks/useNetwork'
-import useGetTradeActivity from '../hooks/useGetTradeActivity'
 
 
 
@@ -23,25 +22,20 @@ const Home = (props:any) => {
 //@ts-ignore
   const { netId } = useNetwork()
 
-  const arr:any[] = [1,3, "yo"]
-  let id:NetworkId = 10
-
-
-  //@ts-ignore
-  const test = useContext<NetworkId>(id)
-
   return (
     <div>
       <Subheader />
-      
-    
+      <QueryClientProvider client={queryClient}>
+        <SynthetixQueryContextProvider
+          value={createQueryContext({
+            networkId: 10 // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
+          })}
+        >
       <NetworkNavBar />
       <Datagrid />
- 
-          <div>
-         
-            {arr}
-          </div>
+      </SynthetixQueryContextProvider>
+      <ReactQueryDevtools/>
+      </QueryClientProvider>
       
 
     </div>

@@ -10,6 +10,7 @@ import useGetBlock from '../hooks/useGetBlock'
 import { RealTest, TimeGoTest } from '../components/data/tvl/times'
 import useGetTVL from '../hooks/useGetTVL'
 import useGetTradeActivity from '../hooks/useGetTradeActivity'
+import {useRateUpdateQuery} from '../hooks/useTest'
 
 
 type Props = {
@@ -26,18 +27,13 @@ type Props = {
   });
 
 
-const datafetch = (props: Props) => {
-
-/*
-const { currentTradeDataArr } = useGetTradeActivity()
-const { kwentaVolSum } = useGetTradeActivity()
-const { kwentaTradeSum } = useGetTradeActivity()
-
-console.log(kwentaTradeSum)
-console.log(kwentaVolSum)
-//console.log(currentTradeDataArr)
+const Datafetch = (props: Props) => {
 
 
+
+const letsgo = useRateUpdateQuery("SBTC")
+
+console.log(letsgo)
 
 const blockNum = useGetBlock()
 
@@ -151,7 +147,7 @@ newWrapperCall.data?.forEach(item =>{
 
 })
 
-*/
+
 
   return (
     <Background>
@@ -165,5 +161,24 @@ const Background = styled.div`
   background-color: white;
 `
 
-export default datafetch
+export default Datafetch
 
+/*
+export async function getStaticProps() {
+  // Call an external API endpoint to get posts.
+  // You can use any data fetching library
+ 
+
+  const { subgraph } = useSynthetixQueries()
+
+
+
+  // By returning { props: { posts } }, the Blog component
+  // will receive `posts` as a prop at build time
+  return {
+    props: {
+      posts,
+    },
+  }
+}
+*/

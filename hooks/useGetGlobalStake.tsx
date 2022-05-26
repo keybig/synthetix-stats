@@ -1,4 +1,5 @@
 import useSynthetixQueries from '@synthetixio/queries'
+import { useMemo } from 'react'
 
 type Props = {}
 
@@ -8,7 +9,8 @@ const useGetGlobalStake = () => {
 
   const totalofSNX = subgraph.useGetSynthetixById(
     {id: "1"},
-    {issuers:true, snxHolders:true}
+    {issuers:true, snxHolders:true},
+    
   )
 
   const snxRate = subgraph.useGetLatestRateById(
@@ -54,7 +56,6 @@ const useGetGlobalStake = () => {
 
   const collat:any = []
   const transfer:any = []
-  console.log(`collat:  ${collat}`)
 
 
   allStaked.data?.forEach(item => {
@@ -76,7 +77,6 @@ const useGetGlobalStake = () => {
   const stakeAmount = formatValue.format(stakeCalcAmt)
   //@ts-ignore
   const stakedVal = formatMoney.format(stakeAmount*snxPrice)
-
   const percentStaked = `${(stakeCalc / totalBal).toFixed(2).substring(2)}%`
 
   return {

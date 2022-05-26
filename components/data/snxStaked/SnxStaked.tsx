@@ -1,5 +1,5 @@
 import styles from './SnxStaked.module.css'
-import useSynthetixQueries from '@synthetixio/queries'
+import useSynthetixQueries, { createQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries'
 import Wei from '@synthetixio/wei'
 import useGetGlobalStake from '../../../hooks/useGetGlobalStake'
 
@@ -58,7 +58,6 @@ const SnxStaked = (props: Props) => {
 
   const collat:any = []
   const transfer:any = []
-  console.log(`transfer:  ${transfer}`)
 
 
   allStaked.data?.forEach(item => {
@@ -79,6 +78,7 @@ const SnxStaked = (props: Props) => {
 
   return (
     <div className={styles.snxStaked}>
+     
     <h3 className={styles.title}>SNX Staked</h3>
     <p className={styles.percentAPY}>{`${(stakeAmount / totalBal).toFixed(2).substring(2)}%`}</p>
     <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
@@ -94,7 +94,7 @@ const SnxStaked = (props: Props) => {
       }
     </p>
   
-
+   
 </div>
   )
 }

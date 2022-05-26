@@ -423,7 +423,7 @@ const useGetTVL = () => {
     // 25 day
 
     const twentyFiveDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[0]}},
+      {first:3, block:{number:monthBlockNum[3]}},
       {amountInUSD:true}
     )
     const twentyFiveDayWrapperArr:number[]=[]
@@ -438,7 +438,7 @@ const useGetTVL = () => {
     // 30 day
 
     const thirtyDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[0]}},
+      {first:3, block:{number:monthBlockNum[4]}},
       {amountInUSD:true}
     )
     const thirtyDayWrapperArr:number[]=[]
@@ -455,9 +455,6 @@ const useGetTVL = () => {
 
     const totalBal = tvlBal.reduce((sum:number, current:number) => sum + current, 0)
     const totalWrapperBal = wrapperBal.reduce((sum:number, current:number) => sum + current, 0)
-
-    console.log(JSON.stringify(dayWrappers))
-
 
     const formatMoney = Intl.NumberFormat("en-US", {
       style: "currency",

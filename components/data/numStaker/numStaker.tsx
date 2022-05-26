@@ -25,7 +25,6 @@ const NumStaker = (props: Props) => {
   const {weekBlockNum} = useGetBlock()
   const {monthBlockNum} = useGetBlock()
 
-  console.log(weekBlockNum)
 
   const currentStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[0]}},
@@ -348,8 +347,7 @@ const NumStaker = (props: Props) => {
       },
     ];
 
-  console.log(dayStakeArr)
-  console.log(weekStakeArr)
+ 
 
 
   return (
