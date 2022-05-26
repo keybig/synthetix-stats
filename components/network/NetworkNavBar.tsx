@@ -15,7 +15,7 @@ type Props = {
 const NetworkNavBar = (props:Props) => {
 
   const buttonMap = [
-    { id: 100, netId: 10, title: "All Networks" },
+   // { id: 100, netId: 10, title: "All Networks" },
     { id: 1, netId: 1, title: "Mainnet" },
     { id: 10, netId: 10, title: "Optimism" }
   ];
@@ -39,6 +39,7 @@ const NetworkNavBar = (props:Props) => {
       
       })
 
+    const grafana = 'https://grafana.synthetix.io/d/pjPJZ6x7z/synthetix-system-stats?orgId=1&kiosk=full'
       
 
   return (
@@ -67,7 +68,11 @@ value={test}
 
         <div className={styles.navMoreStats}>
 
-            <button className={styles.navAdvancedStats}>Advanced Stats</button>
+            <button className={styles.navAdvancedStats}>
+              <a href={grafana}>
+              Advanced Stats
+              </a>
+              </button>
             
         </div>
         </div>

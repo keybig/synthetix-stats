@@ -4,6 +4,7 @@ import Img from './Group.png'
 type Props = {}
 
 const MoreStats = (props: Props) => {
+  const stakingUrl = 'https://staking.synthetix.io/'
   return (
     <Wrapper>
       <Info>
@@ -11,7 +12,11 @@ const MoreStats = (props: Props) => {
       <StyledP> Stack that Synthetix </StyledP>
       </Info>
       <div>
-        <AdvancedStatsButton>Staking App</AdvancedStatsButton>
+        <AdvancedStatsButton>
+          <a href={stakingUrl}>
+          Staking App
+          </a>
+          </AdvancedStatsButton>
       </div>
     </Wrapper>
   )

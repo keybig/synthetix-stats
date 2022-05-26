@@ -5,6 +5,7 @@ type Props = {}
 
 
 const MoreStats = (props: Props) => {
+  const grafana = 'https://grafana.synthetix.io/d/pjPJZ6x7z/synthetix-system-stats?orgId=1&kiosk=full'
   return (
     <Wrapper>
       <Info>
@@ -12,7 +13,11 @@ const MoreStats = (props: Props) => {
       <StyledP> Get granular on Synthetix </StyledP>
       </Info>
       <div>
-        <AdvancedStatsButton>Visit Grafana</AdvancedStatsButton>
+        <AdvancedStatsButton>
+          <a href={grafana}>
+          Visit Grafana
+          </a>
+          </AdvancedStatsButton>
       </div>
     </Wrapper>
   )
