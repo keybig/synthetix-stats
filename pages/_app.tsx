@@ -13,7 +13,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   const queryClient = new QueryClient()
 
-  const [netId, setNetId] = useState<NetworkId>(1)
+  const [netId, setNetId] = useState<NetworkId>(10)
 
   
   return (

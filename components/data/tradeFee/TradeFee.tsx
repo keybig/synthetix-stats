@@ -14,6 +14,7 @@ const TradeFee = (props: Props) => {
 
   const { tradeFeeArr } = useGetTradeFee()
   const { currentFeeData } = useGetTradeFee()
+  const { totalIssuedSynth } = useGetTradeFee()
 
 
   console.log(tradeFeeArr)
@@ -126,7 +127,9 @@ const TradeFee = (props: Props) => {
     
       <div>
         <TotalSynthSupply>Total Synth Supply</TotalSynthSupply>
-        <TotalSupplyAmount>$23,077,796</TotalSupplyAmount>
+        <TotalSupplyAmount>
+          {`$${totalIssuedSynth}`}
+        </TotalSupplyAmount>
         </div>
 
     </Wrapper>

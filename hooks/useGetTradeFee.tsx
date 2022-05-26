@@ -18,6 +18,7 @@ const useGetTradeFee = () => {
 
 
 
+
     //@ts-ignore
     const currentEpochTime = startTime + 604800
 
@@ -92,6 +93,13 @@ const useGetTradeFee = () => {
     return acc;                                          
   } , []);
  
+  const totalIssuedSynthCall = subgraph.useGetDebtStates(
+    {first:1, orderBy:"timestamp", orderDirection:"desc"},
+    {totalIssuedSynths:true}
+  )
+
+  const totalIssuedSynth = totalIssuedSynthCall.isSuccess ? 
+        formatNumber.format(totalIssuedSynthCall.data[0].totalIssuedSynths.toNumber()) : null
 
   
 
@@ -100,7 +108,8 @@ const useGetTradeFee = () => {
 
   return {
       tradeFeeArr,
-      currentFeeData
+      currentFeeData,
+      totalIssuedSynth
   }
 }
 

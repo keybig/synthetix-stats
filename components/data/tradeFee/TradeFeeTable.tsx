@@ -16,6 +16,7 @@ const TradeFeeTable = (tableId: Props) => {
     const { currentFeeData } = useGetTradeFee()
 
 
+ 
     const tableData = tableId === 1 ? currentFeeData : tradeFeeArr
 
 
