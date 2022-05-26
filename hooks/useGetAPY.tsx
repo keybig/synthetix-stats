@@ -16,7 +16,7 @@ const useGetAPY = () => {
 const currentFeePeriods = subgraph.useGetFeePeriods(
   {orderBy:"startTime", orderDirection:"desc"},
   { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true},
-  { queryKey:"currentFeePeriods"}
+  { queryKey:"cfpapy"}
   )
 
     
@@ -34,7 +34,7 @@ const currentFeePeriods = subgraph.useGetFeePeriods(
           synth:"SNX",
         }},
         { timestamp:true, block:true, rate:true},
-        {queryKey:"currentRate"}
+        {queryKey:"crapy"}
       )
       
       const rewardsAmt:number[] = []

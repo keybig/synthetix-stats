@@ -30,29 +30,7 @@ const useGetTradeFee = () => {
 
     // all time trade info
 
-    /* wrappers
-
-    const allTimeWrapperCall = subgraph.useGetWrappers(
-      {first:3},
-      {amountInUSD:true}
-    )
-    const allTimeWrapperArr:number[]=[]
-
-    allTimeWrapperCall.data?.forEach(item =>{
-      allTimeWrapperArr.push(item.amountInUSD.toNumber())
-    })
-
-    const allTimeWrapperVal = allTimeWrapperArr.reduce((sum:number, current:number) => sum + current, 0)
-    const wrapper = {
-      name: "Wrappers",
-      value: allTimeWrapperVal
-    }
-
-    tradeFeeArr.push(wrapper)
-
-    //*/
-
-    // total wrapper object
+    
 
   
 
@@ -60,10 +38,13 @@ const useGetTradeFee = () => {
     const tradeFeeCall = subgraph.useGetExchangePartners(
         {orderBy:"usdVolume", orderDirection:"desc"},
         {id:true, usdFees:true},
-        {queryKey:"tradeFeeCall"}
+        {queryKey:"tfctf"}
     )
     
+    const tradeFeeVolArr:number[] = []
+
    tradeFeeCall.data?.forEach(item => {
+     tradeFeeVolArr.push(item.usdFees.toNumber())
       const id = item.id
       const fees = item.usdFees.toNumber()
       const obj = {
@@ -106,6 +87,7 @@ const useGetTradeFee = () => {
         formatNumber.format(totalIssuedSynthCall.data[0].totalIssuedSynths.toNumber()) : null
   
   const currentTotalFee = currentTotalFeeArr.reduce((sum:number, current:number)=> sum + current, 0)
+  const totalFee = totalTradeFeeArr.reduce((sum:number, current:number)=> sum + current,0)
 
   
 
@@ -116,7 +98,9 @@ const useGetTradeFee = () => {
       tradeFeeArr,
       currentFeeData,
       totalIssuedSynth,
-      currentTotalFee
+      currentTotalFee,
+      totalFee
+
   }
 }
 

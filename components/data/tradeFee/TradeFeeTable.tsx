@@ -11,23 +11,26 @@ type Props = {
 }
 
 
-const TradeFeeTable = (tableId: Props) => {
+const TradeFeeTable = (props: Props) => {
 
     const { tradeFeeArr } = useGetTradeFee()
     const { currentFeeData } = useGetTradeFee()
     const { currentTotalFee } = useGetTradeFee()
+    const { totalFee } = useGetTradeFee()
+   
 
 
- 
-    const tableData = tableId === 1 ? currentFeeData : tradeFeeArr
+
+    const tableData = props.tableId === 1 ? currentFeeData : tradeFeeArr
+    const feeDep = props.tableId === 1 ? currentTotalFee : totalFee
+
 
 
     const data = useMemo(
         () => tableData,
-        [currentTotalFee]
+        [feeDep]
       )
 
-      console.log(`data ${typeof tableData.length}`)
       
     
       const columns = useMemo(

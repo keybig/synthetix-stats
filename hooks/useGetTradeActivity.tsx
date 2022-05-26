@@ -28,6 +28,7 @@ const useGetTradeActivity = () => {
     const tradeDataCall = subgraph.useGetExchangePartners(
         {orderBy:"usdVolume", orderDirection:"desc"},
         {id:true, usdVolume:true, usdFees:true, trades:true},
+        {queryKey:"tdcta"}
     )
 
     const tradeDataArr:any[] = []
@@ -62,6 +63,7 @@ const useGetTradeActivity = () => {
     const currentEpochTradeData = subgraph.useGetDailyExchangePartners(
       { where:{timestamp_gt:startTime}, orderBy:"timestamp", orderDirection:"desc"},
       { timestamp:true, trades:true, usdFees:true, usdVolume:true, partner:true },
+      { queryKey:"cetata"}
     )
 
     const currentTradeDataArr:any[] = []

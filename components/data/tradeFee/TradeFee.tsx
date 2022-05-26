@@ -76,47 +76,28 @@ const TradeFee = (props: Props) => {
         
      
       <Chart>
-        {click === 2 ? (
           <PieWrap>
-      <ResponsiveContainer height={500}>
-        <PieChart>
-          <Pie
-            dataKey="value"
-            nameKey="name"
-            isAnimationActive={false}
-            data={tradeFeeArr}
-            outerRadius={'80%'}
-          >
-            {total.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-            
-          </Pie>
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
-      </PieWrap>
-      )
-      : 
-      (
-        <PieWrap>
-      <ResponsiveContainer height={300}>
-        <PieChart>
-          <Pie
-            dataKey="value"
-            isAnimationActive={false}
-            data={currentFeeData}
-            outerRadius={'80%'}
-          >
+          <ResponsiveContainer height={300}>
+            <PieChart>
+              <Pie
+                dataKey="value"
+                nameKey="name"
+                isAnimationActive={false}
+                data={click === 1 ? currentFeeData : tradeFeeArr}
+                outerRadius={'80%'}
+              >
+                {total.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                ))}
 
-              {total.map((entry, index) => (
-              <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-            ))}
-          </Pie>
-          <Tooltip />
-        </PieChart>
-      </ResponsiveContainer>
-      </PieWrap>)}
+              </Pie>
+              <Tooltip />
+          </PieChart>
+        </ResponsiveContainer>
+      </PieWrap>
+      
+      
+      
      
 
       <ChartKey>
