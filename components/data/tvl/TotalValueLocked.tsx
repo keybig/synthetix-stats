@@ -39,6 +39,9 @@ const TotalValueLocked = (props: Props) => {
     const {dayWrappers} = useGetTVL()
     const {weekWrappers} = useGetTVL()
     const {monthWrappers} = useGetTVL()
+    const {totalBal} = useGetTVL()
+    const {wrapperTotalVal} = useGetTVL()
+    const {totalIssuedSynth} = useGetTVL()
     const {timeStamp} = useGetTime()
 
    
@@ -48,39 +51,7 @@ const TotalValueLocked = (props: Props) => {
       setClick(buttons.id);
     };
 
-    const { subgraph } = useSynthetixQueries()
-    const {blockNum} = useGetBlock()
-
-    const tvlBal:number[] = []
-    const wrapperBal:number[] = []
-
-
-    const debtCall = subgraph.useGetDebtStates(
-      {orderBy:"timestamp", orderDirection:"desc", first:1},
-      {totalIssuedSynths:true}
-    )
-
-    debtCall.isSuccess ? tvlBal.push(debtCall.data[0].totalIssuedSynths.toNumber()) : null
-
-
-    const wrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[0]}},
-      {amount:true, amountInUSD:true}
-    )
-
-
-    wrapperCall.data?.forEach(item =>{
-
-      tvlBal.push(item.amountInUSD.toNumber())
-      wrapperBal.push(item.amountInUSD.toNumber())
-
-    })
-
-
-    const totalBal = tvlBal.reduce((sum:number, current:number) => sum + current, 0)
-    const totalWrapperBal = wrapperBal.reduce((sum:number, current:number) => sum + current, 0)
-
-
+    
 
 
     const formatMoney = Intl.NumberFormat("en-US", {
@@ -217,7 +188,7 @@ const TotalValueLocked = (props: Props) => {
           <h3 className={styles.tvl}>Total Value Locked</h3>
           <p className={styles.values}>
             {
-               formatMoney.format(totalBal)
+               totalBal
             }
          
         
@@ -246,11 +217,10 @@ const TotalValueLocked = (props: Props) => {
 
       <div className={styles.responsive}>
 
-        {click === 1 ? 
-      (
+       
         <ResponsiveContainer>
         <AreaChart
-          data={day}
+          data={click === 1 ? day : click === 2 ? week : month}
         >
           <XAxis dataKey="date" interval={'preserveStartEnd'} fontSize={14} />
          
@@ -258,31 +228,8 @@ const TotalValueLocked = (props: Props) => {
           <Area type="monotone" dataKey="wrapper" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
           <Area type="monotone" dataKey="debt" stackId="1" stroke="#41C79D" fill="#41C79D" />
         </AreaChart>
-        </ResponsiveContainer>) : 
+        </ResponsiveContainer>
 
-        click === 2 ? (
-          <ResponsiveContainer>
-        <AreaChart
-          data={week}
-        >
-          <XAxis dataKey="date" interval={'preserveStartEnd'} fontSize={14} />
-          <Tooltip />
-          <Area type="monotone" dataKey="wrapper" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
-          <Area type="monotone" dataKey="debt" stackId="1" stroke="#41C79D" fill="#41C79D" />
-        </AreaChart>
-        </ResponsiveContainer>) 
-         : (
-          <ResponsiveContainer>
-        <AreaChart
-          data={month}
-        >
-          <XAxis dataKey="date" interval={'preserveStartEnd'} fontSize={14}/>
-          <Tooltip />
-          <Area type="monotone" dataKey="wrapper" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
-          <Area type="monotone" dataKey="debt" stackId="1" stroke="#41C79D" fill="#41C79D" />
-        </AreaChart>
-        </ResponsiveContainer>) 
-        }
 
         </div>
         
@@ -292,7 +239,7 @@ const TotalValueLocked = (props: Props) => {
         <h5 className={styles.stakingColor}>Staking Debt Pool</h5>
         <p>
           {
-            formatMoney.format(debtCall.isSuccess ? debtCall.data[0].totalIssuedSynths.toNumber():0)
+            totalIssuedSynth
           }
         </p>
         </div>
@@ -302,7 +249,7 @@ const TotalValueLocked = (props: Props) => {
         <h5 className={styles.wrapperColor}>Wrappers</h5>
         <p>
           {
-            formatMoney.format(totalWrapperBal)
+            wrapperTotalVal
           }
         </p>
       </div>

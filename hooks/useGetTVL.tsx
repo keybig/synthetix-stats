@@ -6,6 +6,11 @@ type Props = {}
 
 const useGetTVL = () => {
 
+  const formatMoney = Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+});
+
     const { subgraph } = useSynthetixQueries()
     const { blockNum } = useGetBlock()
     const { weekBlockNum } = useGetBlock()
@@ -27,6 +32,8 @@ const useGetTVL = () => {
     debtCall.data?.forEach(item=>{
       tvlBal.push(item.totalIssuedSynths.toNumber())
     })
+
+    const totalIssuedSynth = formatMoney.format(tvlBal[0])
 
     //////////////////
 
@@ -196,7 +203,7 @@ const useGetTVL = () => {
     //current wrapper
 
     const currentWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[0]}},
+      {first:5, block:{number:blockNum[0]}},
       {amountInUSD:true}
     )
 
@@ -204,6 +211,7 @@ const useGetTVL = () => {
 
     currentWrapperCall.data?.forEach(item =>{
       currentWrapperArr.push(item.amountInUSD.toNumber())
+      tvlBal.push(item.amountInUSD.toNumber())
     })
 
     const currentWrapperVal = currentWrapperArr.reduce((sum:number, current:number) => sum + current, 0)
@@ -387,6 +395,7 @@ const useGetTVL = () => {
       tenDayWrapperArr.push(item.amountInUSD.toNumber())
     })
 
+
     const tenDayWrapperVal = tenDayWrapperArr.reduce((sum:number, current:number) => sum + current, 0)
     monthWrappers.push(tenDayWrapperVal)
 
@@ -452,21 +461,26 @@ const useGetTVL = () => {
 
 
 
+    const wrapperTotalVal = formatMoney.format(currentWrapperVal)
 
-    const totalBal = tvlBal.reduce((sum:number, current:number) => sum + current, 0)
+    //clean this file up
+
+    const totalBalAmt = tvlBal.reduce((sum:number, current:number) => sum + current, 0)
     const totalWrapperBal = wrapperBal.reduce((sum:number, current:number) => sum + current, 0)
 
-    const formatMoney = Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-  });
+    const totalBal = formatMoney.format(totalBalAmt)
+
+    
   return {
     dayTvlBal,
     weekTvlBal,
     monthTvlBal,
     dayWrappers,
     weekWrappers,
-    monthWrappers
+    monthWrappers,
+    totalBal,
+    wrapperTotalVal,
+    totalIssuedSynth
   }
 }
 

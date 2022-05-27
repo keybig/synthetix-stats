@@ -3,26 +3,28 @@ import { useMemo } from 'react'
 
 type Props = {}
 
+
 const useGetGlobalStake = () => {
 
     const { subgraph } = useSynthetixQueries()
 
-  const totalofSNX = subgraph.useGetSynthetixById(
-    {id: "1"},
-    {issuers:true, snxHolders:true},
-    
+    const totalofSNX = subgraph.useGetSynthetixById(
+      {id: "1"},
+     {issuers:true, snxHolders:true},
+     {queryKey:"tosnx"}
   )
 
   const snxRate = subgraph.useGetLatestRateById(
     {id: "SNX"},
-    {rate:true}
+    {rate:true},
+    {queryKey:"snxRate"}
   )
 
-  const snxPrice = snxRate?.data?.rate.toNumber()
+  const snxPrice = snxRate.isSuccess ? snxRate.data.rate.toNumber() : 0
   
-  const totalStaked = totalofSNX?.data?.issuers.toNumber()
+  const totalStaked = totalofSNX.isSuccess ? totalofSNX.data.issuers.toNumber() : 0
   
-  const totalHolder = totalofSNX?.data?.snxHolders.toNumber()
+  const totalHolder = totalofSNX.isSuccess ? totalofSNX.data.snxHolders.toNumber() : 0
   
   const formatValue = Intl.NumberFormat("en-US")
   const formatMoney = Intl.NumberFormat("en-US", {
@@ -36,6 +38,7 @@ const useGetGlobalStake = () => {
   const totalSnxHolders = subgraph.useGetSNXHolders(
     {orderBy:'balanceOf',orderDirection:"desc", first:totalHolder},
     { timestamp:true, balanceOf:true},
+    {queryKey:'tsnxh'}
   )
 
   totalSnxHolders.data?.forEach(item => {
@@ -76,14 +79,16 @@ const useGetGlobalStake = () => {
 
   const stakeAmount = formatValue.format(stakeCalcAmt)
   //@ts-ignore
-  const stakedVal = formatMoney.format(stakeAmount*snxPrice)
+  const stakedVal = formatMoney.format(stakeCalcAmt*snxPrice)
   const percentStaked = `${(stakeCalc / totalBal).toFixed(2).substring(2)}%`
 
   return {
       stakeAmount,
       stakedVal,
       percentStaked,
-      stakeCalc
+      stakeCalc,
+      totalHolder,
+      totalBal,
   }
 }
 

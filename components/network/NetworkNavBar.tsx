@@ -14,6 +14,8 @@ type Props = {
 
 const NetworkNavBar = (props:Props) => {
 
+  const queryClient = new QueryClient()
+
   const buttonMap = [
    // { id: 100, netId: 10, title: "All Networks" },
     { id: 1, netId: 1, title: "Mainnet" },
@@ -21,17 +23,18 @@ const NetworkNavBar = (props:Props) => {
   ];
 
 
-  const router = useRouter()
 
 
 
     const [network, setNetwork] = useState<NetworkId>(10);
   
-   
+   const updateNetwork = () => {
+     queryClient.refetchQueries('cfpapy')
+   }
 
     const handleActive = (buttons: any) => {
       setNetwork(buttons.id);
-      //router.reload()
+      updateNetwork()
     };
     
     const test = createQueryContext({
@@ -42,10 +45,11 @@ const NetworkNavBar = (props:Props) => {
     const grafana = 'https://grafana.synthetix.io/d/pjPJZ6x7z/synthetix-system-stats?orgId=1&kiosk=full'
       
 
+
   return (
     <div>
        
-
+       <QueryClientProvider client={queryClient}>
 <SynthetixQueryContextProvider
 value={test}
 >
@@ -77,10 +81,13 @@ value={test}
         </div>
         </div>
        
-
+     
       {props.children}
 
     </SynthetixQueryContextProvider>
+    <ReactQueryDevtools />
+
+    </QueryClientProvider>
   
 
 
