@@ -18,7 +18,6 @@ const TradeFee = (props: Props) => {
   const { totalIssuedSynth } = useGetTradeFee()
 
 
-  console.log(tradeFeeArr)
   const buttonMap = [
     { id: 1, title: "Current Epoch" },
     { id: 2, title: "Total To Date" }

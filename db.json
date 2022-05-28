@@ -1,0 +1,57 @@
+{
+    "optimism": [
+        {
+            "snx_staked": 73,
+            "total_snx_staked": 43500000,
+            "staked_value":108888888,
+            "total_value_locked":[
+                {
+                    "current":75000000,
+                    "4_hour_ago":74000000,
+                    "8_hour_ago":74000000,
+                    "12_hour_ago":74000000,
+                    "16_hour_ago":74000000,
+                    "20_hour_ago":74000000,
+                    "24_hour_ago":74000000,
+                    "2_day_ago":74000000,
+                    "3_day_ago":74000000,
+                    "4_day_ago":74000000,
+                    "5_day_ago":74000000,
+                    "6_day_ago":74000000,
+                    "7_day_ago":74000000,
+                    "10_day_ago":74000000,
+                    "15_day_ago":74000000,
+                    "20_day_ago":74000000,
+                    "25_day_ago":74000000,
+                    "30_day_ago":74000000
+                }
+            ],
+            "staking_debt_pool":273838383,
+            "wrappers":3383838383,
+            "num_stakers": [
+                {
+                    "current":75000000,
+                    "4_hour_ago":74000000,
+                    "8_hour_ago":74000000,
+                    "12_hour_ago":74000000,
+                    "16_hour_ago":74000000,
+                    "20_hour_ago":74000000,
+                    "24_hour_ago":74000000,
+                    "2_day_ago":74000000,
+                    "3_day_ago":74000000,
+                    "4_day_ago":74000000,
+                    "5_day_ago":74000000,
+                    "6_day_ago":74000000,
+                    "7_day_ago":74000000,
+                    "10_day_ago":74000000,
+                    "15_day_ago":74000000,
+                    "20_day_ago":74000000,
+                    "25_day_ago":74000000,
+                    "30_day_ago":74000000
+                }
+            ]
+
+
+        }
+    ]
+}

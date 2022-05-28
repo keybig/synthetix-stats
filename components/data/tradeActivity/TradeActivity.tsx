@@ -24,7 +24,7 @@ const TradeActivity = (props: Props) => {
   ];
 
 
-    const [click, setClick] = useState(2);
+    const [click, setClick] = useState(1);
 
 
     const handleActive = (buttons: any) => {

@@ -14,22 +14,22 @@ import useNetwork from '../hooks/useNetwork'
 import useGetTradeActivity from '../hooks/useGetTradeActivity'
 import MainData from '../components/mainData/MainData'
 import { useRouter } from 'next/router'
-import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
- import { createWebStoragePersistor } from 'react-query/createWebStoragePersistor-experimental'
 
+const queryClient = new QueryClient()
 
 const Home = (props:any) => {
-
-  const queryClient = new QueryClient()
 
 
   const router = useRouter()
 
-  const [netId, setNetId] = useState<NetworkId>(10)
+
+  const [netId, setNetId] = useState<NetworkId>(1)
+
 
   const handleNetwork = (buttons: any) => {
     setNetId(buttons.id);
-    router.push("/mainnet")
+    console.log(netId)
+    router.push("/")
  
   };
 
@@ -41,7 +41,7 @@ const Home = (props:any) => {
 
       <QueryClientProvider client={queryClient}>
       <SynthetixQueryContextProvider value={createQueryContext({
-    networkId: netId // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
+    networkId: 1 // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
        })}>
       
       <NetworkNavBar current={netId} handle={handleNetwork}/>

@@ -46,8 +46,8 @@ const useGetTradeActivity = () => {
       const volume = formatMoney.format(item.usdVolume.toNumber()).toString()
       const obj = {
             col1: item.id,
-            col2: JSON.stringify(item.trades.toNumber()),
-            col3: JSON.stringify(item.usdVolume.toNumber())
+            col2: trades,
+            col3: volume
         }
       tradeDataArr.push(obj)
     })
@@ -75,8 +75,8 @@ const useGetTradeActivity = () => {
         currentTotalTradeArr.push(item.trades.toNumber())
         currentTotalVolArr.push(item.usdVolume.toNumber())
         const id = item.partner.toString()
-        const trades = item.trades.toNumber()
-        const volume = item.usdVolume.toNumber()
+        const trades = formatNumber.format(item.trades.toNumber())
+        const volume = formatMoney.format(item.usdVolume.toNumber())
         const obj = {
           col1: id,
           col2: trades,
@@ -85,12 +85,25 @@ const useGetTradeActivity = () => {
         currentTradeDataArr.push(obj)
     })
 
+
+
+
+
     const currentEpochData = currentTradeDataArr.reduce((acc, cur) => {
-      const {col1, col2, col3} = cur;
-      const item = acc.find((it: { col1: string }) => it.col1 === col1);
-      item ? item.col2 += col2 : acc.push({col1, col2, col3});
+      if (acc[cur.col1]){
+        acc[cur.col1].col2 = acc[cur.col1].col2 + cur.col2
+        acc[cur.col1].col3 = acc[cur.col1].col3 + cur.col3
+      }
+      else {
+        acc[cur.col1] = cur
+      }
+
+      return cur
+
       return acc;
     } , []);
+
+  
 
     const currentTotalTradeSum = currentTotalTradeArr.reduce((sum,current)=> sum + current, 0)
     const currentTotalVolSum = currentTotalVolArr.reduce((sum,current)=> sum + current, 0)

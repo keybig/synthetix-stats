@@ -8,16 +8,29 @@ import Inflation from './inflation/Inflation'
 import TradeFee from './tradeFee/TradeFee'
 import MoreStats from './moreStats/MoreStats'
 import StartStaking from './startStaking/StartStaking'
-import { useContext } from 'react'
+import { useContext, useState } from 'react'
+import { QueryClient, QueryClientProvider } from 'react-query'
+import { createQueryContext, SynthetixQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries'
+import { ReactQueryDevtools } from 'react-query/devtools'
+import { NetworkId } from '@synthetixio/contracts-interface'
 
-type Props = {}
+
+type Props = {
+
+
+}
 
 const Datagrid = (props: Props) => {
 
 
+  
 
   return (
     <div className={styles.container}>
+
+      
+    
+
         <SnxStaked />
         <TotalValueLocked />
         <StakeAPY />
@@ -25,6 +38,9 @@ const Datagrid = (props: Props) => {
         <TradeActivity />
         <Inflation />
         <TradeFee />
+      
+        
+    
         <MoreStats />
         <StartStaking />
     </div>
