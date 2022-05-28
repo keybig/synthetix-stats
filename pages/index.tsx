@@ -34,10 +34,14 @@ const Home = (props:any) => {
   };
 
 
+
+
+
+
   return (
     <div>
       <Subheader/>
-      <h1>{props.id}</h1>
+      <h1>uhh</h1>
 
       <QueryClientProvider client={queryClient}>
       <SynthetixQueryContextProvider value={createQueryContext({
