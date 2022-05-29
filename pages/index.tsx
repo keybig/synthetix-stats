@@ -20,7 +20,13 @@ import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
 
 const Home = (props:any) => {
 
-  const queryClient = new QueryClient()
+  const queryClient = new QueryClient({
+    defaultOptions: {
+      queries: {
+        staleTime: 3600000
+      },
+    },
+  })
 
 
   const router = useRouter()
