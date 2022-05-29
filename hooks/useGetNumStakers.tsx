@@ -22,48 +22,41 @@ const useGetNumStakers = () => {
   const currentStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[0]}},
     { count:true},
-    { queryKey: "csns0"}
   )
 
   const fourHourStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[1]}},
     { count:true},
-    { queryKey: "fhs1"}
 
   )
 
   const eightHourStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[2]}},
     { count:true},
-    { queryKey: "ehs2"}
 
   )
 
   const twelveHourStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[3]}},
     { count:true},
-    { queryKey: "twhs3"}
 
   )
 
   const sixtenHourStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[4]}},
     { count:true},
-    { queryKey: "twhs3"}
 
   )
 
   const twentyHourAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[5]}},
     { count:true},
-    { queryKey: "twentys5"}
 
   )
 
   const twentyFourHourAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:blockNum[6]}},
     { count:true},
-    { queryKey: "tfhas6"}
 
   )
 
@@ -77,35 +70,30 @@ const useGetNumStakers = () => {
   const twoDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:weekBlockNum[0]}},
     { count:true},
-    { queryKey: "tdasw0"}
 
   )
 
   const threeDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:weekBlockNum[1]}},
     { count:true},
-    { queryKey: "tredasw1"}
 
   )
 
   const fourDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:weekBlockNum[2]}},
     { count:true},
-    { queryKey: "fdasw2"}
 
   )
 
   const fiveDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:weekBlockNum[3]}},
     { count:true},
-    { queryKey: "fvdasw3"}
 
   )
 
   const sixDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:weekBlockNum[4]}},
     { count:true},
-    { queryKey: "sxdasw4"}
 
   )
 
@@ -114,35 +102,30 @@ const useGetNumStakers = () => {
   const tenDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:monthBlockNum[0]}},
     { count:true },
-    { queryKey: "tndasm0"}
 
   )
 
   const fifteenDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:monthBlockNum[1]}},
     { count:true },
-    { queryKey: "ftdasm1"}
 
   )
 
   const twentyDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:monthBlockNum[2]}},
     { count:true },
-    { queryKey: "twdasm2"}
 
   )
 
   const twentyFiveDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:monthBlockNum[3]}},
     { count:true },
-    { queryKey: "tfdasm3"}
 
   )
 
   const thirtyDayAgoStaker = subgraph.useGetTotalActiveStakers(
     { first:1, block:{number:monthBlockNum[4]}},
     { count:true },
-    { queryKey: "thdasm4"}
 
   )
 

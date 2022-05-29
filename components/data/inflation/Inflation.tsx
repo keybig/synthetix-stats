@@ -13,6 +13,7 @@ const Inflation = (props: Props) => {
   const { inflationData } = useGetAPY()
 
 
+
   return (
     <Wrapper>
 

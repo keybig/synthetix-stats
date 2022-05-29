@@ -1,6 +1,8 @@
 import useSynthetixQueries from '@synthetixio/queries'
 import { useEffect } from 'react'
 import useGetGlobalStake from './useGetGlobalStake'
+import useGetSNXrate from './useGetSNXrate'
+import { formatNumber, formatPercent } from '../constants/format'
 
 type Props = {}
 
@@ -8,86 +10,52 @@ type Props = {}
 
 const useGetAPY = () => {
 
+  //stakecalc = collateral - transferable
+
   const { stakeCalc } = useGetGlobalStake()
   const { subgraph } = useSynthetixQueries()
+  const { snxRate } = useGetSNXrate()
 
 
 
-const currentFeePeriods = subgraph.useGetFeePeriods(
-  {orderBy:"startTime", orderDirection:"desc"},
-  { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true},
-  { queryKey:"cfpapy"}
-  )
+  const currentFeePeriods = subgraph.useGetFeePeriods(
+    {orderBy:"startTime", orderDirection:"desc"},
+    { feesClaimed:true, feesToDistribute:true, startTime:true, rewardsClaimed:true, rewardsToDistribute:true},
+    )
 
-    
-
-    const formatPercent = Intl.NumberFormat("en-US", {
-      style: "percent",
-  });
-
-    const formatNumber = Intl.NumberFormat("en-US")
     
     const startTime = currentFeePeriods.isSuccess ? currentFeePeriods.data[0].startTime.toNumber() : null
+    const reward = currentFeePeriods.isSuccess ? currentFeePeriods.data[0].rewardsToDistribute.toNumber() : 0
+    const fee = currentFeePeriods.isSuccess ? currentFeePeriods.data[0].feesToDistribute.toNumber() : 0
 
-    const currentRate = subgraph.useGetRateUpdates(
-        { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
-          synth:"SNX",
-        }},
-        { timestamp:true, block:true, rate:true},
-        {queryKey:"crapy"}
-      )
-      
-      const rewardsAmt:number[] = []
-      const feeAmt:number[] = []
-      const currentRateSNX:number[] = []
-      const inflationAmt:number[] = []
-      const inflationData:any[]=[]
-      
-      const getFeeData = currentFeePeriods.data?.forEach((item, i)=>{
-        rewardsAmt.push(item.rewardsToDistribute.toNumber())
-        feeAmt.push(item.feesToDistribute.toNumber())
-        const obj = {
-          timestamp: item.startTime.toString(),
-          snx_rewards: item.rewardsToDistribute.toNumber()
-        }
-        i < 7 ?
-        inflationData.unshift(obj)
-        : null
-      })
+     const rewardsAmount = currentFeePeriods.data?.reduce((sum:any, current:any)=>{
+       return sum + current.rewardsToDistribute.toNumber()
+     },0)
 
-    
+     const feesAmount = currentFeePeriods.data?.reduce((sum, current)=>{
+      return sum + current.feesToDistribute.toNumber()
+    },0)
 
 
-      const currentPriceSNX = currentRate.data?.forEach(item=>{
-          currentRateSNX.push(item.rate.toNumber())
-      })
+      const stakeAPYAmt = ( (fee / (snxRate * stakeCalc) * 52) + ( (reward / stakeCalc) * 52))
 
-      const snxRate = currentRateSNX[0]
-
-      const valStake = snxRate * stakeCalc
-
-      const feeAPYAmt = (feeAmt[0] / valStake) * 52
-
-      const rewardsAPYAmt = (rewardsAmt[0] / stakeCalc) * 52
-
-      const stakeAPYAmt = feeAPYAmt + rewardsAPYAmt
-
-      const allTimeRewards = rewardsAmt.reduce((sum:number,current:number) => sum + current, 0)
        
-      const allTimeInflation = formatNumber.format(allTimeRewards)
+      const allTimeInflation = formatNumber.format(rewardsAmount)
 
-      const currentReward = formatNumber.format(rewardsAmt[0])
+      const currentReward = formatNumber.format(reward)
       
       const APY = formatPercent.format(stakeAPYAmt)
 
+      const inflationData = currentFeePeriods.data?.slice(0,6).map(item=>{
+        return { snx_rewards: item.rewardsToDistribute.toNumber()}
+      }).reverse()
 
   return {
       APY,
       currentReward,
       allTimeInflation,
-      rewardsAmt,
       startTime,
-      inflationData
+      inflationData,
   }
 }
 

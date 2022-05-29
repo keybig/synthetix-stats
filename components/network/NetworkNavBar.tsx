@@ -6,6 +6,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import styles from './NetworkNavBar.module.css'
 import { useRouter } from 'next/router'
 import Datagrid from '../data/Datagrid'
+import useGetSNXrate from '../../hooks/useGetSNXrate'
 
 
 type Props = {
@@ -36,6 +37,7 @@ const NetworkNavBar = (props:Props) => {
  
   };
   */
+
 
   const buttonMap:netButton[] = [
    // { id: 100, netId: 10, title: "All Networks" },

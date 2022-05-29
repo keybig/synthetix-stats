@@ -18,8 +18,8 @@ const useGetCurrentTrade = () => {
     const currentEpochTradeData = subgraph.useGetDailyExchangePartners(
         { where:{timestamp_gt:startTime}, orderBy:"timestamp", orderDirection:"desc"},
         { timestamp:true, trades:true, usdFees:true, usdVolume:true, partner:true },
-        { queryKey:"currentEpochTradeData"}
     )
+
 
     const currentTradeDataArr:any[] = []
 
@@ -46,6 +46,7 @@ const useGetCurrentTrade = () => {
     item ? item.col2 += col2 : acc.push({col1, col2, col3});
     return acc;
   } , []);
+
 
   const totalTradeSum = currentTotalTradeArr.reduce((sum,current)=> sum + current, 0)
   const totalVolSum = currentTotalVolArr.reduce((sum,current)=> sum + current, 0)

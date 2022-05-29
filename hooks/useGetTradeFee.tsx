@@ -38,7 +38,6 @@ const useGetTradeFee = () => {
     const tradeFeeCall = subgraph.useGetExchangePartners(
         {orderBy:"usdVolume", orderDirection:"desc"},
         {id:true, usdFees:true},
-        {queryKey:"tfctf"}
     )
     
     const tradeFeeVolArr:number[] = []

@@ -16,6 +16,7 @@ import MainData from '../components/mainData/MainData'
 import { useRouter } from 'next/router'
 import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
  import { createWebStoragePersistor } from 'react-query/createWebStoragePersistor-experimental'
+ import useGetSNXrate from '../hooks/useGetSNXrate'
 
 
 const Home = (props:any) => {
@@ -47,6 +48,7 @@ const Home = (props:any) => {
   return (
     <div>
       <Subheader/>
+   
 
       <QueryClientProvider client={queryClient}>
       <SynthetixQueryContextProvider value={createQueryContext({
@@ -54,7 +56,7 @@ const Home = (props:any) => {
        })}>
       
       <NetworkNavBar current={netId} handle={handleNetwork}/>
-
+    
       <Datagrid/>
 
       </SynthetixQueryContextProvider>

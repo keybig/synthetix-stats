@@ -1,26 +1,21 @@
 import useSynthetixQueries from '@synthetixio/queries'
 import { useMemo } from 'react'
+import useGetSNXrate from './useGetSNXrate'
 
 type Props = {}
+
 
 
 const useGetGlobalStake = () => {
 
     const { subgraph } = useSynthetixQueries()
+    const { snxRate } = useGetSNXrate()
 
     const totalofSNX = subgraph.useGetSynthetixById(
       {id: "1"},
      {issuers:true, snxHolders:true},
      {queryKey:"tosnx"}
   )
-
-  const snxRate = subgraph.useGetLatestRateById(
-    {id: "SNX"},
-    {rate:true},
-    {queryKey:"snxRate"}
-  )
-
-  const snxPrice = snxRate.isSuccess ? snxRate.data.rate.toNumber() : 0
   
   const totalStaked = totalofSNX.isSuccess ? totalofSNX.data.issuers.toNumber() : 0
   
@@ -79,7 +74,7 @@ const useGetGlobalStake = () => {
 
   const stakeAmount = formatValue.format(stakeCalcAmt)
   //@ts-ignore
-  const stakedVal = formatMoney.format(stakeCalcAmt*snxPrice)
+  const stakedVal = formatMoney.format(stakeCalcAmt*snxRate)
   const percentStaked = `${(stakeCalc / totalBal).toFixed(2).substring(2)}%`
 
   return {

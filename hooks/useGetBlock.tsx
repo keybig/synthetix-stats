@@ -24,10 +24,12 @@ interface Blocks  {
     twentyFourHourAgoBlock:number
 }
 
-const ts = Math.floor(Date.now() / 1e3);
 
 
 const useGetBlock = () => {
+
+  const ts = Math.floor(Date.now() / 1e3);
+
 
     const blockNum:number[] = []
     const weekBlockNum:number[] = []
@@ -45,6 +47,7 @@ const useGetBlock = () => {
     currentBlock.data?.forEach(item => {
         blockNum.push(item.block.toNumber())
     })
+
     
     const fourHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{

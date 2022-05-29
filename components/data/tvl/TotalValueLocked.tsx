@@ -6,15 +6,13 @@ import {times, TimeGoTest} from './times'
 import useGetTVL from '../../../hooks/useGetTVL'
 import useGetBlock from '../../../hooks/useGetBlock'
 import useGetTime from '../../../hooks/useGetTime'
+import {formatNumber, formatMoney } from '../../../constants/format'
 
 
 
 type Props = {}
 
-const formatMoney = Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
+
 
 //timing
 
