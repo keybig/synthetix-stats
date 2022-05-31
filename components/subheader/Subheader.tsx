@@ -1,8 +1,7 @@
 import styles from './Subheader.module.css'
 
-type Props = {}
 
-const Subheader = (props: Props) => {
+const Subheader = () => {
   return (
     <div className={styles.container}>
         <h1 className={styles.heading}>Synthetix Stats</h1>

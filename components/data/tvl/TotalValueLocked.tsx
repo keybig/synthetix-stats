@@ -1,26 +1,13 @@
 import styles from './TotalValueLocked.module.css'
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, AreaChart, Area } from 'recharts';
-import { useState } from 'react';
-import useSynthetixQueries from '@synthetixio/queries'
-import {times, TimeGoTest} from './times'
+import { useMemo, useState } from 'react';
 import useGetTVL from '../../../hooks/useGetTVL'
-import useGetBlock from '../../../hooks/useGetBlock'
 import useGetTime from '../../../hooks/useGetTime'
-import {formatNumber, formatMoney } from '../../../constants/format'
-
-
-
-type Props = {}
-
-
-
-//timing
 
 
 
 
-
-const TotalValueLocked = (props: Props) => {
+const TotalValueLocked = () => {
 
   const buttonMap = [
     { id: 1, title: "One Day" },
@@ -49,15 +36,8 @@ const TotalValueLocked = (props: Props) => {
       setClick(buttons.id);
     };
 
-    
 
-
-    const formatMoney = Intl.NumberFormat("en-US", {
-      style: "currency",
-      currency: "USD",
-  });
-
-  const week = [
+  const week = useMemo(() => [
     {
       date: timeStamp.sixDayAgo,
       debt: weekTvlBal[4],
@@ -93,7 +73,7 @@ const TotalValueLocked = (props: Props) => {
       debt: dayTvlBal[0],
       wrapper: dayWrappers[0],
     },
-  ]
+  ], [totalBal])
 
   const day = [
     {

@@ -1,90 +1,58 @@
-import useSynthetixQueries from '@synthetixio/queries'
-import { useMemo } from 'react'
-import useGetSNXrate from './useGetSNXrate'
-
-type Props = {}
-
-
+import useSynthetixQueries from "@synthetixio/queries";
+import useGetSNXrate from "./useGetSNXrate";
+import { formatNumber, formatMoney } from "../constants/format";
 
 const useGetGlobalStake = () => {
+  const { subgraph } = useSynthetixQueries();
+  const { snxRate } = useGetSNXrate();
 
-    const { subgraph } = useSynthetixQueries()
-    const { snxRate } = useGetSNXrate()
+  const totalofSNX = subgraph.useGetSynthetixById(
+    { id: "1" },
+    { issuers: true, snxHolders: true }
+  );
 
-    const totalofSNX = subgraph.useGetSynthetixById(
-      {id: "1"},
-     {issuers:true, snxHolders:true},
-     {queryKey:"tosnx"}
-  )
-  
-  const totalStaked = totalofSNX.isSuccess ? totalofSNX.data.issuers.toNumber() : 0
-  
-  const totalHolder = totalofSNX.isSuccess ? totalofSNX.data.snxHolders.toNumber() : 0
-  
-  const formatValue = Intl.NumberFormat("en-US")
-  const formatMoney = Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-});
+  const totalHolder = totalofSNX.isSuccess
+    ? totalofSNX.data.snxHolders.toNumber()
+    : 0;
 
-  const bal:any = []
- 
+  const totalSnxSupplyQuery = subgraph.useGetSynths(
+    { where: { symbol: "SNX" } },
+    { totalSupply: true }
+  );
+
+  const totalSnxSupply = totalSnxSupplyQuery.isSuccess
+    ? totalSnxSupplyQuery.data[0].totalSupply.toNumber()
+    : 0;
 
   const totalSnxHolders = subgraph.useGetSNXHolders(
-    {orderBy:'balanceOf',orderDirection:"desc", first:totalHolder},
-    { timestamp:true, balanceOf:true},
-    {queryKey:'tsnxh'}
-  )
+    {
+      orderBy: "collateral",
+      orderDirection: "desc",
+      where: { initialDebtOwnership_not: 0 },
+      first: totalHolder,
+    },
+    { collateral: true, transferable: true },
+    { enabled: Boolean(totalHolder) }
+  );
 
-  totalSnxHolders.data?.forEach(item => {
-    for (let key in item) {
-       key === "balanceOf" ? 
-        bal.push(item[key]?.toNumber()) : 
-        null
-    }
-  });
+  const totalCollateral = totalSnxHolders.isSuccess
+    ? totalSnxHolders.data?.reduce((sum: any, cur: any) => {
+        return sum + cur.collateral.toNumber();
+      }, 0)
+    : 0;
 
-  const totalBal = bal.reduce((sum:number, current:number) => sum + current, 0)
-
-
-  const allStaked = subgraph.useGetSNXHolders(
-    {where:{initialDebtOwnership_not:0},orderBy:'collateral',orderDirection:"desc",first:8000},
-    { collateral:true, transferable:true, balanceOf:true},
-  )
-
-  const collat:any = []
-  const transfer:any = []
-
-
-  allStaked.data?.forEach(item => {
-    for (let key in item) {
-       key === "collateral" ? 
-        collat.push(item[key]?.toNumber()) : 
-        key === "transferable" ? transfer.push(item[key]?.toNumber()) : 
-        null
-    }
-  });
-
-  const totalCollat = collat.reduce((sum:number,current:number) => sum + current, 0)
-
-  const stakeCalc = (collat.reduce((sum:number, current:number) => sum + current, 0))-(transfer.reduce((sum:number, current:number) => sum + current, 0))
-
-  const stakeCalcAmt = stakeCalc.toFixed(2)
-  //@ts-ignore
-
-  const stakeAmount = formatValue.format(stakeCalcAmt)
-  //@ts-ignore
-  const stakedVal = formatMoney.format(stakeCalcAmt*snxRate)
-  const percentStaked = `${(stakeCalc / totalBal).toFixed(2).substring(2)}%`
+  const stakeAmount = formatNumber.format(totalCollateral);
+  const stakedVal = formatMoney.format(totalCollateral * snxRate);
+  const percentStaked = `${(totalCollateral / totalSnxSupply)
+    .toFixed(2)
+    .substring(2)}%`;
 
   return {
-      stakeAmount,
-      stakedVal,
-      percentStaked,
-      stakeCalc,
-      totalHolder,
-      totalBal,
-  }
-}
+    stakeAmount,
+    stakedVal,
+    percentStaked,
+    totalCollateral
+  };
+};
 
-export default useGetGlobalStake
+export default useGetGlobalStake;

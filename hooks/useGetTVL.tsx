@@ -1,20 +1,17 @@
 import useGetBlock from "./useGetBlock";
 import useSynthetixQueries from "@synthetixio/queries";
+import {formatMoney} from '../constants/format'
+import useGetTime from './useGetTime'
 
 
-type Props = {}
 
 const useGetTVL = () => {
-
-  const formatMoney = Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-});
 
     const { subgraph } = useSynthetixQueries()
     const { blockNum } = useGetBlock()
     const { weekBlockNum } = useGetBlock()
     const { monthBlockNum } = useGetBlock()
+    const { times } = useGetTime()
 
     const tvlBal:number[] = []
     const wrapperBal:number[] = []
@@ -22,6 +19,8 @@ const useGetTVL = () => {
     const dayTvlBal:number[] = []
     const weekTvlBal:number[] = []
     const monthTvlBal:number[] = []
+
+   
 
 
     const debtCall = subgraph.useGetDebtStates(
@@ -39,91 +38,125 @@ const useGetTVL = () => {
 
     const currentDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[0]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[0])}
+
     )
   
     const fourHourAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[1]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[1])}
+
     )
   
     const eightHourAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[2]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[2])}
+
     )
   
     const twelveHourAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[3]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[3])}
+
     )
   
     const sixteenHourAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[4]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[4])}
+
     )
   
     const twentyHourAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[5]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[5])}
+
     )
   
     const twentyFourHourAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:blockNum[6]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(blockNum[6])}
+
     )
 
     //week, already have current and one day ago(24hourago), start at day 2
 
     const twoDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:weekBlockNum[0]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(weekBlockNum[0])}
+
     )
 
     const threeDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:weekBlockNum[1]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(weekBlockNum[1])}
+
     )
 
     const fourDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:weekBlockNum[2]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(weekBlockNum[2])}
+
     )
 
     const fiveDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:weekBlockNum[3]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(weekBlockNum[3])}
+
     )
 
     const sixDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:weekBlockNum[4]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(weekBlockNum[4])}
+
     )
 
     // month, start at day 10
 
     const tenDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:monthBlockNum[0]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(monthBlockNum[0])}
+
     )
 
     const fifteenDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:monthBlockNum[1]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(monthBlockNum[1])}
+
     )
 
     const twentyDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:monthBlockNum[2]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(monthBlockNum[2])}
+
     )
 
     const twentyFiveDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:monthBlockNum[3]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(monthBlockNum[3])}
+
     )
 
     const thirtyDayAgoDebtCall = subgraph.useGetDebtStates(
       { orderBy:"timestamp", orderDirection:"desc", first:1, block:{number:monthBlockNum[4]}},
-      { totalIssuedSynths:true}
+      { totalIssuedSynths:true},
+      {enabled: Boolean(monthBlockNum[4])}
+
     )
 
       currentDebtCall.data?.forEach(item=>{
@@ -203,8 +236,10 @@ const useGetTVL = () => {
     //current wrapper
 
     const currentWrapperCall = subgraph.useGetWrappers(
-      {first:5, block:{number:blockNum[0]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[0]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[0])}
+
     )
 
     const currentWrapperArr:number[]=[]
@@ -220,8 +255,10 @@ const useGetTVL = () => {
     //4 hour wrapper
 
     const fourHourWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[1]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[1]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[1])}
+
     )
     const fourHourWrapperArr:number[]=[]
 
@@ -235,8 +272,10 @@ const useGetTVL = () => {
     //8 hour wrapper
 
     const eightHourWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[2]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[2]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[2])}
+
     )
     const eightHourWrapperArr:number[]=[]
 
@@ -245,13 +284,15 @@ const useGetTVL = () => {
     })
 
     const eightHourWrapperVal = fourHourWrapperArr.reduce((sum:number, current:number) => sum + current, 0)
-    dayWrappers.push(fourHourWrapperVal)
+    dayWrappers.push(eightHourWrapperVal)
 
     //twelve hour
 
     const twelveHourWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[3]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[3]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[3])}
+
     )
     const twelveHourWrapperArr:number[]=[]
 
@@ -265,8 +306,10 @@ const useGetTVL = () => {
     //sixteen
 
     const sixteenHourWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[4]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[4]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[4])}
+
     )
     const sixteenHourWrapperArr:number[]=[]
 
@@ -280,8 +323,10 @@ const useGetTVL = () => {
     //twenty
 
     const twentyHourWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[5]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[5]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[5])}
+
     )
     const twentyHourWrapperArr:number[]=[]
 
@@ -295,8 +340,10 @@ const useGetTVL = () => {
     //24 hour
 
     const twentyFourHourWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:blockNum[6]}},
-      {amountInUSD:true}
+      {block:{number:blockNum[6]}},
+      {amountInUSD:true},
+      {enabled: Boolean(blockNum[6])}
+
     )
     const twentyFourHourWrapperArr:number[]=[]
 
@@ -311,8 +358,10 @@ const useGetTVL = () => {
 
 
     const twoDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:weekBlockNum[0]}},
-      {amountInUSD:true}
+      {block:{number:weekBlockNum[0]}},
+      {amountInUSD:true},
+      {enabled: Boolean(weekBlockNum[0])}
+
     )
     const twoDayWrapperArr:number[]=[]
 
@@ -326,8 +375,10 @@ const useGetTVL = () => {
     // 3 day
 
     const threeDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:weekBlockNum[1]}},
-      {amountInUSD:true}
+      {block:{number:weekBlockNum[1]}},
+      {amountInUSD:true},
+      {enabled: Boolean(weekBlockNum[1])}
+
     )
     const threeDayWrapperArr:number[]=[]
 
@@ -341,8 +392,10 @@ const useGetTVL = () => {
     // 4 day
 
     const fourDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:weekBlockNum[2]}},
-      {amountInUSD:true}
+      {block:{number:weekBlockNum[2]}},
+      {amountInUSD:true},
+      {enabled: Boolean(weekBlockNum[2])}
+
     )
     const fourDayWrapperArr:number[]=[]
 
@@ -356,8 +409,10 @@ const useGetTVL = () => {
     // 5 day
 
     const fiveDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:weekBlockNum[3]}},
-      {amountInUSD:true}
+      {block:{number:weekBlockNum[3]}},
+      {amountInUSD:true},
+      {enabled: Boolean(weekBlockNum[3])}
+
     )
     const fiveDayWrapperArr:number[]=[]
 
@@ -371,8 +426,10 @@ const useGetTVL = () => {
     // 6 day
 
     const sixDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:weekBlockNum[4]}},
-      {amountInUSD:true}
+      {block:{number:weekBlockNum[4]}},
+      {amountInUSD:true},
+      {enabled: Boolean(weekBlockNum[4])}
+
     )
     const sixDayWrapperArr:number[]=[]
 
@@ -386,8 +443,10 @@ const useGetTVL = () => {
     // 10 day
 
     const tenDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[0]}},
-      {amountInUSD:true}
+      {block:{number:monthBlockNum[0]}},
+      {amountInUSD:true},
+      {enabled: Boolean(monthBlockNum[0])}
+
     )
     const tenDayWrapperArr:number[]=[]
 
@@ -402,8 +461,10 @@ const useGetTVL = () => {
     // 15 day
 
     const fifteenDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[1]}},
-      {amountInUSD:true}
+      {block:{number:monthBlockNum[1]}},
+      {amountInUSD:true},
+      {enabled: Boolean(monthBlockNum[1])}
+
     )
     const fifteenDayWrapperArr:number[]=[]
 
@@ -417,13 +478,15 @@ const useGetTVL = () => {
     // 20 day
 
     const twentyDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[2]}},
-      {amountInUSD:true}
+      {block:{number:monthBlockNum[2]}},
+      {amountInUSD:true},
+      {enabled: Boolean(monthBlockNum[2])}
+
     )
     const twentyDayWrapperArr:number[]=[]
 
     twentyDayWrapperCall.data?.forEach(item =>{
-      tenDayWrapperArr.push(item.amountInUSD.toNumber())
+      twentyDayWrapperArr.push(item.amountInUSD.toNumber())
     })
 
     const twentyDayWrapperVal = tenDayWrapperArr.reduce((sum:number, current:number) => sum + current, 0)
@@ -432,8 +495,10 @@ const useGetTVL = () => {
     // 25 day
 
     const twentyFiveDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[3]}},
-      {amountInUSD:true}
+      {block:{number:monthBlockNum[3]}},
+      {amountInUSD:true},
+      {enabled: Boolean(monthBlockNum[3])}
+
     )
     const twentyFiveDayWrapperArr:number[]=[]
 
@@ -447,8 +512,10 @@ const useGetTVL = () => {
     // 30 day
 
     const thirtyDayWrapperCall = subgraph.useGetWrappers(
-      {first:3, block:{number:monthBlockNum[4]}},
-      {amountInUSD:true}
+      {block:{number:monthBlockNum[4]}},
+      {amountInUSD:true},
+      {enabled: Boolean(monthBlockNum[4])}
+
     )
     const thirtyDayWrapperArr:number[]=[]
 

@@ -1,109 +1,68 @@
-import useSynthetixQueries from '@synthetixio/queries'
-import useGetGlobalStake from './useGetGlobalStake'
-import useGetAPY from './useGetAPY'
-import { useMemo, useState } from 'react'
-import { arrayBuffer } from 'stream/consumers'
-import useGetTradeActivity from './useGetTradeActivity'
-
-type Props = {}
+import useSynthetixQueries from "@synthetixio/queries";
+import useGetAPY from "./useGetAPY";
+import useGetTradeActivity from "./useGetTradeActivity";
 
 const useGetTradeFee = () => {
+  const { subgraph } = useSynthetixQueries();
+  const { startTime } = useGetAPY();
+  const { currentEpochTradeData } = useGetTradeActivity();
+  const { tradeDataCall } = useGetTradeActivity();
 
-    const { subgraph } = useSynthetixQueries()
-    const { startTime } = useGetAPY()
-    const { currentEpochTradeData } = useGetTradeActivity()
+  const tradeFeeArr: any[] = [];
 
-    const tradeFeeArr:any[] = []
-    const totalTradeFeeArr:number[]=[]
+  //@ts-ignore
+  //const currentEpochTime = startTime + 604800;
 
+  // all time trade info
 
-
-
-    //@ts-ignore
-    const currentEpochTime = startTime + 604800
-
-    const formatNumber = Intl.NumberFormat("en-US")
-    const formatMoney = Intl.NumberFormat("en-US",{
-        style:"currency",
-        currency:"usd"
-    })
-
-    // all time trade info
-
-    
-
-  
-
-
-    const tradeFeeCall = subgraph.useGetExchangePartners(
-        {orderBy:"usdVolume", orderDirection:"desc"},
-        {id:true, usdFees:true},
-    )
-    
-    const tradeFeeVolArr:number[] = []
-
-   tradeFeeCall.data?.forEach(item => {
-     tradeFeeVolArr.push(item.usdFees.toNumber())
-      const id = item.id
-      const fees = item.usdFees.toNumber()
-      const obj = {
-            name: id,
-            value: fees,
-        }
-      tradeFeeArr.push(obj)
-    })
+  tradeDataCall.data?.forEach((item) => {
+    const obj = {
+      name: item.id,
+      value: item.usdFees.toNumber(),
+    };
+    tradeFeeArr.push(obj);
+  });
 
   // current fee call
 
-  const currentFeeDataArr:any[] = []
-  const currentTotalFeeArr:number[] = []
+  const currentFeeDataArr: any[] = [];
 
-  const currentFeeCall = currentEpochTradeData.data?.forEach(item=>{
-    currentTotalFeeArr.push(item.usdFees.toNumber())
-    const id = item.partner
-    const fees = item.usdFees.toNumber()
+  currentEpochTradeData?.data?.forEach((item) => {
     const obj = {
-      name: id,
-      value: fees
-    }
-    currentFeeDataArr.push(obj)
-  })
+      name: item.partner,
+      value: item.usdFees.toNumber(),
+    };
+    currentFeeDataArr.push(obj);
+  });
 
+  const currentFeeData = currentFeeDataArr.reduce((sum, cur) => {
+    const { name, value } = cur;
+    const item = sum.find((it: { name: string }) => it.name === name);
+    item ? (item.value += value) : sum.push({ name, value });
+    return sum;
+  }, []);
 
-  const currentFeeData = currentFeeDataArr.reduce((acc, cur) => {
-    const {name, value} = cur;                            
-    const item = acc.find((it: { name: string }) => it.name === name);        
-    item ? item.value += value : acc.push({name, value}); 
-    return acc;                                          
-  } , []);
- 
-  const totalIssuedSynthCall = subgraph.useGetDebtStates(
-    {first:1, orderBy:"timestamp", orderDirection:"desc"},
-    {totalIssuedSynths:true}
-  )
+  const totalFeeSum = currentEpochTradeData.isSuccess
+    ? currentEpochTradeData.data?.reduce((sum, cur) => {
+        return sum + cur.usdFees.toNumber();
+      }, 0)
+    : 0;
 
-  const totalIssuedSynth = totalIssuedSynthCall.isSuccess ? 
-        formatNumber.format(totalIssuedSynthCall.data[0].totalIssuedSynths.toNumber()) : null
-  
-  const currentTotalFee = currentTotalFeeArr.reduce((sum:number, current:number)=> sum + current, 0)
-  const totalFee = totalTradeFeeArr.reduce((sum:number, current:number)=> sum + current,0)
-
-  
-
-    
-
+  const currentFeeSum = currentEpochTradeData.isSuccess
+    ? currentEpochTradeData.data?.reduce((sum, cur) => {
+        return sum + cur.usdFees.toNumber();
+      }, 0)
+    : 0;
 
   return {
-      tradeFeeArr,
-      currentFeeData,
-      totalIssuedSynth,
-      currentTotalFee,
-      totalFee
+    tradeFeeArr,
+    currentFeeData,
+    totalFeeSum,
+    currentFeeSum,
+  };
+};
 
-  }
-}
-
-export default useGetTradeFee
+export default useGetTradeFee;
 
 /*
 {

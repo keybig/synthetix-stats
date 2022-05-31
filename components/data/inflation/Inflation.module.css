@@ -1,17 +1,51 @@
-.container {
-    grid-area: inflation;
-    background: #097fba;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-    border-radius: 10px;
-    padding: 30px 50px 30px 30px;
-    border: 2px solid #13f2f2;
-    font-family: Inter;
-    font-size: 18px;
-    line-height:normal;
-    font-weight: 700;
-    letter-spacing: 0px;
-    text-align: left;
+.wrapper {
+  grid-area: inflation;
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    linear-gradient(73.6deg, #8e2de2 2.11%, #ed1eff 90.45%);
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  padding: 30px 50px 30px 30px;
+  border: 2px solid #ed1eff;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+  line-height: normal;
+  font-weight: 700;
+  letter-spacing: 0px;
+  text-align: left;
+  flex-wrap: wrap;
+}
+
+.subtitle {
+  color: #828295;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.currentEpoch {
+  color: #ed1eff;
+  font-size: 2rem;
+}
+
+.toDate {
+  color: #ffffff;
+  font-size: 2rem;
+}
+
+.chartWrapper {
+  width: 50%;
+  flex-grow: 2;
+}
+
+@media (max-width: 960px) {
+  .subtitle {
+    padding: 1rem 0;
+  }
+
+  .padding {
+    padding: 2rem 1rem;
+  }
+
+  .inactive {
+    padding: 0.5rem;
+  }
 }

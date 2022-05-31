@@ -1,10 +1,9 @@
 import styles from './Footer.module.css'
 import Image from 'next/image'
 
-type Props = {}
 
 
-const Footer = (props: Props) => {
+const Footer = () => {
   return (
     <div className={styles.footer}>
 

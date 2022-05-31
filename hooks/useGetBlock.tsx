@@ -1,6 +1,5 @@
 import useSynthetixQueries from "@synthetixio/queries";
-import { useEffect, useState } from "react";
-import { times } from "../components/data/tvl/times";
+import useGetTime from "./useGetTime";
 
 interface Blocks  {
     currentBlock: number
@@ -27,6 +26,8 @@ interface Blocks  {
 
 
 const useGetBlock = () => {
+
+  const { times } = useGetTime()
 
   const ts = Math.floor(Date.now() / 1e3);
 

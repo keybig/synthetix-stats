@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Datagrid from '../components/data/Datagrid'
 import NetworkNavBar from '../components/network/NetworkNavBar'
 import Subheader from '../components/subheader/Subheader'
@@ -8,23 +7,18 @@ import {
 } from '@synthetixio/queries'
 import { QueryClient, QueryClientProvider } from 'react-query'
 import { ReactQueryDevtools } from 'react-query/devtools'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import { NetworkId } from '@synthetixio/contracts-interface'
-import useNetwork from '../hooks/useNetwork'
-import useGetTradeActivity from '../hooks/useGetTradeActivity'
-import MainData from '../components/mainData/MainData'
 import { useRouter } from 'next/router'
-import { persistQueryClient } from 'react-query/persistQueryClient-experimental'
- import { createWebStoragePersistor } from 'react-query/createWebStoragePersistor-experimental'
- import useGetSNXrate from '../hooks/useGetSNXrate'
 
 
-const Home = (props:any) => {
+
+const Home = () => {
 
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        staleTime: 3600000
+        notifyOnChangeProps: "tracked"
       },
     },
   })

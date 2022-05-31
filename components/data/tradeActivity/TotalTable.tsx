@@ -6,7 +6,7 @@ import { keyframes } from 'styled-components'
 import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 
 type Props = {
-  tableId?:Number
+  tableId?:number
 }
 
 const TotalTable = (props: Props) => {

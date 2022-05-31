@@ -1,12 +1,8 @@
 import { NetworkId } from '@synthetixio/contracts-interface';
-import { createQueryContext, SynthetixQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries';
-import { ReactNode, useContext, useState } from 'react'
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
+import { ReactNode } from 'react'
+
 import styles from './NetworkNavBar.module.css'
-import { useRouter } from 'next/router'
-import Datagrid from '../data/Datagrid'
-import useGetSNXrate from '../../hooks/useGetSNXrate'
+
 
 
 type Props = {

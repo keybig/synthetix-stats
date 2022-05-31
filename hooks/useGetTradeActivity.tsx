@@ -1,130 +1,122 @@
-import useSynthetixQueries from '@synthetixio/queries'
-import useGetGlobalStake from './useGetGlobalStake'
-import useGetAPY from './useGetAPY'
-import { useMemo, useState } from 'react'
-import { arrayBuffer } from 'stream/consumers'
-
-type Props = {}
+import useSynthetixQueries from "@synthetixio/queries";
+import useGetAPY from "./useGetAPY";
+import { formatNumber, formatMoney } from "../constants/format";
 
 const useGetTradeActivity = () => {
+  const { subgraph } = useSynthetixQueries();
+  const { startTime } = useGetAPY();
 
-    const { subgraph } = useSynthetixQueries()
-    const { startTime } = useGetAPY()
+  // const [currentTable, setCurrentTable] = useState<any[]>([])
 
-   // const [currentTable, setCurrentTable] = useState<any[]>([])
+  //const currentEpochTime = startTime + 604800
 
-    //@ts-ignore
-    const currentEpochTime = startTime + 604800
+  // all time trade info
 
-    console.log(startTime)
+  const tradeDataCall = subgraph.useGetExchangePartners(
+    { orderBy: "usdVolume", orderDirection: "desc" },
+    { id: true, usdVolume: true, usdFees: true, trades: true }
+  );
 
-    const formatNumber = Intl.NumberFormat("en-US")
-    const formatMoney = Intl.NumberFormat("en-US",{
-        style:"currency",
-        currency:"usd"
-    })
+  const tradeDataArr: any[] = [];
 
-    // all time trade info
+  tradeDataCall.data?.forEach((item) => {
+    const obj = {
+      col1: item.id,
+      col2: formatNumber.format(item.trades.toNumber()),
+      col3: formatMoney.format(item.usdVolume.toNumber()),
+    };
+    tradeDataArr.push(obj);
+  });
 
+  const totalTradesSum = tradeDataCall.isSuccess
+    ? tradeDataCall.data?.reduce((sum, cur) => {
+        return sum + cur.trades.toNumber();
+      }, 0)
+    : 0;
 
-    const tradeDataCall = subgraph.useGetExchangePartners(
-        {orderBy:"usdVolume", orderDirection:"desc"},
-        {id:true, usdVolume:true, usdFees:true, trades:true},
-    )
+  const totalVolSum = tradeDataCall.isSuccess
+    ? tradeDataCall.data?.reduce((sum, cur) => {
+        return sum + cur.usdVolume.toNumber();
+      }, 0)
+    : 0;
 
-    const tradeDataArr:any[] = []
+  const totalTrades = formatNumber.format(totalTradesSum);
+  const totalVol = formatMoney.format(totalVolSum);
 
-    const totalTradesArr:number[]=[]
-    const totalVolArr:number[]=[]
+  //current epoch
 
-    
-   tradeDataCall.data?.forEach(item => {
-      totalTradesArr.push(item.trades.toNumber())
-      totalVolArr.push(item.usdVolume.toNumber())
-      
-      const id = item.id
-      const trades = formatNumber.format(item.trades.toNumber()).toString()
-      const volume = formatMoney.format(item.usdVolume.toNumber()).toString()
-      const obj = {
-            col1: item.id,
-            col2: trades,
-            col3: volume
-        }
-      tradeDataArr.push(obj)
-    })
+  const currentEpochTradeData = subgraph.useGetDailyExchangePartners(
+    {
+      where: { timestamp_gt: startTime },
+      orderBy: "timestamp",
+      orderDirection: "desc",
+    },
+    {
+      timestamp: true,
+      trades: true,
+      usdFees: true,
+      usdVolume: true,
+      partner: true,
+    }
+  );
 
-    const totalTradesSum = totalTradesArr.reduce((sum,current)=> sum + current, 0)
-    const totalVolSum = totalVolArr.reduce((sum,current)=>sum+current,0)
+  const currentTradeDataArr: any[] = [];
 
-    const totalTrades = formatNumber.format(totalTradesSum)
-    const totalVol = formatMoney.format(totalVolSum)
+  const currentTotalTradeArr: number[] = [];
+  const currentTotalVolArr: number[] = [];
 
-    //current epoch
+  const currentFilter = currentEpochTradeData.data?.forEach((item) => {
+    currentTotalTradeArr.push(item.trades.toNumber());
+    currentTotalVolArr.push(item.usdVolume.toNumber());
+    const id = item.partner.toString();
+    const trades = formatNumber.format(item.trades.toNumber());
+    const volume = formatMoney.format(item.usdVolume.toNumber());
+    const obj = {
+      col1: id,
+      col2: trades,
+      col3: volume,
+    };
+    currentTradeDataArr.push(obj);
+  });
 
-    const currentEpochTradeData = subgraph.useGetDailyExchangePartners(
-      { where:{timestamp_gt:startTime}, orderBy:"timestamp", orderDirection:"desc"},
-      { timestamp:true, trades:true, usdFees:true, usdVolume:true, partner:true },
-    )
+  const currentEpochData = currentTradeDataArr.reduce((acc, cur) => {
+    if (acc[cur.col1]) {
+      acc[cur.col1].col2 = acc[cur.col1].col2 + cur.col2;
+      acc[cur.col1].col3 = acc[cur.col1].col3 + cur.col3;
+    } else {
+      acc[cur.col1] = cur;
+    }
 
-    const currentTradeDataArr:any[] = []
+    return cur;
 
-    const currentTotalTradeArr:number[] = []
-    const currentTotalVolArr:number[] = []
+    return acc;
+  }, []);
 
-    const currentFilter = currentEpochTradeData.data?.forEach(item=>{
-        currentTotalTradeArr.push(item.trades.toNumber())
-        currentTotalVolArr.push(item.usdVolume.toNumber())
-        const id = item.partner.toString()
-        const trades = formatNumber.format(item.trades.toNumber())
-        const volume = formatMoney.format(item.usdVolume.toNumber())
-        const obj = {
-          col1: id,
-          col2: trades,
-          col3: volume,
-        }
-        currentTradeDataArr.push(obj)
-    })
+  const currentTotalTradeSum = currentTotalTradeArr.reduce(
+    (sum, current) => sum + current,
+    0
+  );
+  const currentTotalVolSum = currentTotalVolArr.reduce(
+    (sum, current) => sum + current,
+    0
+  );
 
-
-
-
-
-    const currentEpochData = currentTradeDataArr.reduce((acc, cur) => {
-      if (acc[cur.col1]){
-        acc[cur.col1].col2 = acc[cur.col1].col2 + cur.col2
-        acc[cur.col1].col3 = acc[cur.col1].col3 + cur.col3
-      }
-      else {
-        acc[cur.col1] = cur
-      }
-
-      return cur
-
-      return acc;
-    } , []);
-
-
-  
-
-    const currentTotalTradeSum = currentTotalTradeArr.reduce((sum,current)=> sum + current, 0)
-    const currentTotalVolSum = currentTotalVolArr.reduce((sum,current)=> sum + current, 0)
-
-    const currentTotalTrades = formatNumber.format(currentTotalTradeSum)
-    const currentTotalVol = formatMoney.format(currentTotalVolSum)
-
+  const currentTotalTrades = formatNumber.format(currentTotalTradeSum);
+  const currentTotalVol = formatMoney.format(currentTotalVolSum);
 
   return {
-      tradeDataArr,
-      currentEpochData,
-      totalTrades,
-      totalVol,
-      currentTotalTrades,
-      currentTotalVol,
-      currentEpochTradeData
-  }
-}
+    tradeDataArr,
+    currentEpochData,
+    totalTrades,
+    totalVol,
+    currentTotalTrades,
+    currentTotalVol,
+    currentEpochTradeData,
+    tradeDataCall,
+  };
+};
 
-export default useGetTradeActivity
+export default useGetTradeActivity;
 
 /*
 {

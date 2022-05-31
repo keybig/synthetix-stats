@@ -1,76 +1,63 @@
-import styles from './TradeActivity.module.css'
-import { useState, useMemo } from 'react'
-import TradeTable from './TradeTable'
-import TotalTable from './TotalTable'
-import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
-import useGetCurrentTrade from '../../../hooks/useCurrentTrade'
+import styles from "./TradeActivity.module.css";
+import { useState, useMemo } from "react";
+import TradeTable from "./TradeTable";
+import useGetTradeActivity from "../../../hooks/useGetTradeActivity";
+import useGetCurrentTrade from "../../../hooks/useGetCurrentTrade";
 
-type Props = {}
+const TradeActivity = () => {
+  const { totalTrades } = useGetTradeActivity();
+  const { totalVol } = useGetTradeActivity();
 
-
-
-const TradeActivity = (props: Props) => {
-
-  const  {totalTrades}  = useGetTradeActivity()
-  const  {totalVol}  = useGetTradeActivity()
-  const {currentTotalTrades} = useGetTradeActivity()
-  const {currentTotalVol} = useGetTradeActivity()
-
-  
+  const { currentTotalTrades } = useGetCurrentTrade();
+  const { currentTotalVol } = useGetCurrentTrade();
 
   const buttonMap = [
     { id: 1, title: "Current Epoch" },
-    { id: 2, title: "Total To Date" }
+    { id: 2, title: "Total To Date" },
   ];
 
+  const [click, setClick] = useState(1);
 
-    const [click, setClick] = useState(1);
-
-
-    const handleActive = (buttons: any) => {
-      setClick(buttons.id);
-    };
-
-    
-
+  const handleActive = (buttons: any) => {
+    setClick(buttons.id);
+  };
 
   return (
     <div className={styles.container}>
-
       <h3 className={styles.title}> Trading Activity</h3>
 
       <div className={styles.buttonRow}>
-        
-      {buttonMap.map((buttonMap) => (
-        <button
-          key={buttonMap.id}
-          onClick={() => handleActive(buttonMap)}
-          className={ buttonMap.id === click ? styles.current : styles.inactive}
-        >
-          {buttonMap.title}
-        </button>
-      ))}
-
+        {buttonMap.map((buttonMap) => (
+          <button
+            key={buttonMap.id}
+            onClick={() => handleActive(buttonMap)}
+            className={
+              buttonMap.id === click ? styles.current : styles.inactive
+            }
+          >
+            {buttonMap.title}
+          </button>
+        ))}
       </div>
       <div className={styles.table}>
-        <TradeTable tableId={click}/>
+        <TradeTable tableId={click} />
       </div>
 
-    <div className={styles.bottom}>
-      <h5 className={styles.bottomTitle}>Total N of Trades</h5>
-    
-      <p className={styles.totalTrades}>{click === 1 ? currentTotalTrades : totalTrades}</p>
-   
+      <div className={styles.bottom}>
+        <h5 className={styles.bottomTitle}>Total N of Trades</h5>
 
-      <h5 className={styles.bottomTitle}>Total Volume</h5>
-    
-      <p className={styles.totalVolume}>{click === 1 ? currentTotalVol : totalVol}</p>
-      
+        <p className={styles.totalTrades}>
+          {click === 1 ? currentTotalTrades : totalTrades}
+        </p>
+
+        <h5 className={styles.bottomTitle}>Total Volume</h5>
+
+        <p className={styles.totalVolume}>
+          {click === 1 ? currentTotalVol : totalVol}
+        </p>
       </div>
-
-
     </div>
-  )
-}
+  );
+};
 
-export default TradeActivity
+export default TradeActivity;

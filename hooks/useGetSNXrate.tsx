@@ -1,8 +1,6 @@
 import useSynthetixQueries from '@synthetixio/queries'
-import { useEffect } from 'react'
-import useGetGlobalStake from './useGetGlobalStake'
 
-type Props = {}
+
 
 const useGetSNXrate = () => {
 

@@ -1,16 +1,97 @@
 .current {
-    background:#00D1FF;
-    border-radius: 100px;
-    padding: 8px 18px;
-    margin: 0px 2px;
-    border: none;
+  background: #00d1ff;
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin: 0px 2px;
+  border: none;
 }
 
 .inactive {
-    color: #00D1FF;
-    border-radius: 100px;
-    padding: 8px 18px;
-    margin: 0px 2px;
-    background: transparent;
-    border: none;
+  color: #00d1ff;
+  border-radius: 100px;
+  padding: 8px 18px;
+  margin: 0px 2px;
+  background: transparent;
+  border: none;
+}
+
+.wrapper {
+  grid-area: tradeFee;
+  background: rgba(11, 11, 34, 1);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 30px 50px 30px 30px;
+  border: 2px solid #ffd75c;
+  font-family: Arial, Helvetica, sans-serif;
+  text-align: left;
+  max-width: 100%;
+  @media (max-width: 960px) {
+    margin: 0;
+    padding: 2rem;
+  }
+}
+
+.chart {
+  margin: 0 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+}
+
+.piewrap {
+  width: 50%;
+}
+
+.chartkey {
+  display: flex;
+  flex-direction: column;
+}
+
+.totalsynthsupply {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 1.5rem;
+  text-align: right;
+  padding-top: 1rem;
+}
+
+.totalsupplyamount {
+  color: #ffd753;
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: right;
+  margin: 0px;
+}
+
+@media (max-width: 960px) {
+  .wrapper {
+    margin: 0;
+    padding: 2rem;
+  }
+
+  .content {
+    padding: 1rem 0;
+  }
+
+  .chart {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .piewrap {
+    width: 100%;
+  }
+
+  .chartkey {
+    width: 100%;
+  }
+
+  .totalsynthsupply {
+    padding: 1rem;
+  }
+
+  .totalsupplyamount {
+    padding: 1rem;
+  }
 }

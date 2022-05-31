@@ -1,10 +1,8 @@
-import React, { useMemo } from 'react'
+import { useMemo } from 'react'
 import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
 import styles from './TradeTable.module.css'
-import Image from 'next/image'
-import { keyframes } from 'styled-components'
 import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
-import useGetCurrentTrade from '../../../hooks/useCurrentTrade'
+import useGetCurrentTrade from '../../../hooks/useGetCurrentTrade'
 
 
 type Props = {
@@ -15,12 +13,12 @@ type Props = {
 const TradeTable = (props: Props) => {
 
   const { realResult } = useGetCurrentTrade()
-  const { totalVolSum } = useGetCurrentTrade()
+  const { currentTotalVol } = useGetCurrentTrade()
   const { tradeDataArr } = useGetTradeActivity()
   const  {totalVol}  = useGetTradeActivity()
 
   const tradeTable = props.tableId === 1 ? realResult : tradeDataArr
-  const tradeDep = props.tableId === 1 ? totalVolSum : totalVol
+  const tradeDep = props.tableId === 1 ? currentTotalVol : totalVol
 
     const data = useMemo(
       () => tradeTable,

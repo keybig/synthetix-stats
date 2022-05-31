@@ -7,7 +7,7 @@ import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 import useGetTradeFee from '../../../hooks/useGetTradeFee'
 
 type Props = {
-  tableId?:Number
+  tableId?:number
 }
 
 
@@ -15,14 +15,17 @@ const TradeFeeTable = (props: Props) => {
 
     const { tradeFeeArr } = useGetTradeFee()
     const { currentFeeData } = useGetTradeFee()
-    const { currentTotalFee } = useGetTradeFee()
-    const { totalFee } = useGetTradeFee()
+    const { currentFeeSum } = useGetTradeFee()
+    const { totalFeeSum } = useGetTradeFee()
+
+
    
 
 
 
     const tableData = props.tableId === 1 ? currentFeeData : tradeFeeArr
-    const feeDep = props.tableId === 1 ? currentTotalFee : totalFee
+    const feeDep = props.tableId === 1 ? currentFeeSum : totalFeeSum
+
 
 
 
