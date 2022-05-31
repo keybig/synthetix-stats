@@ -3,6 +3,7 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { useMemo, useState } from 'react';
 import useGetTVL from '../../../hooks/useGetTVL'
 import useGetTime from '../../../hooks/useGetTime'
+import useGetGlobalStake from '../../../hooks/useGetGlobalStake';
 
 
 
@@ -28,6 +29,7 @@ const TotalValueLocked = () => {
     const {wrapperTotalVal} = useGetTVL()
     const {totalIssuedSynth} = useGetTVL()
     const {timeStamp} = useGetTime()
+    const {stakedVal} = useGetGlobalStake()
 
    
     
@@ -37,7 +39,7 @@ const TotalValueLocked = () => {
     };
 
 
-  const week = useMemo(() => [
+  const week = [
     {
       date: timeStamp.sixDayAgo,
       debt: weekTvlBal[4],
@@ -73,7 +75,7 @@ const TotalValueLocked = () => {
       debt: dayTvlBal[0],
       wrapper: dayWrappers[0],
     },
-  ], [totalBal])
+  ]
 
   const day = [
     {
@@ -166,7 +168,7 @@ const TotalValueLocked = () => {
           <h3 className={styles.tvl}>Total Value Locked</h3>
           <p className={styles.values}>
             {
-               totalBal
+               stakedVal
             }
          
         
@@ -200,10 +202,9 @@ const TotalValueLocked = () => {
         <AreaChart
           data={click === 1 ? day : click === 2 ? week : month}
         >
-          <XAxis dataKey="date" interval={'preserveStartEnd'} fontSize={14} />
+          <XAxis dataKey="date" fontSize={14} />
          
           <Tooltip />
-          <Area type="monotone" dataKey="wrapper" stackId="1" stroke="#ED1EFF" fill="#ED1EFF" />
           <Area type="monotone" dataKey="debt" stackId="1" stroke="#41C79D" fill="#41C79D" />
         </AreaChart>
         </ResponsiveContainer>
