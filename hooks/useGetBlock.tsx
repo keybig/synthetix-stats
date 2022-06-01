@@ -29,8 +29,9 @@ const useGetBlock = () => {
 
   const { times } = useGetTime()
 
-  const ts = Math.floor(Date.now() / 1e3);
+  // start data collection at 5 minutes ago to allow data sync
 
+  const ts = Math.floor((Date.now() / 1e3)-300);
 
     const blockNum:number[] = []
     const weekBlockNum:number[] = []

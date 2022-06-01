@@ -13,9 +13,9 @@ import { useState } from "react";
 import useGetNumStakers from "../../../hooks/useGetNumStakers";
 
 const NumStaker = () => {
-  const { day } = useGetNumStakers();
-  const { week } = useGetNumStakers();
-  const { month } = useGetNumStakers();
+  const { dayStaker } = useGetNumStakers();
+  const { weekStaker } = useGetNumStakers();
+  const { monthStaker } = useGetNumStakers();
   const { numStakers } = useGetNumStakers();
 
   const buttonMap = [
@@ -55,7 +55,7 @@ const NumStaker = () => {
       </div>
 
       <ResponsiveContainer height={300} width="100%">
-        <LineChart data={click === 1 ? day : click === 2 ? week : month}>
+        <LineChart data={click === 1 ? dayStaker : click === 2 ? weekStaker : monthStaker}>
           <Line
             type="monotone"
             dataKey="stakers"

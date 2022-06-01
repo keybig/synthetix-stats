@@ -1,55 +1,57 @@
 import useSynthetixQueries from "@synthetixio/queries";
+import { useEffect, useState } from "react";
 import useGetBlock from "./useGetBlock";
+import useGetTime from "./useGetTime";
 
 const useGetNumStakers = () => {
   const { subgraph } = useSynthetixQueries();
-
-  const dayStakeArr: number[] = [];
-  const weekStakeArr: number[] = [];
-  const monthStakeArr: number[] = [];
-  const yearStakeArr: number[] = [];
-
   const { blockNum } = useGetBlock();
   const { weekBlockNum } = useGetBlock();
   const { monthBlockNum } = useGetBlock();
+  const { timeStamp } = useGetTime();
 
-  const currentStaker = subgraph.useGetTotalActiveStakers(
+  const [dayStaker, setDayStaker] = useState<any[]>();
+  const [weekStaker, setWeekStaker] = useState<any[]>();
+  const [monthStaker, setMonthStaker] = useState<any[]>();
+  const [numStakers, setNumStakers] = useState<number>()
+
+  const currentStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[0] } },
     { count: true },
     { enabled: Boolean(blockNum[0]) }
   );
 
-  const fourHourStaker = subgraph.useGetTotalActiveStakers(
+  const fourHourStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[1] } },
     { count: true },
     { enabled: Boolean(blockNum[1]) }
   );
 
-  const eightHourStaker = subgraph.useGetTotalActiveStakers(
+  const eightHourStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[2] } },
     { count: true },
     { enabled: Boolean(blockNum[2]) }
   );
 
-  const twelveHourStaker = subgraph.useGetTotalActiveStakers(
+  const twelveHourStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[3] } },
     { count: true },
     { enabled: Boolean(blockNum[3]) }
   );
 
-  const sixtenHourStaker = subgraph.useGetTotalActiveStakers(
+  const sixtenHourStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[4] } },
     { count: true },
     { enabled: Boolean(blockNum[4]) }
   );
 
-  const twentyHourAgoStaker = subgraph.useGetTotalActiveStakers(
+  const twentyHourStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[5] } },
     { count: true },
     { enabled: Boolean(blockNum[5]) }
   );
 
-  const twentyFourHourAgoStaker = subgraph.useGetTotalActiveStakers(
+  const twentyFourHourStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: blockNum[6] } },
     { count: true },
     { enabled: Boolean(blockNum[6]) }
@@ -62,31 +64,31 @@ const useGetNumStakers = () => {
     { count:true}
   )*/
 
-  const twoDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const twoDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: weekBlockNum[0] } },
     { count: true },
     { enabled: Boolean(weekBlockNum[0]) }
   );
 
-  const threeDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const threeDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: weekBlockNum[1] } },
     { count: true },
     { enabled: Boolean(weekBlockNum[1]) }
   );
 
-  const fourDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const fourDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: weekBlockNum[2] } },
     { count: true },
     { enabled: Boolean(weekBlockNum[2]) }
   );
 
-  const fiveDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const fiveDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: weekBlockNum[3] } },
     { count: true },
     { enabled: Boolean(weekBlockNum[3]) }
   );
 
-  const sixDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const sixDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: weekBlockNum[4] } },
     { count: true },
     { enabled: Boolean(weekBlockNum[4]) }
@@ -94,248 +96,283 @@ const useGetNumStakers = () => {
 
   //month staker
 
-  const tenDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const tenDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: monthBlockNum[0] } },
     { count: true },
     { enabled: Boolean(monthBlockNum[0]) }
   );
 
-  const fifteenDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const fifteenDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: monthBlockNum[1] } },
     { count: true },
     { enabled: Boolean(monthBlockNum[1]) }
   );
 
-  const twentyDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const twentyDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: monthBlockNum[2] } },
     { count: true },
     { enabled: Boolean(monthBlockNum[2]) }
   );
 
-  const twentyFiveDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const twentyFiveDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: monthBlockNum[3] } },
     { count: true },
     { enabled: Boolean(monthBlockNum[3]) }
   );
 
-  const thirtyDayAgoStaker = subgraph.useGetTotalActiveStakers(
+  const thirtyDayStakerCall = subgraph.useGetTotalActiveStakers(
     { first: 1, block: { number: monthBlockNum[4] } },
     { count: true },
     { enabled: Boolean(monthBlockNum[4]) }
   );
 
-  /*oneDayAgoStaker.data?.forEach(item=>{
-    weekStakeArr.push(item.count.toNumber())
-  })*/
-  //week staker arr creation
-  twoDayAgoStaker.data?.forEach((item) => {
-    weekStakeArr.push(item.count.toNumber());
-  });
+  useEffect(() => {
+    if (
+      currentStakerCall.isSuccess &&
+      fourHourStakerCall.isSuccess &&
+      eightHourStakerCall.isSuccess &&
+      twelveHourStakerCall.isSuccess &&
+      sixtenHourStakerCall.isSuccess &&
+      twentyHourStakerCall.isSuccess &&
+      twentyFourHourStakerCall.isSuccess
+    ) {
+      const currentStaker =
+        currentStakerCall.isSuccess &&
+        currentStakerCall.data[0].count.toNumber();
+      
+      setNumStakers(currentStaker)
 
-  threeDayAgoStaker.data?.forEach((item) => {
-    weekStakeArr.push(item.count.toNumber());
-  });
+      const fourHourStaker =
+        fourHourStakerCall.isSuccess &&
+        fourHourStakerCall.data[0].count.toNumber();
 
-  fourDayAgoStaker.data?.forEach((item) => {
-    weekStakeArr.push(item.count.toNumber());
-  });
+      const eightHourStaker =
+        eightHourStakerCall.isSuccess &&
+        eightHourStakerCall.data[0].count.toNumber();
 
-  fiveDayAgoStaker.data?.forEach((item) => {
-    weekStakeArr.push(item.count.toNumber());
-  });
+      const twelveHourStaker =
+        twelveHourStakerCall.isSuccess &&
+        twelveHourStakerCall.data[0].count.toNumber();
 
-  sixDayAgoStaker.data?.forEach((item) => {
-    weekStakeArr.push(item.count.toNumber());
-  });
+      const sixteenHourStaker =
+        sixtenHourStakerCall.isSuccess &&
+        sixtenHourStakerCall.data[0].count.toNumber();
 
-  //month staker arr creation
+      const twentyHourStaker =
+        twentyHourStakerCall.isSuccess &&
+        twentyHourStakerCall.data[0].count.toNumber();
 
-  tenDayAgoStaker.data?.forEach((item) => {
-    monthStakeArr.push(item.count.toNumber());
-  });
+      const twentyFourHourStaker =
+        twentyFourHourStakerCall.isSuccess &&
+        twentyFourHourStakerCall.data[0].count.toNumber();
 
-  fifteenDayAgoStaker.data?.forEach((item) => {
-    monthStakeArr.push(item.count.toNumber());
-  });
+      const day = [
+        {
+          date: timeStamp.twentyFourHourAgo,
+          stakers: twentyFourHourStaker,
+        },
+        {
+          date: timeStamp.twentyHourAgo,
+          stakers: twentyHourStaker,
+        },
+        {
+          date: timeStamp.sixteenHourAgo,
+          stakers: sixteenHourStaker,
+        },
+        {
+          date: timeStamp.twelveHourAgo,
+          stakers: twelveHourStaker,
+        },
+        {
+          date: timeStamp.eightHourAgo,
+          stakers: eightHourStaker,
+        },
+        {
+          date: timeStamp.fourHourAgo,
+          stakers: fourHourStaker,
+        },
+        {
+          date: timeStamp.noHourAgo,
+          stakers: currentStaker,
+        },
+      ];
 
-  twentyDayAgoStaker.data?.forEach((item) => {
-    monthStakeArr.push(item.count.toNumber());
-  });
+      setDayStaker(day);
+    }
+  }, [
+    currentStakerCall.isSuccess,
+    fourHourStakerCall.isSuccess,
+    eightHourStakerCall.isSuccess,
+    twelveHourStakerCall.isSuccess,
+    sixtenHourStakerCall.isSuccess,
+    twentyHourStakerCall.isSuccess,
+    twentyFourHourStakerCall.isSuccess,
+  ]);
 
-  twentyFiveDayAgoStaker.data?.forEach((item) => {
-    monthStakeArr.push(item.count.toNumber());
-  });
+  useEffect(() => {
+    if (
+      currentStakerCall.isSuccess &&
+      twentyFourHourStakerCall.isSuccess &&
+      twoDayStakerCall.isSuccess &&
+      threeDayStakerCall.isSuccess &&
+      fourDayStakerCall.isSuccess &&
+      fiveDayStakerCall.isSuccess &&
+      sixDayStakerCall.isSuccess
+    ) {
+      const currentStaker =
+        currentStakerCall.isSuccess &&
+        currentStakerCall.data[0].count.toNumber();
 
-  thirtyDayAgoStaker.data?.forEach((item) => {
-    monthStakeArr.push(item.count.toNumber());
-  });
-  //day staker arr creation
+      const twentyFourHourStaker =
+        twentyFourHourStakerCall.isSuccess &&
+        twentyFourHourStakerCall.data[0].count.toNumber();
 
-  currentStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      const twoDayStaker =
+        twoDayStakerCall.isSuccess && twoDayStakerCall.data[0].count.toNumber();
 
-  fourHourStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      const threeDayStaker =
+        threeDayStakerCall.isSuccess &&
+        threeDayStakerCall.data[0].count.toNumber();
 
-  eightHourStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      const fourDayStaker =
+        fourDayStakerCall.isSuccess &&
+        fourDayStakerCall.data[0].count.toNumber();
 
-  twelveHourStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      const fiveDayStaker =
+        fiveDayStakerCall.isSuccess &&
+        fiveDayStakerCall.data[0].count.toNumber();
 
-  sixtenHourStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      const sixDayStaker =
+        sixDayStakerCall.isSuccess && sixDayStakerCall.data[0].count.toNumber();
 
-  twentyHourAgoStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      const week = [
+        {
+          date: timeStamp.sixDayAgo,
+          stakers: sixDayStaker,
+        },
+        {
+          date: timeStamp.fiveDayAgo,
+          stakers: fiveDayStaker,
+        },
+        {
+          date: timeStamp.fourDayAgo,
+          stakers: fourDayStaker,
+        },
+        {
+          date: timeStamp.threeDayAgo,
+          stakers: threeDayStaker,
+        },
+        {
+          date: timeStamp.twoDayAgo,
+          stakers: twoDayStaker,
+        },
+        {
+          date: timeStamp.oneDayAgo,
+          stakers: twentyFourHourStaker,
+        },
+        {
+          date: timeStamp.currentDay,
+          stakers: currentStaker,
+        },
+      ];
 
-  twentyFourHourAgoStaker.data?.forEach((item) => {
-    dayStakeArr.push(item.count.toNumber());
-  });
+      setWeekStaker(week);
+    }
+  }, [
+    currentStakerCall.isSuccess,
+    twentyFourHourStakerCall.isSuccess,
+    twoDayStakerCall.isSuccess,
+    threeDayStakerCall.isSuccess,
+    fourDayStakerCall.isSuccess,
+    fiveDayStakerCall.isSuccess,
+    sixDayStakerCall.isSuccess,
+  ]);
 
-  const numStakers = dayStakeArr[0];
+  useEffect(() => {
+    if (
+      currentStakerCall.isSuccess &&
+      fiveDayStakerCall.isSuccess &&
+      tenDayStakerCall.isSuccess &&
+      fifteenDayStakerCall.isSuccess &&
+      twentyDayStakerCall.isSuccess &&
+      twentyFiveDayStakerCall.isSuccess &&
+      thirtyDayStakerCall.isSuccess
+    ) {
+      const currentStaker =
+        currentStakerCall.isSuccess &&
+        currentStakerCall.data[0].count.toNumber();
 
-  const day: any[] = [
-    {
-      id: 7, //top
-      name: "24:00",
-      stakers: dayStakeArr[6],
-    },
-    {
-      id: 6,
-      name: "20:00",
-      stakers: dayStakeArr[5],
-    },
-    {
-      id: 5,
-      name: "16:00",
-      stakers: dayStakeArr[4],
-    },
-    {
-      id: 4,
-      name: "12:00",
-      stakers: dayStakeArr[3],
-    },
-    {
-      id: 3,
-      name: "8:00",
-      stakers: dayStakeArr[2],
-    },
-    {
-      id: 2,
-      name: "4:00",
-      stakers: dayStakeArr[1],
-    },
-    {
-      id: 1,
-      name: "0:00",
-      stakers: dayStakeArr[0],
-    },
-  ];
+      const fiveDayStaker =
+        fiveDayStakerCall.isSuccess &&
+        fiveDayStakerCall.data[0].count.toNumber();
 
-  const week: any[] = [
-    {
-      id: 7,
-      name: "4/29",
-      stakers: weekStakeArr[4],
-    },
-    {
-      id: 6,
-      name: "4/28",
-      stakers: weekStakeArr[3],
-    },
-    {
-      id: 5,
-      name: "4/27",
-      stakers: weekStakeArr[2],
-    },
-    {
-      id: 4,
-      name: "4/26",
-      stakers: weekStakeArr[1],
-    },
-    {
-      id: 3,
-      name: "4/25",
-      stakers: weekStakeArr[0],
-    },
-    {
-      id: 2,
-      name: "4/24",
-      stakers: dayStakeArr[6],
-    },
-    {
-      id: 1,
-      name: "4/23",
-      stakers: dayStakeArr[0],
-    },
-  ];
+      const tenDayStaker =
+        tenDayStakerCall.isSuccess && tenDayStakerCall.data[0].count.toNumber();
 
-  const month: any[] = [
-    {
-      name: "30",
-      stakers: monthStakeArr[3],
-    },
-    {
-      name: "28",
-      stakers: monthStakeArr[2],
-    },
-    {
-      name: "14",
-      stakers: monthStakeArr[1],
-    },
-    {
-      name: "7",
-      stakers: monthStakeArr[0],
-    },
-    {
-      name: "1",
-      stakers: weekStakeArr[3],
-    },
-    {
-      name: "1",
-      stakers: dayStakeArr[0],
-    },
-  ];
+      const fifteenDayStaker =
+        fifteenDayStakerCall.isSuccess &&
+        fifteenDayStakerCall.data[0].count.toNumber();
 
-  const year: any[] = [
-    {
-      name: "1",
-      stakers: 2000,
-    },
-    {
-      name: "3",
-      stakers: 4000,
-    },
-    {
-      name: "5",
-      stakers: 3000,
-    },
-    {
-      name: "7",
-      stakers: 5780,
-    },
-    {
-      name: "9",
-      stakers: 4890,
-    },
-    {
-      name: "12",
-      stakers: 6390,
-    },
-  ];
+      const twentyDayStaker =
+        twentyDayStakerCall.isSuccess &&
+        twentyDayStakerCall.data[0].count.toNumber();
+
+      const twentyFiveDayStaker =
+        twentyFiveDayStakerCall.isSuccess &&
+        twentyFiveDayStakerCall.data[0].count.toNumber();
+
+      const thirtyDayStaker =
+        thirtyDayStakerCall.isSuccess &&
+        thirtyDayStakerCall.data[0].count.toNumber();
+
+      const month = [
+        {
+          date: timeStamp.thirtyDayAgo,
+          stakers: thirtyDayStaker,
+        },
+        {
+          date: timeStamp.twentyFiveDayAgo,
+          stakers: twentyFiveDayStaker,
+        },
+        {
+          date: timeStamp.twentyDayAgo,
+          stakers: twentyDayStaker,
+        },
+        {
+          date: timeStamp.fifteenDayAgo,
+          stakers: fifteenDayStaker,
+        },
+        {
+          date: timeStamp.tenDayAgo,
+          stakers: tenDayStaker,
+        },
+        {
+          date: timeStamp.fiveDayAgo,
+          stakers: fiveDayStaker,
+        },
+        {
+          date: timeStamp.currentDay,
+          stakers: currentStaker,
+        },
+      ];
+
+      setMonthStaker(month);
+    }
+  }, [
+    currentStakerCall.isSuccess,
+    fiveDayStakerCall.isSuccess,
+    tenDayStakerCall.isSuccess,
+    fifteenDayStakerCall.isSuccess,
+    twentyDayStakerCall.isSuccess,
+    twentyFiveDayStakerCall.isSuccess,
+    thirtyDayStakerCall.isSuccess,
+  ]);
 
   return {
-    day,
-    week,
-    month,
-    numStakers,
+    dayStaker,
+    weekStaker,
+    monthStaker,
+    numStakers
   };
 };
 
