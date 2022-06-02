@@ -1,10 +1,10 @@
 import useSynthetixQueries from "@synthetixio/queries";
-import useGetAPY from "./useGetAPY";
 import { formatNumber, formatMoney } from "../constants/format";
+import useGetStake from "./useGetStake";
 
 const useGetTradeActivity = () => {
   const { subgraph } = useSynthetixQueries();
-  const { startTime } = useGetAPY();
+  const { startTime } = useGetStake();
 
   // const [currentTable, setCurrentTable] = useState<any[]>([])
 

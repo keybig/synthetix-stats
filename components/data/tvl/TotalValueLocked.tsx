@@ -14,7 +14,6 @@ import {
 import { useMemo, useState } from "react";
 import useGetTVL from "../../../hooks/useGetTVL";
 import useGetTime from "../../../hooks/useGetTime";
-import useGetGlobalStake from "../../../hooks/useGetGlobalStake";
 
 const TotalValueLocked = () => {
   const buttonMap = [
@@ -35,7 +34,6 @@ const TotalValueLocked = () => {
 
 
 
-  console.log(dayData)
   const handleActive = (buttons: any) => {
     setClick(buttons.id);
   };

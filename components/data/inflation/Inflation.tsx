@@ -7,14 +7,13 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import useGetAPY from "../../../hooks/useGetAPY";
+import useGetStake from "../../../hooks/useGetStake";
 
-// current rewards, all time rewards, inflation data from useGetAPY()
 
 const Inflation = () => {
-  const { currentReward } = useGetAPY();
-  const { allTimeInflation } = useGetAPY();
-  const { inflationData } = useGetAPY();
+  const { currentReward } = useGetStake();
+  const { allTimeInflation } = useGetStake();
+  const { inflationData } = useGetStake();
 
   return (
     <div className={styles.wrapper}>

@@ -1,19 +1,24 @@
-import useSynthetixQueries from '@synthetixio/queries'
-
-
+import useSynthetixQueries from "@synthetixio/queries";
+import { useEffect, useState } from "react";
 
 const useGetSNXrate = () => {
+  const [snxRate, setSnxRate] = useState<number>(0);
 
-    const { data } = useSynthetixQueries().subgraph.useGetLatestRateById(
-        {id:"SNX"},
-        {rate:true}
-    )
+  const snxRateCall = useSynthetixQueries().subgraph.useGetLatestRateById(
+    { id: "SNX" },
+    { rate: true }
+  );
 
-    const snxRate = data?.rate.toNumber() ?? 0
+  useEffect(() => {
+    if (snxRateCall.isSuccess) {
+      const snxRate = snxRateCall.data.rate.toNumber();
+      setSnxRate(snxRate);
+    }
+  }, [snxRateCall.isSuccess]);
 
   return {
-      snxRate
-  }
-}
+    snxRate,
+  };
+};
 
-export default useGetSNXrate
+export default useGetSNXrate;

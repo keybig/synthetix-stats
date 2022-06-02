@@ -1,13 +1,16 @@
 import styles from "./StakeAPY.module.css";
-import useGetAPY from "../../../hooks/useGetAPY";
+import useGetStake from '../../../hooks/useGetStake'
+import { formatPercent } from "../../../constants/format";
+import { useMemo } from "react";
 
 const StakeAPY = () => {
-  const { APY } = useGetAPY();
+  
+  const { percentAPY } = useGetStake();
 
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>Current Staking APY</h4>
-      <p className={styles.percentAPY}>{APY}</p>
+      <p className={styles.percentAPY}>{percentAPY}</p>
     </div>
   );
 };

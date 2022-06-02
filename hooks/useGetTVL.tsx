@@ -14,10 +14,10 @@ const useGetTVL = () => {
   const [dayData, setDayData] = useState<any[]>();
   const [weekData, setWeekData] = useState<any[]>();
   const [monthData, setMonthData] = useState<any[]>();
-  const [totalValueLocked, setTotalValueLocked] = useState<number>();
-  const [totalWrapper, setTotalWrapper] = useState<number>();
-  const [totalDebt, setTotalDebt] = useState<number>();
-  const [totalIssuedSynth, setTotalIssuedSynth] = useState<number>();
+  const [totalValueLocked, setTotalValueLocked] = useState<string>();
+  const [totalWrapper, setTotalWrapper] = useState<string>();
+  const [totalDebt, setTotalDebt] = useState<string>();
+  const [totalIssuedSynth, setTotalIssuedSynth] = useState<string>();
 
   const currentDebtCall = subgraph.useGetDebtStates(
     {
@@ -26,7 +26,7 @@ const useGetTVL = () => {
       first: 1,
       block: { number: blockNum[0] },
     },
-    { debtEntry: true, totalIssuedSynths:true },
+    { debtEntry: true, totalIssuedSynths: true },
     { enabled: Boolean(blockNum[0]) }
   );
 
@@ -217,7 +217,7 @@ const useGetTVL = () => {
   const currentWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[0] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[0]), queryKey: "current" }
+    { enabled: Boolean(blockNum[0]) }
   );
 
   //4 hour wrapper
@@ -225,7 +225,7 @@ const useGetTVL = () => {
   const fourHourWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[1] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[1]), queryKey: "4hr" }
+    { enabled: Boolean(blockNum[1]) }
   );
 
   //8 hour wrapper
@@ -233,7 +233,7 @@ const useGetTVL = () => {
   const eightHourWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[2] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[2]), queryKey: "8hr" }
+    { enabled: Boolean(blockNum[2]) }
   );
 
   //twelve hour
@@ -241,7 +241,7 @@ const useGetTVL = () => {
   const twelveHourWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[3] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[3]), queryKey: "12hr" }
+    { enabled: Boolean(blockNum[3]) }
   );
 
   //sixteen
@@ -249,7 +249,7 @@ const useGetTVL = () => {
   const sixteenHourWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[4] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[4]), queryKey: "16hr" }
+    { enabled: Boolean(blockNum[4]) }
   );
 
   //twenty
@@ -257,7 +257,7 @@ const useGetTVL = () => {
   const twentyHourWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[5] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[5]), queryKey: "20hr" }
+    { enabled: Boolean(blockNum[5]) }
   );
 
   //24 hour
@@ -265,7 +265,7 @@ const useGetTVL = () => {
   const twentyFourHourWrapperCall = subgraph.useGetWrappers(
     { block: { number: blockNum[6] } },
     { amountInUSD: true },
-    { enabled: Boolean(blockNum[6]), queryKey: "24hr" }
+    { enabled: Boolean(blockNum[6]) }
   );
 
   //2 day
@@ -273,7 +273,7 @@ const useGetTVL = () => {
   const twoDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: weekBlockNum[0] } },
     { amountInUSD: true },
-    { enabled: Boolean(weekBlockNum[0]), queryKey: "2day" }
+    { enabled: Boolean(weekBlockNum[0]) }
   );
 
   // 3 day
@@ -281,7 +281,7 @@ const useGetTVL = () => {
   const threeDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: weekBlockNum[1] } },
     { amountInUSD: true },
-    { enabled: Boolean(weekBlockNum[1]), queryKey: "3day" }
+    { enabled: Boolean(weekBlockNum[1]) }
   );
 
   // 4 day
@@ -289,7 +289,7 @@ const useGetTVL = () => {
   const fourDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: weekBlockNum[2] } },
     { amountInUSD: true },
-    { enabled: Boolean(weekBlockNum[2]), queryKey: "4day" }
+    { enabled: Boolean(weekBlockNum[2]) }
   );
 
   // 5 day
@@ -297,7 +297,7 @@ const useGetTVL = () => {
   const fiveDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: weekBlockNum[3] } },
     { amountInUSD: true },
-    { enabled: Boolean(weekBlockNum[3]), queryKey: "5day" }
+    { enabled: Boolean(weekBlockNum[3]) }
   );
 
   // 6 day
@@ -305,7 +305,7 @@ const useGetTVL = () => {
   const sixDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: weekBlockNum[4] } },
     { amountInUSD: true },
-    { enabled: Boolean(weekBlockNum[4]), queryKey: "6day" }
+    { enabled: Boolean(weekBlockNum[4]) }
   );
 
   // 10 day
@@ -313,7 +313,7 @@ const useGetTVL = () => {
   const tenDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: monthBlockNum[0] } },
     { amountInUSD: true },
-    { enabled: Boolean(monthBlockNum[0]), queryKey: "10day" }
+    { enabled: Boolean(monthBlockNum[0]) }
   );
 
   // 15 day
@@ -321,7 +321,7 @@ const useGetTVL = () => {
   const fifteenDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: monthBlockNum[1] } },
     { amountInUSD: true },
-    { enabled: Boolean(monthBlockNum[1]), queryKey: "15day" }
+    { enabled: Boolean(monthBlockNum[1]) }
   );
 
   // 20 day
@@ -329,7 +329,7 @@ const useGetTVL = () => {
   const twentyDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: monthBlockNum[2] } },
     { amountInUSD: true },
-    { enabled: Boolean(monthBlockNum[2]), queryKey: "20day" }
+    { enabled: Boolean(monthBlockNum[2])}
   );
 
   // 25 day
@@ -337,7 +337,7 @@ const useGetTVL = () => {
   const twentyFiveDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: monthBlockNum[3] } },
     { amountInUSD: true },
-    { enabled: Boolean(monthBlockNum[3]), queryKey: "25day" }
+    { enabled: Boolean(monthBlockNum[3]) }
   );
 
   // 30 day
@@ -345,39 +345,39 @@ const useGetTVL = () => {
   const thirtyDayWrapperCall = subgraph.useGetWrappers(
     { block: { number: monthBlockNum[4] } },
     { amountInUSD: true },
-    { enabled: Boolean(monthBlockNum[4]), queryKey: "30day" }
+    { enabled: Boolean(monthBlockNum[4])}
   );
 
   useEffect(() => {
-    if (
-      currentDebtCall.isSuccess &&
-      currentWrapperCall.isSuccess
-    ){
-      const currentTotalDebt = currentDebtCall.isSuccess &&
-      currentDebtCall.data[0].debtEntry.toNumber()
-
-      const currentWrapperTotal = currentWrapperCall.isSuccess &&
-      currentWrapperCall.data.reduce((sum: number, cur) => {
-        return sum + cur.amountInUSD.toNumber();
-      }, 0);
-
-      const currentTotalIssuedSynth = currentDebtCall.isSuccess &&
-      currentDebtCall.data[0].totalIssuedSynths.toNumber()
-
+    if (currentDebtCall.isSuccess && currentWrapperCall.isSuccess) {
       
+      const currentTotalDebt = currentDebtCall.data[0].debtEntry.toNumber();
+      const fmtTotalDebt = formatMoney.format(currentTotalDebt)
 
-      const currentTVL = currentTotalDebt + currentWrapperTotal
+      const currentWrapperTotal = currentWrapperCall.data.reduce(
+        (sum: number, cur) => {
+          return sum + cur.amountInUSD.toNumber();
+        },
+        0
+      );
 
-      setTotalDebt(currentTotalDebt)
-      setTotalWrapper(currentWrapperTotal)
-      setTotalValueLocked(currentTVL)
-      setTotalIssuedSynth(currentTotalIssuedSynth)
+      const fmtTotalWrapper = formatMoney.format(currentWrapperTotal) 
 
+      const currentTotalIssuedSynth =
+        currentDebtCall.data[0].totalIssuedSynths.toNumber();
+      const formatTotalIssuedSynth = formatMoney.format(
+        currentTotalIssuedSynth
+      );
 
+      const currentTVL = currentTotalDebt + currentWrapperTotal;
+      const formatTVL = formatMoney.format(currentTVL);
+
+      setTotalDebt(fmtTotalDebt);
+      setTotalWrapper(fmtTotalWrapper);
+      setTotalValueLocked(formatTVL);
+      setTotalIssuedSynth(formatTotalIssuedSynth);
     }
-
-    
-  }, [currentDebtCall.isSuccess, currentWrapperCall.isSuccess])
+  }, [currentDebtCall.isSuccess, currentWrapperCall.isSuccess]);
 
   useEffect(() => {
     if (
@@ -396,70 +396,55 @@ const useGetTVL = () => {
       twentyHourWrapperCall.isSuccess &&
       twentyFourHourWrapperCall.isSuccess
     ) {
-      const currentDebt =
-        currentDebtCall.isSuccess &&
-        currentDebtCall.data[0].debtEntry.toNumber();
-      const fourHourDebt =
-        fourHourDebtCall.isSuccess &&
-        fourHourDebtCall.data[0].debtEntry.toNumber();
-      const eightHourDebt =
-        eightHourDebtCall.isSuccess &&
-        eightHourDebtCall.data[0].debtEntry.toNumber();
-      const twelveHourDebt =
-        twelveHourDebtCall.isSuccess &&
-        twelveHourDebtCall.data[0].debtEntry.toNumber();
-      const sixteenHourDebt =
-        sixteenHourDebtCall.isSuccess &&
-        sixteenHourDebtCall.data[0].debtEntry.toNumber();
-      const twentyHourDebt =
-        twentyHourDebtCall.isSuccess &&
-        twentyHourDebtCall.data[0].debtEntry.toNumber();
+      const currentDebt = currentDebtCall.data[0].debtEntry.toNumber();
+      const fourHourDebt = fourHourDebtCall.data[0].debtEntry.toNumber();
+      const eightHourDebt = eightHourDebtCall.data[0].debtEntry.toNumber();
+      const twelveHourDebt = twelveHourDebtCall.data[0].debtEntry.toNumber();
+      const sixteenHourDebt = sixteenHourDebtCall.data[0].debtEntry.toNumber();
+      const twentyHourDebt = twentyHourDebtCall.data[0].debtEntry.toNumber();
       const twentyFourHourDebt =
-        twentyFourHourDebtCall.isSuccess &&
         twentyFourHourDebtCall.data[0].debtEntry.toNumber();
 
-      const currentWrapper =
-        currentWrapperCall.isSuccess &&
-        currentWrapperCall.data.reduce((sum: number, cur) => {
+      const currentWrapper = currentWrapperCall.data.reduce(
+        (sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
-        }, 0);
+        },
+        0
+      );
 
-      const fourHourWrapper =
-        fourHourWrapperCall.isSuccess &&
-        fourHourWrapperCall.data.reduce((sum: number, cur) => {
+      const fourHourWrapper = fourHourWrapperCall.data.reduce(
+        (sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
-        }, 0);
+        },
+        0
+      );
 
-      const eightHourWrapper =
-        eightHourWrapperCall.isSuccess &&
-        eightHourWrapperCall.data.reduce((sum: number, cur) => {
+      const eightHourWrapper = eightHourWrapperCall.data.reduce(
+        (sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
-        }, 0);
+        },
+        0
+      );
 
       const twelveHourWrapper =
-        twelveHourWrapperCall.isSuccess &&
         twelveHourWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const sixteenHourWrapper =
-        sixteenHourWrapperCall.isSuccess &&
         sixteenHourWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const twentyHourWrapper =
-        twentyHourWrapperCall.isSuccess &&
         twentyHourWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const twentyFourHourWrapper =
-        twentyFourHourWrapperCall.isSuccess &&
         twentyFourHourWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
-      
 
       const day = [
         {
@@ -536,69 +521,64 @@ const useGetTVL = () => {
       sixDayWrapperCall.isSuccess
     ) {
       const currentDebt =
-        currentDebtCall.isSuccess &&
         currentDebtCall.data[0].debtEntry.toNumber();
 
       const twentyFourHourDebt =
-        twentyFourHourDebtCall.isSuccess &&
         twentyFourHourDebtCall.data[0].debtEntry.toNumber();
 
       const twoDayDebt =
-        twoDayDebtCall.isSuccess && twoDayDebtCall.data[0].debtEntry.toNumber();
+       twoDayDebtCall.data[0].debtEntry.toNumber();
 
       const threeDayDebt =
-        threeDayDebtCall.isSuccess &&
         threeDayDebtCall.data[0].debtEntry.toNumber();
 
       const fourDayDebt =
-        fourDayDebtCall.isSuccess &&
         fourDayDebtCall.data[0].debtEntry.toNumber();
 
       const fiveDayDebt =
-        fiveDayDebtCall.isSuccess &&
         fiveDayDebtCall.data[0].debtEntry.toNumber();
 
       const sixDayDebt =
-        sixDayDebtCall.isSuccess && sixDayDebtCall.data[0].debtEntry.toNumber();
+       sixDayDebtCall.data[0].debtEntry.toNumber();
 
       const currentWrapper =
-        currentWrapperCall.isSuccess &&
+      
         currentWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const twentyFourHourWrapper =
-        twentyFourHourWrapperCall.isSuccess &&
+        
         twentyFourHourWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const twoDayWrapper =
-        twoDayWrapperCall.isSuccess &&
+      
         twoDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const threeDayWrapper =
-        threeDayWrapperCall.isSuccess &&
+       
         threeDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const fourDayWrapper =
-        fourDayWrapperCall.isSuccess &&
+      
         fourDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const fiveDayWrapper =
-        fiveDayWrapperCall.isSuccess &&
+      
         fiveDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const sixDayWrapper =
-        sixDayWrapperCall.isSuccess &&
+    
         sixDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
@@ -678,70 +658,70 @@ const useGetTVL = () => {
       thirtyDayWrapperCall.isSuccess
     ) {
       const currentDebt =
-        currentDebtCall.isSuccess &&
+     
         currentDebtCall.data[0].debtEntry.toNumber();
 
       const fiveDayDebt =
-        fiveDayDebtCall.isSuccess &&
+   
         fiveDayDebtCall.data[0].debtEntry.toNumber();
 
       const tenDayDebt =
-        tenDayDebtCall.isSuccess && tenDayDebtCall.data[0].debtEntry.toNumber();
+        tenDayDebtCall.data[0].debtEntry.toNumber();
 
       const fifteenDayDebt =
-        fifteenDayDebtCall.isSuccess &&
+     
         fifteenDayDebtCall.data[0].debtEntry.toNumber();
 
       const twentyDayDebt =
-        twentyDayDebtCall.isSuccess &&
+      
         twentyDayDebtCall.data[0].debtEntry.toNumber();
 
       const twentyFiveDayDebt =
-        twentyFiveDayDebtCall.isSuccess &&
+     
         twentyFiveDayDebtCall.data[0].debtEntry.toNumber();
 
       const thirtyDayDebt =
-        thirtyDayDebtCall.isSuccess &&
+     
         thirtyDayDebtCall.data[0].debtEntry.toNumber();
 
       const currentWrapper =
-        currentWrapperCall.isSuccess &&
+     
         currentWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const fiveDayWrapper =
-        fiveDayWrapperCall.isSuccess &&
+     
         fiveDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const tenDayWrapper =
-        tenDayWrapperCall.isSuccess &&
+     
         tenDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const fifteenDayWrapper =
-        fifteenDayWrapperCall.isSuccess &&
+      
         fifteenDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const twentyDayWrapper =
-        twentyDayWrapperCall.isSuccess &&
+      
         twentyDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const twentyFiveDayWrapper =
-        twentyFiveDayWrapperCall.isSuccess &&
+       
         twentyFiveDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
 
       const thirtyDayWrapper =
-        thirtyDayWrapperCall.isSuccess &&
+      
         thirtyDayWrapperCall.data.reduce((sum: number, cur) => {
           return sum + cur.amountInUSD.toNumber();
         }, 0);
@@ -810,7 +790,7 @@ const useGetTVL = () => {
     totalDebt,
     totalWrapper,
     totalValueLocked,
-    totalIssuedSynth
+    totalIssuedSynth,
   };
 };
 

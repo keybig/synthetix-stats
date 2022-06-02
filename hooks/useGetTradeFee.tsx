@@ -1,10 +1,10 @@
 import useSynthetixQueries from "@synthetixio/queries";
-import useGetAPY from "./useGetAPY";
+import useGetStake from "./useGetStake";
 import useGetTradeActivity from "./useGetTradeActivity";
 
 const useGetTradeFee = () => {
   const { subgraph } = useSynthetixQueries();
-  const { startTime } = useGetAPY();
+  const { startTime } = useGetStake();
   const { currentEpochTradeData } = useGetTradeActivity();
   const { tradeDataCall } = useGetTradeActivity();
 
