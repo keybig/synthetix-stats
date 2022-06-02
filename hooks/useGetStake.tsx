@@ -23,8 +23,8 @@ const useGetStake = () => {
   const [issuers, setIssuers] = useState<number>();
 
   //inflation
-  const [currentReward, setCurrentReward] = useState<number>();
-  const [allTimeInflation, setAllTimeInflation] = useState<number>();
+  const [currentReward, setCurrentReward] = useState<string>();
+  const [allTimeInflation, setAllTimeInflation] = useState<string>();
   const [inflationData, setInflationData] = useState<any[]>();
   const [startTime, setStartTime] = useState<number>();
   const [fee, setFee] = useState<number>();
@@ -124,7 +124,9 @@ const useGetStake = () => {
 
       const reward = currentFeePeriods.data[0].rewardsToDistribute.toNumber();
 
-      setCurrentReward(reward);
+      const fmtReward = formatNumber.format(reward)
+
+      setCurrentReward(fmtReward);
 
       const fee = currentFeePeriods.data[0].feesToDistribute.toNumber();
 
@@ -133,7 +135,9 @@ const useGetStake = () => {
           return sum + current.rewardsToDistribute.toNumber();
         }, 0);
 
-      setAllTimeInflation(rewardsAmount);
+        const fmtRewardsAmt = formatNumber.format(rewardsAmount)
+
+      setAllTimeInflation(fmtRewardsAmt);
 
       const inflationData =
         currentFeePeriods.isSuccess &&
