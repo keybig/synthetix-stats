@@ -26,7 +26,7 @@ interface Blocks {
 
 const useGetBlock = () => {
   const { times } = useGetTime();
-  const { ts } = useGetTime()
+  const ts = Math.floor(Date.now() / 1e3);
 
   const { subgraph } = useSynthetixQueries();
 
