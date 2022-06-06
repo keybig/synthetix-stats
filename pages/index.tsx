@@ -15,13 +15,7 @@ import { useRouter } from 'next/router'
 
 const Home = () => {
 
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        notifyOnChangeProps: 'tracked',
-      },
-    },
-  })
+  const queryClient = new QueryClient()
 
 
   const router = useRouter()
