@@ -26,7 +26,14 @@ interface Blocks {
 
 const useGetBlock = () => {
   const { times } = useGetTime();
-  const { ts } = useGetTime()
+
+  // start data collection at 5 minutes ago to allow data sync
+
+  const ts = Math.floor(Date.now() / 1e3 - 300);
+
+  const [blockNum, setBlockNum] = useState<number[]>([]);
+  const [weekBlockNum, setWeekBlockNum] = useState<number[]>([]);
+  const [monthBlockNum, setMonthBlockNum] = useState<number[]>([]);
 
   const { subgraph } = useSynthetixQueries();
 
@@ -41,6 +48,8 @@ const useGetBlock = () => {
     },
     { timestamp: true, block: true }
   );
+
+  //const currentBlock = currentBlockCall.isSuccess ? currentBlockCall.data[0].block.toNumber() : 10030010
 
   const currentBlock = useMemo(() => {
     if (currentBlockCall.isSuccess) {

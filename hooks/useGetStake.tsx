@@ -3,6 +3,7 @@ import useGetSNXrate from "./useGetSNXrate";
 import { formatNumber, formatMoney, formatPercent } from "../constants/format";
 import { useEffect, useState } from "react";
 
+
 // staking, apy, inflation,
 
 const useGetStake = () => {
@@ -14,6 +15,9 @@ const useGetStake = () => {
   //apy
   const [percentAPY, setPercentAPY] = useState<string>();
 
+
+
+
   const [totalCollateral, setTotalCollateral] = useState<string>();
   const [totalSnxHolders, setTotalSnxHolders] = useState();
   const [issuers, setIssuers] = useState<number>();
@@ -22,7 +26,7 @@ const useGetStake = () => {
   const [currentReward, setCurrentReward] = useState<string>();
   const [allTimeInflation, setAllTimeInflation] = useState<string>();
   const [inflationData, setInflationData] = useState<any[]>();
-  const [startTime, setStartTime] = useState<number>(0);
+  const [startTime, setStartTime] = useState<number>();
   const [fee, setFee] = useState<number>();
 
   const { subgraph } = useSynthetixQueries();
@@ -34,15 +38,15 @@ const useGetStake = () => {
 
   const totalSnxCall = subgraph.useGetSynthetixById(
     { id: "1" },
-    { issuers: true }
-  ).data?.issuers.toNumber();
+    { issuers: true, snxHolders: true }
+  );
 
-  /*useEffect(() => {
+  useEffect(() => {
     if (totalSnxCall.isSuccess) {
       const snxIssuers = totalSnxCall.data.issuers.toNumber();
       setIssuers(snxIssuers);
     }
-  }, [totalSnxCall.data]);*/
+  }, [totalSnxCall.isSuccess]);
 
   const totalSnxSupplyCall = subgraph.useGetSynths(
     { where: { symbol: "SNX" } },
@@ -54,10 +58,10 @@ const useGetStake = () => {
       orderBy: "collateral",
       orderDirection: "desc",
       where: { initialDebtOwnership_not: 0 },
-      first: totalSnxCall,
+      first: issuers,
     },
     { collateral: true, transferable: true },
-    { enabled: Boolean(totalSnxCall) }
+    { enabled: Boolean(issuers) }
   );
 
   const currentFeePeriods = subgraph.useGetFeePeriods(
@@ -68,20 +72,21 @@ const useGetStake = () => {
       startTime: true,
       rewardsClaimed: true,
       rewardsToDistribute: true,
-    },
+    }
   );
 
   useEffect(() => {
     if (
-     // totalSnxCall.isSuccess &&
+      totalSnxCall.isSuccess &&
       totalSnxSupplyCall.isSuccess &&
       totalSnxStakerCall.isSuccess &&
       currentFeePeriods.isSuccess &&
       snxRateCall.isSuccess
     ) {
-      const snxRate = snxRateCall.data.rate.toNumber();
 
-      // snx staked box
+    const snxRate = snxRateCall.data.rate.toNumber();
+
+    // snx staked box 
 
       const totalSnxSupply = totalSnxSupplyCall.data[0].totalSupply.toNumber();
 
@@ -92,7 +97,7 @@ const useGetStake = () => {
         0
       );
 
-      const totalStaked = formatNumber.format(totalCollateral);
+      const totalStaked = formatNumber.format(totalCollateral)
 
       const stakedVal = formatMoney.format(totalCollateral * snxRate);
 
@@ -100,35 +105,37 @@ const useGetStake = () => {
         .toFixed(2)
         .substring(2)}%`;
 
+
       setTotalCollateral(totalStaked);
       setStakedVal(stakedVal);
 
-      setPercentStaked(percentStaked);
+      
 
-      //// current period start time (imported to trade tables - look at instead importing the data call)
+      setPercentStaked(percentStaked)
 
-      const startTime = currentFeePeriods.data[0].startTime.toNumber();
+    //// current period start time (imported to trade tables - look at instead importing the data call)
+
+    const startTime = currentFeePeriods.data[0].startTime.toNumber();
 
       setStartTime(startTime);
 
-      // inflation
+
+    // inflation
 
       const reward = currentFeePeriods.data[0].rewardsToDistribute.toNumber();
 
-      const fmtReward = formatNumber.format(reward);
+      const fmtReward = formatNumber.format(reward)
 
       setCurrentReward(fmtReward);
 
       const fee = currentFeePeriods.data[0].feesToDistribute.toNumber();
 
-      const rewardsAmount = currentFeePeriods.data.reduce(
-        (sum: any, current: any) => {
-          return sum + current.rewardsToDistribute.toNumber();
-        },
-        0
-      );
 
-      const fmtRewardsAmt = formatNumber.format(rewardsAmount);
+      const rewardsAmount = currentFeePeriods.data.reduce((sum: any, current: any) => {
+          return sum + current.rewardsToDistribute.toNumber();
+        }, 0);
+
+        const fmtRewardsAmt = formatNumber.format(rewardsAmount)
 
       setAllTimeInflation(fmtRewardsAmt);
 
@@ -144,20 +151,15 @@ const useGetStake = () => {
 
       // apy calc
 
-      const APYcalc =
-        (fee / (snxRate * totalCollateral)) * 52 +
-        (reward / totalCollateral) * 52;
+      const APYcalc = (fee / (snxRate * totalCollateral) * 52 + (reward / totalCollateral) * 52)
 
-      const APY = formatPercent.format(APYcalc);
+      const APY = formatPercent.format(APYcalc)
 
       setPercentAPY(APY);
+
+      console.log([fee, snxRate, totalCollateral,reward, percentStaked, APY])
     }
-  }, [
-   // totalSnxCall.data,
-    totalSnxSupplyCall.data,
-    totalSnxStakerCall.data,
-    currentFeePeriods.data,
-  ]);
+  }, [totalSnxCall.isSuccess, totalSnxSupplyCall.isSuccess, totalSnxStakerCall.isSuccess, currentFeePeriods.isSuccess]);
 
   return {
     stakeAmount,
