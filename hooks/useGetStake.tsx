@@ -26,7 +26,7 @@ const useGetStake = () => {
   const [currentReward, setCurrentReward] = useState<string>();
   const [allTimeInflation, setAllTimeInflation] = useState<string>();
   const [inflationData, setInflationData] = useState<any[]>();
-  const [startTime, setStartTime] = useState<number>();
+  const [startTime, setStartTime] = useState<number>(0);
   const [fee, setFee] = useState<number>();
 
   const { subgraph } = useSynthetixQueries();
@@ -157,9 +157,8 @@ const useGetStake = () => {
 
       setPercentAPY(APY);
 
-      console.log([fee, snxRate, totalCollateral,reward, percentStaked, APY])
     }
-  }, [totalSnxCall.isSuccess, totalSnxSupplyCall.isSuccess, totalSnxStakerCall.isSuccess, currentFeePeriods.isSuccess]);
+  }, [totalSnxCall.data, totalSnxSupplyCall.data, totalSnxStakerCall.data, currentFeePeriods.data]);
 
   return {
     stakeAmount,
@@ -172,6 +171,7 @@ const useGetStake = () => {
     allTimeInflation,
     startTime,
     inflationData,
+    currentFeePeriods
   };
 };
 

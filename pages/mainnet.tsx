@@ -11,7 +11,13 @@ import { useState } from "react";
 import { NetworkId } from "@synthetixio/contracts-interface";
 import { useRouter } from "next/router";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      notifyOnChangeProps: ['data'],
+    },
+  },
+});
 
 const Mainnet = () => {
   const router = useRouter();

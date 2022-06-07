@@ -5,6 +5,7 @@ import useGetStake from "./useGetStake";
 const useGetCurrentTrade = () => {
   const { subgraph } = useSynthetixQueries();
   const { startTime } = useGetStake();
+  const { currentFeePeriods } = useGetStake()
   //@ts-ignore
   // const currentEpochTime = startTime + 604800
 
@@ -22,6 +23,9 @@ const useGetCurrentTrade = () => {
       usdFees: true,
       usdVolume: true,
       partner: true,
+    },
+    {
+      enabled: Boolean(currentFeePeriods.data),
     }
   );
 

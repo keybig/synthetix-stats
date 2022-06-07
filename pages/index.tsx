@@ -18,7 +18,7 @@ const Home = () => {
   const queryClient = new QueryClient({
     defaultOptions: {
       queries: {
-        notifyOnChangeProps: 'tracked',
+        notifyOnChangeProps: ['data'],
       },
     },
   })

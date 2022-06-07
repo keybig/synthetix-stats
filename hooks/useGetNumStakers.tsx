@@ -15,46 +15,72 @@ const useGetNumStakers = () => {
   const [monthStaker, setMonthStaker] = useState<any[]>();
   const [numStakers, setNumStakers] = useState<number>()
 
+  const [
+    blockOne,
+    blockTwo,
+    blockThree,
+    blockFour,
+    blockFive,
+    blockSix,
+    blockSeven
+  ] = blockNum
+
+  const [
+    weekBlockOne,
+    weekBlockTwo,
+    weekBlockThree,
+    weekBlockFour,
+    weekBlockFive
+  ] = weekBlockNum
+
+  const [
+    monthBlockOne,
+    monthBlockTwo,
+    monthBlockThree,
+    monthBlockFour,
+    monthBlockFive
+  ] = monthBlockNum
+
   const currentStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[0] } },
+    { first: 1, block: { number: blockOne } },
     { count: true },
-    { enabled: Boolean(blockNum[0]) }
+    { enabled: Boolean(blockOne) }
   );
 
   const fourHourStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[1] } },
+    { first: 1, block: { number: blockTwo } },
     { count: true },
-    { enabled: Boolean(blockNum[1]) }
+    { enabled: Boolean(blockTwo) }
   );
 
   const eightHourStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[2] } },
+    { first: 1, block: { number: blockThree } },
     { count: true },
-    { enabled: Boolean(blockNum[2]) }
+    { enabled: Boolean(blockThree) }
   );
 
   const twelveHourStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[3] } },
+    { first: 1, block: { number: blockFour } },
     { count: true },
-    { enabled: Boolean(blockNum[3]) }
+    { enabled: Boolean(blockFour) }
   );
 
   const sixtenHourStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[4] } },
+    { first: 1, block: { number: blockFive } },
     { count: true },
-    { enabled: Boolean(blockNum[4]) }
+    { enabled: Boolean(blockFive) }
   );
 
   const twentyHourStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[5] } },
+    { first: 1, block: { number: blockSix } },
     { count: true },
-    { enabled: Boolean(blockNum[5]) }
+    { enabled: Boolean(blockSix) }
   );
 
   const twentyFourHourStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: blockNum[6] } },
+    { first: 1, block: { number: blockSeven } },
     { count: true },
-    { enabled: Boolean(blockNum[6]) }
+    { enabled: Boolean(blockSeven) }
   );
 
   //week staker
@@ -65,65 +91,65 @@ const useGetNumStakers = () => {
   )*/
 
   const twoDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: weekBlockNum[0] } },
+    { first: 1, block: { number: weekBlockOne } },
     { count: true },
-    { enabled: Boolean(weekBlockNum[0]) }
+    { enabled: Boolean(weekBlockOne) }
   );
 
   const threeDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: weekBlockNum[1] } },
+    { first: 1, block: { number: weekBlockTwo } },
     { count: true },
-    { enabled: Boolean(weekBlockNum[1]) }
+    { enabled: Boolean(weekBlockTwo) }
   );
 
   const fourDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: weekBlockNum[2] } },
+    { first: 1, block: { number: weekBlockThree } },
     { count: true },
-    { enabled: Boolean(weekBlockNum[2]) }
+    { enabled: Boolean(weekBlockThree) }
   );
 
   const fiveDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: weekBlockNum[3] } },
+    { first: 1, block: { number: weekBlockFour } },
     { count: true },
-    { enabled: Boolean(weekBlockNum[3]) }
+    { enabled: Boolean(weekBlockFour) }
   );
 
   const sixDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: weekBlockNum[4] } },
+    { first: 1, block: { number: weekBlockFive } },
     { count: true },
-    { enabled: Boolean(weekBlockNum[4]) }
+    { enabled: Boolean(weekBlockFive) }
   );
 
   //month staker
 
   const tenDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: monthBlockNum[0] } },
+    { first: 1, block: { number: monthBlockOne } },
     { count: true },
-    { enabled: Boolean(monthBlockNum[0]) }
+    { enabled: Boolean(monthBlockOne) }
   );
 
   const fifteenDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: monthBlockNum[1] } },
+    { first: 1, block: { number: monthBlockTwo } },
     { count: true },
-    { enabled: Boolean(monthBlockNum[1]) }
+    { enabled: Boolean(monthBlockTwo) }
   );
 
   const twentyDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: monthBlockNum[2] } },
+    { first: 1, block: { number: monthBlockThree } },
     { count: true },
-    { enabled: Boolean(monthBlockNum[2]) }
+    { enabled: Boolean(monthBlockThree) }
   );
 
   const twentyFiveDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: monthBlockNum[3] } },
+    { first: 1, block: { number: monthBlockFour } },
     { count: true },
-    { enabled: Boolean(monthBlockNum[3]) }
+    { enabled: Boolean(monthBlockFour) }
   );
 
   const thirtyDayStakerCall = subgraph.useGetTotalActiveStakers(
-    { first: 1, block: { number: monthBlockNum[4] } },
+    { first: 1, block: { number: monthBlockFive } },
     { count: true },
-    { enabled: Boolean(monthBlockNum[4]) }
+    { enabled: Boolean(monthBlockFive) }
   );
 
   useEffect(() => {
@@ -200,13 +226,13 @@ const useGetNumStakers = () => {
       setDayStaker(day);
     }
   }, [
-    currentStakerCall.isSuccess,
-    fourHourStakerCall.isSuccess,
-    eightHourStakerCall.isSuccess,
-    twelveHourStakerCall.isSuccess,
-    sixtenHourStakerCall.isSuccess,
-    twentyHourStakerCall.isSuccess,
-    twentyFourHourStakerCall.isSuccess,
+    currentStakerCall.data,
+    fourHourStakerCall.data,
+    eightHourStakerCall.data,
+    twelveHourStakerCall.data,
+    sixtenHourStakerCall.data,
+    twentyHourStakerCall.data,
+    twentyFourHourStakerCall.data,
   ]);
 
   useEffect(() => {
@@ -279,13 +305,13 @@ const useGetNumStakers = () => {
       setWeekStaker(week);
     }
   }, [
-    currentStakerCall.isSuccess,
-    twentyFourHourStakerCall.isSuccess,
-    twoDayStakerCall.isSuccess,
-    threeDayStakerCall.isSuccess,
-    fourDayStakerCall.isSuccess,
-    fiveDayStakerCall.isSuccess,
-    sixDayStakerCall.isSuccess,
+    currentStakerCall.data,
+    twentyFourHourStakerCall.data,
+    twoDayStakerCall.data,
+    threeDayStakerCall.data,
+    fourDayStakerCall.data,
+    fiveDayStakerCall.data,
+    sixDayStakerCall.data,
   ]);
 
   useEffect(() => {
@@ -359,13 +385,13 @@ const useGetNumStakers = () => {
       setMonthStaker(month);
     }
   }, [
-    currentStakerCall.isSuccess,
-    fiveDayStakerCall.isSuccess,
-    tenDayStakerCall.isSuccess,
-    fifteenDayStakerCall.isSuccess,
-    twentyDayStakerCall.isSuccess,
-    twentyFiveDayStakerCall.isSuccess,
-    thirtyDayStakerCall.isSuccess,
+    currentStakerCall.data,
+    fiveDayStakerCall.data,
+    tenDayStakerCall.data,
+    fifteenDayStakerCall.data,
+    twentyDayStakerCall.data,
+    twentyFiveDayStakerCall.data,
+    thirtyDayStakerCall.data,
   ]);
 
   return {

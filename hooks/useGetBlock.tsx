@@ -1,4 +1,5 @@
 import useSynthetixQueries from "@synthetixio/queries";
+import { useEffect, useState } from "react";
 import useGetTime from "./useGetTime";
 
 interface Blocks  {
@@ -23,19 +24,16 @@ interface Blocks  {
     twentyFourHourAgoBlock:number
 }
 
-
-
 const useGetBlock = () => {
 
   const { times } = useGetTime()
+  const [blockNum, setBlockNum] = useState<number[]>([])
+  const [weekBlockNum, setWeekBlockNum] = useState<number[]>([])
+  const [monthBlockNum, setMonthBlockNum] = useState<number[]>([])
 
   // start data collection at 5 minutes ago to allow data sync
 
   const ts = Math.floor((Date.now() / 1e3)-300);
-
-    const blockNum:number[] = []
-    const weekBlockNum:number[] = []
-    const monthBlockNum:number[] = []
 
     const { subgraph } = useSynthetixQueries()
 
@@ -43,25 +41,15 @@ const useGetBlock = () => {
       { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
         timestamp_lt:ts,
       }},
-      { timestamp:true, block:true}
+      { timestamp:true, block:true},
     )
 
-    currentBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-    })
-
-    
     const fourHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
           timestamp_lt:times.fourHourAgo,
         }},
         { timestamp:true, block:true}
       )
-  
-      fourHourAgoBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-
-      })
 
       const eightHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
@@ -69,11 +57,6 @@ const useGetBlock = () => {
         }},
         { timestamp:true, block:true}
       )
-  
-      eightHourAgoBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-
-      })
 
       const twelveHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
@@ -81,11 +64,6 @@ const useGetBlock = () => {
         }},
         { timestamp:true, block:true}
       )
-  
-      twelveHourAgoBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-
-      })
 
       const sixteenHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
@@ -93,11 +71,6 @@ const useGetBlock = () => {
         }},
         { timestamp:true, block:true}
       )
-  
-      sixteenHourAgoBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-
-      })
 
       const twentyHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
@@ -105,11 +78,6 @@ const useGetBlock = () => {
         }},
         { timestamp:true, block:true}
       )
-  
-      twentyHourAgoBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-
-      })
 
       const twentyFourHourAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc", where:{
@@ -117,10 +85,6 @@ const useGetBlock = () => {
         }},
         { timestamp:true, block:true}
       )
-  
-      twentyFourHourAgoBlock.data?.forEach(item => {
-        blockNum.push(item.block.toNumber())
-      })
 
       //week blocks, current and one day pulled from daily block, starts at day2
 
@@ -131,9 +95,7 @@ const useGetBlock = () => {
           { timestamp:true, block:true}
       )
 
-      twoDayAgoBlock.data?.forEach(item => {
-        weekBlockNum.push(item.block.toNumber())
-      })
+      
 
       const threeDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -142,20 +104,12 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    threeDayAgoBlock.data?.forEach(item => {
-      weekBlockNum.push(item.block.toNumber())
-    })
-
     const fourDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
             timestamp_lt:times.fourDayAgo
         }},
         { timestamp:true, block:true}
     )
-
-    fourDayAgoBlock.data?.forEach(item => {
-      weekBlockNum.push(item.block.toNumber())
-    })
 
     const fiveDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -164,9 +118,7 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    fiveDayAgoBlock.data?.forEach(item => {
-      weekBlockNum.push(item.block.toNumber())
-    })
+   
 
     const sixDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -175,9 +127,6 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    sixDayAgoBlock.data?.forEach(item => {
-      weekBlockNum.push(item.block.toNumber())
-    })
 
     // month block num, current and 5 pulled from week, starts at 10
 
@@ -188,9 +137,8 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    tenDayAgoBlock.data?.forEach(item => {
-      monthBlockNum.push(item.block.toNumber())
-    })
+
+   
 
     const fifteenDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -199,9 +147,7 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    fifteenDayAgoBlock.data?.forEach(item => {
-      monthBlockNum.push(item.block.toNumber())
-    })
+    
 
     const twentyDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -210,9 +156,7 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    twentyDayAgoBlock.data?.forEach(item => {
-      monthBlockNum.push(item.block.toNumber())
-    })
+   
 
     const twentyFiveDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -221,9 +165,7 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
-    twentyFiveDayAgoBlock.data?.forEach(item => {
-      monthBlockNum.push(item.block.toNumber())
-    })
+    
 
     const thirtyDayAgoBlock = subgraph.useGetRateUpdates(
         { first:1, orderBy:"timestamp", orderDirection:"desc",where:{
@@ -232,17 +174,153 @@ const useGetBlock = () => {
         { timestamp:true, block:true}
     )
 
+   useEffect(() => {
+    
+    const blockNum:number[] = []
+    const weekBlockNum:number[] = []
+    const monthBlockNum:number[] = []
+   
+    currentBlock.isSuccess &&
+      currentBlock.data.forEach(item => {
+          blockNum.push(item.block.toNumber())
+      })
+      
+        fourHourAgoBlock.isSuccess &&
+        fourHourAgoBlock.data.forEach(item => {
+          blockNum.push(item.block.toNumber())
+        })
+  
+      eightHourAgoBlock.isSuccess &&
+      eightHourAgoBlock.data.forEach(item => {
+        blockNum.push(item.block.toNumber())
+
+      })
+  
+      twelveHourAgoBlock.isSuccess &&
+      twelveHourAgoBlock.data?.forEach(item => {
+        blockNum.push(item.block.toNumber())
+
+      })
+  
+      sixteenHourAgoBlock.isSuccess &&
+      sixteenHourAgoBlock.data?.forEach(item => {
+        blockNum.push(item.block.toNumber())
+
+      })
+  
+      twentyHourAgoBlock.isSuccess &&
+      twentyHourAgoBlock.data?.forEach(item => {
+        blockNum.push(item.block.toNumber())
+
+      })
+  
+      twentyFourHourAgoBlock.isSuccess &&
+      twentyFourHourAgoBlock.data?.forEach(item => {
+        blockNum.push(item.block.toNumber())
+      })
+
+      twoDayAgoBlock.isSuccess &&
+      twoDayAgoBlock.data?.forEach(item => {
+        weekBlockNum.push(item.block.toNumber())
+      })
+
+    threeDayAgoBlock.isSuccess &&
+    threeDayAgoBlock.data?.forEach(item => {
+      weekBlockNum.push(item.block.toNumber())
+    })
+
+    fourDayAgoBlock.isSuccess &&
+    fourDayAgoBlock.data?.forEach(item => {
+      weekBlockNum.push(item.block.toNumber())
+    })
+
+    fiveDayAgoBlock.isSuccess &&
+    fiveDayAgoBlock.data?.forEach(item => {
+      weekBlockNum.push(item.block.toNumber())
+    })
+
+    sixDayAgoBlock.isSuccess &&
+    sixDayAgoBlock.data?.forEach(item => {
+      weekBlockNum.push(item.block.toNumber())
+    })
+
+    tenDayAgoBlock.isSuccess &&
+    tenDayAgoBlock.data?.forEach(item => {
+      monthBlockNum.push(item.block.toNumber())
+    })
+
+    fifteenDayAgoBlock.isSuccess &&
+    fifteenDayAgoBlock.data?.forEach(item => {
+      monthBlockNum.push(item.block.toNumber())
+    })
+
+    twentyDayAgoBlock.isSuccess &&
+    twentyDayAgoBlock.data?.forEach(item => {
+      monthBlockNum.push(item.block.toNumber())
+    })
+
+    twentyFiveDayAgoBlock.isSuccess &&
+    twentyFiveDayAgoBlock.data?.forEach(item => {
+      monthBlockNum.push(item.block.toNumber())
+    })
+
+    thirtyDayAgoBlock.isSuccess &&
     thirtyDayAgoBlock.data?.forEach(item => {
       monthBlockNum.push(item.block.toNumber())
     })
+
+    setBlockNum(blockNum)
+    setWeekBlockNum(weekBlockNum)
+    setMonthBlockNum(monthBlockNum)
+    
+   }, [
+     currentBlock.data,
+     fourHourAgoBlock.data,
+     eightHourAgoBlock.data,
+     twelveHourAgoBlock.data,
+     sixteenHourAgoBlock.data,
+     twentyHourAgoBlock.data,
+     twentyFourHourAgoBlock.data,
+     twoDayAgoBlock.data,
+     threeDayAgoBlock.data,
+     fourDayAgoBlock.data,
+     fiveDayAgoBlock.data,
+     sixDayAgoBlock.data,
+     tenDayAgoBlock.data,
+     fifteenDayAgoBlock.data,
+     twentyDayAgoBlock.data,
+     twentyFiveDayAgoBlock.data,
+     thirtyDayAgoBlock.data
+
+     ])
+   
       
+
+    
 
     
 
   return {
       blockNum,
       weekBlockNum,
-      monthBlockNum
+      monthBlockNum,
+      currentBlock,
+      fourHourAgoBlock,
+      eightHourAgoBlock,
+      twelveHourAgoBlock,
+      sixteenHourAgoBlock,
+      twentyHourAgoBlock,
+      twentyFourHourAgoBlock,
+      twoDayAgoBlock,
+      threeDayAgoBlock,
+      fourDayAgoBlock,
+      fiveDayAgoBlock,
+      sixDayAgoBlock,
+      tenDayAgoBlock,
+      fifteenDayAgoBlock,
+      twentyDayAgoBlock,
+      twentyFiveDayAgoBlock,
+      thirtyDayAgoBlock
   }
 }
 

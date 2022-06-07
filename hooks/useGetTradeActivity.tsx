@@ -5,6 +5,8 @@ import useGetStake from "./useGetStake";
 const useGetTradeActivity = () => {
   const { subgraph } = useSynthetixQueries();
   const { startTime } = useGetStake();
+  const { currentFeePeriods } = useGetStake()
+
 
   // const [currentTable, setCurrentTable] = useState<any[]>([])
 
@@ -57,6 +59,9 @@ const useGetTradeActivity = () => {
       usdFees: true,
       usdVolume: true,
       partner: true,
+    },
+    {
+      enabled: Boolean(currentFeePeriods.data),
     }
   );
 
