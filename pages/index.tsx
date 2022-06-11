@@ -30,7 +30,7 @@ const Home = () => {
 
   const handleNetwork = (buttons: any) => {
     setNetId(buttons.id);
-    router.push("/mainnet")
+    queryClient.invalidateQueries()
  
   };
 

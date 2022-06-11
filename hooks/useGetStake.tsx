@@ -106,6 +106,7 @@ const useGetStake = () => {
         .substring(2)}%`;
 
 
+      
       setTotalCollateral(totalStaked);
       setStakedVal(stakedVal);
 

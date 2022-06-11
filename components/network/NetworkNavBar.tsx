@@ -1,5 +1,6 @@
 import { NetworkId } from "@synthetixio/contracts-interface";
 import { ReactNode } from "react";
+import { QueryClient } from "react-query";
 
 import styles from "./NetworkNavBar.module.css";
 

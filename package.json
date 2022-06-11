@@ -9,11 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@apollo/client": "^3.6.6",
     "@synthetixio/contracts-interface": "^2.67.0-alpha",
     "@synthetixio/providers": "^2.68.0-alpha",
     "@synthetixio/queries": "^2.67.0-alpha",
     "@synthetixio/wei": "^2.68.0-alpha",
+    "codegen-graph-ts": "^0.1.4",
     "ethers": "^5.6.5",
+    "graphql": "^15.5.0",
+    "graphql-request": "^4.3.0",
     "next": "12.1.5",
     "react": "18.0.0",
     "react-dom": "18.0.0",
