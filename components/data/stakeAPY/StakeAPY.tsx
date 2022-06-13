@@ -1,5 +1,4 @@
 import styles from "./StakeAPY.module.css";
-import useGetStake from '../../../hooks/useGetStake'
 import { formatPercent } from "../../../constants/format";
 import { useMemo } from "react";
 
@@ -8,7 +7,6 @@ interface APY {
 }
 const StakeAPY = ({APY}:APY) => {
   
-  const { percentAPY } = useGetStake();
 
   return (
     <div className={styles.container}>

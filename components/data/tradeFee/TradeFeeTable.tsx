@@ -3,8 +3,7 @@ import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
 import styles from './TradeFeeTable.module.css'
 import Image from 'next/image'
 import { keyframes } from 'styled-components'
-import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
-import useGetTradeFee from '../../../hooks/useGetTradeFee'
+
 
 interface Props  {
   tableId:number;
