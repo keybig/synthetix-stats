@@ -1,11 +1,20 @@
+
+import { getDailyExchangePartners, getExchangePartners } from "../subgraph-ovm";
 import { getTradeActivity } from "./getTradeActivity";
 
 export const getTradeFee = async() => {
   
-  const { currentEpochTradeData } = await getTradeActivity();
-  const { tradeDataCall } = await getTradeActivity();
+  const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
+const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
+
 
   const tradeFeeArr: any[] = [];
+
+  const tradeDataCall = await getExchangePartners(
+    optimism_url,
+  { orderBy: "usdVolume", orderDirection: "desc" },
+  { id: true, usdVolume: true, usdFees: true, trades: true }
+);
 
   
   //@ts-ignore
@@ -13,7 +22,8 @@ export const getTradeFee = async() => {
 
   // all time trade info
 
-  tradeDataCall.data?.forEach((item) => {
+
+  tradeDataCall.forEach((item) => {
     const obj = {
       name: item.id,
       value: item.usdFees.toNumber(),
@@ -22,6 +32,24 @@ export const getTradeFee = async() => {
   });
 
   // current fee call
+
+  const currentEpochTradeData = await getDailyExchangePartners(
+    optimism_url,
+  {
+    where: { timestamp_gt: 10305030 },
+    orderBy: "timestamp",
+    orderDirection: "desc",
+  },
+  {
+    timestamp: true,
+    trades: true,
+    usdFees: true,
+    usdVolume: true,
+    partner: true,
+  },
+);
+
+
 
   const currentFeeDataArr: any[] = [];
 

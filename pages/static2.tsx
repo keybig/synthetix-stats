@@ -53,7 +53,6 @@ export async function getStaticProps() {
 
   const numStake = await numStaker()
   const theTVL = await getTvl()
-  const feesy = await getTradeFee()
 
   // tests below, keep above
 
@@ -91,7 +90,6 @@ export async function getStaticProps() {
         numStake,
         theTVL,
         tradey,
-        feesy
     }  }
   }
   
@@ -143,11 +141,11 @@ const Static2 = (props:any) => {
 
 
       <TradeFee 
-        tradeFeeArr={props.feesy.tradeFeeArr}
-        currentFeeData={props.feesy.currentFeeData}
-        currentFeeSum={props.feesy.currentFeeSum}
-        totalFeeSum={props.feesy.totalFeeSum}
-        totalIssuedSynth={props.theTVL.totalSynth}
+        tradeFeeArr={props.tradey.tradeFeeArr}
+        currentFeeData={props.tradey.currentFeeData}
+        currentFeeSum={props.tradey.currentFeeSum}
+        totalFeeSum={props.tradey.totalFeeSum}
+        totalIssuedSynth={props.tradey.totalSynth}
       />
 
     </div>

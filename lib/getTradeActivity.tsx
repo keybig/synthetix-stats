@@ -106,6 +106,45 @@ export const getTradeActivity = async() => {
   //const currentTotalTrades = formatNumber.format(currentTradeSum);
   //const currentTotalVol = formatMoney.format(currentVolSum);
 
+  // all time fees
+
+  const tradeFeeArr: any[] = [];
+
+  tradeDataCall.forEach((item) => {
+    const obj = {
+      name: item.id,
+      value: item.usdFees.toNumber(),
+    };
+    tradeFeeArr.push(obj);
+  });
+
+  // current fees
+
+  const currentFeeDataArr: any[] = [];
+
+  currentEpochTradeData.forEach((item) => {
+    const obj = {
+      name: item.partner,
+      value: item.usdFees.toNumber(),
+    };
+    currentFeeDataArr.push(obj);
+  });
+
+  const currentFeeData = currentFeeDataArr.reduce((sum, cur) => {
+    const { name, value } = cur;
+    const item = sum.find((it: { name: string }) => it.name === name);
+    item ? (item.value += value) : sum.push({ name, value });
+    return sum;
+  }, []);
+
+  const totalFeeSum = currentEpochTradeData.reduce((sum, cur) => {
+        return sum + cur.usdFees.toNumber();
+      }, 0)
+
+
+  const currentFeeSum = currentEpochTradeData.reduce((sum, cur) => {
+        return sum + cur.usdFees.toNumber();
+      }, 0)
   return {
     tradeDataArr,
     currentTradeStats,
@@ -113,8 +152,10 @@ export const getTradeActivity = async() => {
     totalVol,
     currentTrade,
     currentVol,
-    tradeDataCall,
-    currentEpochTradeData
+    tradeFeeArr,
+    currentFeeData,
+    totalFeeSum,
+    currentFeeSum
   };
 };
 
