@@ -6,25 +6,26 @@ import { keyframes } from 'styled-components'
 import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 import useGetTradeFee from '../../../hooks/useGetTradeFee'
 
-type Props = {
-  tableId?:number
+interface Props  {
+  tableId:number;
+  tradeFeeArr: any[];
+  currentFeeData: any[];
+  currentFeeSum: number;
+  totalFeeSum: number;
+
 }
 
 
-const TradeFeeTable = (props: Props) => {
+const TradeFeeTable = ({
+  tableId,
+  tradeFeeArr,
+  currentFeeData,
+  currentFeeSum,
+  totalFeeSum
+}:Props) => {
 
-    const { tradeFeeArr } = useGetTradeFee()
-    const { currentFeeData } = useGetTradeFee()
-    const { currentFeeSum } = useGetTradeFee()
-    const { totalFeeSum } = useGetTradeFee()
-
-
-   
-
-
-
-    const tableData = props.tableId === 1 ? currentFeeData : tradeFeeArr
-    const feeDep = props.tableId === 1 ? currentFeeSum : totalFeeSum
+    const tableData = tableId === 1 ? currentFeeData : tradeFeeArr
+    const feeDep = tableId === 1 ? currentFeeSum : totalFeeSum
 
 
 

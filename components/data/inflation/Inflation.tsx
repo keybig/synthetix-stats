@@ -9,11 +9,17 @@ import {
 } from "recharts";
 import useGetStake from "../../../hooks/useGetStake";
 
+interface Inflation {
+  currentReward: number;
+  allTimeInflation: number;
+  inflationData: any[];
+}
 
-const Inflation = () => {
-  const { currentReward } = useGetStake();
-  const { allTimeInflation } = useGetStake();
-  const { inflationData } = useGetStake();
+const Inflation = ({
+  currentReward,
+  allTimeInflation,
+  inflationData
+}:Inflation) => {
 
   return (
     <div className={styles.wrapper}>

@@ -113,6 +113,8 @@ export const getTradeActivity = async() => {
     totalVol,
     currentTrade,
     currentVol,
+    tradeDataCall,
+    currentEpochTradeData
   };
 };
 

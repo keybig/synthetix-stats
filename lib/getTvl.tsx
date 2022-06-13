@@ -646,7 +646,8 @@ const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/o
         currentWrapper: currentWrapper,
         day: day,
         week: week,
-        month: month
+        month: month,
+        totalSynth:currentTotalIssuedSynths
     }
 
   }

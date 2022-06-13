@@ -27,6 +27,9 @@ import TotalValueLocked from '../components/data/tvl/TotalValueLocked'
 import StakeAPY from '../components/data/stakeAPY/StakeAPY'
 import NumStaker from '../components/data/numStaker/numStaker'
 import TradeActivity from '../components/data/tradeActivity/TradeActivity'
+import Inflation from '../components/data/inflation/Inflation'
+import { getTradeFee } from '../lib/getTradeFee'
+import TradeFee from '../components/data/tradeFee/TradeFee'
 
 
 
@@ -50,6 +53,7 @@ export async function getStaticProps() {
 
   const numStake = await numStaker()
   const theTVL = await getTvl()
+  const feesy = await getTradeFee()
 
   // tests below, keep above
 
@@ -86,7 +90,8 @@ export async function getStaticProps() {
         apy,
         numStake,
         theTVL,
-        tradey
+        tradey,
+        feesy
     }  }
   }
   
@@ -129,6 +134,21 @@ const Static2 = (props:any) => {
     currentTotalVol={props.tradey.currentVol}
     currentTradeData={props.tradey.currentTradeStats}
      />
+
+     <Inflation
+      currentReward={props.stakeParent.reward}
+      allTimeInflation={props.stakeParent.rewardsAmt}
+      inflationData={props.stakeParent.inflationData}
+      />
+
+
+      <TradeFee 
+        tradeFeeArr={props.feesy.tradeFeeArr}
+        currentFeeData={props.feesy.currentFeeData}
+        currentFeeSum={props.feesy.currentFeeSum}
+        totalFeeSum={props.feesy.totalFeeSum}
+        totalIssuedSynth={props.theTVL.totalSynth}
+      />
 
     </div>
 

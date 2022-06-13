@@ -5,11 +5,23 @@ import useGetTradeFee from "../../../hooks/useGetTradeFee";
 import TradeFeeTable from "./TradeFeeTable";
 import useGetTVL from "../../../hooks/useGetTVL";
 
-const TradeFee = () => {
-  const { tradeFeeArr } = useGetTradeFee();
-  const { currentFeeData } = useGetTradeFee();
-  const { totalIssuedSynth } = useGetTVL();
+interface Props  {
+  tradeFeeArr: any[];
+  currentFeeData: any[];
+  currentFeeSum: number;
+  totalFeeSum: number;
+  totalIssuedSynth: number;
 
+}
+
+const TradeFee = ({
+  tradeFeeArr,
+  currentFeeData,
+  currentFeeSum,
+  totalFeeSum,
+  totalIssuedSynth
+}:Props) => {
+ 
   const buttonMap = [
     { id: 1, title: "Current Epoch" },
     { id: 2, title: "Total To Date" },
@@ -81,7 +93,14 @@ const TradeFee = () => {
         </div>
 
         <div className={styles.chartkey}>
-          <TradeFeeTable tableId={click} />
+          <TradeFeeTable 
+            tableId={click}
+            tradeFeeArr={tradeFeeArr}
+            totalFeeSum={totalFeeSum}
+            currentFeeData={currentFeeData}
+            currentFeeSum={currentFeeSum}
+             />
+            
         </div>
       </div>
 
