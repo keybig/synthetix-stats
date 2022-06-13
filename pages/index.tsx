@@ -38,11 +38,16 @@ const Home = (props: any) => {
         />
 
         <TotalValueLocked
-          dayData={props.theTVL.day}
-          weekData={props.theTVL.week}
-          monthData={props.theTVL.month}
-          totalDebt={props.theTVL.currentDebt}
-          totalWrapper={props.theTVL.currentWrapper}
+          dayDataOvm={props.theTVL.day}
+          weekDataOvm={props.theTVL.week}
+          monthDataOvm={props.theTVL.month}
+          totalDebtOvm={props.theTVL.currentDebt}
+          totalWrapperOvm={props.theTVL.currentWrapper}
+          dayDataMain={props.theTVL.day}
+          weekDataMain={props.theTVL.week}
+          monthDataMain={props.theTVL.month}
+          totalDebtMain={props.theTVL.currentDebt}
+          totalWrapperMain={props.theTVL.currentWrapper}
         />
         <StakeAPY APY={props.stakeParent.apy} />
         <NumStaker

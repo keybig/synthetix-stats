@@ -17,7 +17,7 @@ import {
 import { snxIssuers } from "../lib/getTest";
 import { blocky } from "../lib/getBlock";
 import { staking } from "../lib/getStaker";
-import { getTvl } from "../lib/getTvl";
+import { getTvl } from "../lib/getTVLy";
 import { numStaker } from "../lib/getNumStaker";
 import { getTradeActivity } from "../lib/getTradeActivity";
 import StaticSnxStaked from "../components/data/snxStaked/SnxStaked";
@@ -49,10 +49,16 @@ export async function getStaticProps() {
 }
 
 const Static2 = (props: any) => {
+  const [netId, setNetId] = useState<number>(10);
+
+  const handleNetwork = (buttons: any) => {
+    setNetId(buttons.id);
+  };
+
   return (
     <div style={{ background: "white", fontSize: "2rem" }}>
       <h5> The Static Data Fetching Test yo Area</h5>
-
+    <NetworkNavBar handle={handleNetwork} current={netId}/>
       <div className={styles.container}>
         <StaticSnxStaked
           collateral={props.stakeParent.snxStaked}
@@ -61,12 +67,18 @@ const Static2 = (props: any) => {
         />
 
         <TotalValueLocked
-          dayData={props.theTVL.day}
-          weekData={props.theTVL.week}
-          monthData={props.theTVL.month}
-          totalDebt={props.theTVL.currentDebt}
-          totalWrapper={props.theTVL.currentWrapper}
+          dayDataOvm={props.theTVL.dayOvm}
+          weekDataOvm={props.theTVL.weekOvm}
+          monthDataOvm={props.theTVL.monthOvm}
+          totalDebtOvm={props.theTVL.ovmCurrentDebt}
+          totalWrapperOvm={props.theTVL.ovmCurrentWrapper}
+          dayDataMain={props.theTVL.dayMain}
+          weekDataMain={props.theTVL.weekMain}
+          monthDataMain={props.theTVL.monthMain}
+          totalDebtMain={props.theTVL.mainCurrentDebt}
+          totalWrapperMain={props.theTVL.mainCurrentWrapper}
         />
+        
         <StakeAPY APY={props.stakeParent.apy} />
         <NumStaker
           dayStaker={props.numStake.day}
@@ -99,93 +111,9 @@ const Static2 = (props: any) => {
         />
       </div>
 
-      <div>
-        <p> SNX Staking APY Grid</p>
-        <p> {props.apy}</p>
+     
       </div>
-
-      <div>
-        <p> SNX Total Value Locked Grid</p>
-        <p> {props.theTVL.currentDebt + props.theTVL.currentWrapper}</p>
-        <p> {props.theTVL.currentDebt}</p>
-        <p> {props.theTVL.currentWrapper}</p>
-        <>
-          {props.theTVL.day.map(
-            (item: { date: string; debt: number; wrapper: number }) => {
-              return (
-                <p key={item.date}>
-                  {" "}
-                  debt: {item.debt} wrapper: {item.wrapper}
-                </p>
-              );
-            }
-          )}
-        </>
-        <>
-          {props.theTVL.week.map(
-            (item: { date: string; debt: number; wrapper: number }) => {
-              return (
-                <p key={item.date}>
-                  {" "}
-                  debt: {item.debt} wrapper: {item.wrapper}
-                </p>
-              );
-            }
-          )}
-        </>
-        <>
-          {props.theTVL.month.map(
-            (item: { date: string; debt: number; wrapper: number }) => {
-              return (
-                <p key={item.date}>
-                  {" "}
-                  debt: {item.debt} wrapper: {item.wrapper}
-                </p>
-              );
-            }
-          )}
-        </>
-      </div>
-
-      <div>
-        <p> Num Staker</p>
-        <p>{props.numStake.currentStaker}</p>
-
-        <>
-          {props.numStake.day.map((item: { date: string; stakers: number }) => {
-            return (
-              <p key={item.date}>
-                date: {item.date} stakers: {item.stakers}
-              </p>
-            );
-          })}
-        </>
-        <>
-          {props.numStake.week.map(
-            (item: { date: string; stakers: number }) => {
-              return (
-                <p key={item.date}>
-                  {" "}
-                  date: {item.date} stakers: {item.stakers}{" "}
-                </p>
-              );
-            }
-          )}
-        </>
-        <>
-          {props.numStake.week.map(
-            (item: { date: string; stakers: number }) => {
-              return (
-                <p key={item.date}>
-                  {" "}
-                  date: {item.date} stakers: {item.stakers}
-                </p>
-              );
-            }
-          )}
-        </>
-      </div>
-    </div>
+  
   );
 };
 

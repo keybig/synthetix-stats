@@ -14,20 +14,31 @@ import {
 import { useMemo, useState } from "react";
 
 interface TVL {
-  dayData: any[];
-  weekData: any[];
-  monthData: any[];
-  totalDebt: number;
-  totalWrapper: number;
+  dayDataOvm: any[];
+  weekDataOvm: any[];
+  monthDataOvm: any[];
+  dayDataMain: any[];
+  weekDataMain: any[];
+  monthDataMain: any[];
+  totalDebtOvm: number;
+  totalDebtMain: number;
+  totalWrapperOvm: number;
+  totalWrapperMain: number;
 }
 
 
 const TotalValueLocked = ({
-  dayData, 
-  weekData,
-  monthData,
-  totalDebt,
-  totalWrapper
+  click,
+  dayDataOvm, 
+  dayDataMain,
+  weekDataOvm,
+  weekDataMain,
+  monthDataOvm,
+  monthDataMain,
+  totalDebtOvm,
+  totalDebtMain,
+  totalWrapperOvm,
+  totalWrapperMain
 }:TVL) => {
   const buttonMap = [
     { id: 1, title: "One Day" },
@@ -35,10 +46,10 @@ const TotalValueLocked = ({
     { id: 3, title: "One Month" },
   ];
 
-  const [click, setClick] = useState(1);
+  const [timeFrame, setTimeFrame] = useState(1);
 
   const handleActive = (buttons: any) => {
-    setClick(buttons.id);
+    setTimeFrame(buttons.id);
   };
 
   return (
@@ -46,7 +57,7 @@ const TotalValueLocked = ({
       <div className={styles.topBar}>
         <div className={styles.info}>
           <h3 className={styles.tvl}>Total Value Locked</h3>
-          <p className={styles.values}>{totalDebt + totalWrapper}</p>
+          <p className={styles.values}>{totalDebtOvm + totalWrapperOvm}</p>
         </div>
 
         <div className={styles.selectors}>
@@ -55,7 +66,7 @@ const TotalValueLocked = ({
               key={buttonMap.id}
               onClick={() => handleActive(buttonMap)}
               className={
-                buttonMap.id === click ? styles.button : styles.inactive
+                buttonMap.id === timeFrame ? styles.button : styles.inactive
               }
             >
               {buttonMap.title}
@@ -66,7 +77,7 @@ const TotalValueLocked = ({
 
       <div className={styles.responsive}>
         <ResponsiveContainer>
-          <AreaChart data={click === 1 ? dayData : click === 2 ? weekData : monthData}>
+          <AreaChart data={timeFrame === 1 ? dayDataOvm : timeFrame === 2 ? weekDataOvm : monthDataOvm}>
             <XAxis dataKey="date" fontSize={14} />
 
             <Tooltip />
@@ -91,12 +102,12 @@ const TotalValueLocked = ({
       <div className={styles.bottom}>
         <div className={styles.debtPool}>
           <h5 className={styles.stakingColor}>Staking Debt Pool</h5>
-          <p>{totalDebt}</p>
+          <p>{totalDebtOvm}</p>
         </div>
 
         <div className={styles.wrapper}>
           <h5 className={styles.wrapperColor}>Wrappers</h5>
-          <p>{totalWrapper}</p>
+          <p>{totalWrapperOvm}</p>
         </div>
       </div>
     </div>

@@ -7,12 +7,12 @@ import styles from "./NetworkNavBar.module.css";
 type Props = {
   // netwerk: NetworkId
   handle: (buttons: netButton) => void;
-  current: NetworkId;
+  current: number;
   children?: ReactNode;
 };
 
 interface netButton {
-  id: NetworkId;
+  id: number;
   title: string;
 }
 
