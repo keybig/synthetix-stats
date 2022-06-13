@@ -1,5 +1,4 @@
 import styles from "./SnxStaked.module.css";
-import useGetStake from '../../../hooks/useGetStake'
 import { formatNumber } from "../../../constants/format";
 
 interface Staked {

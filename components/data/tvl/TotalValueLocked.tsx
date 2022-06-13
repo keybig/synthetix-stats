@@ -12,8 +12,6 @@ import {
   Area,
 } from "recharts";
 import { useMemo, useState } from "react";
-import useGetTVL from "../../../hooks/useGetTVL";
-import useGetTime from "../../../hooks/useGetTime";
 
 interface TVL {
   dayData: any[];

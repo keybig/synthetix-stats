@@ -1,13 +1,6 @@
 import NetworkNavBar from '../components/network/NetworkNavBar'
 import Subheader from '../components/subheader/Subheader'
-import {
-  createQueryContext,
-  SynthetixQueryContextProvider,
-} from '@synthetixio/queries'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import { useState } from 'react'
-import { NetworkId } from '@synthetixio/contracts-interface'
 import { useRouter } from 'next/router'
 import { staking } from '../lib/getStaker'
 import { getTradeActivity } from '../lib/getTradeActivity'
@@ -28,23 +21,13 @@ import TradeFee from '../components/data/tradeFee/TradeFee'
 
 const Mainnet = (props:any) => {
 
-  const queryClient = new QueryClient({
-    defaultOptions: {
-      queries: {
-        notifyOnChangeProps: ['data'],
-      },
-    },
-  })
-
 
   const router = useRouter()
 
-  const [netId, setNetId] = useState<NetworkId>(10)
+  const [netId, setNetId] = useState<number>(10)
 
   const handleNetwork = (buttons: any) => {
-    setNetId(buttons.id);
-    queryClient.invalidateQueries()
- 
+    setNetId(buttons.id); 
   };
 
 

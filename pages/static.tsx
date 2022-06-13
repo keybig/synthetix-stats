@@ -1,19 +1,10 @@
-import Datagrid from '../components/data/Datagrid'
 import NetworkNavBar from '../components/network/NetworkNavBar'
 import Subheader from '../components/subheader/Subheader'
-import useSynthetixQueries, {
-  createQueryContext,
-  SynthetixQueryContext,
-  SynthetixQueryContextProvider,
-} from '@synthetixio/queries'
-import { QueryClient, QueryClientProvider, useQuery } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import { useContext, useState } from 'react'
 import { NetworkId } from '@synthetixio/contracts-interface'
 import { useRouter } from 'next/router'
 import { request, gql } from 'graphql-request'
 import { arrayBuffer } from 'stream/consumers'
-import useGetBlock from '../hooks/useGetBlock'
 
 
 

@@ -10,7 +10,6 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useState } from "react";
-import useGetNumStakers from "../../../hooks/useGetNumStakers";
 
 interface NumStaker {
   dayStaker: any[];

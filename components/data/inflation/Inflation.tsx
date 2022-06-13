@@ -7,7 +7,6 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
-import useGetStake from "../../../hooks/useGetStake";
 
 interface Inflation {
   currentReward: number;

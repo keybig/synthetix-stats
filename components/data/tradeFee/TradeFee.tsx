@@ -1,9 +1,7 @@
 import styles from "./TradeFee.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
-import useGetTradeFee from "../../../hooks/useGetTradeFee";
 import TradeFeeTable from "./TradeFeeTable";
-import useGetTVL from "../../../hooks/useGetTVL";
 
 interface Props  {
   tradeFeeArr: any[];

@@ -1,8 +1,6 @@
 import styles from "./TradeActivity.module.css";
 import { useState, useMemo } from "react";
 import TradeTable from "./TradeTable";
-import useGetTradeActivity from "../../../hooks/useGetTradeActivity";
-import useGetCurrentTrade from "../../../hooks/useGetCurrentTrade";
 
 interface TradeStats {
   totalTrades: number;

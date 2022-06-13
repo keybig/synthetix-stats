@@ -1,8 +1,6 @@
 import { useMemo } from 'react'
 import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
 import styles from './TradeTable.module.css'
-import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
-import useGetCurrentTrade from '../../../hooks/useGetCurrentTrade'
 
 
 interface table  {
