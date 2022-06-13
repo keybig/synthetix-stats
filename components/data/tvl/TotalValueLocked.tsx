@@ -15,7 +15,22 @@ import { useMemo, useState } from "react";
 import useGetTVL from "../../../hooks/useGetTVL";
 import useGetTime from "../../../hooks/useGetTime";
 
-const TotalValueLocked = () => {
+interface TVL {
+  dayData: any[];
+  weekData: any[];
+  monthData: any[];
+  totalDebt: number;
+  totalWrapper: number;
+}
+
+
+const TotalValueLocked = ({
+  dayData, 
+  weekData,
+  monthData,
+  totalDebt,
+  totalWrapper
+}:TVL) => {
   const buttonMap = [
     { id: 1, title: "One Day" },
     { id: 2, title: "One Week" },
@@ -24,29 +39,16 @@ const TotalValueLocked = () => {
 
   const [click, setClick] = useState(1);
 
-  const { dayData } = useGetTVL();
-  const { weekData } = useGetTVL();
-  const { monthData } = useGetTVL();
-  const { totalDebt } = useGetTVL();
-  const { totalWrapper } = useGetTVL();
-  const { totalValueLocked } = useGetTVL();
-
-
-
-
   const handleActive = (buttons: any) => {
     setClick(buttons.id);
   };
-
-
-  
 
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>
         <div className={styles.info}>
           <h3 className={styles.tvl}>Total Value Locked</h3>
-          <p className={styles.values}>{totalValueLocked}</p>
+          <p className={styles.values}>{totalDebt + totalWrapper}</p>
         </div>
 
         <div className={styles.selectors}>

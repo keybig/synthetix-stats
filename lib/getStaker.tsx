@@ -1,5 +1,6 @@
 import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getSynths } from "../subgraph-ovm";
 
+// staking, apy, inflation
 
 export const staking = async () => {
     const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
@@ -74,7 +75,7 @@ console.log(totalStake)
 
   const currentFeePeriods = await getFeePeriods(
       optimism_url,
-    { orderBy: "startTime", orderDirection: "desc", first: 7 },
+    { orderBy: "startTime", orderDirection: "desc", first: 1000 },
     {
       feesClaimed: true,
       feesToDistribute: true,
@@ -84,8 +85,24 @@ console.log(totalStake)
     }
   );
 
+  // Inflation
+
   const reward = currentFeePeriods[0].rewardsToDistribute.toNumber();
+
+  const rewardsAmount = currentFeePeriods.reduce((sum: number, current) => {
+    return sum + current.rewardsToDistribute.toNumber();
+  }, 0);
+
+
+
+  const inflationData = currentFeePeriods.slice(0,7).map((item) => {
+      return { snx_rewards: item.rewardsToDistribute.toNumber() };
+    }).reverse();
+
+
+  // APY
   const fee = currentFeePeriods[0].feesToDistribute.toNumber();
+
   const apy = (fee / (snxRate * totalStake) * 52 + (reward / totalStake) * 52)
   console.log(apy)
 
@@ -96,7 +113,9 @@ console.log(totalStake)
       snxRate: snxRate,
       snxStaked: totalStake,
       reward: reward,
-      apy: apy
+      apy: apy,
+      rewardsAmt: rewardsAmount,
+      inflationData:inflationData
   }
 
 }

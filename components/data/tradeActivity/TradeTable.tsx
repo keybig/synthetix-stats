@@ -5,20 +5,20 @@ import useGetTradeActivity from '../../../hooks/useGetTradeActivity'
 import useGetCurrentTrade from '../../../hooks/useGetCurrentTrade'
 
 
-type Props = {
-  tableId?: number;
+interface table  {
+  tableId: number;
+  totalTradeStats: any[]
+  currentTradeStats: any[]
+  totalVol: number;
+  currentVol: number;
 }
 
 
-const TradeTable = (props: Props) => {
+const TradeTable = ({tableId,totalTradeStats, currentTradeStats, totalVol, currentVol }:table) => {
 
-  const { realResult } = useGetCurrentTrade()
-  const { currentTotalVol } = useGetCurrentTrade()
-  const { tradeDataArr } = useGetTradeActivity()
-  const  {totalVol}  = useGetTradeActivity()
+  const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
+  const tradeDep = tableId === 1 ? currentVol : totalVol
 
-  const tradeTable = props.tableId === 1 ? realResult : tradeDataArr
-  const tradeDep = props.tableId === 1 ? currentTotalVol : totalVol
 
     const data = useMemo(
       () => tradeTable,

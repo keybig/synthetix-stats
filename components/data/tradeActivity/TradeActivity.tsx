@@ -4,12 +4,22 @@ import TradeTable from "./TradeTable";
 import useGetTradeActivity from "../../../hooks/useGetTradeActivity";
 import useGetCurrentTrade from "../../../hooks/useGetCurrentTrade";
 
-const TradeActivity = () => {
-  const { totalTrades } = useGetTradeActivity();
-  const { totalVol } = useGetTradeActivity();
-
-  const { currentTotalTrades } = useGetCurrentTrade();
-  const { currentTotalVol } = useGetCurrentTrade();
+interface TradeStats {
+  totalTrades: number;
+  totalVol: number;
+  currentTotalTrades: number;
+  currentTotalVol: number;
+  totalTradeData: any[]
+  currentTradeData: any[]
+}
+const TradeActivity = ({
+  totalTrades,
+  totalVol,
+  currentTotalTrades,
+  currentTotalVol,
+  totalTradeData,
+  currentTradeData
+}:TradeStats) => {
 
   const buttonMap = [
     { id: 1, title: "Current Epoch" },
@@ -40,7 +50,13 @@ const TradeActivity = () => {
         ))}
       </div>
       <div className={styles.table}>
-        <TradeTable tableId={click} />
+        <TradeTable 
+          tableId={click} 
+          totalTradeStats={totalTradeData} 
+          currentTradeStats={currentTradeData}
+          totalVol={totalVol}
+          currentVol={currentTotalVol}
+           />
       </div>
 
       <div className={styles.bottom}>

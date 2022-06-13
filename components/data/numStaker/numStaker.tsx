@@ -12,11 +12,19 @@ import {
 import { useState } from "react";
 import useGetNumStakers from "../../../hooks/useGetNumStakers";
 
-const NumStaker = () => {
-  const { dayStaker } = useGetNumStakers();
-  const { weekStaker } = useGetNumStakers();
-  const { monthStaker } = useGetNumStakers();
-  const { numStakers } = useGetNumStakers();
+interface NumStaker {
+  dayStaker: any[];
+  weekStaker: any[];
+  monthStaker: any[];
+  numStakers: number;
+}
+const NumStaker = ({
+  dayStaker,
+  weekStaker,
+  monthStaker,
+  numStakers
+}:NumStaker) => {
+
 
   const buttonMap = [
     { id: 1, title: "One Day" },

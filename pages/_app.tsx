@@ -29,6 +29,7 @@ function MyApp({ Component, pageProps,  }: AppProps) {
       <SynthetixQueryContextProvider value={createQueryContext({
     networkId: 10 // Options: 1 (Mainnet), 10 (Optimism), 42 (Kovan), and 69 (Optimism Kovan)
        })}>
+      
     
     <Component {...pageProps} />
     </SynthetixQueryContextProvider>

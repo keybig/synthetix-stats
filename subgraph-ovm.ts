@@ -68,7 +68,7 @@ export type AccountFlaggedForLiquidationFilter = {
     collateral_lte?: WeiSource | null;
     collateral_in?: WeiSource[];
     collateral_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type AccountFlaggedForLiquidationResult = {
     id: string;
@@ -207,7 +207,7 @@ export type AccountLiquidatedFilter = {
     time_lte?: WeiSource | null;
     time_in?: WeiSource[];
     time_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type AccountLiquidatedResult = {
     id: string;
@@ -324,7 +324,7 @@ export type AccountRemovedFromLiquidationFilter = {
     time_lte?: WeiSource | null;
     time_in?: WeiSource[];
     time_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type AccountRemovedFromLiquidationResult = {
     id: string;
@@ -409,7 +409,7 @@ export type ActiveStakerFilter = {
     id_lte?: string | null;
     id_in?: string[];
     id_not_in?: string[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ActiveStakerResult = {
     id: string;
@@ -604,7 +604,7 @@ export type AtomicSynthExchangeFilter = {
     gasPrice_lte?: WeiSource | null;
     gasPrice_in?: WeiSource[];
     gasPrice_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type AtomicSynthExchangeResult = {
     id: string;
@@ -801,7 +801,7 @@ export type BurnedFilter = {
     block_lte?: WeiSource | null;
     block_in?: WeiSource[];
     block_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type BurnedResult = {
     id: string;
@@ -994,7 +994,7 @@ export type CandleFilter = {
     aggregatedPrices_lte?: WeiSource | null;
     aggregatedPrices_in?: WeiSource[];
     aggregatedPrices_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type CandleResult = {
     id: string;
@@ -1159,7 +1159,7 @@ export type CollateralDepositedFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type CollateralDepositedResult = {
     id: string;
@@ -1300,7 +1300,7 @@ export type CollateralWithdrawnFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type CollateralWithdrawnResult = {
     id: string;
@@ -1419,7 +1419,7 @@ export type DailyBurnedFilter = {
     totalDebt_lte?: WeiSource | null;
     totalDebt_in?: WeiSource[];
     totalDebt_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DailyBurnedResult = {
     id: string;
@@ -1564,7 +1564,7 @@ export type DailyCandleFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DailyCandleResult = {
     id: string;
@@ -1725,7 +1725,7 @@ export type DailyExchangePartnerFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DailyExchangePartnerResult = {
     id: string;
@@ -1844,7 +1844,7 @@ export type DailyIssuedFilter = {
     totalDebt_lte?: WeiSource | null;
     totalDebt_in?: WeiSource[];
     totalDebt_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DailyIssuedResult = {
     id: string;
@@ -1991,7 +1991,7 @@ export type DebtSnapshotFilter = {
     debtEntryAtIndex_lte?: WeiSource | null;
     debtEntryAtIndex_in?: WeiSource[];
     debtEntryAtIndex_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DebtSnapshotResult = {
     id: string;
@@ -2152,7 +2152,7 @@ export type DebtStateFilter = {
     debtRatio_lte?: WeiSource | null;
     debtRatio_in?: WeiSource[];
     debtRatio_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DebtStateResult = {
     id: string;
@@ -2283,7 +2283,7 @@ export type DelegatedWalletFilter = {
     canExchange_not?: boolean | null;
     canExchange_in?: boolean[];
     canExchange_not_in?: boolean[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type DelegatedWalletResult = {
     id: string;
@@ -2450,7 +2450,7 @@ export type ExchangeEntryAppendedFilter = {
     roundIdForDest_lte?: WeiSource | null;
     roundIdForDest_in?: WeiSource[];
     roundIdForDest_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangeEntryAppendedResult = {
     id: string;
@@ -2637,7 +2637,7 @@ export type ExchangeEntrySettledFilter = {
     exchangeTimestamp_lte?: WeiSource | null;
     exchangeTimestamp_in?: WeiSource[];
     exchangeTimestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangeEntrySettledResult = {
     id: string;
@@ -2772,7 +2772,7 @@ export type ExchangeFeeFilter = {
     fee_lte?: WeiSource | null;
     fee_in?: WeiSource[];
     fee_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangeFeeResult = {
     id: string;
@@ -2875,7 +2875,7 @@ export type ExchangePartnerFilter = {
     trades_lte?: WeiSource | null;
     trades_in?: WeiSource[];
     trades_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangePartnerResult = {
     id: string;
@@ -3032,7 +3032,7 @@ export type ExchangeRebateFilter = {
     block_lte?: WeiSource | null;
     block_in?: WeiSource[];
     block_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangeRebateResult = {
     id: string;
@@ -3213,7 +3213,7 @@ export type ExchangeReclaimFilter = {
     block_lte?: WeiSource | null;
     block_in?: WeiSource[];
     block_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangeReclaimResult = {
     id: string;
@@ -3418,7 +3418,7 @@ export type ExchangerFilter = {
     balances_contains_nocase?: string[];
     balances_not_contains?: string[];
     balances_not_contains_nocase?: string[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ExchangerResult = {
     id: string;
@@ -3597,7 +3597,7 @@ export type FeePeriodFilter = {
     rewardsClaimed_lte?: WeiSource | null;
     rewardsClaimed_in?: WeiSource[];
     rewardsClaimed_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type FeePeriodResult = {
     id: string;
@@ -3738,7 +3738,7 @@ export type FeesClaimedFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type FeesClaimedResult = {
     id: string;
@@ -3869,7 +3869,7 @@ export type InversePricingInfoFilter = {
     entryPoint_lte?: WeiSource | null;
     entryPoint_in?: WeiSource[];
     entryPoint_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type InversePricingInfoResult = {
     id: string;
@@ -4024,7 +4024,7 @@ export type IssuedFilter = {
     block_lte?: WeiSource | null;
     block_in?: WeiSource[];
     block_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type IssuedResult = {
     id: string;
@@ -4133,7 +4133,7 @@ export type IssuerFilter = {
     id_lte?: string | null;
     id_in?: string[];
     id_not_in?: string[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type IssuerResult = {
     id: string;
@@ -4220,7 +4220,7 @@ export type LatestRateFilter = {
     aggregator_not_in?: string[];
     aggregator_contains?: string | null;
     aggregator_not_contains?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type LatestRateResult = {
     id: string;
@@ -4367,7 +4367,7 @@ export type LatestSynthBalanceFilter = {
     synth_ends_with_nocase?: string | null;
     synth_not_ends_with?: string | null;
     synth_not_ends_with_nocase?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type LatestSynthBalanceResult = {
     id: string;
@@ -4576,7 +4576,7 @@ export type LoanFilter = {
     hasPartialLiquidations_not?: boolean | null;
     hasPartialLiquidations_in?: boolean[];
     hasPartialLiquidations_not_in?: boolean[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type LoanResult = {
     id: string;
@@ -4737,7 +4737,7 @@ export type LoanLiquidatedFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type LoanLiquidatedResult = {
     id: string;
@@ -4878,7 +4878,7 @@ export type LoanPartiallyLiquidatedFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type LoanPartiallyLiquidatedResult = {
     id: string;
@@ -5025,7 +5025,7 @@ export type LoanRepaidFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type LoanRepaidResult = {
     id: string;
@@ -5178,7 +5178,7 @@ export type RateUpdateFilter = {
     timestamp_lte?: WeiSource | null;
     timestamp_in?: WeiSource[];
     timestamp_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type RateUpdateResult = {
     id: string;
@@ -5297,7 +5297,7 @@ export type RewardEscrowHolderFilter = {
     vestedBalanceOf_lte?: WeiSource | null;
     vestedBalanceOf_in?: WeiSource[];
     vestedBalanceOf_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type RewardEscrowHolderResult = {
     id: string;
@@ -5454,7 +5454,7 @@ export type SNXHolderFilter = {
     mints_lte?: WeiSource | null;
     mints_in?: WeiSource[];
     mints_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SNXHolderResult = {
     id: string;
@@ -5691,7 +5691,7 @@ export type ShortFilter = {
     closedAt_lte?: WeiSource | null;
     closedAt_in?: WeiSource[];
     closedAt_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ShortResult = {
     id: string;
@@ -5910,7 +5910,7 @@ export type ShortCollateralChangeFilter = {
     blockNumber_lte?: WeiSource | null;
     blockNumber_in?: WeiSource[];
     blockNumber_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ShortCollateralChangeResult = {
     id: string;
@@ -6069,7 +6069,7 @@ export type ShortContractFilter = {
     canOpenLoans_not?: boolean | null;
     canOpenLoans_in?: boolean[];
     canOpenLoans_not_in?: boolean[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ShortContractResult = {
     id: string;
@@ -6272,7 +6272,7 @@ export type ShortContractUpdateFilter = {
     blockNumber_lte?: WeiSource | null;
     blockNumber_in?: WeiSource[];
     blockNumber_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ShortContractUpdateResult = {
     id: string;
@@ -6437,7 +6437,7 @@ export type ShortLiquidationFilter = {
     blockNumber_lte?: WeiSource | null;
     blockNumber_in?: WeiSource[];
     blockNumber_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ShortLiquidationResult = {
     id: string;
@@ -6616,7 +6616,7 @@ export type ShortLoanChangeFilter = {
     blockNumber_lte?: WeiSource | null;
     blockNumber_in?: WeiSource[];
     blockNumber_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type ShortLoanChangeResult = {
     id: string;
@@ -6779,7 +6779,7 @@ export type SynthFilter = {
     totalSupply_lte?: WeiSource | null;
     totalSupply_in?: WeiSource[];
     totalSupply_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SynthResult = {
     id: string;
@@ -6932,7 +6932,7 @@ export type SynthBalanceFilter = {
     synth_ends_with_nocase?: string | null;
     synth_not_ends_with?: string | null;
     synth_not_ends_with_nocase?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SynthBalanceResult = {
     id: string;
@@ -7041,7 +7041,7 @@ export type SynthByCurrencyKeyFilter = {
     proxyAddress_not_in?: string[];
     proxyAddress_contains?: string | null;
     proxyAddress_not_contains?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SynthByCurrencyKeyResult = {
     id: string;
@@ -7242,7 +7242,7 @@ export type SynthExchangeFilter = {
     gasPrice_lte?: WeiSource | null;
     gasPrice_in?: WeiSource[];
     gasPrice_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SynthExchangeResult = {
     id: string;
@@ -7397,7 +7397,7 @@ export type SynthetixFilter = {
     snxHolders_lte?: WeiSource | null;
     snxHolders_in?: WeiSource[];
     snxHolders_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SynthetixResult = {
     id: string;
@@ -7638,7 +7638,7 @@ export type SystemSettingFilter = {
     atomicTwapWindow_lte?: WeiSource | null;
     atomicTwapWindow_in?: WeiSource[];
     atomicTwapWindow_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type SystemSettingResult = {
     id: string;
@@ -7855,7 +7855,7 @@ export type TemporaryExchangePartnerTrackerFilter = {
     partner_ends_with_nocase?: string | null;
     partner_not_ends_with?: string | null;
     partner_not_ends_with_nocase?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type TemporaryExchangePartnerTrackerResult = {
     id: string;
@@ -8030,7 +8030,7 @@ export type TotalFilter = {
     totalFeesGeneratedInUSD_lte?: WeiSource | null;
     totalFeesGeneratedInUSD_in?: WeiSource[];
     totalFeesGeneratedInUSD_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type TotalResult = {
     id: string;
@@ -8165,7 +8165,7 @@ export type TotalActiveStakerFilter = {
     count_lte?: WeiSource | null;
     count_in?: WeiSource[];
     count_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type TotalActiveStakerResult = {
     id: string;
@@ -8260,7 +8260,7 @@ export type TotalDailyActiveStakerFilter = {
     count_lte?: WeiSource | null;
     count_in?: WeiSource[];
     count_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type TotalDailyActiveStakerResult = {
     id: string;
@@ -8425,7 +8425,7 @@ export type WrapperFilter = {
     totalFeesInUSD_lte?: WeiSource | null;
     totalFeesInUSD_in?: WeiSource[];
     totalFeesInUSD_not_in?: WeiSource[];
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type WrapperResult = {
     id: string;
@@ -8612,7 +8612,7 @@ export type WrapperBurnFilter = {
     wrapperAddress_ends_with_nocase?: string | null;
     wrapperAddress_not_ends_with?: string | null;
     wrapperAddress_not_ends_with_nocase?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type WrapperBurnResult = {
     id: string;
@@ -8793,7 +8793,7 @@ export type WrapperMintFilter = {
     wrapperAddress_ends_with_nocase?: string | null;
     wrapperAddress_not_ends_with?: string | null;
     wrapperAddress_not_ends_with_nocase?: string | null;
-    _change_block?: BlockChangedFilterFilter | null;
+    _change_block?: any | null;
 };
 export type WrapperMintResult = {
     id: string;

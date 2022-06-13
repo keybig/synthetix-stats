@@ -19,7 +19,6 @@ const Datagrid = () => {
       <TradeActivity />
       <Inflation />
       <TradeFee />
-
       <MoreStats />
       <StartStaking />
     </div>
