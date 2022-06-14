@@ -17,19 +17,6 @@ interface netButton {
 }
 
 const NetworkNavBar = (props: Props) => {
-  /*
-
-  const [netId, setNetId] = useState<NetworkId>(10)
-
-  
-
-
-  const handleNetwork = (buttons: any) => {
-    setNetId(buttons.id);
-    console.log(netId)
- 
-  };
-  */
 
   const buttonMap: netButton[] = [
     { id: 20, title: "All Networks" },

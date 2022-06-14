@@ -26,8 +26,7 @@ const TradeFeeTable = ({
     const tableData = tableId === 1 ? currentFeeData : tradeFeeArr
     const feeDep = tableId === 1 ? currentFeeSum : totalFeeSum
 
-    console.log(currentFeeData)
-    console.log(tradeFeeArr)
+   
 
 
 

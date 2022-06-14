@@ -52,8 +52,7 @@ export const getTradeActivity = async() => {
   //const totalTrades = formatNumber.format(totalTradesSum);
  // const totalVol = formatMoney.format(totalVolSum);
 
-  console.log(`tradedataarr: ${tradeDataArr}`)
-  console.log(`totalTrades: ${totalTrades}`)
+
   //current epoch
 
   const currentEpochTradeData = await getDailyExchangePartners(

@@ -35,7 +35,6 @@ export const staking = async () => {
         return sum + cur.balanceOf.toNumber()
       },0)
 
-    console.log(`the total supply: ${totalSupply}`)
 
     const snxStakerTotal = await getSNXHolders(
         optimism_url,
@@ -55,10 +54,6 @@ export const staking = async () => {
       },0)
 
 
-console.log(snxStakerTotal.length)
-console.log(totalStake)
-
-
   const percentStaked = totalStake / totalSupply
 
 
@@ -69,7 +64,7 @@ console.log(totalStake)
   );
 
   const snxRate = snxRateCall.rate.toNumber()
-  console.log(snxRate)
+ 
 
   //const APYcalc = (fee / (snxRate * totalCollateral) * 52 + (reward / totalCollateral) * 52)
 
@@ -104,7 +99,7 @@ console.log(totalStake)
   const fee = currentFeePeriods[0].feesToDistribute.toNumber();
 
   const apy = (fee / (snxRate * totalStake) * 52 + (reward / totalStake) * 52)
-  console.log(apy)
+ 
 
 
 

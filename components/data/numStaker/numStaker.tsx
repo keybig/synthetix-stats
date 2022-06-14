@@ -77,7 +77,7 @@ const NumStaker = ({
               key={buttonMap.id}
               onClick={() => handleActive(buttonMap)}
               className={
-                buttonMap.id === click ? styles.button : styles.inactive
+                buttonMap.id === timeFrame ? styles.button : styles.inactive
               }
             >
               {buttonMap.title}

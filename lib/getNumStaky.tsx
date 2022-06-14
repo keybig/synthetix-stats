@@ -1,5 +1,5 @@
 import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getSynths } from "../subgraph-ovm";
-import { blocky } from "./getBlock";
+import { blocky } from "./getBlocky";
 import getTime from "./getTime";
 
 
@@ -11,96 +11,85 @@ export const numStakey = async () => {
     const { timeStamp } = getTime();
 
 
-    const snxAll = await getSynthetixById(
-        optimism_url,
-        {
-            id:"1"
-        }, {
-            issuers:true,
-            snxHolders:true
-        }
-    );
-
-    const issuers = snxAll.issuers.toNumber()
-
     const fetchNumStaker = async (network: string, block:number) => {
+        
         const snxStaker = await getSynthetixById(
             network,
             { id: "1", block: { number: block } },
             { issuers: true },
         )
 
-        const issuers = snxAll.issuers.toNumber()
+        const issuers = snxStaker.issuers.toNumber()
 
         return issuers
     }
 
-    const currentStakerOvm = await fetchNumStaker(optimism_url, blocks.currentBlock)
-    const currentStakerMain = await fetchNumStaker(mainnet_url, blocks.currentBlock)
+    const currentStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmCurrentBlock)
+    const currentStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainCurrentBlock)
     const currentStakerAll = currentStakerMain + currentStakerOvm
 
-    const fourHourStakerOvm = await fetchNumStaker(optimism_url, blocks.fourHourBlock)
-    const fourHourStakerMain = await fetchNumStaker(mainnet_url, blocks.fourHourBlock)
+    const fourHourStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmFourHourBlock)
+    const fourHourStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainFourHourBlock)
     const fourHourStakerAll = fourHourStakerMain + fourHourStakerOvm
 
-    const eightHourStakerOvm = await fetchNumStaker(optimism_url, blocks.eightHourBlock)
-    const eightHourStakerMain = await fetchNumStaker(mainnet_url, blocks.eightHourBlock)
+    const eightHourStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmEightHourBlock)
+    const eightHourStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainEightHourBlock)
     const eightHourStakerAll = eightHourStakerMain + eightHourStakerOvm
 
-    const twelveHourStakerOvm = await fetchNumStaker(optimism_url, blocks.twelveHourBlock)
-    const twelveHourStakerMain = await fetchNumStaker(mainnet_url, blocks.twelveHourBlock)
+    const twelveHourStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTwelveHourBlock)
+    const twelveHourStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTwelveHourBlock)
     const twelveHourStakerAll = twelveHourStakerMain + twelveHourStakerOvm
 
-    const sixteenHourStakerOvm = await fetchNumStaker(optimism_url, blocks.sixteenHourBlock)
-    const sixteenHourStakerMain = await fetchNumStaker(mainnet_url, blocks.sixteenHourBlock)
+    const sixteenHourStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmSixteenHourBlock)
+    const sixteenHourStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainSixteenHourBlock)
     const sixteenHourStakerAll = sixteenHourStakerMain + sixteenHourStakerOvm
 
-    const twentyHourStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyHourBlock)
-    const twentyHourStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyHourBlock)
+    const twentyHourStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTwentyHourBlock)
+    const twentyHourStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTwentyHourBlock)
     const twentyHourStakerAll = twentyHourStakerMain + twentyHourStakerOvm
 
-    const twentyFourHourStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyFourHourBlock)
-    const twentyFourHourStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyFourHourBlock)
+    const twentyFourHourStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTwentyFourHourBlock)
+    const twentyFourHourStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTwentyFourHourBlock)
     const twentyFourHourStakerAll = twentyFourHourStakerMain + twentyFourHourStakerOvm
 
-    const twoDayStakerOvm = await fetchNumStaker(optimism_url, blocks.twoDayBlock)
-    const twoDayStakerMain = await fetchNumStaker(mainnet_url, blocks.twoDayBlock)
+    const twoDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTwoDayBlock)
+    const twoDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTwoDayBlock)
     const twoDayStakerAll = twoDayStakerMain + twoDayStakerOvm
 
-    const threeDayStakerOvm = await fetchNumStaker(optimism_url, blocks.threeDayBlock)
-    const threeDayStakerMain = await fetchNumStaker(mainnet_url, blocks.threeDayBlock)
+    const threeDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmThreeDayBlock)
+    const threeDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainThreeDayBlock)
     const threeDayStakerAll = threeDayStakerMain + threeDayStakerOvm
 
-    const fourDayStakerOvm = await fetchNumStaker(optimism_url, blocks.fourDayBlock)
-    const fourDayStakerMain = await fetchNumStaker(mainnet_url, blocks.fourDayBlock)
+    const fourDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmFourDayBlock)
+    const fourDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainFourDayBlock)
     const fourDayStakerAll = fourDayStakerMain + fourDayStakerOvm
 
-    const fiveDayStakerOvm = await fetchNumStaker(optimism_url, blocks.fiveDayBlock)
-    const fiveDayStakerMain = await fetchNumStaker(mainnet_url, blocks.fiveDayBlock)
+    const fiveDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmFiveDayBlock)
+    const fiveDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainFiveDayBlock)
     const fiveDayStakerAll = fiveDayStakerMain + fiveDayStakerOvm
 
-    const sixDayStakerOvm = await fetchNumStaker(optimism_url, blocks.sixDayBlock)
-    const sixDayStakerMain = await fetchNumStaker(mainnet_url, blocks.sixDayBlock)
+    const sixDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmSixDayBlock)
+    const sixDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainSixDayBlock)
     const sixDayStakerAll = sixDayStakerMain + sixDayStakerOvm
 
-    const tenDayStakerOvm = await fetchNumStaker(optimism_url, blocks.tenDayBlock)
-    const tenDayStakerMain = await fetchNumStaker(mainnet_url, blocks.tenDayBlock)
+    const tenDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTenDayBlock)
+    const tenDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTenDayBlock)
     const tenDayStakerAll = tenDayStakerMain + tenDayStakerOvm
 
-    const fifteenDayStakerOvm = await fetchNumStaker(optimism_url, blocks.fifteenDayBlock)
-    const fifteenDayStakerMain = await fetchNumStaker(mainnet_url, blocks.fifteenDayBlock)
+    const fifteenDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmFifteenDayBlock)
+    const fifteenDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainFifteenDayBlock)
     const fifteenDayStakerAll = fifteenDayStakerMain + fifteenDayStakerOvm
 
-    const twentyDayStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyDayBlock)
-    const twentyDayStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyDayBlock)
+    const twentyDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTwentyDayBlock)
+    const twentyDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTwentyDayBlock)
     const twentyDayStakerAll = twentyDayStakerMain + twentyDayStakerOvm
 
-    const twentyFiveDayStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyFiveDayBlock)
-    const twentyFiveDayStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyFiveDayBlock)
+    const twentyFiveDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmTwentyFiveDayBlock)
+    const twentyFiveDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainTwentyFiveDayBlock)
     const twentyFiveDayStakerAll = twentyFiveDayStakerMain + twentyFiveDayStakerOvm
 
-    const thirtyDayStakerOvm = await fetchNumStaker(optimism_url, blocks.thirtyDayBlock)
-    const thirtyDayStakerMain = await fetchNumStaker(mainnet_url, blocks.thirtyDayBlock)
+    const thirtyDayStakerOvm = await fetchNumStaker(optimism_url, blocks.ovm.ovmThirtyDayBlock)
+    const thirtyDayStakerMain = await fetchNumStaker(mainnet_url, blocks.main.mainThirtyDayBlock)
     const thirtyDayStakerAll = thirtyDayStakerMain + thirtyDayStakerOvm
 
       const dayOvm = [
@@ -195,6 +184,7 @@ export const numStakey = async () => {
           stakers: currentStakerAll,
         },
       ];
+
 
       const weekOvm = [
         {
@@ -381,6 +371,13 @@ export const numStakey = async () => {
           stakers: currentStakerAll,
         },
       ];
+
+      console.log(dayAll)
+      console.log(dayMain)
+      console.log(dayOvm)
+      console.log(currentStakerAll)
+      console.log(currentStakerMain)
+      console.log(currentStakerOvm)
     
 
 

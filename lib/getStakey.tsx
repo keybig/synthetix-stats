@@ -38,12 +38,10 @@ export const stakit = async () => {
     const snxOvm = await fetchSnxInfo(optimism_url)
     const issuersOvm = snxOvm.issuers
     const holdersOvm = snxOvm.snxHolders
-    console.log(issuersOvm)
 
     const snxMain = await fetchSnxInfo(mainnet_url)
     const issuersMain = snxMain.issuers
     const holdersMain = snxMain.snxHolders
-    console.log(issuersMain)
 
     const snxHolderTotal = async (network: string, holders: number) => {
         const snxHolderTotal = await getSNXHolders(
@@ -107,7 +105,6 @@ export const stakit = async () => {
     const percentStakedMain = totalStakeMain / totalSupplyMain
     const percentStakedOvm = totalStakeOvm / totalSupplyOvm
     const percentStakedAll = (totalStakeMain + totalStakeOvm) / (totalSupplyMain + totalSupplyOvm)
-    console.log(`percent all: ${percentStakedAll}`)
 
 
 

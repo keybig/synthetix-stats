@@ -26,7 +26,7 @@ const TradeFee = ({
   ];
 
   const [click, setClick] = useState<number>(1);
-  console.log(click)
+ 
 
   const handleActive = (buttons: any) => {
     setClick(buttons.id);
