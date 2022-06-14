@@ -9,15 +9,23 @@ import {
 } from "recharts";
 
 interface Inflation {
-  currentReward: number;
-  allTimeInflation: number;
-  inflationData: any[];
+  click: number;
+  currentRewardOvm: number;
+  currentRewardMain: number;
+  allTimeInflationOvm: number;
+  allTimeInflationMain: number;
+  inflationDataOvm: any[];
+  inflationDataMain: any[];
 }
 
 const Inflation = ({
-  currentReward,
-  allTimeInflation,
-  inflationData
+  click,
+  currentRewardMain,
+  currentRewardOvm,
+  allTimeInflationMain,
+  allTimeInflationOvm,
+  inflationDataMain,
+  inflationDataOvm
 }:Inflation) => {
 
   return (
@@ -25,14 +33,14 @@ const Inflation = ({
       <div>
         <h3>Inflation Fees (SNX Rewards)</h3>
         <h5 className={styles.subtitle}>Current Epoch</h5>
-        <p className={styles.currentEpoch}>{currentReward}</p>
+        <p className={styles.currentEpoch}>{click === 1 ? currentRewardMain : currentRewardOvm}</p>
         <h5 className={styles.subtitle}>Up to date</h5>
-        <p className={styles.toDate}>{allTimeInflation}</p>
+        <p className={styles.toDate}>{click === 1 ? allTimeInflationMain : allTimeInflationOvm}</p>
       </div>
 
       <div className={styles.chartWrapper}>
         <ResponsiveContainer width={"100%"} height={330}>
-          <LineChart data={inflationData}>
+          <LineChart data={click === 1 ? inflationDataMain : inflationDataOvm}>
             <Line
               type="monotone"
               dataKey="snx_rewards"

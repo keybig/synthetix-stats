@@ -32,9 +32,10 @@ const NetworkNavBar = (props: Props) => {
   */
 
   const buttonMap: netButton[] = [
-    // { id: 100, netId: 10, title: "All Networks" },
+    { id: 20, title: "All Networks" },
     { id: 1, title: "Mainnet" },
     { id: 10, title: "Optimism" },
+    
   ];
 
   const grafana =

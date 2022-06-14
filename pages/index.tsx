@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import { staking } from "../lib/getStaker";
 import { getTradeActivity } from "../lib/getTradeActivity";
-import { getTvl } from "../lib/getTvl";
+import { getTvl } from "../lib/getTVLy";
 import { numStaker } from "../lib/getNumStaker";
 import { blocky } from "../lib/getBlock";
 import { getDebtStates } from "../subgraph-ovm";
@@ -16,6 +16,7 @@ import NumStaker from "../components/data/numStaker/numStaker";
 import TradeActivity from "../components/data/tradeActivity/TradeActivity";
 import Inflation from "../components/data/inflation/Inflation";
 import TradeFee from "../components/data/tradeFee/TradeFee";
+import { stakit } from "../lib/getStakey";
 
 const Home = (props: any) => {
   const router = useRouter();
@@ -29,27 +30,44 @@ const Home = (props: any) => {
   return (
     <div>
       <Subheader />
+      <NetworkNavBar handle={handleNetwork} current={netId}/>
 
       <div className={styles.container}>
         <SnxStaked
-          collateral={props.stakeParent.snxStaked}
-          stakedValue={props.stakeParent.snxRate * props.stakeParent.snxStaked}
-          percentStake={props.stakeParent.percentStaked}
+          click={netId}
+          percentStakeAll={props.staka.percentStakedAll}
+          percentStakeMain={props.staka.percentStakedMain}
+          percentStakeOvm={props.staka.percentStakedOvm}
+          stakeAmountAll={props.staka.totalStakeAll}
+          stakeAmountMain={props.staka.totalStakeMain}
+          stakeAmountOvm={props.staka.totalStakeOvm}
+          stakeValueAll={props.staka.stakeValueAll}
+          stakeValueMain={props.staka.stakeValueMain}
+          stakeValueOvm={props.staka.stakeValueOvm}
         />
 
-        <TotalValueLocked
-          dayDataOvm={props.theTVL.day}
-          weekDataOvm={props.theTVL.week}
-          monthDataOvm={props.theTVL.month}
-          totalDebtOvm={props.theTVL.currentDebt}
-          totalWrapperOvm={props.theTVL.currentWrapper}
-          dayDataMain={props.theTVL.day}
-          weekDataMain={props.theTVL.week}
-          monthDataMain={props.theTVL.month}
-          totalDebtMain={props.theTVL.currentDebt}
-          totalWrapperMain={props.theTVL.currentWrapper}
+<TotalValueLocked
+          dayDataOvm={props.theTVL.dayOvm}
+          weekDataOvm={props.theTVL.weekOvm}
+          monthDataOvm={props.theTVL.monthOvm}
+          totalDebtOvm={props.theTVL.ovmCurrentDebt}
+          totalWrapperOvm={props.theTVL.ovmCurrentWrapper}
+          dayDataMain={props.theTVL.dayMain}
+          weekDataMain={props.theTVL.weekMain}
+          monthDataMain={props.theTVL.monthMain}
+          totalDebtMain={props.theTVL.mainCurrentDebt}
+          totalWrapperMain={props.theTVL.mainCurrentWrapper}
+          dayDataAll={props.theTVL.dayAll}
+          weekDataAll={props.theTVL.weekAll}
+          monthDataAll={props.theTVL.monthAll}
+          click={netId}
         />
-        <StakeAPY APY={props.stakeParent.apy} />
+        <StakeAPY
+          click={netId}
+          avg={props.staka.apyAvg}
+          ovm={props.staka.apyOvm}
+          main={props.staka.apyMain}
+         />
         <NumStaker
           dayStaker={props.numStake.day}
           weekStaker={props.numStake.week}
@@ -67,9 +85,13 @@ const Home = (props: any) => {
         />
 
         <Inflation
-          currentReward={props.stakeParent.reward}
-          allTimeInflation={props.stakeParent.rewardsAmt}
-          inflationData={props.stakeParent.inflationData}
+          click={netId}
+          currentRewardMain={props.staka.currentRewardMain}
+          currentRewardOvm={props.staka.currentRewardOvm}
+          allTimeInflationMain={props.staka.allTimeInflationMain}
+          allTimeInflationOvm={props.staka.allTimeInflationOvm}
+          inflationDataMain={props.staka.inflationDataMain}
+          inflationDataOvm={props.staka.inflationDataOvm}
         />
 
         <TradeFee
@@ -91,6 +113,7 @@ export async function getStaticProps() {
   const tradey = await getTradeActivity();
   const numStake = await numStaker();
   const theTVL = await getTvl();
+  const staka = await stakit()
 
   // tests below, keep above
 
@@ -100,6 +123,7 @@ export async function getStaticProps() {
       numStake,
       theTVL,
       tradey,
+      staka
     },
   };
 }
