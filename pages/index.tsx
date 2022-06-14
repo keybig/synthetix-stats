@@ -86,10 +86,10 @@ const Home = (props: any) => {
 
         <Inflation
           click={netId}
-          currentRewardMain={props.staka.currentRewardMain}
-          currentRewardOvm={props.staka.currentRewardOvm}
-          allTimeInflationMain={props.staka.allTimeInflationMain}
-          allTimeInflationOvm={props.staka.allTimeInflationOvm}
+          currentRewardMain={props.staka.rewardMain}
+          currentRewardOvm={props.staka.rewardOvm}
+          allTimeInflationMain={props.staka.rewardsAmountMain}
+          allTimeInflationOvm={props.staka.rewardsAmountOvm}
           inflationDataMain={props.staka.inflationDataMain}
           inflationDataOvm={props.staka.inflationDataOvm}
         />

@@ -28,14 +28,17 @@ const Inflation = ({
   inflationDataOvm
 }:Inflation) => {
 
+  const allReward = currentRewardMain + currentRewardOvm
+  const allTime = allTimeInflationMain + allTimeInflationOvm
+
   return (
     <div className={styles.wrapper}>
       <div>
         <h3>Inflation Fees (SNX Rewards)</h3>
         <h5 className={styles.subtitle}>Current Epoch</h5>
-        <p className={styles.currentEpoch}>{click === 1 ? currentRewardMain : currentRewardOvm}</p>
+        <p className={styles.currentEpoch}>{click === 1 ? currentRewardMain : click === 10 ? currentRewardOvm : allReward}</p>
         <h5 className={styles.subtitle}>Up to date</h5>
-        <p className={styles.toDate}>{click === 1 ? allTimeInflationMain : allTimeInflationOvm}</p>
+        <p className={styles.toDate}>{click === 1 ? allTimeInflationMain : click === 10 ? allTimeInflationOvm : allTime}</p>
       </div>
 
       <div className={styles.chartWrapper}>

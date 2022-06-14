@@ -43,12 +43,7 @@ const Static = (props:any) => {
     <div style={{background:"white"}}>
    
 
-    <p>
-      {props.fetchyTVL.ovm.ovmFourHourDebt}
-    </p>
-    <p>
-      {props.fetchyTVL.main.mainFourHourDebt}
-    </p>
+   
  
       
        <h5>
