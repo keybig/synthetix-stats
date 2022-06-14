@@ -17,6 +17,7 @@ import TradeActivity from "../components/data/tradeActivity/TradeActivity";
 import Inflation from "../components/data/inflation/Inflation";
 import TradeFee from "../components/data/tradeFee/TradeFee";
 import { stakit } from "../lib/getStakey";
+import { numStakey} from "../lib/getNumStaky"
 
 const Home = (props: any) => {
   const router = useRouter();
@@ -69,11 +70,23 @@ const Home = (props: any) => {
           main={props.staka.apyMain}
          />
         <NumStaker
-          dayStaker={props.numStake.day}
-          weekStaker={props.numStake.week}
-          monthStaker={props.numStake.month}
-          numStakers={props.numStake.currentStaker}
+          click={netId}
+          currentStakerOvm={props.numberStake.currentStakerOvm}
+          currentStakerAll={props.numberStake.currentStakerAll}
+          currentStakerMain={props.numberStake.currentStakerMain}
+          dayAll={props.numberStake.dayAll}
+          dayMain={props.numberStake.dayMain}
+          dayOvm={props.numberStake.dayOvm}
+          weekAll={props.numberStake.weekAll}
+          weekMain={props.numberStake.weekMain}
+          weekOvm={props.numberStake.weekOvm}
+          monthAll={props.numberStake.monthAll}
+          monthMain={props.numberStake.monthMain}
+          monthOvm={props.numberStake.monthOvm}
+
         />
+
+      
 
         <TradeActivity
           totalTradeData={props.tradey.tradeDataArr}
@@ -114,6 +127,7 @@ export async function getStaticProps() {
   const numStake = await numStaker();
   const theTVL = await getTvl();
   const staka = await stakit()
+  const numberStake = await numStakey()
 
   // tests below, keep above
 
@@ -123,7 +137,8 @@ export async function getStaticProps() {
       numStake,
       theTVL,
       tradey,
-      staka
+      staka,
+      numberStake
     },
   };
 }

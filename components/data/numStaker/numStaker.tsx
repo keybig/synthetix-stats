@@ -11,17 +11,37 @@ import {
 } from "recharts";
 import { useState } from "react";
 
+
+
 interface NumStaker {
-  dayStaker: any[];
-  weekStaker: any[];
-  monthStaker: any[];
-  numStakers: number;
+      currentStakerAll: number;
+      currentStakerOvm: number;
+      currentStakerMain: number;
+      dayAll: any[];
+      dayMain: any[];
+      dayOvm: any[];
+      weekAll: any[];
+      weekMain: any[];
+      weekOvm: any[];
+      monthAll: any[];
+      monthMain: any[];
+      monthOvm: any[];
+      click: number;
 }
 const NumStaker = ({
-  dayStaker,
-  weekStaker,
-  monthStaker,
-  numStakers
+      click,
+      currentStakerAll,
+      currentStakerOvm,
+      currentStakerMain,
+      dayAll,
+      dayMain,
+      dayOvm,
+      weekAll,
+      weekMain,
+      weekOvm,
+      monthAll,
+      monthMain,
+      monthOvm
 }:NumStaker) => {
 
 
@@ -32,18 +52,23 @@ const NumStaker = ({
     //{ id: 4, title: "one Year" }
   ];
 
-  const [click, setClick] = useState(1);
+  const [timeFrame, setTimeFrame] = useState(1);
 
   const handleActive = (buttons: any) => {
-    setClick(buttons.id);
+    setTimeFrame(buttons.id);
   };
+
+  const ovmData = timeFrame === 1 ? dayOvm : timeFrame === 2 ? weekOvm : monthOvm
+  const mainData = timeFrame === 1 ? dayMain : timeFrame === 2 ? weekMain : monthMain
+  const allData = timeFrame === 1 ? dayAll : timeFrame === 2 ? weekAll : monthAll
+  
 
   return (
     <div className={styles.container}>
       <div className={styles.topRow}>
         <div>
           <h3>Number of Individual Stakers</h3>
-          <p className={styles.value}>{numStakers}</p>
+          <p className={styles.value}>{click === 1 ? currentStakerMain : click === 10 ? currentStakerOvm : currentStakerAll}</p>
         </div>
 
         <div className={styles.selectors}>
@@ -62,7 +87,7 @@ const NumStaker = ({
       </div>
 
       <ResponsiveContainer height={300} width="100%">
-        <LineChart data={click === 1 ? dayStaker : click === 2 ? weekStaker : monthStaker}>
+        <LineChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
           <Line
             type="monotone"
             dataKey="stakers"

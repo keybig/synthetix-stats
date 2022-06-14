@@ -3,7 +3,7 @@ import { blocky } from "./getBlock";
 import getTime from "./getTime";
 
 
-export const numStaker = async () => {
+export const numStakey = async () => {
     const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
     const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
 
@@ -23,244 +23,380 @@ export const numStaker = async () => {
 
     const issuers = snxAll.issuers.toNumber()
 
-    const currentStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.currentBlock } },
-        { issuers: true },
-      );
+    const fetchNumStaker = async (network: string, block:number) => {
+        const snxStaker = await getSynthetixById(
+            network,
+            { id: "1", block: { number: block } },
+            { issuers: true },
+        )
 
-      const currentStaker = currentStakerCall.issuers.toNumber()
-    
-      const fourHourStakerCall = await getSynthetixById(
-          optimism_url,
-        { id: "1", block: { number: blocks.fourHourBlock } },
-        { issuers: true },
-      );
+        const issuers = snxAll.issuers.toNumber()
 
-      const fourHourStaker = fourHourStakerCall.issuers.toNumber()
-    
-      const eightHourStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.eightHourBlock } },
-        { issuers: true },
-      );
+        return issuers
+    }
 
-      const eightHourStaker = eightHourStakerCall.issuers.toNumber()
-    
-      const twelveHourStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.twelveHourBlock } },
-        { issuers: true },
-      );
+    const currentStakerOvm = await fetchNumStaker(optimism_url, blocks.currentBlock)
+    const currentStakerMain = await fetchNumStaker(mainnet_url, blocks.currentBlock)
+    const currentStakerAll = currentStakerMain + currentStakerOvm
 
-      const twelveHourStaker = twelveHourStakerCall.issuers.toNumber()
-    
-      const sixtenHourStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.sixteenHourBlock } },
-        { issuers: true },
-      );
+    const fourHourStakerOvm = await fetchNumStaker(optimism_url, blocks.fourHourBlock)
+    const fourHourStakerMain = await fetchNumStaker(mainnet_url, blocks.fourHourBlock)
+    const fourHourStakerAll = fourHourStakerMain + fourHourStakerOvm
 
-      const sixteenHourStaker = sixtenHourStakerCall.issuers.toNumber()
-    
-      const twentyHourStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.twentyHourBlock } },
-        { issuers: true },
-      );
+    const eightHourStakerOvm = await fetchNumStaker(optimism_url, blocks.eightHourBlock)
+    const eightHourStakerMain = await fetchNumStaker(mainnet_url, blocks.eightHourBlock)
+    const eightHourStakerAll = eightHourStakerMain + eightHourStakerOvm
 
-      const twentyHourStaker = twentyHourStakerCall.issuers.toNumber()
-    
-      const twentyFourHourStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.twentyFourHourBlock } },
-        { issuers: true },
-      );
+    const twelveHourStakerOvm = await fetchNumStaker(optimism_url, blocks.twelveHourBlock)
+    const twelveHourStakerMain = await fetchNumStaker(mainnet_url, blocks.twelveHourBlock)
+    const twelveHourStakerAll = twelveHourStakerMain + twelveHourStakerOvm
 
-      const twentyFourHourStaker = twentyFourHourStakerCall.issuers.toNumber()
-    
-      const twoDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.twoDayBlock } },
-        { issuers: true },
-      );
+    const sixteenHourStakerOvm = await fetchNumStaker(optimism_url, blocks.sixteenHourBlock)
+    const sixteenHourStakerMain = await fetchNumStaker(mainnet_url, blocks.sixteenHourBlock)
+    const sixteenHourStakerAll = sixteenHourStakerMain + sixteenHourStakerOvm
 
-      const twoDayStaker = twoDayStakerCall.issuers.toNumber()
-    
-      const threeDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.threeDayBlock } },
-        { issuers: true },
-      );
+    const twentyHourStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyHourBlock)
+    const twentyHourStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyHourBlock)
+    const twentyHourStakerAll = twentyHourStakerMain + twentyHourStakerOvm
 
-      const threeDayStaker = threeDayStakerCall.issuers.toNumber()
-    
-      const fourDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.fourDayBlock } },
-        { issuers: true },
-      );
+    const twentyFourHourStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyFourHourBlock)
+    const twentyFourHourStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyFourHourBlock)
+    const twentyFourHourStakerAll = twentyFourHourStakerMain + twentyFourHourStakerOvm
 
-      const fourDayStaker = fourDayStakerCall.issuers.toNumber()
-    
-      const fiveDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.fiveDayBlock } },
-        { issuers: true },
-      );
+    const twoDayStakerOvm = await fetchNumStaker(optimism_url, blocks.twoDayBlock)
+    const twoDayStakerMain = await fetchNumStaker(mainnet_url, blocks.twoDayBlock)
+    const twoDayStakerAll = twoDayStakerMain + twoDayStakerOvm
 
-      const fiveDayStaker = fiveDayStakerCall.issuers.toNumber()
-    
-      const sixDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.sixDayBlock } },
-        { issuers: true },
-      );
+    const threeDayStakerOvm = await fetchNumStaker(optimism_url, blocks.threeDayBlock)
+    const threeDayStakerMain = await fetchNumStaker(mainnet_url, blocks.threeDayBlock)
+    const threeDayStakerAll = threeDayStakerMain + threeDayStakerOvm
 
-      const sixDayStaker = sixDayStakerCall.issuers.toNumber()
-    
-      //month staker
-    
-      const tenDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.tenDayBlock } },
-        { issuers: true },
-      );
+    const fourDayStakerOvm = await fetchNumStaker(optimism_url, blocks.fourDayBlock)
+    const fourDayStakerMain = await fetchNumStaker(mainnet_url, blocks.fourDayBlock)
+    const fourDayStakerAll = fourDayStakerMain + fourDayStakerOvm
 
-      const tenDayStaker = tenDayStakerCall.issuers.toNumber()
-    
-      const fifteenDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.fifteenDayBlock } },
-        { issuers: true },
-      );
+    const fiveDayStakerOvm = await fetchNumStaker(optimism_url, blocks.fiveDayBlock)
+    const fiveDayStakerMain = await fetchNumStaker(mainnet_url, blocks.fiveDayBlock)
+    const fiveDayStakerAll = fiveDayStakerMain + fiveDayStakerOvm
 
-      const fifteenDayStaker = fifteenDayStakerCall.issuers.toNumber()
-    
-      const twentyDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.twentyDayBlock } },
-        { issuers: true },
-      );
+    const sixDayStakerOvm = await fetchNumStaker(optimism_url, blocks.sixDayBlock)
+    const sixDayStakerMain = await fetchNumStaker(mainnet_url, blocks.sixDayBlock)
+    const sixDayStakerAll = sixDayStakerMain + sixDayStakerOvm
 
-      const twentyDayStaker = twentyDayStakerCall.issuers.toNumber()
-    
-      const twentyFiveDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.twentyFiveDayBlock } },
-        { issuers: true },
-      );
+    const tenDayStakerOvm = await fetchNumStaker(optimism_url, blocks.tenDayBlock)
+    const tenDayStakerMain = await fetchNumStaker(mainnet_url, blocks.tenDayBlock)
+    const tenDayStakerAll = tenDayStakerMain + tenDayStakerOvm
 
-      const twentyFiveDayStaker = twentyFiveDayStakerCall.issuers.toNumber()
-    
-      const thirtyDayStakerCall = await getSynthetixById(
-        optimism_url,
-        { id: "1", block: { number: blocks.thirtyDayBlock } },
-        { issuers: true },
-      );
+    const fifteenDayStakerOvm = await fetchNumStaker(optimism_url, blocks.fifteenDayBlock)
+    const fifteenDayStakerMain = await fetchNumStaker(mainnet_url, blocks.fifteenDayBlock)
+    const fifteenDayStakerAll = fifteenDayStakerMain + fifteenDayStakerOvm
 
-      const thirtyDayStaker = thirtyDayStakerCall.issuers.toNumber()
+    const twentyDayStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyDayBlock)
+    const twentyDayStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyDayBlock)
+    const twentyDayStakerAll = twentyDayStakerMain + twentyDayStakerOvm
 
-      const day = [
+    const twentyFiveDayStakerOvm = await fetchNumStaker(optimism_url, blocks.twentyFiveDayBlock)
+    const twentyFiveDayStakerMain = await fetchNumStaker(mainnet_url, blocks.twentyFiveDayBlock)
+    const twentyFiveDayStakerAll = twentyFiveDayStakerMain + twentyFiveDayStakerOvm
+
+    const thirtyDayStakerOvm = await fetchNumStaker(optimism_url, blocks.thirtyDayBlock)
+    const thirtyDayStakerMain = await fetchNumStaker(mainnet_url, blocks.thirtyDayBlock)
+    const thirtyDayStakerAll = thirtyDayStakerMain + thirtyDayStakerOvm
+
+      const dayOvm = [
         {
           date: timeStamp.twentyFourHourAgo,
-          stakers: twentyFourHourStaker,
+          stakers: twentyFourHourStakerOvm,
         },
         {
           date: timeStamp.twentyHourAgo,
-          stakers: twentyHourStaker,
+          stakers: twentyHourStakerOvm,
         },
         {
           date: timeStamp.sixteenHourAgo,
-          stakers: sixteenHourStaker,
+          stakers: sixteenHourStakerOvm,
         },
         {
           date: timeStamp.twelveHourAgo,
-          stakers: twelveHourStaker,
+          stakers: twelveHourStakerOvm,
         },
         {
           date: timeStamp.eightHourAgo,
-          stakers: eightHourStaker,
+          stakers: eightHourStakerOvm,
         },
         {
           date: timeStamp.fourHourAgo,
-          stakers: fourHourStaker,
+          stakers: fourHourStakerOvm,
         },
         {
           date: timeStamp.noHourAgo,
-          stakers: currentStaker,
+          stakers: currentStakerOvm,
         },
       ];
 
-      const week = [
+      const dayMain = [
+        {
+          date: timeStamp.twentyFourHourAgo,
+          stakers: twentyFourHourStakerMain,
+        },
+        {
+          date: timeStamp.twentyHourAgo,
+          stakers: twentyHourStakerMain,
+        },
+        {
+          date: timeStamp.sixteenHourAgo,
+          stakers: sixteenHourStakerMain,
+        },
+        {
+          date: timeStamp.twelveHourAgo,
+          stakers: twelveHourStakerMain,
+        },
+        {
+          date: timeStamp.eightHourAgo,
+          stakers: eightHourStakerMain,
+        },
+        {
+          date: timeStamp.fourHourAgo,
+          stakers: fourHourStakerMain,
+        },
+        {
+          date: timeStamp.noHourAgo,
+          stakers: currentStakerMain,
+        },
+      ];
+
+      const dayAll = [
+        {
+          date: timeStamp.twentyFourHourAgo,
+          stakers: twentyFourHourStakerAll,
+        },
+        {
+          date: timeStamp.twentyHourAgo,
+          stakers: twentyHourStakerAll,
+        },
+        {
+          date: timeStamp.sixteenHourAgo,
+          stakers: sixteenHourStakerAll,
+        },
+        {
+          date: timeStamp.twelveHourAgo,
+          stakers: twelveHourStakerAll,
+        },
+        {
+          date: timeStamp.eightHourAgo,
+          stakers: eightHourStakerAll,
+        },
+        {
+          date: timeStamp.fourHourAgo,
+          stakers: fourHourStakerAll,
+        },
+        {
+          date: timeStamp.noHourAgo,
+          stakers: currentStakerAll,
+        },
+      ];
+
+      const weekOvm = [
         {
           date: timeStamp.sixDayAgo,
-          stakers: sixDayStaker,
+          stakers: sixDayStakerAll,
         },
         {
           date: timeStamp.fiveDayAgo,
-          stakers: fiveDayStaker,
+          stakers: fiveDayStakerOvm,
         },
         {
           date: timeStamp.fourDayAgo,
-          stakers: fourDayStaker,
+          stakers: fourDayStakerOvm,
         },
         {
           date: timeStamp.threeDayAgo,
-          stakers: threeDayStaker,
+          stakers: threeDayStakerOvm,
         },
         {
           date: timeStamp.twoDayAgo,
-          stakers: twoDayStaker,
+          stakers: twoDayStakerOvm,
         },
         {
           date: timeStamp.oneDayAgo,
-          stakers: twentyFourHourStaker,
+          stakers: twentyFourHourStakerOvm,
         },
         {
           date: timeStamp.currentDay,
-          stakers: currentStaker,
+          stakers: currentStakerOvm,
         },
       ];
 
-      const month = [
+      const weekMain = [
         {
-          date: timeStamp.thirtyDayAgo,
-          stakers: thirtyDayStaker,
-        },
-        {
-          date: timeStamp.twentyFiveDayAgo,
-          stakers: twentyFiveDayStaker,
-        },
-        {
-          date: timeStamp.twentyDayAgo,
-          stakers: twentyDayStaker,
-        },
-        {
-          date: timeStamp.fifteenDayAgo,
-          stakers: fifteenDayStaker,
-        },
-        {
-          date: timeStamp.tenDayAgo,
-          stakers: tenDayStaker,
+          date: timeStamp.sixDayAgo,
+          stakers: sixDayStakerMain,
         },
         {
           date: timeStamp.fiveDayAgo,
-          stakers: fiveDayStaker,
+          stakers: fiveDayStakerMain,
+        },
+        {
+          date: timeStamp.fourDayAgo,
+          stakers: fourDayStakerMain,
+        },
+        {
+          date: timeStamp.threeDayAgo,
+          stakers: threeDayStakerMain,
+        },
+        {
+          date: timeStamp.twoDayAgo,
+          stakers: twoDayStakerMain,
+        },
+        {
+          date: timeStamp.oneDayAgo,
+          stakers: twentyFourHourStakerMain,
         },
         {
           date: timeStamp.currentDay,
-          stakers: currentStaker,
+          stakers: currentStakerMain,
+        },
+      ];
+
+      const weekAll = [
+        {
+          date: timeStamp.sixDayAgo,
+          stakers: sixDayStakerAll,
+        },
+        {
+          date: timeStamp.fiveDayAgo,
+          stakers: fiveDayStakerAll,
+        },
+        {
+          date: timeStamp.fourDayAgo,
+          stakers: fourDayStakerAll,
+        },
+        {
+          date: timeStamp.threeDayAgo,
+          stakers: threeDayStakerAll,
+        },
+        {
+          date: timeStamp.twoDayAgo,
+          stakers: twoDayStakerAll,
+        },
+        {
+          date: timeStamp.oneDayAgo,
+          stakers: twentyFourHourStakerAll,
+        },
+        {
+          date: timeStamp.currentDay,
+          stakers: currentStakerAll,
+        },
+      ];
+
+      const monthOvm = [
+        {
+          date: timeStamp.thirtyDayAgo,
+          stakers: thirtyDayStakerOvm,
+        },
+        {
+          date: timeStamp.twentyFiveDayAgo,
+          stakers: twentyFiveDayStakerOvm,
+        },
+        {
+          date: timeStamp.twentyDayAgo,
+          stakers: twentyDayStakerOvm,
+        },
+        {
+          date: timeStamp.fifteenDayAgo,
+          stakers: fifteenDayStakerOvm,
+        },
+        {
+          date: timeStamp.tenDayAgo,
+          stakers: tenDayStakerOvm,
+        },
+        {
+          date: timeStamp.fiveDayAgo,
+          stakers: fiveDayStakerOvm,
+        },
+        {
+          date: timeStamp.currentDay,
+          stakers: currentStakerOvm,
+        },
+      ];
+
+      const monthMain = [
+        {
+          date: timeStamp.thirtyDayAgo,
+          stakers: thirtyDayStakerMain,
+        },
+        {
+          date: timeStamp.twentyFiveDayAgo,
+          stakers: twentyFiveDayStakerMain,
+        },
+        {
+          date: timeStamp.twentyDayAgo,
+          stakers: twentyDayStakerMain,
+        },
+        {
+          date: timeStamp.fifteenDayAgo,
+          stakers: fifteenDayStakerMain,
+        },
+        {
+          date: timeStamp.tenDayAgo,
+          stakers: tenDayStakerMain,
+        },
+        {
+          date: timeStamp.fiveDayAgo,
+          stakers: fiveDayStakerMain,
+        },
+        {
+          date: timeStamp.currentDay,
+          stakers: currentStakerMain,
+        },
+      ];
+
+      const monthAll = [
+        {
+          date: timeStamp.thirtyDayAgo,
+          stakers: thirtyDayStakerAll,
+        },
+        {
+          date: timeStamp.twentyFiveDayAgo,
+          stakers: twentyFiveDayStakerAll,
+        },
+        {
+          date: timeStamp.twentyDayAgo,
+          stakers: twentyDayStakerAll,
+        },
+        {
+          date: timeStamp.fifteenDayAgo,
+          stakers: fifteenDayStakerAll,
+        },
+        {
+          date: timeStamp.tenDayAgo,
+          stakers: tenDayStakerAll,
+        },
+        {
+          date: timeStamp.fiveDayAgo,
+          stakers: fiveDayStakerAll,
+        },
+        {
+          date: timeStamp.currentDay,
+          stakers: currentStakerAll,
         },
       ];
     
 
 
   return {
-      currentStaker: currentStaker,
-      day: day,
-      week: week,
-      month: month
+      currentStakerAll,
+      currentStakerOvm,
+      currentStakerMain,
+      dayAll,
+      dayMain,
+      dayOvm,
+      weekAll,
+      weekMain,
+      weekOvm,
+      monthAll,
+      monthMain,
+      monthOvm
      
   }
 
