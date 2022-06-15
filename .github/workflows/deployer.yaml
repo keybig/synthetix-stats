@@ -1,5 +1,5 @@
 # This action triggers the build hook
-    name: Build
+    name: Deployer
 
     # Controls when the workflow will run
     on:
