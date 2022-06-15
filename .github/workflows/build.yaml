@@ -13,8 +13,8 @@
     jobs:
      build:
         runs-on: ubuntu-latest
-            steps:
+        steps:
      # Runs a request to the build hook
-            - name: Build hook request
+          - name: Build hook request
             run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
 
