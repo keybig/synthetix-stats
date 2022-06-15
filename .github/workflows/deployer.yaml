@@ -15,6 +15,6 @@
         runs-on: ubuntu-latest
         steps:
      # Runs a request to the build hook
-          - name: Build hook request
+          - name: Deploy hook request
             run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
 
