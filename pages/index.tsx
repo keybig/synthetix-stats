@@ -18,6 +18,7 @@ import Inflation from "../components/data/inflation/Inflation";
 import TradeFee from "../components/data/tradeFee/TradeFee";
 import { stakit } from "../lib/getStakey";
 import { numStakey} from "../lib/getNumStaky"
+import { activa } from "../lib/getTradeActivitas";
 
 const Home = (props: any) => {
   const router = useRouter();
@@ -89,12 +90,21 @@ const Home = (props: any) => {
       
 
         <TradeActivity
-          totalTradeData={props.tradey.tradeDataArr}
-          currentTotalTrades={props.tradey.currentTrade}
-          totalTrades={props.tradey.totalTrades}
-          totalVol={props.tradey.totalVol}
-          currentTotalVol={props.tradey.currentVol}
-          currentTradeData={props.tradey.currentTradeStats}
+          click={netId}
+          tradeDataMain={props.active.tradeDataMain}
+          tradeDataOvm={props.active.tradeDataOvm}
+          totalVolMain={props.active.totalVolMain}
+          totalTradeMain={props.active.totalTradeMain}
+          totalVolOvm={props.active.totalVolOvm}
+          totalTradeOvm={props.active.totalTradeOvm}
+          currentTradeDataMain={props.active.currentTradeDataMain}
+          currentTotalVolMain={props.active.currentTotalVolMain}
+          currentTotalTradeMain={props.active.currentTotalTradeMain}
+          currentTradeDataOvm={props.active.currentTradeDataOvm}
+          currentTotalVolOvm={props.active.currentTotalVolOvm}
+          currentTotalTradeOvm={props.active.currentTotalTradeOvm}
+          currentTradeDataAll={props.active.allCurrentTradeData}
+          tradeDataAll={props.active.allTotalTradeData}
         />
 
         <Inflation
@@ -128,6 +138,7 @@ export async function getStaticProps() {
   const theTVL = await getTvl();
   const staka = await stakit()
   const numberStake = await numStakey()
+  const active = await activa()
 
   // tests below, keep above
 
@@ -138,7 +149,8 @@ export async function getStaticProps() {
       theTVL,
       tradey,
       staka,
-      numberStake
+      numberStake,
+      active
     },
   };
 }

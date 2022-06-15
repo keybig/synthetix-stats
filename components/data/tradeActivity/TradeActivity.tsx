@@ -3,20 +3,38 @@ import { useState, useMemo } from "react";
 import TradeTable from "./TradeTable";
 
 interface TradeStats {
-  totalTrades: number;
-  totalVol: number;
-  currentTotalTrades: number;
-  currentTotalVol: number;
-  totalTradeData: any[]
-  currentTradeData: any[]
+  click: number
+  tradeDataAll: any[]
+  tradeDataMain: any[]
+  tradeDataOvm: any[]
+  totalVolMain: number
+  totalTradeMain: number
+  totalVolOvm: number
+  totalTradeOvm: number
+  currentTradeDataAll: any[]
+  currentTradeDataMain: any[]
+  currentTotalVolMain: number
+  currentTotalTradeMain: number
+  currentTradeDataOvm: any[]
+  currentTotalVolOvm: number
+  currentTotalTradeOvm: number
 }
 const TradeActivity = ({
-  totalTrades,
-  totalVol,
-  currentTotalTrades,
-  currentTotalVol,
-  totalTradeData,
-  currentTradeData
+  click,
+  tradeDataMain,
+  totalVolMain,
+  totalTradeMain,
+  tradeDataOvm,
+  totalVolOvm,
+  totalTradeOvm,
+  currentTradeDataMain,
+  currentTotalVolMain,
+  currentTotalTradeMain,
+  currentTradeDataOvm,
+  currentTotalVolOvm,
+  currentTotalTradeOvm,
+  currentTradeDataAll,
+  tradeDataAll,
 }:TradeStats) => {
 
   const buttonMap = [
@@ -24,11 +42,25 @@ const TradeActivity = ({
     { id: 2, title: "Total To Date" },
   ];
 
-  const [click, setClick] = useState(1);
+  const [timeFrame, setTimeFrame] = useState(1);
 
   const handleActive = (buttons: any) => {
-    setClick(buttons.id);
+    setTimeFrame(buttons.id);
   };
+
+  const ovmVolume = timeFrame === 1 ? currentTotalVolOvm : totalVolOvm
+ const ovmTrade = timeFrame === 1 ? currentTotalTradeOvm : totalTradeOvm
+
+ const mainVolume = timeFrame === 1 ? currentTotalVolMain : totalVolMain
+ const mainTrade = timeFrame === 1 ? currentTotalTradeMain : totalTradeMain
+
+ const currentTotalVolume = currentTotalVolOvm + currentTotalVolMain
+ const currentTotalTrade = currentTotalTradeOvm + currentTotalTradeMain
+ const allTotalVolume = totalVolMain + totalVolOvm
+ const allTotalTrade = totalTradeMain + totalTradeOvm
+
+ const allVolume = timeFrame === 1 ? currentTotalVolume : allTotalVolume
+ const allTrade = timeFrame === 1 ? currentTotalTrade : allTotalTrade
 
   return (
     <div className={styles.container}>
@@ -40,7 +72,7 @@ const TradeActivity = ({
             key={buttonMap.id}
             onClick={() => handleActive(buttonMap)}
             className={
-              buttonMap.id === click ? styles.current : styles.inactive
+              buttonMap.id === timeFrame ? styles.current : styles.inactive
             }
           >
             {buttonMap.title}
@@ -49,25 +81,29 @@ const TradeActivity = ({
       </div>
       <div className={styles.table}>
         <TradeTable 
-          tableId={click} 
-          totalTradeStats={totalTradeData} 
-          currentTradeStats={currentTradeData}
-          totalVol={totalVol}
-          currentVol={currentTotalVol}
+          click={click}
+          tableId={timeFrame}
+          totalTradeStatsAll={tradeDataAll}
+          totalTradeStatsMain={tradeDataMain}
+          totalTradeStatsOvm={tradeDataOvm}
+          currentTradeStatsAll={currentTradeDataAll}
+          currentTradeStatsMain={currentTradeDataMain}
+          currentTradeStatsOvm={currentTradeDataOvm}
            />
+           
       </div>
 
       <div className={styles.bottom}>
         <h5 className={styles.bottomTitle}>Total N of Trades</h5>
 
         <p className={styles.totalTrades}>
-          {click === 1 ? currentTotalTrades : totalTrades}
+        {click === 1 ? mainTrade : click === 10 ? ovmTrade : allTrade}
         </p>
 
         <h5 className={styles.bottomTitle}>Total Volume</h5>
 
         <p className={styles.totalVolume}>
-          {click === 1 ? currentTotalVol : totalVol}
+        {click === 1 ? mainVolume : click === 10 ? ovmVolume : allVolume}
         </p>
       </div>
     </div>

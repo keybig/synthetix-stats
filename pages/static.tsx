@@ -9,6 +9,7 @@ import { getDebtStates, getRateUpdates } from '../subgraph-ovm'
 import getTime from '../lib/getTime'
 import { blocky } from '../lib/getBlocky'
 import { getTvl } from '../lib/getTVLy'
+import { activa } from '../lib/getTradeActivitas'
 
 
 
@@ -21,34 +22,26 @@ export async function getStaticProps() {
     const blocks = await blocky()
 
 
-    const fetchyTVL = await getTvl()
-  
+    const tradeStat = await activa()
+    console.log(tradeStat.tradeDataMain)
+    console.log(tradeStat.tradeDataOvm)
 
 
 
 
     return { props: {
-      fetchyTVL
+      tradeStat
     }  }
   }
   
 
 const Static = (props:any) => {
 
-  
-
-
-
   return (
-    <div style={{background:"white"}}>
+    <div style={{background:"white", fontSize:"2rem"}}>
    
 
    
- 
-      
-       <h5>
- 
-       </h5>
       
 
      

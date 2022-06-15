@@ -4,23 +4,42 @@ import styles from './TradeTable.module.css'
 
 
 interface table  {
+  click: number;
   tableId: number;
-  totalTradeStats: any[]
-  currentTradeStats: any[]
-  totalVol: number;
-  currentVol: number;
+  totalTradeStatsOvm: any[]
+  currentTradeStatsOvm: any[]
+  currentTradeStatsMain: any[]
+  totalTradeStatsMain: any[]
+  currentTradeStatsAll: any[]
+  totalTradeStatsAll: any[]
 }
 
 
-const TradeTable = ({tableId,totalTradeStats, currentTradeStats, totalVol, currentVol }:table) => {
-
-  const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
-  const tradeDep = tableId === 1 ? currentVol : totalVol
 
 
-    const data = useMemo(
+const TradeTable = ({
+  click, 
+  tableId, 
+  totalTradeStatsAll, 
+  totalTradeStatsMain, 
+  totalTradeStatsOvm, 
+  currentTradeStatsAll, 
+  currentTradeStatsMain, 
+  currentTradeStatsOvm
+}:table) => {
+
+ //const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
+ // const tradeDep = tableId === 1 ? currentVol : totalVol
+
+ const ovmData = tableId === 1 ? currentTradeStatsOvm : totalTradeStatsOvm
+ const mainData = tableId === 1 ? currentTradeStatsMain : totalTradeStatsMain
+ const allData = tableId === 1 ? currentTradeStatsAll : totalTradeStatsAll
+   
+ const tradeTable = click === 1 ? mainData : click === 10 ? ovmData : allData
+
+ const data = useMemo(
       () => tradeTable,
-      [tradeDep]
+      [tradeTable]
     )
 
     
