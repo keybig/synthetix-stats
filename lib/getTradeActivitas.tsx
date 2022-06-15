@@ -1,6 +1,6 @@
 import useSynthetixQueries from "@synthetixio/queries";
 import { formatNumber, formatMoney } from "../constants/format";
-import { getDailyExchangePartners, getExchangePartners, getFeePeriods } from "../subgraph-ovm";
+import { getDailyExchangePartners, getDebtStates, getExchangePartners, getFeePeriods } from "../subgraph-ovm";
 
 const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
 const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
@@ -45,10 +45,10 @@ export const activa = async() => {
           };
           tradeDataArr.push(obj);
           const feeObj = {
-            name: item.id,
+            name: item.id === undefined ? null : item.id,
             value: item.usdFees.toNumber(),
           };
-          tradeFeeArr.push(obj);
+          tradeFeeArr.push(feeObj);
         });
       
         const totalTrades = tradeDataCall.reduce((sum, cur) => {
@@ -140,7 +140,7 @@ export const activa = async() => {
 
     currentEpochTradeData.forEach((item) => {
         const obj = {
-          name: item.partner,
+          name: item.partner === undefined ? null : item.partner,
           value: item.usdFees.toNumber(),
         };
         currentFeeDataArr.push(obj);
@@ -152,6 +152,10 @@ export const activa = async() => {
         item ? (item.value += value) : sum.push({ name, value });
         return sum;
       }, []);
+
+    
+
+    
 
     return {
         currentTradeStats,
@@ -177,6 +181,9 @@ export const activa = async() => {
 
     const allCurrentTradeDataArr = [...currentTradeDataOvm, ...currentTradeDataMain]
     const allTotalTradeDataArr = [...tradeDataOvm, ...tradeDataMain]
+    const allCurrentTradeFeeArr = [...currentTotalFeeOvm, ...currentTotalFeeMain]
+    const allTotalTradeFeeArr = [...totalFeeOvm, ...totalFeeMain]
+    
 
     const allCurrentTradeData = allCurrentTradeDataArr.reduce((acc, cur) => {
         const { col1, col2, col3 } = cur;
@@ -206,9 +213,60 @@ export const activa = async() => {
 
       console.log(allTotalTradeData)
 
+      const allTotalFee = allTotalTradeFeeArr.reduce((acc, cur) => {
+        const { name, value, } = cur;
+        const item = acc.find((it: { name: string }) => it.name === name);
+        if (item) {
+          item.value += value;
+        } else {
+          acc.push({ name, value, });
+        }
+        return acc;
+      }, []);
+
+      const allCurrentFee = allCurrentTradeFeeArr.reduce((acc, cur) => {
+        const { name, value, } = cur;
+        const item = acc.find((it: { name: string }) => it.name === name);
+        if (item) {
+          item.value += value;
+        } else {
+          acc.push({ name, value, });
+        }
+        return acc;
+      }, []);
+
+      // total issued synth
+
+    const fetchTotalIssuedSynth = async(network:string) => {
+        const totalSynthCall = await getDebtStates(
+          network,
+          {
+            orderBy: "timestamp",
+            orderDirection: "desc",
+            first: 1,
+          },
+          { totalIssuedSynths: true },
+      )
+
+        const totalSynths = totalSynthCall[0].totalIssuedSynths.toNumber()
+
+        return totalSynths
+    }
+
+    const ovmTotalSynth = await fetchTotalIssuedSynth(optimism_url)
+    const mainTotalSynth = await fetchTotalIssuedSynth(mainnet_url)
+    const allTotalSynth = ovmTotalSynth + mainTotalSynth
+
+
+
   return {
+      ovmTotalSynth,
+      mainTotalSynth,
+      allTotalSynth,
       allCurrentTradeData,
       allTotalTradeData,
+      allCurrentFee,
+      allTotalFee,
       tradeDataMain,
       totalVolMain,
       totalTradeMain,

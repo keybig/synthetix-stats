@@ -118,11 +118,18 @@ const Home = (props: any) => {
         />
 
         <TradeFee
-          tradeFeeArr={props.tradey.tradeFeeArr}
-          currentFeeData={props.tradey.currentFeeData}
-          currentFeeSum={props.tradey.currentFeeSum}
-          totalFeeSum={props.tradey.totalFeeSum}
           totalIssuedSynth={props.tradey.totalSynth}
+          click={netId}
+          currentFeeOvm={props.active.currentTotalFeeOvm}
+          currentFeeAll={props.active.allCurrentFee}
+          currentFeeMain={props.active.currentTotalFeeMain}
+          totalFeeAll={props.active.allTotalFee}
+          totalFeeMain={props.active.totalFeeMain}
+          totalFeeOvm={props.active.totalFeeOvm}
+          ovmTotalSynth={props.active.ovmTotalSynth}
+          mainTotalSynth={props.active.mainTotalSynth}
+          allTotalSynth={props.active.mainTotalSynth}
+      
         />
       </div>
     </div>

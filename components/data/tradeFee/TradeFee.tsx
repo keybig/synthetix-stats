@@ -4,20 +4,30 @@ import { useState } from "react";
 import TradeFeeTable from "./TradeFeeTable";
 
 interface Props  {
-  tradeFeeArr: any[];
-  currentFeeData: any[];
-  currentFeeSum: number;
-  totalFeeSum: number;
+  currentFeeOvm: any[];
+  currentFeeMain: any[];
+  currentFeeAll: any[];
+  totalFeeOvm: any[];
+  totalFeeMain: any[];
+  totalFeeAll: any[]
   totalIssuedSynth: number;
-
+  click: number;
+  ovmTotalSynth: number;
+  mainTotalSynth: number;
+  allTotalSynth: number;
 }
 
 const TradeFee = ({
-  tradeFeeArr,
-  currentFeeData,
-  currentFeeSum,
-  totalFeeSum,
-  totalIssuedSynth
+  click,
+  currentFeeOvm,
+  currentFeeAll,
+  currentFeeMain,
+  totalFeeAll,
+  totalFeeMain,
+  totalFeeOvm,
+  mainTotalSynth,
+  ovmTotalSynth,
+  allTotalSynth
 }:Props) => {
  
   const buttonMap = [
@@ -25,28 +35,16 @@ const TradeFee = ({
     { id: 2, title: "Total To Date" },
   ];
 
-  const [click, setClick] = useState<number>(1);
+  const [timeFrame, setTimeFrame] = useState<number>(1);
  
 
   const handleActive = (buttons: any) => {
-    setClick(buttons.id);
+    setTimeFrame(buttons.id);
   };
 
-  const current = [
-    { name: "Wrappers", value: 400 },
-    { name: "Protocol", value: 300 },
-    { name: "Protocol", value: 300 },
-    { name: "Other", value: 200 },
-    { name: "Protocol", value: 100 },
-  ];
-
-  const total = [
-    { name: "Wrappers", value: 2100 },
-    { name: "Protocol", value: 500 },
-    { name: "Protocol", value: 200 },
-    { name: "Other", value: 200 },
-    { name: "Protocol", value: 200 },
-  ];
+  const ovmData = timeFrame === 1 ? currentFeeOvm : totalFeeOvm
+  const mainData = timeFrame === 1 ? currentFeeMain : totalFeeMain
+  const allData = timeFrame === 1 ? currentFeeAll : totalFeeAll
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6"];
 
@@ -60,7 +58,7 @@ const TradeFee = ({
             key={buttonMap.id}
             onClick={() => handleActive(buttonMap)}
             className={
-              buttonMap.id === click ? styles.current : styles.inactive
+              buttonMap.id === timeFrame ? styles.current : styles.inactive
             }
           >
             {buttonMap.title}
@@ -76,10 +74,10 @@ const TradeFee = ({
                 dataKey="value"
                 nameKey="name"
                 isAnimationActive={false}
-                data={click === 1 ? currentFeeData : tradeFeeArr}
+                data={click === 1 ? mainData : click === 10 ? ovmData : allData}
                 outerRadius={"80%"}
               >
-                {total.map((entry, index) => (
+                {mainData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={COLORS[index % COLORS.length]}
@@ -93,11 +91,14 @@ const TradeFee = ({
 
         <div className={styles.chartkey}>
           <TradeFeeTable 
-            tableId={click}
-            tradeFeeArr={tradeFeeArr}
-            totalFeeSum={totalFeeSum}
-            currentFeeData={currentFeeData}
-            currentFeeSum={currentFeeSum}
+            click={click}
+            tableId={timeFrame}
+            currentFeeAll={currentFeeAll}
+            currentFeeMain={currentFeeMain}
+            currentFeeOvm={currentFeeOvm}
+            totalFeeAll={totalFeeAll}
+            totalFeeOvm={totalFeeOvm}
+            totalFeeMain={totalFeeMain}
              />
             
         </div>
@@ -105,7 +106,7 @@ const TradeFee = ({
 
       <div>
         <p className={styles.totalsynthsupply}>Total Synth Supply</p>
-        <p className={styles.totalsupplyamount}>{totalIssuedSynth}</p>
+        <p className={styles.totalsupplyamount}>{click === 1 ? mainTotalSynth : click === 10 ? ovmTotalSynth : allTotalSynth}</p>
       </div>
     </div>
   );

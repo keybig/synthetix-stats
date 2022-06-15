@@ -6,35 +6,40 @@ import { keyframes } from 'styled-components'
 
 
 interface Props  {
-  tableId:number;
-  tradeFeeArr: any[];
-  currentFeeData: any[];
-  currentFeeSum: number;
-  totalFeeSum: number;
+  currentFeeOvm: any[];
+  currentFeeMain: any[];
+  currentFeeAll: any[];
+  totalFeeOvm: any[];
+  totalFeeMain: any[];
+  totalFeeAll: any[]
+  click: number;
+  tableId: number;
 
 }
 
 
 const TradeFeeTable = ({
+  click,
   tableId,
-  tradeFeeArr,
-  currentFeeData,
-  currentFeeSum,
-  totalFeeSum
+  currentFeeOvm,
+  currentFeeAll,
+  currentFeeMain,
+  totalFeeAll,
+  totalFeeMain,
+  totalFeeOvm,
+
 }:Props) => {
 
-    const tableData = tableId === 1 ? currentFeeData : tradeFeeArr
-    const feeDep = tableId === 1 ? currentFeeSum : totalFeeSum
-
+  const ovmFeeData = tableId === 1 ? currentFeeOvm : totalFeeOvm
+ const mainFeeData = tableId === 1 ? currentFeeMain : totalFeeMain
+ const allFeeData = tableId === 1 ? currentFeeAll : totalFeeAll
    
+ const feeTable = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 
-
-
-
-    const data = useMemo(
-        () => tableData,
-        [tableData]
-      )
+ const data = useMemo(
+      () => feeTable,
+      [feeTable]
+    )
 
       
     
@@ -143,7 +148,7 @@ const TradeFeeTable = ({
           </tbody>
       </table>
 
-      {tableData.length > 4 ? 
+      {feeTable.length > 4 ? 
       
       <><button onClick={() => previousPage()} disabled={!canPreviousPage}>
           {'<'}
