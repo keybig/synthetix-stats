@@ -12,9 +12,9 @@
     # The workflow to run
     jobs:
      build:
-     runs-on: ubuntu-latest
-     steps:
+        runs-on: ubuntu-latest
+            steps:
      # Runs a request to the build hook
-     - name: Build hook request
-     run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
+            - name: Build hook request
+            run: curl -X POST ${{ secrets.DEPLOY_HOOK }}
 
