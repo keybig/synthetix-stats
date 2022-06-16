@@ -19,6 +19,8 @@ import TradeFee from "../components/data/tradeFee/TradeFee";
 import { stakit } from "../lib/getStakey";
 import { numStakey} from "../lib/getNumStaky"
 import { activa } from "../lib/getTradeActivitas";
+import MoreStats from "../components/data/moreStats/MoreStats";
+import StartStaking from "../components/data/startStaking/StartStaking";
 
 const Home = (props: any) => {
   const router = useRouter();
@@ -129,8 +131,10 @@ const Home = (props: any) => {
           ovmTotalSynth={props.active.ovmTotalSynth}
           mainTotalSynth={props.active.mainTotalSynth}
           allTotalSynth={props.active.mainTotalSynth}
-      
         />
+
+        <MoreStats/>
+        <StartStaking/>
       </div>
     </div>
   );

@@ -3,6 +3,7 @@ import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
 import styles from './TradeFeeTable.module.css'
 import Image from 'next/image'
 import { keyframes } from 'styled-components'
+import { formatMoney } from '../../../constants/format'
 
 
 interface Props  {
@@ -59,6 +60,7 @@ const TradeFeeTable = ({
           {
             Header: 'Fee Amt',
             accessor: 'value',
+            Cell: ({value}) => { return formatMoney.format(value)}
           }
         ],
         []
@@ -73,7 +75,7 @@ const TradeFeeTable = ({
           initialState: {
             sortBy: [
               {
-                id: 'col3',
+                id: 'value',
                 desc: true,
               },
             ],

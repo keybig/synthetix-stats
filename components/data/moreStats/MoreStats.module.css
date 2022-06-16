@@ -37,3 +37,7 @@
     border: none;
   }
   
+  .advancedbutton a {
+    color:white;
+    text-decoration: none;
+  }

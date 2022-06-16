@@ -10,6 +10,7 @@ import {
   ResponsiveContainer,
 } from "recharts";
 import { useState } from "react";
+import { formatNumber } from "../../../constants/format";
 
 
 
@@ -44,6 +45,9 @@ const NumStaker = ({
       monthOvm
 }:NumStaker) => {
 
+  const allStaker = formatNumber.format(currentStakerAll)
+  const ovmStaker = formatNumber.format(currentStakerOvm)
+  const mainStaker = formatNumber.format(currentStakerMain)
 
   const buttonMap = [
     { id: 1, title: "One Day" },
@@ -68,7 +72,7 @@ const NumStaker = ({
       <div className={styles.topRow}>
         <div>
           <h3>Number of Individual Stakers</h3>
-          <p className={styles.value}>{click === 1 ? currentStakerMain : click === 10 ? currentStakerOvm : currentStakerAll}</p>
+          <p className={styles.value}>{click === 1 ? mainStaker : click === 10 ? ovmStaker : allStaker}</p>
         </div>
 
         <div className={styles.selectors}>

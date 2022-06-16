@@ -12,6 +12,7 @@ import {
   Area,
 } from "recharts";
 import { useMemo, useState } from "react";
+import { formatMoney } from "../../../constants/format";
 
 interface TVL {
   dayDataOvm: any[];
@@ -47,6 +48,7 @@ const TotalValueLocked = ({
   totalWrapperOvm,
   totalWrapperMain,
 }:TVL) => {
+
   const buttonMap = [
     { id: 1, title: "One Day" },
     { id: 2, title: "One Week" },
@@ -61,16 +63,21 @@ const TotalValueLocked = ({
 
   // click === 1 ? mainnet : click === 10 ? optimism : click === 21 ? all networks
 
-  const totalValueLockedOvm = totalDebtOvm + totalWrapperOvm
-  const totalValueLockedMain = totalDebtMain + totalWrapperMain
-  const totalValueLockedAll = (totalDebtMain + totalDebtOvm) + (totalWrapperMain + totalWrapperOvm)
+  const totalValueLockedOvm = formatMoney.format(totalDebtOvm + totalWrapperOvm)
+  const totalValueLockedMain = formatMoney.format(totalDebtMain + totalWrapperMain)
+  const totalValueLockedAll = formatMoney.format((totalDebtMain + totalDebtOvm) + (totalWrapperMain + totalWrapperOvm))
 
-  const allDebt = totalDebtMain + totalDebtOvm
-  const allWrapper = totalWrapperMain + totalWrapperOvm
+  const allDebt = formatMoney.format(totalDebtMain + totalDebtOvm)
+  const allWrapper = formatMoney.format(totalWrapperMain + totalWrapperOvm)
+  const ovmDebt = formatMoney.format(totalDebtOvm)
+  const ovmWrapper = formatMoney.format(totalWrapperOvm)
+  const mainDebt = formatMoney.format(totalDebtMain)
+  const mainWrapper = formatMoney.format(totalWrapperMain)
 
   const ovmData = timeFrame === 1 ? dayDataOvm : timeFrame === 2 ? weekDataOvm : monthDataOvm
   const mainData = timeFrame === 1 ? dayDataMain : timeFrame === 2 ? weekDataMain : monthDataMain
   const allData = timeFrame === 1 ? dayDataAll : timeFrame === 2 ? weekDataAll : monthDataAll
+  
   
 
   return (
@@ -123,12 +130,12 @@ const TotalValueLocked = ({
       <div className={styles.bottom}>
         <div className={styles.debtPool}>
           <h5 className={styles.stakingColor}>Staking Debt Pool</h5>
-          <p>{click === 1 ? totalDebtMain : click === 10 ? totalDebtOvm : allDebt}</p>
+          <p>{click === 1 ? mainDebt : click === 10 ? ovmDebt : allDebt}</p>
         </div>
 
         <div className={styles.wrapper}>
           <h5 className={styles.wrapperColor}>Wrappers</h5>
-          <p>{click === 1 ? totalWrapperMain : click === 10 ? totalWrapperOvm : allWrapper}</p>
+          <p>{click === 1 ? mainWrapper : click === 10 ? ovmWrapper : allWrapper}</p>
         </div>
       </div>
     </div>

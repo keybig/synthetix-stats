@@ -2,6 +2,7 @@ import styles from "./TradeFee.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
 import TradeFeeTable from "./TradeFeeTable";
+import { formatNumber } from "../../../constants/format";
 
 interface Props  {
   currentFeeOvm: any[];
@@ -106,7 +107,7 @@ const TradeFee = ({
 
       <div>
         <p className={styles.totalsynthsupply}>Total Synth Supply</p>
-        <p className={styles.totalsupplyamount}>{click === 1 ? mainTotalSynth : click === 10 ? ovmTotalSynth : allTotalSynth}</p>
+        <p className={styles.totalsupplyamount}>{click === 1 ? formatNumber.format(mainTotalSynth) : click === 10 ? formatNumber.format(ovmTotalSynth) : formatNumber.format(allTotalSynth)}</p>
       </div>
     </div>
   );

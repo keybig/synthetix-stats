@@ -1,5 +1,6 @@
 import { useMemo } from 'react'
 import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
+import { formatMoney, formatNumber } from '../../../constants/format';
 import styles from './TradeTable.module.css'
 
 
@@ -63,10 +64,12 @@ const TradeTable = ({
           {
             Header: 'N of Trades',
             accessor: 'col2',
+            Cell: ({value}) => { return formatNumber.format(value)}
           },
           {
             Header: 'Volume',
             accessor: 'col3',
+            Cell: ({value}) => { return formatMoney.format(value)}
           }
         ],
         []

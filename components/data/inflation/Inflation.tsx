@@ -7,6 +7,7 @@ import {
   ResponsiveContainer,
   Tooltip,
 } from "recharts";
+import { formatNumber } from "../../../constants/format";
 
 interface Inflation {
   click: number;
@@ -36,13 +37,13 @@ const Inflation = ({
       <div>
         <h3>Inflation Fees (SNX Rewards)</h3>
         <h5 className={styles.subtitle}>Current Epoch</h5>
-        <p className={styles.currentEpoch}>{click === 1 ? currentRewardMain : click === 10 ? currentRewardOvm : allReward}</p>
+        <p className={styles.currentEpoch}>{click === 1 ? formatNumber.format(currentRewardMain) : click === 10 ? formatNumber.format(currentRewardOvm) : formatNumber.format(allReward)}</p>
         <h5 className={styles.subtitle}>Up to date</h5>
-        <p className={styles.toDate}>{click === 1 ? allTimeInflationMain : click === 10 ? allTimeInflationOvm : allTime}</p>
+        <p className={styles.toDate}>{click === 1 ? formatNumber.format(allTimeInflationMain) : click === 10 ? formatNumber.format(allTimeInflationOvm) : formatNumber.format(allTime)}</p>
       </div>
 
       <div className={styles.chartWrapper}>
-        <ResponsiveContainer width={"100%"} height={330}>
+        <ResponsiveContainer width={"99%"} height={300}>
           <LineChart data={click === 1 ? inflationDataMain : inflationDataOvm}>
             <Line
               type="monotone"

@@ -12,6 +12,11 @@
     margin: 20px 20px 20px auto;  
 }
 
+.navMoreStats a {
+    color:white;
+    text-decoration: none;
+}
+
 
 .navCurrent {
     background:#00D1FF;

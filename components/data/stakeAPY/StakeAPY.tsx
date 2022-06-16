@@ -9,12 +9,16 @@ interface APY {
   avg: number;
 }
 const StakeAPY = ({ovm, main, click, avg}:APY) => {
+
+  const mainAPY = formatPercent.format(main)
+  const ovmAPY = formatPercent.format(ovm)
+  const allAPY = formatPercent.format(avg)
   
 
   return (
     <div className={styles.container}>
       <h4 className={styles.title}>Current Staking APY</h4>
-      <p className={styles.percentAPY}>{click === 1 ? main : click === 10 ? ovm : avg}</p>
+      <p className={styles.percentAPY}>{click === 1 ? mainAPY : click === 10 ? ovmAPY : allAPY}</p>
     </div>
   );
 };

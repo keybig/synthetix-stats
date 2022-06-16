@@ -36,3 +36,8 @@
   margin: 0px 2px;
   border: none;
 }
+
+.advancedbutton a {
+  color:white;
+  text-decoration: none;
+}

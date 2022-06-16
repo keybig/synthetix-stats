@@ -1,6 +1,7 @@
 import styles from "./TradeActivity.module.css";
 import { useState, useMemo } from "react";
 import TradeTable from "./TradeTable";
+import { formatMoney, formatNumber } from "../../../constants/format";
 
 interface TradeStats {
   click: number
@@ -48,19 +49,20 @@ const TradeActivity = ({
     setTimeFrame(buttons.id);
   };
 
-  const ovmVolume = timeFrame === 1 ? currentTotalVolOvm : totalVolOvm
- const ovmTrade = timeFrame === 1 ? currentTotalTradeOvm : totalTradeOvm
+  const ovmVolume = timeFrame === 1 ? formatMoney.format(currentTotalVolOvm) : formatMoney.format(totalVolOvm)
+ const ovmTrade = timeFrame === 1 ? formatNumber.format(currentTotalTradeOvm) : formatNumber.format(totalTradeOvm)
 
- const mainVolume = timeFrame === 1 ? currentTotalVolMain : totalVolMain
- const mainTrade = timeFrame === 1 ? currentTotalTradeMain : totalTradeMain
+ const mainVolume = timeFrame === 1 ? formatMoney.format(currentTotalVolMain) : formatMoney.format(totalVolMain)
+ const mainTrade = timeFrame === 1 ? formatNumber.format(currentTotalTradeMain) : formatNumber.format(totalTradeMain)
 
  const currentTotalVolume = currentTotalVolOvm + currentTotalVolMain
  const currentTotalTrade = currentTotalTradeOvm + currentTotalTradeMain
+ 
  const allTotalVolume = totalVolMain + totalVolOvm
  const allTotalTrade = totalTradeMain + totalTradeOvm
 
- const allVolume = timeFrame === 1 ? currentTotalVolume : allTotalVolume
- const allTrade = timeFrame === 1 ? currentTotalTrade : allTotalTrade
+ const allVolume = timeFrame === 1 ? formatMoney.format(currentTotalVolume) : formatMoney.format(allTotalVolume)
+ const allTrade = timeFrame === 1 ? formatNumber.format(currentTotalTrade) : formatNumber.format(allTotalTrade)
 
   return (
     <div className={styles.container}>

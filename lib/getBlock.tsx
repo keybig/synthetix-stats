@@ -1,5 +1,3 @@
-import useSynthetixQueries from "@synthetixio/queries";
-import { useEffect, useState } from "react";
 import getTime from "../lib/getTime";
 import { getRateUpdates } from "../subgraph-ovm";
 

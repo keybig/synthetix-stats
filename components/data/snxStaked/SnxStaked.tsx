@@ -1,5 +1,5 @@
 import styles from "./SnxStaked.module.css";
-import { formatNumber } from "../../../constants/format";
+import { formatMoney, formatNumber, formatPercent } from "../../../constants/format";
 
 interface Staked {
   click: number;
@@ -27,15 +27,26 @@ const SnxStaked = ({
   stakeValueOvm,
 }:Staked) => {
 
+  const percentMain = formatPercent.format(percentStakeMain)
+  const percentOvm = formatPercent.format(percentStakeOvm)
+  const percentAll = formatPercent.format(percentStakeAll)
+
+  const stakeMain = formatNumber.format(stakeAmountMain)
+  const stakeOvm = formatNumber.format(stakeAmountOvm)
+  const stakeAll = formatNumber.format(stakeAmountAll)
+
+  const valueMain = formatMoney.format(stakeValueMain)
+  const valueOvm = formatMoney.format(stakeValueOvm)
+  const valueAll = formatMoney.format(stakeValueAll)
 
   return (
     <div className={styles.snxStaked}>
       <h3 className={styles.title}>SNX Staked</h3>
-      <p className={styles.percentAPY}>{click === 1 ? percentStakeMain : click === 10 ? percentStakeOvm : percentStakeAll}</p>
+      <p className={styles.percentAPY}>{click === 1 ? percentMain : click === 10 ? percentOvm : percentAll}</p>
       <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
-      <p className={styles.values}>{click === 1 ? stakeAmountMain : click === 10 ? stakeAmountOvm : stakeAmountAll}</p>
+      <p className={styles.values}>{click === 1 ? stakeMain : click === 10 ? stakeOvm : stakeAll}</p>
       <h3 className={styles.secondaryHeading}>Staked Value</h3>
-      <p className={styles.values}>{click === 1 ? stakeValueMain : click === 10 ? stakeValueOvm : stakeValueAll}</p>
+      <p className={styles.values}>{click === 1 ? valueMain : click === 10 ? valueOvm : valueAll}</p>
     </div>
   );
 };
