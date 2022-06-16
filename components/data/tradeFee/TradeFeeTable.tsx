@@ -152,9 +152,10 @@ const TradeFeeTable = ({
 
       {feeTable.length > 4 ? 
       
-      <><button onClick={() => previousPage()} disabled={!canPreviousPage}>
+      <><button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
           {'<'}
-        </button><button onClick={() => nextPage()} disabled={!canNextPage}>
+        </button>
+        <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
             {'>'}
           </button></> : null}
       </>

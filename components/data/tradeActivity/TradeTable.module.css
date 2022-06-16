@@ -63,6 +63,13 @@
 
 }
 
+.chartButton {
+    background: transparent;
+    border: none;
+    color: #00D1FF;
+    font-size: 2rem;
+   }
+
 @media(max-width: 960px){
     .mainTable {
       margin:0;
