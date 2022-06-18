@@ -7,14 +7,24 @@ import { formatMoney } from '../../../constants/format'
 
 
 interface Props  {
-  currentFeeOvm: any[];
-  currentFeeMain: any[];
-  currentFeeAll: any[];
+  
   totalFeeOvm: any[];
   totalFeeMain: any[];
   totalFeeAll: any[]
   click: number;
   tableId: number;
+  dailyFeeMain: any[]
+  dailyFeeOvm: any[]
+  sevenFeeMain: any[]
+  sevenFeeOvm: any[]
+  thirtyFeeMain: any[]
+  thirtyFeeOvm: any[]
+  ninetyFeeMain: any[]
+  ninetyFeeOvm: any[]
+  allDailyFee: any[]
+  allSevenFee: any[]
+  allThirtyFee: any[]
+  allNinetyFee: any[]
 
 }
 
@@ -22,18 +32,46 @@ interface Props  {
 const TradeFeeTable = ({
   click,
   tableId,
-  currentFeeOvm,
-  currentFeeAll,
-  currentFeeMain,
   totalFeeAll,
   totalFeeMain,
   totalFeeOvm,
+  dailyFeeMain,
+  dailyFeeOvm,
+  sevenFeeMain,
+  sevenFeeOvm,
+  thirtyFeeMain,
+  thirtyFeeOvm,
+  ninetyFeeMain,
+  ninetyFeeOvm,
+  allDailyFee,
+  allSevenFee,
+  allThirtyFee,
+  allNinetyFee
 
 }:Props) => {
 
-  const ovmFeeData = tableId === 1 ? currentFeeOvm : totalFeeOvm
- const mainFeeData = tableId === 1 ? currentFeeMain : totalFeeMain
- const allFeeData = tableId === 1 ? currentFeeAll : totalFeeAll
+  //console.log(totalFeeAll)
+  //console.log(totalFeeMain)
+  //console.log(totalFeeOvm)
+  console.log(dailyFeeMain)
+  /*console.log(dailyFeeOvm)
+  //console.log(sevenFeeMain)
+  //console.log(sevenFeeOvm)
+  //console.log(thirtyFeeMain)
+  //console.log(thirtyFeeOvm)
+  //console.log(ninetyFeeMain)
+  /console.log(ninetyFeeOvm)
+  console.log(allDailyFee)
+  console.log(allSevenFee)
+  console.log(allThirtyFee)
+  console.log(allNinetyFee)*/
+
+
+  const ovmFeeData = tableId === 0 ? dailyFeeOvm : tableId === 1 ? sevenFeeOvm : tableId === 2 ? thirtyFeeOvm : tableId === 3 ? ninetyFeeOvm : totalFeeOvm
+  const mainFeeData = tableId === 0 ? dailyFeeMain : tableId === 1 ? sevenFeeMain : tableId === 2 ? thirtyFeeMain : tableId === 3 ? ninetyFeeMain : totalFeeMain
+
+  const allFeeData = tableId === 0 ? allDailyFee : tableId === 1 ? allSevenFee : tableId === 2 ? allThirtyFee : tableId === 3 ? allNinetyFee : totalFeeAll
+
    
  const feeTable = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 

@@ -1,14 +1,9 @@
 checklist:
 
-SNX Staked: Yes
-Staking APY: Yes
-Total Value Locked: Yes
-Num Stakers: Yes
-Total/Current Trades: 
-Inflation: Yes
-Trading Fees:
+inflation y-axis
+numstaker y-axis
 
-Finish getting all the data
-Collect 2 sets of data: -mainnet | -optimism
-
-create the 3 states: mainnet, optimism, all networks
+convert all px to rem (static units to dynamic units)
+justify-content on main grid
+increase margins on increasing screen size
+responsive container aspect-ratio

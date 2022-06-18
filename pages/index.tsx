@@ -107,6 +107,34 @@ const Home = (props: any) => {
           currentTotalTradeOvm={props.active.currentTotalTradeOvm}
           currentTradeDataAll={props.active.allCurrentTradeData}
           tradeDataAll={props.active.allTotalTradeData}
+          sevenTradeDataMain={props.active.sevenTradeDataMain}
+          sevenTradeDataOvm={props.active.sevenTradeDataOvm}
+          thirtyTradeDataMain={props.active.thirtyTradeDataMain}
+          thirtyTradeDataOvm={props.active.thirtyTradeDataOvm}
+          ninetyTradeDataMain={props.active.ninetyTradeDataMain}
+          ninetyTradeDataOvm={props.active.ninetyTradeDataOvm}
+          dailyTradeDataMain={props.active.dailyTradeDataMain}
+          dailyTradeDataOvm={props.active.dailyTradeDataOvm}
+          allDailyTradeData={props.active.allDailyTradeData}
+          allSevenTradeData={props.active.allSevenTradeData}
+          allThirtyTradeData={props.active.allThirtyTradeData}
+          allNinetyTradeData={props.active.allNinetyTradeData}
+          dailyVolOvm={props.active.dailyTotalVolOvm}
+          dailyVolMain={props.active.dailyTotalVolMain}
+          sevenVolMain={props.active.sevenTotalVolMain}
+          sevenVolOvm={props.active.sevenTotalVolOvm}
+          thirtyVolMain={props.active.thirtyTotalVolMain}
+          thirtyVolOvm={props.active.thirtyTotalVolOvm}
+          ninetyVolMain={props.active.ninetyTotalVolMain}
+          ninetyVolOvm={props.active.ninetyTotalVolOvm}
+          dailyTradeOvm={props.active.dailyTotalTradeOvm}
+          dailyTradeMain={props.active.dailyTotalTradeMain}
+          sevenTradeOvm={props.active.sevenTotalTradeOvm}
+          sevenTradeMain={props.active.sevenTotalTradeMain}
+          thirtyTradeOvm={props.active.thirtyTotalTradeOvm}
+          thirtyTradeMain={props.active.thirtyTotalTradeMain}
+          ninetyTradeOvm={props.active.ninetyTotalTradeOvm}
+          ninetyTradeMain={props.active.ninetyTotalTradeMain}
         />
 
         <Inflation
@@ -122,15 +150,24 @@ const Home = (props: any) => {
         <TradeFee
           totalIssuedSynth={props.tradey.totalSynth}
           click={netId}
-          currentFeeOvm={props.active.currentTotalFeeOvm}
-          currentFeeAll={props.active.allCurrentFee}
-          currentFeeMain={props.active.currentTotalFeeMain}
           totalFeeAll={props.active.allTotalFee}
           totalFeeMain={props.active.totalFeeMain}
           totalFeeOvm={props.active.totalFeeOvm}
           ovmTotalSynth={props.active.ovmTotalSynth}
           mainTotalSynth={props.active.mainTotalSynth}
           allTotalSynth={props.active.mainTotalSynth}
+          dailyFeeMain={props.active.dailyTotalFeeMain}
+          dailyFeeOvm={props.active.dailyTotalFeeOvm}
+          sevenFeeMain={props.active.sevenTotalFeeMain}
+          sevenFeeOvm={props.active.sevenTotalFeeOvm}
+          thirtyFeeMain={props.active.thirtyTotalFeeMain}
+          thirtyFeeOvm={props.active.thirtyTotalFeeOvm}
+          ninetyFeeMain={props.active.ninetyTotalFeeMain}
+          ninetyFeeOvm={props.active.ninetyTotalFeeOvm}
+          allDailyFee={props.active.allDailyFee}
+          allSevenFee={props.active.allSevenFee}
+          allThirtyFee={props.active.allThirtyFee}
+          allNinetyFee={props.active.allNinetyFee}
         />
 
         <MoreStats/>

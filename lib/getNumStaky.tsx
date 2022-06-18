@@ -189,7 +189,7 @@ export const numStakey = async () => {
       const weekOvm = [
         {
           date: timeStamp.sixDayAgo,
-          stakers: sixDayStakerAll,
+          stakers: sixDayStakerOvm,
         },
         {
           date: timeStamp.fiveDayAgo,
@@ -372,12 +372,7 @@ export const numStakey = async () => {
         },
       ];
 
-      console.log(dayAll)
-      console.log(dayMain)
-      console.log(dayOvm)
-      console.log(currentStakerAll)
-      console.log(currentStakerMain)
-      console.log(currentStakerOvm)
+   
     
 
 

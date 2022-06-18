@@ -5,12 +5,21 @@ import TradeFeeTable from "./TradeFeeTable";
 import { formatNumber } from "../../../constants/format";
 
 interface Props  {
-  currentFeeOvm: any[];
-  currentFeeMain: any[];
-  currentFeeAll: any[];
+  allDailyFee: any[]
+  allSevenFee: any[]
+  allThirtyFee: any[]
+  allNinetyFee: any[]
   totalFeeOvm: any[];
   totalFeeMain: any[];
   totalFeeAll: any[]
+  dailyFeeOvm: any[]
+  dailyFeeMain: any[]
+  sevenFeeOvm: any[]
+  sevenFeeMain: any[]
+  thirtyFeeOvm: any[]
+  thirtyFeeMain: any[]
+  ninetyFeeOvm: any[]
+  ninetyFeeMain: any[]
   totalIssuedSynth: number;
   click: number;
   ovmTotalSynth: number;
@@ -20,20 +29,32 @@ interface Props  {
 
 const TradeFee = ({
   click,
-  currentFeeOvm,
-  currentFeeAll,
-  currentFeeMain,
   totalFeeAll,
   totalFeeMain,
   totalFeeOvm,
   mainTotalSynth,
   ovmTotalSynth,
-  allTotalSynth
+  allTotalSynth,
+  dailyFeeMain,
+  dailyFeeOvm,
+  sevenFeeMain,
+  sevenFeeOvm,
+  thirtyFeeMain,
+  thirtyFeeOvm,
+  ninetyFeeMain,
+  ninetyFeeOvm,
+  allDailyFee,
+  allSevenFee,
+  allThirtyFee,
+  allNinetyFee
 }:Props) => {
  
   const buttonMap = [
-    { id: 1, title: "Current Epoch" },
-    { id: 2, title: "Total To Date" },
+    { id: 0, title: "Daily" },
+    { id: 1, title: "7 Day" },
+    { id: 2, title: "30 Day" },
+    { id: 3, title: "90 Day" },
+    { id: 4, title: "Total To Date" },
   ];
 
   const [timeFrame, setTimeFrame] = useState<number>(1);
@@ -43,9 +64,36 @@ const TradeFee = ({
     setTimeFrame(buttons.id);
   };
 
-  const ovmData = timeFrame === 1 ? currentFeeOvm : totalFeeOvm
-  const mainData = timeFrame === 1 ? currentFeeMain : totalFeeMain
-  const allData = timeFrame === 1 ? currentFeeAll : totalFeeAll
+  const ovmFeeData = timeFrame === 0 ?
+    dailyFeeOvm :
+    timeFrame === 1 ?
+    sevenFeeOvm :
+    timeFrame === 2 ?
+    thirtyFeeOvm :
+    timeFrame === 3 ? 
+    ninetyFeeOvm : 
+    totalFeeOvm
+
+  const mainFeeData = timeFrame === 0 ?
+    dailyFeeMain :
+    timeFrame === 1 ?
+    sevenFeeMain :
+    timeFrame === 2 ?
+    thirtyFeeMain :
+    timeFrame === 3 ? 
+    ninetyFeeMain : 
+    totalFeeMain
+  
+  const allFeeData = timeFrame === 0 ?
+    allDailyFee :
+    timeFrame === 1 ?
+    allSevenFee :
+    timeFrame === 2 ?
+    allThirtyFee :
+    timeFrame === 3 ? 
+    allNinetyFee : 
+    totalFeeAll
+
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6"];
 
@@ -75,10 +123,10 @@ const TradeFee = ({
                 dataKey="value"
                 nameKey="name"
                 isAnimationActive={false}
-                data={click === 1 ? mainData : click === 10 ? ovmData : allData}
+                data={click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData}
                 outerRadius={"80%"}
               >
-                {mainData.map((entry, index) => (
+             {mainFeeData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
                     fill={COLORS[index % COLORS.length]}
@@ -94,12 +142,21 @@ const TradeFee = ({
           <TradeFeeTable 
             click={click}
             tableId={timeFrame}
-            currentFeeAll={currentFeeAll}
-            currentFeeMain={currentFeeMain}
-            currentFeeOvm={currentFeeOvm}
             totalFeeAll={totalFeeAll}
             totalFeeOvm={totalFeeOvm}
             totalFeeMain={totalFeeMain}
+            dailyFeeMain={dailyFeeMain}
+            dailyFeeOvm={dailyFeeOvm}
+            sevenFeeMain={sevenFeeMain}
+            sevenFeeOvm={sevenFeeOvm}
+            thirtyFeeMain={thirtyFeeMain}
+            thirtyFeeOvm={thirtyFeeOvm}
+            ninetyFeeMain={ninetyFeeMain}
+            ninetyFeeOvm={ninetyFeeOvm}
+            allDailyFee={allDailyFee}
+            allSevenFee={allSevenFee}
+            allThirtyFee={allThirtyFee}
+            allNinetyFee={allNinetyFee}
              />
             
         </div>

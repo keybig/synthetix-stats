@@ -6,6 +6,8 @@ import {
   LineChart,
   ResponsiveContainer,
   Tooltip,
+  XAxis,
+  YAxis,
 } from "recharts";
 import { formatNumber } from "../../../constants/format";
 
@@ -31,6 +33,7 @@ const Inflation = ({
 
   const allReward = currentRewardMain + currentRewardOvm
   const allTime = allTimeInflationMain + allTimeInflationOvm
+  console.log(currentRewardMain)
 
   return (
     <div className={styles.wrapper}>
@@ -52,6 +55,8 @@ const Inflation = ({
               strokeWidth={3}
             />
             <Tooltip />
+            <YAxis domain={["dataMin - 15000", "dataMax + 15000"]} hide={true}/>
+            <XAxis dataKey={"date"} />
           </LineChart>
         </ResponsiveContainer>
       </div>

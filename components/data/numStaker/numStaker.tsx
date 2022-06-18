@@ -99,6 +99,8 @@ const NumStaker = ({
             strokeWidth={2}
           />
           <Tooltip />
+          <YAxis domain={["dataMin - 1", "dataMax + 1"]} hide={true} />
+          <XAxis dataKey={"date"} />
         </LineChart>
       </ResponsiveContainer>
     </div>

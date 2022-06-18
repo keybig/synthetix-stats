@@ -9,6 +9,7 @@ const getTime = () => {
       fourDayAgo: ts - 3600 * 96,
       fiveDayAgo: ts - 3600 * 120,
       sixDayAgo: ts - 3600 * 144,
+      sevenDayAgo: ts - 3600 * 168,
   
       //day
       noHourAgo: ts,
@@ -26,6 +27,7 @@ const getTime = () => {
       twentyDayAgo: ts - 3600 * 24 * 20,
       twentyFiveDayAgo: ts - 3600 * 24 * 25,
       thirtyDayAgo: ts - 3600 * 24 * 30,
+      ninetyDayAgo: ts - 3600 * 24 * 90
     };
   
     const TimeSet = {

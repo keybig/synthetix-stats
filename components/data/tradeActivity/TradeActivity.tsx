@@ -8,16 +8,53 @@ interface TradeStats {
   tradeDataAll: any[]
   tradeDataMain: any[]
   tradeDataOvm: any[]
+
   totalVolMain: number
   totalTradeMain: number
   totalVolOvm: number
   totalTradeOvm: number
+
+  dailyVolOvm: number
+  dailyVolMain: number
+  sevenVolMain: number
+  sevenVolOvm: number
+  thirtyVolMain: number
+  thirtyVolOvm: number
+  ninetyVolMain: number
+  ninetyVolOvm: number
+
+  dailyTradeOvm: number
+  dailyTradeMain: number
+  sevenTradeOvm: number
+  sevenTradeMain: number
+  thirtyTradeOvm: number
+  thirtyTradeMain: number
+  ninetyTradeOvm: number
+  ninetyTradeMain: number
+
+
   currentTradeDataAll: any[]
   currentTradeDataMain: any[]
-  currentTotalVolMain: number
-  currentTotalTradeMain: number
   currentTradeDataOvm: any[]
+  dailyTradeDataOvm: any[]
+  dailyTradeDataMain: any[]
+  sevenTradeDataOvm: any[]
+  sevenTradeDataMain: any[]
+  thirtyTradeDataOvm: any[]
+  thirtyTradeDataMain: any[]
+  ninetyTradeDataOvm: any[]
+  ninetyTradeDataMain: any[]
+  allDailyTradeData: any[]
+  allSevenTradeData: any[]
+  allThirtyTradeData: any[]
+  allNinetyTradeData: any[]
+
+
+  currentTotalVolMain: number
   currentTotalVolOvm: number
+
+
+  currentTotalTradeMain: number
   currentTotalTradeOvm: number
 }
 const TradeActivity = ({
@@ -28,19 +65,48 @@ const TradeActivity = ({
   tradeDataOvm,
   totalVolOvm,
   totalTradeOvm,
-  currentTradeDataMain,
+  dailyTradeDataMain,
   currentTotalVolMain,
   currentTotalTradeMain,
-  currentTradeDataOvm,
+  dailyTradeDataOvm,
   currentTotalVolOvm,
   currentTotalTradeOvm,
   currentTradeDataAll,
   tradeDataAll,
-}:TradeStats) => {
+  sevenTradeDataMain,
+  sevenTradeDataOvm,
+  thirtyTradeDataMain,
+  thirtyTradeDataOvm,
+  ninetyTradeDataMain,
+  ninetyTradeDataOvm,
+  allDailyTradeData,
+  allSevenTradeData,
+  allThirtyTradeData,
+  allNinetyTradeData,
+  dailyVolMain,
+  dailyVolOvm,
+  dailyTradeMain,
+  dailyTradeOvm,
+  sevenVolMain,
+  sevenVolOvm,
+  sevenTradeMain,
+  sevenTradeOvm,
+  thirtyVolMain,
+  thirtyVolOvm,
+  thirtyTradeMain,
+  thirtyTradeOvm,
+  ninetyVolMain,
+  ninetyVolOvm,
+  ninetyTradeMain,
+  ninetyTradeOvm
+}: TradeStats) => {
 
   const buttonMap = [
-    { id: 1, title: "Current Epoch" },
-    { id: 2, title: "Total To Date" },
+    { id: 0, title: "Daily" },
+    { id: 1, title: "7 Day" },
+    { id: 2, title: "30 Day" },
+    { id: 3, title: "90 Day" },
+    { id: 4, title: "Total To Date" },
   ];
 
   const [timeFrame, setTimeFrame] = useState(1);
@@ -49,20 +115,66 @@ const TradeActivity = ({
     setTimeFrame(buttons.id);
   };
 
-  const ovmVolume = timeFrame === 1 ? formatMoney.format(currentTotalVolOvm) : formatMoney.format(totalVolOvm)
- const ovmTrade = timeFrame === 1 ? formatNumber.format(currentTotalTradeOvm) : formatNumber.format(totalTradeOvm)
+  const ovmVolume = timeFrame === 0 ?
+    formatMoney.format(dailyVolOvm) :
+    timeFrame === 1 ?
+      formatMoney.format(sevenVolOvm) :
+      timeFrame === 2 ? formatMoney.format(thirtyVolOvm) :
+        timeFrame === 3 ? formatMoney.format(ninetyVolOvm) :
+          formatMoney.format(totalVolOvm)
+  
+  const ovmTrade = timeFrame === 0 ?
+  formatNumber.format(dailyTradeOvm) :
+  timeFrame === 1 ?
+    formatNumber.format(sevenTradeOvm) :
+    timeFrame === 2 ? formatNumber.format(thirtyTradeOvm) :
+      timeFrame === 3 ? formatNumber.format(ninetyTradeOvm) :
+        formatNumber.format(totalTradeOvm)
 
- const mainVolume = timeFrame === 1 ? formatMoney.format(currentTotalVolMain) : formatMoney.format(totalVolMain)
- const mainTrade = timeFrame === 1 ? formatNumber.format(currentTotalTradeMain) : formatNumber.format(totalTradeMain)
+  const mainVolume = timeFrame === 0 ?
+  formatMoney.format(dailyVolMain) :
+  timeFrame === 1 ?
+    formatMoney.format(sevenVolMain) :
+    timeFrame === 2 ? formatMoney.format(thirtyVolMain) :
+      timeFrame === 3 ? formatMoney.format(ninetyVolMain) :
+        formatMoney.format(totalVolMain)
+      
+  const mainTrade = timeFrame === 0 ?
+  formatNumber.format(dailyTradeMain) :
+  timeFrame === 1 ?
+    formatNumber.format(sevenTradeMain) :
+    timeFrame === 2 ? formatNumber.format(thirtyTradeMain) :
+      timeFrame === 3 ? formatNumber.format(ninetyTradeMain) :
+        formatNumber.format(totalTradeMain)
 
- const currentTotalVolume = currentTotalVolOvm + currentTotalVolMain
- const currentTotalTrade = currentTotalTradeOvm + currentTotalTradeMain
- 
- const allTotalVolume = totalVolMain + totalVolOvm
- const allTotalTrade = totalTradeMain + totalTradeOvm
+  const allDailyVol = dailyVolOvm + dailyVolMain
+  const allDailyTrade = dailyTradeOvm + dailyTradeMain
+  const allSevenVol = sevenVolOvm + sevenVolMain
+  const allSevenTrade = sevenTradeOvm + sevenTradeMain
+  const allThirtyVol = thirtyVolOvm + thirtyVolMain
+  const allThirtyTrade = thirtyTradeOvm + thirtyTradeMain
+  const allNinetyVol = ninetyVolOvm + ninetyVolMain
+  const allNinetyTrade = ninetyTradeOvm + ninetyTradeMain
+  const allTotalVolume = totalVolOvm + totalVolMain
+  const allTotalTrade = totalTradeMain + totalTradeOvm
 
- const allVolume = timeFrame === 1 ? formatMoney.format(currentTotalVolume) : formatMoney.format(allTotalVolume)
- const allTrade = timeFrame === 1 ? formatNumber.format(currentTotalTrade) : formatNumber.format(allTotalTrade)
+
+  const allVolume = timeFrame === 0 ?
+  formatMoney.format(allDailyVol) :
+  timeFrame === 1 ?
+    formatMoney.format(allSevenVol) :
+    timeFrame === 2 ? formatMoney.format(allThirtyVol) :
+      timeFrame === 3 ? formatMoney.format(allNinetyVol) :
+        formatMoney.format(allTotalVolume)
+
+  const allTrade = timeFrame === 0 ?
+  formatNumber.format(allDailyTrade) :
+  timeFrame === 1 ?
+    formatNumber.format(allSevenTrade) :
+    timeFrame === 2 ? formatNumber.format(allThirtyTrade) :
+      timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
+        formatNumber.format(allTotalTrade)
+
 
   return (
     <div className={styles.container}>
@@ -82,30 +194,41 @@ const TradeActivity = ({
         ))}
       </div>
       <div className={styles.table}>
-        <TradeTable 
+        <TradeTable
           click={click}
           tableId={timeFrame}
           totalTradeStatsAll={tradeDataAll}
           totalTradeStatsMain={tradeDataMain}
           totalTradeStatsOvm={tradeDataOvm}
           currentTradeStatsAll={currentTradeDataAll}
-          currentTradeStatsMain={currentTradeDataMain}
-          currentTradeStatsOvm={currentTradeDataOvm}
-           />
-           
+          dailyTradeStatsMain={dailyTradeDataMain}
+          dailyTradeStatsOvm={dailyTradeDataOvm}
+          sevenTradeStatsMain={sevenTradeDataMain}
+          sevenTradeStatsOvm={sevenTradeDataOvm}
+          thirtyTradeStatsMain={thirtyTradeDataMain}
+          thirtyTradeStatsOvm={thirtyTradeDataOvm}
+          ninetyTradeStatsMain={ninetyTradeDataMain}
+          ninetyTradeStatsOvm={ninetyTradeDataOvm}
+          dailyTradeStatsAll={allDailyTradeData}
+          sevenTradeStatsAll={allSevenTradeData}
+          thirtyTradeStatsAll={allThirtyTradeData}
+          ninetyTradeStatsAll={allNinetyTradeData}
+
+        />
+
       </div>
 
       <div className={styles.bottom}>
         <h5 className={styles.bottomTitle}>Total N of Trades</h5>
 
         <p className={styles.totalTrades}>
-        {click === 1 ? mainTrade : click === 10 ? ovmTrade : allTrade}
+          {click === 1 ? mainTrade : click === 10 ? ovmTrade : allTrade}
         </p>
 
         <h5 className={styles.bottomTitle}>Total Volume</h5>
 
         <p className={styles.totalVolume}>
-        {click === 1 ? mainVolume : click === 10 ? ovmVolume : allVolume}
+          {click === 1 ? mainVolume : click === 10 ? ovmVolume : allVolume}
         </p>
       </div>
     </div>

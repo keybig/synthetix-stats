@@ -23,8 +23,7 @@ export async function getStaticProps() {
 
 
     const tradeStat = await activa()
-    console.log(tradeStat.tradeDataMain)
-    console.log(tradeStat.tradeDataOvm)
+  
 
 
 

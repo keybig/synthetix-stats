@@ -7,12 +7,23 @@ import styles from './TradeTable.module.css'
 interface table  {
   click: number;
   tableId: number;
+
   totalTradeStatsOvm: any[]
-  currentTradeStatsOvm: any[]
-  currentTradeStatsMain: any[]
+  dailyTradeStatsOvm: any[]
+  thirtyTradeStatsOvm: any[]
+  sevenTradeStatsOvm: any[]
+  ninetyTradeStatsOvm: any[]
+  dailyTradeStatsMain: any[]
   totalTradeStatsMain: any[]
+  thirtyTradeStatsMain: any[]
+  sevenTradeStatsMain: any[]
+  ninetyTradeStatsMain: any[]
   currentTradeStatsAll: any[]
   totalTradeStatsAll: any[]
+  dailyTradeStatsAll: any[]
+  sevenTradeStatsAll: any[]
+  thirtyTradeStatsAll: any[]
+  ninetyTradeStatsAll: any[]
 }
 
 
@@ -25,16 +36,27 @@ const TradeTable = ({
   totalTradeStatsMain, 
   totalTradeStatsOvm, 
   currentTradeStatsAll, 
-  currentTradeStatsMain, 
-  currentTradeStatsOvm
+  dailyTradeStatsMain, 
+  dailyTradeStatsOvm,
+  sevenTradeStatsMain,
+  sevenTradeStatsOvm,
+  thirtyTradeStatsMain,
+  thirtyTradeStatsOvm,
+  ninetyTradeStatsMain,
+  ninetyTradeStatsOvm,
+  dailyTradeStatsAll,
+  sevenTradeStatsAll,
+  thirtyTradeStatsAll,
+  ninetyTradeStatsAll
 }:table) => {
 
  //const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
  // const tradeDep = tableId === 1 ? currentVol : totalVol
 
- const ovmData = tableId === 1 ? currentTradeStatsOvm : totalTradeStatsOvm
- const mainData = tableId === 1 ? currentTradeStatsMain : totalTradeStatsMain
- const allData = tableId === 1 ? currentTradeStatsAll : totalTradeStatsAll
+ const ovmData = tableId === 0 ? dailyTradeStatsOvm : tableId === 1 ? sevenTradeStatsOvm : tableId === 2 ? thirtyTradeStatsOvm : tableId === 3 ? ninetyTradeStatsOvm : totalTradeStatsOvm
+ const mainData = tableId === 0 ? dailyTradeStatsMain : tableId === 1 ? sevenTradeStatsMain : tableId === 2 ? thirtyTradeStatsMain : tableId === 3 ? ninetyTradeStatsMain : totalTradeStatsMain
+ const allData = tableId === 0 ? dailyTradeStatsAll : tableId === 1 ? sevenTradeStatsAll : tableId === 2 ? thirtyTradeStatsAll : tableId === 3 ? ninetyTradeStatsAll : totalTradeStatsAll
+
    
  const tradeTable = click === 1 ? mainData : click === 10 ? ovmData : allData
 
