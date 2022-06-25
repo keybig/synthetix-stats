@@ -20,7 +20,7 @@ const NetworkNavBar = (props: Props) => {
 
   const buttonMap: netButton[] = [
     { id: 20, title: "All Networks" },
-    { id: 1, title: "Mainnet" },
+    { id: 1, title: "Ethereum" },
     { id: 10, title: "Optimism" },
     
   ];

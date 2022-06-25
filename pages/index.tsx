@@ -25,7 +25,7 @@ import StartStaking from "../components/data/startStaking/StartStaking";
 const Home = (props: any) => {
   const router = useRouter();
 
-  const [netId, setNetId] = useState<number>(10);
+  const [netId, setNetId] = useState<number>(20);
 
   const handleNetwork = (buttons: any) => {
     setNetId(buttons.id);
