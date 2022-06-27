@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
+import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout } from 'react-table'
 import { formatMoney, formatNumber } from '../../../constants/format';
 import styles from './TradeTable.module.css'
 
@@ -68,10 +68,10 @@ const TradeTable = ({
     
       const columns = useMemo(
         () => [
-          {
+         /*{
             Header: "Index",
-            accessor: (_row: any, i : number) => i + 1
-          },
+            accessor: (_row: any, i : number) => i + 1,
+          },*/
           {
             Header: 'Protocol',
             accessor: 'col1', // accessor is the "key" in the data
@@ -114,7 +114,8 @@ const TradeTable = ({
           }
         },  
         useSortBy,
-        usePagination)
+        usePagination,
+        )
 
       const {
         getTableProps,

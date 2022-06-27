@@ -71,7 +71,7 @@ const NumStaker = ({
     <div className={styles.container}>
       <div className={styles.topRow}>
         <div>
-          <h3>Number of Individual Stakers</h3>
+          <h3 className={styles.numStakerTitle}>Number of Individual Stakers</h3>
           <p className={styles.value}>{click === 1 ? mainStaker : click === 10 ? ovmStaker : allStaker}</p>
         </div>
 

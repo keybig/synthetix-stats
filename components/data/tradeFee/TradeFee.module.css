@@ -1,18 +1,22 @@
 .current {
-  background: #00d1ff;
-  border-radius: 100px;
-  padding: 8px 18px;
-  margin: 0px 2px;
+  background:#00D1FF;
+  border-radius: 6.25rem;
+  padding: 0.5rem 1.125rem;
+  margin: 0 0.125rem;
   border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
 }
 
 .inactive {
-  color: #00d1ff;
-  border-radius: 100px;
-  padding: 8px 18px;
-  margin: 0px 2px;
-  background: transparent;
-  border: none;
+  color: #00D1FF;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
+    background: transparent;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
 }
 
 .wrapper {
@@ -20,16 +24,9 @@
   background: rgba(11, 11, 34, 1);
   display: flex;
   flex-direction: column;
-  border-radius: 10px;
-  padding: 30px 50px 30px 30px;
-  border: 2px solid #ffd75c;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: left;
-  max-width: 100%;
-  @media (max-width: 960px) {
-    margin: 0;
-    padding: 2rem;
-  }
+  border-radius: 0.625rem;
+  padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+  border: 0.125rem solid #ffd75c;
 }
 
 .chart {
@@ -60,7 +57,7 @@
   font-size: 2.5rem;
   font-weight: bold;
   text-align: right;
-  margin: 0px;
+  margin: 0;
 }
 
 @media (max-width: 960px) {

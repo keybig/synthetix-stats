@@ -3,20 +3,26 @@
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #402FC8;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    padding: 30px 50px 30px 30px;
-    border: 2px solid #8E2DE2;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height:normal;
-    font-weight: 700;
-    letter-spacing: 0px;
+    border-radius: 0.625rem;
+    padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+    border: 0.125rem solid #8E2DE2;
 }
 
 
 .topRow {
     color:antiquewhite;
     display: flex;
+}
+
+.numStakerTitle {
+    font-size: 0.875rem;
+    font-weight: 700;
+}
+
+.value {
+    color: #9f6ad1;
+    font-size: 2.5rem;
+    font-weight:700;
 }
 
 .selectors {
@@ -26,19 +32,23 @@
 
 .button {
     background:#00D1FF;
-    border-radius: 100px;
-    padding: 8px 18px;
-    margin: 0px 2px;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
     border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
 }
 
 .inactive {
     color: #00D1FF;
-    border-radius: 100px;
-    padding: 8px 18px;
-    margin: 0px 2px;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
     background: transparent;
     border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
 }
 
 .resize {
@@ -46,11 +56,7 @@
     justify-content: center;
 }
 
-.value {
-    color: #9f6ad1;
-    font-size: 2.5rem;
-    
-}
+
 
 
 @media(max-width: 960px){

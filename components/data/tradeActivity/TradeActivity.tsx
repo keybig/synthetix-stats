@@ -122,30 +122,30 @@ const TradeActivity = ({
       timeFrame === 2 ? formatMoney.format(thirtyVolOvm) :
         timeFrame === 3 ? formatMoney.format(ninetyVolOvm) :
           formatMoney.format(totalVolOvm)
-  
+
   const ovmTrade = timeFrame === 0 ?
-  formatNumber.format(dailyTradeOvm) :
-  timeFrame === 1 ?
-    formatNumber.format(sevenTradeOvm) :
-    timeFrame === 2 ? formatNumber.format(thirtyTradeOvm) :
-      timeFrame === 3 ? formatNumber.format(ninetyTradeOvm) :
-        formatNumber.format(totalTradeOvm)
+    formatNumber.format(dailyTradeOvm) :
+    timeFrame === 1 ?
+      formatNumber.format(sevenTradeOvm) :
+      timeFrame === 2 ? formatNumber.format(thirtyTradeOvm) :
+        timeFrame === 3 ? formatNumber.format(ninetyTradeOvm) :
+          formatNumber.format(totalTradeOvm)
 
   const mainVolume = timeFrame === 0 ?
-  formatMoney.format(dailyVolMain) :
-  timeFrame === 1 ?
-    formatMoney.format(sevenVolMain) :
-    timeFrame === 2 ? formatMoney.format(thirtyVolMain) :
-      timeFrame === 3 ? formatMoney.format(ninetyVolMain) :
-        formatMoney.format(totalVolMain)
-      
+    formatMoney.format(dailyVolMain) :
+    timeFrame === 1 ?
+      formatMoney.format(sevenVolMain) :
+      timeFrame === 2 ? formatMoney.format(thirtyVolMain) :
+        timeFrame === 3 ? formatMoney.format(ninetyVolMain) :
+          formatMoney.format(totalVolMain)
+
   const mainTrade = timeFrame === 0 ?
-  formatNumber.format(dailyTradeMain) :
-  timeFrame === 1 ?
-    formatNumber.format(sevenTradeMain) :
-    timeFrame === 2 ? formatNumber.format(thirtyTradeMain) :
-      timeFrame === 3 ? formatNumber.format(ninetyTradeMain) :
-        formatNumber.format(totalTradeMain)
+    formatNumber.format(dailyTradeMain) :
+    timeFrame === 1 ?
+      formatNumber.format(sevenTradeMain) :
+      timeFrame === 2 ? formatNumber.format(thirtyTradeMain) :
+        timeFrame === 3 ? formatNumber.format(ninetyTradeMain) :
+          formatNumber.format(totalTradeMain)
 
   const allDailyVol = dailyVolOvm + dailyVolMain
   const allDailyTrade = dailyTradeOvm + dailyTradeMain
@@ -160,26 +160,25 @@ const TradeActivity = ({
 
 
   const allVolume = timeFrame === 0 ?
-  formatMoney.format(allDailyVol) :
-  timeFrame === 1 ?
-    formatMoney.format(allSevenVol) :
-    timeFrame === 2 ? formatMoney.format(allThirtyVol) :
-      timeFrame === 3 ? formatMoney.format(allNinetyVol) :
-        formatMoney.format(allTotalVolume)
+    formatMoney.format(allDailyVol) :
+    timeFrame === 1 ?
+      formatMoney.format(allSevenVol) :
+      timeFrame === 2 ? formatMoney.format(allThirtyVol) :
+        timeFrame === 3 ? formatMoney.format(allNinetyVol) :
+          formatMoney.format(allTotalVolume)
 
   const allTrade = timeFrame === 0 ?
-  formatNumber.format(allDailyTrade) :
-  timeFrame === 1 ?
-    formatNumber.format(allSevenTrade) :
-    timeFrame === 2 ? formatNumber.format(allThirtyTrade) :
-      timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
-        formatNumber.format(allTotalTrade)
+    formatNumber.format(allDailyTrade) :
+    timeFrame === 1 ?
+      formatNumber.format(allSevenTrade) :
+      timeFrame === 2 ? formatNumber.format(allThirtyTrade) :
+        timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
+          formatNumber.format(allTotalTrade)
 
 
   return (
     <div className={styles.container}>
       <h3 className={styles.title}> Trading Activity</h3>
-
       <div className={styles.buttonRow}>
         {buttonMap.map((buttonMap) => (
           <button
@@ -193,7 +192,7 @@ const TradeActivity = ({
           </button>
         ))}
       </div>
-      <div className={styles.table}>
+      <div>
         <TradeTable
           click={click}
           tableId={timeFrame}
@@ -215,18 +214,13 @@ const TradeActivity = ({
           ninetyTradeStatsAll={allNinetyTradeData}
 
         />
-
       </div>
-
       <div className={styles.bottom}>
         <h5 className={styles.bottomTitle}>Total N of Trades</h5>
-
         <p className={styles.totalTrades}>
           {click === 1 ? mainTrade : click === 10 ? ovmTrade : allTrade}
         </p>
-
         <h5 className={styles.bottomTitle}>Total Volume</h5>
-
         <p className={styles.totalVolume}>
           {click === 1 ? mainVolume : click === 10 ? ovmVolume : allVolume}
         </p>

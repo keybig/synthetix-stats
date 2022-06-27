@@ -83,7 +83,7 @@ const TotalValueLocked = ({
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>
-        <div className={styles.info}>
+        <div>
           <h3 className={styles.tvl}>Total Value Locked</h3>
           <p className={styles.values}>{click === 1 ? totalValueLockedMain : click === 10 ? totalValueLockedOvm : totalValueLockedAll}</p>
         </div>
@@ -130,12 +130,12 @@ const TotalValueLocked = ({
       <div className={styles.bottom}>
         <div className={styles.debtPool}>
           <h5 className={styles.stakingColor}>Staking Debt Pool</h5>
-          <p>{click === 1 ? mainDebt : click === 10 ? ovmDebt : allDebt}</p>
+          <p className={styles.debtWrapVal}>{click === 1 ? mainDebt : click === 10 ? ovmDebt : allDebt}</p>
         </div>
 
         <div className={styles.wrapper}>
           <h5 className={styles.wrapperColor}>Wrappers</h5>
-          <p>{click === 1 ? mainWrapper : click === 10 ? ovmWrapper : allWrapper}</p>
+          <p className={styles.debtWrapVal}>{click === 1 ? mainWrapper : click === 10 ? ovmWrapper : allWrapper}</p>
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ const Inflation = ({
   return (
     <div className={styles.wrapper}>
       <div>
-        <h3>Inflation Fees (SNX Rewards)</h3>
+        <h3 className={styles.inflationTitle}>Inflation Fees (SNX Rewards)</h3>
         <h5 className={styles.subtitle}>Current Epoch</h5>
         <p className={styles.currentEpoch}>{click === 1 ? formatNumber.format(currentRewardMain) : click === 10 ? formatNumber.format(currentRewardOvm) : formatNumber.format(allReward)}</p>
         <h5 className={styles.subtitle}>Up to date</h5>
@@ -46,7 +46,7 @@ const Inflation = ({
       </div>
 
       <div className={styles.chartWrapper}>
-        <ResponsiveContainer width={"99%"} height={300}>
+        <ResponsiveContainer width={"99%"} height={200}>
           <LineChart data={click === 1 ? inflationDataMain : inflationDataOvm}>
             <Line
               type="monotone"

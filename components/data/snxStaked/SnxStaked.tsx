@@ -39,10 +39,11 @@ const SnxStaked = ({
   const valueOvm = formatMoney.format(stakeValueOvm)
   const valueAll = formatMoney.format(stakeValueAll)
 
+
   return (
     <div className={styles.snxStaked}>
       <h3 className={styles.title}>SNX Staked</h3>
-      <p className={styles.percentAPY}>{click === 1 ? percentMain : click === 10 ? percentOvm : percentAll}</p>
+      <p className={styles.percentStaked}>{click === 1 ? percentMain : click === 10 ? percentOvm : percentAll}</p>
       <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
       <p className={styles.values}>{click === 1 ? stakeMain : click === 10 ? stakeOvm : stakeAll}</p>
       <h3 className={styles.secondaryHeading}>Staked Value</h3>

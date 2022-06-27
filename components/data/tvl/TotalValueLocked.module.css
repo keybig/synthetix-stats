@@ -3,38 +3,54 @@
     background: #0B0B22;
     display: flex;
     flex-direction: column;
-    border-radius: 10px;
-    padding: 30px 50px 30px 30px;
-    border: 2px solid #13f2f2;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    line-height:normal;
-    font-weight: 700;
-    letter-spacing: 0px;
-    text-align: left;
+    border-radius: 0.625rem;
+    padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+    border: 0.125rem solid #13f2f2;
 }
 
 .topBar {
     display: flex;
-    
+}
+
+.values {
+    font-size: 2.563rem;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0.5rem 0;
+    color: #5CC6FF;
+    font-weight: 700;
+}
+
+.tvl {
+    font-size: 0.875rem;
+    color: #ffffff;
+}
+
+.selectors {
+    margin-left: auto;
 }
 
 
 .button {
     background:#00D1FF;
-    border-radius: 100px;
-    padding: 8px 18px;
-    margin: 0px 2px;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
     border: none;
+    font-size: 0.75rem;
 }
 
 .inactive {
     color: #00D1FF;
-    border-radius: 100px;
-    padding: 8px 18px;
-    margin: 0px 2px;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
     background: transparent;
     border: none;
+    font-size: 0.75rem;
+}
+
+.responsive {
+    width: 100%;
+    height: 18.75rem;
 }
 
 .bottom {
@@ -42,72 +58,30 @@
 }
 
 .debtPool {
-    padding: 0px 10px;
-    margin: 0px 20px;
+    padding: 0 0.625rem;
+    margin: 0 1.25rem;
 }
 
 .wrapper {
-    padding: 0px 10px;
-    margin: 0px 30px;
-}
-
-.title {
-    font-family:Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    text-align: left;
-    margin: 0 1rem;
-}
-
-.percentAPY {
-    color: magenta;
-    font-size: 60px;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 1rem 0;
-}
-
-.secondaryHeading {
-    font-size: 14px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    color: #828295;
-    margin: 0.5rem 0;
-}
-
-.values {
-    font-size: 3rem;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0.5rem 0;
-    color: #5CC6FF;
-}
-
-.tvl {
-    font-size: 2rem;
-    color: #ffffff
-}
-.responsive {
-    width: 100%;
-    height: 300px;
-}
-
-.info {
-    margin: 0px;
-    padding: 0px;
-    
-    
-}
-
-.selectors {
-    margin-left: auto;
+    padding: 0 0.625rem;
+    margin: 0 1.875rem;
 }
 
 .stakingColor {
     color: #41C79D;
+    font-size:0.75rem;
+    font-weight:700;
 }
 
 .wrapperColor {
-    color: #ED1EFF
+    color: #ED1EFF;
+    font-size: 0.75rem;
+    font-weight:700;
+}
+
+.debtWrapVal {
+    font-size: 1rem;
+    font-weight:700;
 }
 
 @media(max-width: 960px){
@@ -116,8 +90,12 @@
     }
 
     .topBar {
-      padding:2rem;
+      padding:0 1rem;
       flex-direction: column;
+    }
+
+    .values {
+        font-size: 1.75rem;
     }
 
     
