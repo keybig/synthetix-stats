@@ -72,7 +72,7 @@
 @media(max-width: 960px){
     .container {
       margin:0;
-      padding:2rem 0;
+      padding:1rem;
     }
 
     .title {
@@ -81,5 +81,15 @@
 
     .buttonRow {
         padding: 1rem 0.5rem;
+    }
+
+    .current {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .inactive {
+        padding: 0.5rem;
+        font-size:0.75rem;
     }
 }

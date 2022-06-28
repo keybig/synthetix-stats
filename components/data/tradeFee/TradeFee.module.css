@@ -91,4 +91,14 @@
   .totalsupplyamount {
     padding: 1rem;
   }
+
+  .current {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+}
+
+  .inactive {
+    padding: 0.5rem;
+    font-size:0.75rem;
+}
 }
