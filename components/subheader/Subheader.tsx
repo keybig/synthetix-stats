@@ -6,11 +6,8 @@ const Subheader = () => {
     <div className={styles.container}>
         <h1 className={styles.heading}>Synthetix Stats</h1>
         <p className={styles.description}>
-            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
-            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum
-            Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum Lorem Ipsum 
-        </p>
+        The Synthetix HERO Stats page. Some of the most important stats for the community.
+       </p>
     </div>
   )
 }
