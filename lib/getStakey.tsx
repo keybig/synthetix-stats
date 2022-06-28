@@ -137,9 +137,18 @@ export const stakit = async () => {
 
 
         const inflationData = currentFeePeriods.slice(0, 7).map((item) => {
-            return { snx_rewards: item.rewardsToDistribute.toNumber() };
+            const milli = new Date(item.startTime.toNumber() * 1000)
+            const month = milli.getUTCMonth() + 1
+            const day = milli.getUTCDate()
+            const theDate = `${month}/${day}`
+
+            return { 
+                snx_rewards: item.rewardsToDistribute.toNumber(),
+                date: theDate
+            };
         }).reverse();
 
+   
 
         // APY
         const fee = currentFeePeriods[0].feesToDistribute.toNumber();
@@ -159,12 +168,30 @@ export const stakit = async () => {
 
     const rewardOvm = ovmFeePeriod.reward
     const rewardMain = mainFeePeriod.reward
+    const rewardAll = rewardMain + rewardOvm
 
     const rewardsAmountOvm = ovmFeePeriod.rewardsAmount
     const rewardsAmountMain = mainFeePeriod.rewardsAmount
+    const rewardsAmountAll = rewardsAmountMain + rewardsAmountOvm
 
     const inflationDataOvm = ovmFeePeriod.inflationData
     const inflationDataMain = mainFeePeriod.inflationData
+
+
+    const inflationDataAllArr:any[] = [...inflationDataMain, ...inflationDataOvm]
+
+    const inflationDataAll = inflationDataAllArr.reduce((acc:any,cur)=>{
+        const {snx_rewards, date} = cur
+        const item = acc.find((it: { date: string; }) => it.date === date)
+        if (item){
+            item.snx_rewards += snx_rewards
+        }
+        else {
+            acc.push({snx_rewards,date})
+        }
+        return acc
+    },[])
+
 
     const feeOvm = ovmFeePeriod.fee
     const feeMain = mainFeePeriod.fee
@@ -199,7 +226,8 @@ export const stakit = async () => {
         rewardsAmountMain,
         rewardsAmountOvm,
         inflationDataMain,
-        inflationDataOvm
+        inflationDataOvm,
+        inflationDataAll
 
     }
 

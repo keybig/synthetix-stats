@@ -35,14 +35,15 @@
   margin: 0.5rem 0;
 }
 
-.chartWrapper {
-  display: block;
+.keyWrap {
+  padding: 0 1rem 0 0;
 }
 
 @media (max-width: 960px) {
   
   .wrapper {
     flex-direction: column;
+    margin: 0;
   }
 
   .subtitle {

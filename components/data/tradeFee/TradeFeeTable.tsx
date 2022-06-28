@@ -50,22 +50,6 @@ const TradeFeeTable = ({
 
 }:Props) => {
 
-  //console.log(totalFeeAll)
-  //console.log(totalFeeMain)
-  //console.log(totalFeeOvm)
-  console.log(dailyFeeMain)
-  /*console.log(dailyFeeOvm)
-  //console.log(sevenFeeMain)
-  //console.log(sevenFeeOvm)
-  //console.log(thirtyFeeMain)
-  //console.log(thirtyFeeOvm)
-  //console.log(ninetyFeeMain)
-  /console.log(ninetyFeeOvm)
-  console.log(allDailyFee)
-  console.log(allSevenFee)
-  console.log(allThirtyFee)
-  console.log(allNinetyFee)*/
-
 
   const ovmFeeData = tableId === 0 ? dailyFeeOvm : tableId === 1 ? sevenFeeOvm : tableId === 2 ? thirtyFeeOvm : tableId === 3 ? ninetyFeeOvm : totalFeeOvm
   const mainFeeData = tableId === 0 ? dailyFeeMain : tableId === 1 ? sevenFeeMain : tableId === 2 ? thirtyFeeMain : tableId === 3 ? ninetyFeeMain : totalFeeMain

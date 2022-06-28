@@ -25,7 +25,7 @@
 .mainKey {
     text-transform: capitalize;
     text-align: left;
-    border-bottom: 1px solid #828295;
+    border-bottom: 0.0625rem solid #828295;
     padding: 1rem 0;
 }
 

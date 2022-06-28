@@ -19,6 +19,7 @@ interface Inflation {
   allTimeInflationMain: number;
   inflationDataOvm: any[];
   inflationDataMain: any[];
+  inflationDataAll: any[];
 }
 
 const Inflation = ({
@@ -28,16 +29,16 @@ const Inflation = ({
   allTimeInflationMain,
   allTimeInflationOvm,
   inflationDataMain,
-  inflationDataOvm
+  inflationDataOvm,
+  inflationDataAll
 }:Inflation) => {
 
   const allReward = currentRewardMain + currentRewardOvm
   const allTime = allTimeInflationMain + allTimeInflationOvm
-  console.log(currentRewardMain)
 
   return (
     <div className={styles.wrapper}>
-      <div>
+      <div className={styles.keyWrap}>
         <h3 className={styles.inflationTitle}>Inflation Fees (SNX Rewards)</h3>
         <h5 className={styles.subtitle}>Current Epoch</h5>
         <p className={styles.currentEpoch}>{click === 1 ? formatNumber.format(currentRewardMain) : click === 10 ? formatNumber.format(currentRewardOvm) : formatNumber.format(allReward)}</p>
@@ -45,9 +46,9 @@ const Inflation = ({
         <p className={styles.toDate}>{click === 1 ? formatNumber.format(allTimeInflationMain) : click === 10 ? formatNumber.format(allTimeInflationOvm) : formatNumber.format(allTime)}</p>
       </div>
 
-      <div className={styles.chartWrapper}>
+     
         <ResponsiveContainer width={"99%"} height={200}>
-          <LineChart data={click === 1 ? inflationDataMain : inflationDataOvm}>
+          <LineChart data={click === 1 ? inflationDataMain : click === 10 ? inflationDataOvm : inflationDataAll}>
             <Line
               type="monotone"
               dataKey="snx_rewards"
@@ -56,10 +57,11 @@ const Inflation = ({
             />
             <Tooltip />
             <YAxis domain={["dataMin - 15000", "dataMax + 15000"]} hide={true}/>
-            <XAxis dataKey={"date"} />
+            <XAxis dataKey={"date"} fontSize={14} />
           </LineChart>
         </ResponsiveContainer>
-      </div>
+     
+      
     </div>
   );
 };

@@ -145,6 +145,7 @@ const Home = (props: any) => {
           allTimeInflationOvm={props.staka.rewardsAmountOvm}
           inflationDataMain={props.staka.inflationDataMain}
           inflationDataOvm={props.staka.inflationDataOvm}
+          inflationDataAll={props.staka.inflationDataAll}
         />
 
         <TradeFee
