@@ -47,7 +47,7 @@ const Inflation = ({
       </div>
 
      
-        <ResponsiveContainer width={"99%"} height={200}>
+        <ResponsiveContainer width={"100%"} height={200}>
           <LineChart data={click === 1 ? inflationDataMain : click === 10 ? inflationDataOvm : inflationDataAll}>
             <Line
               type="monotone"
