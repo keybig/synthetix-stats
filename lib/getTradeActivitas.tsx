@@ -42,6 +42,9 @@ export const activa = async() => {
         const tradeFeeArr: any[] = [];
       
         tradeDataCall.forEach((item) => {
+          if (item.usdVolume.toNumber() > 1000000 ) {
+            
+          
           const obj = {
             col1: item.id === undefined ? null : item.id,
             col2: item.trades.toNumber(),
@@ -52,7 +55,21 @@ export const activa = async() => {
             name: item.id === undefined ? null : item.id,
             value: item.usdFees.toNumber(),
           };
-          tradeFeeArr.push(feeObj);
+          tradeFeeArr.push(feeObj);}
+
+          else {
+            const obj = {
+              col1: "OTHER",
+              col2: item.trades.toNumber(),
+              col3: item.usdVolume.toNumber(),
+            };
+            tradeDataArr.push(obj);
+            const feeObj = {
+              name: "OTHER",
+              value: item.usdFees.toNumber(),
+            };
+            tradeFeeArr.push(feeObj);
+          }
         });
       
         const totalTrades = tradeDataCall.reduce((sum, cur) => {
