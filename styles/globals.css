@@ -31,10 +31,9 @@ body {
 }
 
 @media (min-width: 2560px) {
-  html,
-  body {
-    margin: 0;
-    padding: 30rem;
-    max-width: 2560px;
+  html, body {
+    margin: auto;
+    padding: 0 5rem;
+    max-width: 1920px;
   }
 }
