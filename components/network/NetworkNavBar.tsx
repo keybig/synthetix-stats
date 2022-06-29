@@ -49,7 +49,7 @@ const NetworkNavBar = (props: Props) => {
 
         <div className={styles.navMoreStats}>
           <button className={styles.navAdvancedStats}>
-            <a href={grafana}>Advanced Stats</a>
+            <a href={grafana} target="_blank" rel="noreferrer">Advanced Stats</a>
           </button>
         </div>
       </div>

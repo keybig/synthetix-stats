@@ -102,7 +102,7 @@ const TradeFee = ({
 
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6", "#ed1515", "#21cdfc"];
-  const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4"]
+  const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4","#fc0303", "#0b03fc", "#fc03e3", "#20fc03", "#03fca5", "#9403fc"]
 
   const pieData = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 

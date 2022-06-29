@@ -4,16 +4,17 @@ const MoreStats = () => {
   const stakingUrl = "https://staking.synthetix.io/";
   return (
     <div className={styles.wrapper}>
-      <div>
-        <h4 className={styles.statstitle}>Start Staking Synthetix</h4>
-        <p className={styles.styledp}> Stack that Synthetix </p>
-      </div>
-      <div>
-        <button className={styles.advancedbutton}>
-          <a href={stakingUrl}>Staking App</a>
-        </button>
-      </div>
+    <h4 className={styles.statstitle}>Start Staking</h4>
+
+    <div className={styles.linkWrap}>
+    <p className={styles.styledp}>Visit SNX Staking DAPP to Start Staking</p>
+
+      <button className={styles.advancedbutton}>
+        <a href={stakingUrl} target="_blank" rel="noreferrer">Staking DAPP</a>
+      </button>
     </div>
+
+  </div>
   );
 };
 
