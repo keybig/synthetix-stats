@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout } from 'react-table'
+import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout, useBlockLayout } from 'react-table'
 import { formatMoney, formatNumber } from '../../../constants/format';
 import styles from './TradeTable.module.css'
 
@@ -114,7 +114,7 @@ const TradeTable = ({
           }
         },  
         useSortBy,
-        usePagination,
+        usePagination
         )
 
       const {

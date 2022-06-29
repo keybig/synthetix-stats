@@ -51,10 +51,6 @@
     font-weight: 600;
 }
 
-.resize {
-    display:flex;
-    justify-content: center;
-}
 
 
 
@@ -71,5 +67,10 @@
 
     .inactive {
         padding: 0.5rem;
+    }
+
+    .selectors {
+        display: flex;
+        flex-direction: column;
     }
 }

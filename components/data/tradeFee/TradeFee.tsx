@@ -2,7 +2,7 @@ import styles from "./TradeFee.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
 import TradeFeeTable from "./TradeFeeTable";
-import { formatNumber } from "../../../constants/format";
+import { formatMoney, formatNumber } from "../../../constants/format";
 
 interface Props  {
   allDailyFee: any[]
@@ -25,6 +25,9 @@ interface Props  {
   ovmTotalSynth: number;
   mainTotalSynth: number;
   allTotalSynth: number;
+  feeOvm: number;
+  feeMain: number;
+  feeAll: number;
 }
 
 const TradeFee = ({
@@ -46,7 +49,10 @@ const TradeFee = ({
   allDailyFee,
   allSevenFee,
   allThirtyFee,
-  allNinetyFee
+  allNinetyFee,
+  feeAll,
+  feeMain,
+  feeOvm
 }:Props) => {
  
   const buttonMap = [
@@ -95,7 +101,10 @@ const TradeFee = ({
     totalFeeAll
 
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6"];
+  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6", "#ed1515", "#21cdfc"];
+  const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4"]
+
+  const pieData = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 
   return (
     <div className={styles.wrapper}>
@@ -116,27 +125,31 @@ const TradeFee = ({
       </div>
 
       <div className={styles.chart}>
-        <div className={styles.piewrap}>
-          <ResponsiveContainer height={300}>
+          <ResponsiveContainer height={300} width={"100%"}>
             <PieChart>
               <Pie
                 dataKey="value"
                 nameKey="name"
                 isAnimationActive={false}
-                data={click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData}
-                outerRadius={"80%"}
+                data={pieData}
+                outerRadius={"99%"}
               >
-             {mainFeeData.map((entry, index) => (
+         
+              {
+                pieData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
+                    fill={color[index % color.length]}
+                    fillOpacity={"60%"}
+                    stroke={color[index % color.length]}
+                    strokeWidth={2}
                   />
-                ))}
+                ))
+              }
               </Pie>
               <Tooltip />
             </PieChart>
           </ResponsiveContainer>
-        </div>
 
         <div className={styles.chartkey}>
           <TradeFeeTable 
@@ -163,8 +176,8 @@ const TradeFee = ({
       </div>
 
       <div>
-        <p className={styles.totalsynthsupply}>Total Synth Supply</p>
-        <p className={styles.totalsupplyamount}>{click === 1 ? formatNumber.format(mainTotalSynth) : click === 10 ? formatNumber.format(ovmTotalSynth) : formatNumber.format(allTotalSynth)}</p>
+        <p className={styles.totalsynthsupply}>Total Fee Earned</p>
+        <p className={styles.totalsupplyamount}>{click === 1 ? formatMoney.format(feeMain) : click === 10 ? formatMoney.format(feeOvm) : formatMoney.format(feeAll)}</p>
       </div>
     </div>
   );

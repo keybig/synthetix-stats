@@ -169,6 +169,9 @@ const Home = (props: any) => {
           allSevenFee={props.active.allSevenFee}
           allThirtyFee={props.active.allThirtyFee}
           allNinetyFee={props.active.allNinetyFee}
+          feeAll={props.active.feeCollectAll}
+          feeMain={props.active.feeCollectMain}
+          feeOvm={props.active.feeCollectOvm}
         />
 
         <MoreStats/>

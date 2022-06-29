@@ -50,9 +50,9 @@ const NumStaker = ({
   const mainStaker = formatNumber.format(currentStakerMain)
 
   const buttonMap = [
-    { id: 1, title: "One Day" },
-    { id: 2, title: "One Week" },
-    { id: 3, title: "One Month" },
+    { id: 1, title: "Daily" },
+    { id: 2, title: "1 Week" },
+    { id: 3, title: "1 Month" },
     //{ id: 4, title: "one Year" }
   ];
 

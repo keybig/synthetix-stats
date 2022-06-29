@@ -113,15 +113,19 @@ const TotalValueLocked = ({
               type="monotone"
               dataKey="debt"
               stackId="1"
-              stroke="#41C79D"
-              fill="#41C79D"
+              stroke="#31D8A4"
+              fill="#31D8A4"
+              fillOpacity={"60%"}
+              strokeWidth={2}
             />
             <Area
               type="monotone"
               dataKey="wrapper"
               stackId="1"
-              stroke="#f506e1"
-              fill="#f506e1"
+              stroke="#ED1EFF"
+              fill="#ED1EFF"
+              fillOpacity={"60%"}
+              strokeWidth={2}
             />
           </AreaChart>
         </ResponsiveContainer>

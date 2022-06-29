@@ -29,3 +29,12 @@ body {
     padding: 0;
   }
 }
+
+@media (min-width: 2560px) {
+  html,
+  body {
+    margin: 0;
+    padding: 30rem;
+    max-width: 2560px;
+  }
+}

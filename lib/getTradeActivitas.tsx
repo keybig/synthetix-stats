@@ -34,7 +34,7 @@ export const activa = async() => {
     const fetchTradeData = async(network:string) => {
         const tradeDataCall = await getExchangePartners(
             network,
-          { orderBy: "usdVolume", orderDirection: "desc" },
+          { orderBy: "usdVolume", orderDirection: "desc", where:{usdVolume_gt:100} },
           { id: true, usdVolume: true, usdFees: true, trades: true }
         );
       
@@ -62,6 +62,11 @@ export const activa = async() => {
         const totalVol = tradeDataCall.reduce((sum, cur) => {
               return sum + cur.usdVolume.toNumber();
             }, 0)
+
+        const totalFee = tradeDataCall.reduce((sum, cur) => {
+          return sum + cur.usdFees.toNumber();
+        }, 0)
+
          
       
   
@@ -69,7 +74,8 @@ export const activa = async() => {
           tradeDataArr,
           tradeFeeArr,
           totalTrades,
-          totalVol
+          totalVol,
+          totalFee
       }
   }
 
@@ -79,12 +85,16 @@ export const activa = async() => {
     const totalVolOvm = tradeOvm.totalVol
     const totalTradeOvm = tradeOvm.totalTrades
     const totalFeeOvm = tradeOvm.tradeFeeArr
+    const feeCollectOvm = tradeOvm.totalFee
 
     const tradeMain = await fetchTradeData(mainnet_url)
     const tradeDataMain = tradeMain.tradeDataArr
     const totalVolMain = tradeMain.totalVol
     const totalTradeMain = tradeMain.totalTrades
     const totalFeeMain = tradeMain.tradeFeeArr
+    const feeCollectMain = tradeMain.totalFee
+
+    const feeCollectAll = feeCollectMain + feeCollectOvm
 
   //const totalTrades = formatNumber.format(totalTradesSum);
  // const totalVol = formatMoney.format(totalVolSum);
@@ -96,7 +106,11 @@ export const activa = async() => {
   const currentEpochTradeData = await getDailyExchangePartners(
       network,
     {
-      where: { timestamp_gte: startTime },
+      where: { 
+        timestamp_gte: startTime,
+        usdVolume_gt: 100
+        
+       },
       orderBy: "timestamp",
       orderDirection: "desc",
     },
@@ -221,7 +235,10 @@ export const activa = async() => {
       const dayEpochTradeData = await getDailyExchangePartners(
           network,
         {
-          where: { timestamp_gte: startTime },
+          where: { 
+            timestamp_gte: startTime,
+            usdVolume_gt: 100
+           },
           orderBy: "timestamp",
           orderDirection: "desc",
         },
@@ -306,6 +323,9 @@ export const activa = async() => {
      const dailyTotalVolMain = dailyTradeMain.dayVol
      const dailyTotalTradeMain = dailyTradeMain.dayTradeNum
      const dailyTotalFeeMain = dailyTradeMain.dayFeeData
+
+     console.log(dailyTradeDataMain)
+     console.log(dailyTradeDataOvm)
 
 
       // 7 day
@@ -556,7 +576,10 @@ allNinetyTradeData,
 allDailyFee,
 allSevenFee,
 allThirtyFee,
-allNinetyFee
+allNinetyFee,
+feeCollectAll,
+feeCollectMain,
+feeCollectOvm
    
   };
 };
