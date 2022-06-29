@@ -9,7 +9,7 @@ body {
     url(../assets/bACKGROUND.webp);
   background-color: rgba(0, 0, 0, 0.7);
   backdrop-filter: blur(384px);
-  margin: 0;
+  margin: auto;
   box-sizing: border-box;
   width: 100%;
   height: 100%;
