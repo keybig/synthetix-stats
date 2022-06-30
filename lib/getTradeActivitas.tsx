@@ -38,39 +38,65 @@ export const activa = async() => {
           { id: true, usdVolume: true, usdFees: true, trades: true }
         );
       
-        const tradeDataArr: any[] = [];
-        const tradeFeeArr: any[] = [];
+        const tradeDataArrTemp: any[] = [];
+        const tradeFeeArrTemp: any[] = [];
       
         tradeDataCall.forEach((item) => {
-          if (item.usdVolume.toNumber() > 1000000 ) {
-            
-          
+          if (item.usdVolume.toNumber() > 500000) {           
           const obj = {
             col1: item.id === undefined ? null : item.id,
             col2: item.trades.toNumber(),
             col3: item.usdVolume.toNumber(),
           };
-          tradeDataArr.push(obj);
+          tradeDataArrTemp.push(obj);
           const feeObj = {
             name: item.id === undefined ? null : item.id,
             value: item.usdFees.toNumber(),
+            volume: item.usdVolume.toNumber()
           };
-          tradeFeeArr.push(feeObj);}
-
+          tradeFeeArrTemp.push(feeObj);
+        }
           else {
             const obj = {
               col1: "OTHER",
               col2: item.trades.toNumber(),
               col3: item.usdVolume.toNumber(),
             };
-            tradeDataArr.push(obj);
+            tradeDataArrTemp.push(obj);
             const feeObj = {
               name: "OTHER",
               value: item.usdFees.toNumber(),
             };
-            tradeFeeArr.push(feeObj);
+            tradeFeeArrTemp.push(feeObj);
           }
         });
+
+        // reduce other in tradeDataArr and tradeFeeArr
+
+        const tradeDataArr = tradeDataArrTemp.reduce((acc, cur) => {
+          const { col1, col2, col3 } = cur;
+        const item = acc.find((it: { col1: string }) => it.col1 === col1);
+        if (item) {
+          item.col2 += col2;
+          item.col3 += col3;
+        } else {
+          acc.push({ col1, col2, col3 });
+        }
+        return acc;
+      }, []);
+
+        const tradeFeeArr = tradeFeeArrTemp.reduce((acc, cur) => {
+          const { name, value, } = cur;
+        const item = acc.find((it: { name: string }) => it.name === name);
+        if (item) {
+          item.value += value;
+        } else {
+          acc.push({ name, value, });
+        }
+        return acc;
+      }, []);
+
+        //
       
         const totalTrades = tradeDataCall.reduce((sum, cur) => {
               return sum + cur.trades.toNumber();
@@ -340,9 +366,6 @@ export const activa = async() => {
      const dailyTotalVolMain = dailyTradeMain.dayVol
      const dailyTotalTradeMain = dailyTradeMain.dayTradeNum
      const dailyTotalFeeMain = dailyTradeMain.dayFeeData
-
-     console.log(dailyTradeDataMain)
-     console.log(dailyTradeDataOvm)
 
 
       // 7 day
