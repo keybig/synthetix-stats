@@ -1,12 +1,8 @@
 .snxStaked {
     grid-area: snxStaked;
     background: linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #ED1EFF;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
     border-radius: 0.625rem;
-    padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+    padding: 1rem 2rem 0;
     border: 0.125rem solid #ED1EFF;
 }
 
@@ -14,7 +10,8 @@
     font-family:Arial, Helvetica, sans-serif;
     font-size: 1.125rem;
     font-weight: 700;
-    margin: 0.25rem 0;
+    margin: 0;
+    padding:0;
 }
 
 .percentStaked {

@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     border-radius: 0.625rem;
-    padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+    padding: 1rem 2rem 0;
     border: 0.125rem solid #8E2DE2;
 }
 
@@ -17,12 +17,15 @@
 .numStakerTitle {
     font-size: 0.875rem;
     font-weight: 700;
+    margin: 0;
 }
 
 .value {
     color: #9f6ad1;
     font-size: 2.5rem;
     font-weight:700;
+    margin: 0;
+    padding: 0.5rem 0 0;
 }
 
 .selectors {

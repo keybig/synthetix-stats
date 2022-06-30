@@ -5,7 +5,7 @@
   display: flex;
   flex-direction: row;
   border-radius: 0.625rem;
-  padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+  padding: 1rem 2rem 0;
   border: 0.125rem solid #ed1eff;
 }
 
@@ -13,6 +13,7 @@
   font-size: 0.875rem;
   font-weight: 700;
   width:max-content;
+  margin: 0;
 }
 
 .subtitle {
