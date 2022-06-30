@@ -95,14 +95,14 @@ const NumStaker = ({
       <ResponsiveContainer height={300} width="100%">
         <LineChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
           <Line
-            type="monotone"
+            type="linear"
             dataKey="stakers"
             stroke="#8884d8"
             strokeWidth={2}
           />
           <Tooltip content={<CustomToolTip/>}/>
-          <YAxis domain={["dataMin - 1", "dataMax + 1"]} hide={true} />
-          <XAxis dataKey={"date"} />
+          <YAxis domain={["dataMin - 5", "dataMax + 5"]} hide={true} />
+          <XAxis dataKey={"date"} interval={"preserveStartEnd"} />
         </LineChart>
       </ResponsiveContainer>
     </div>

@@ -38,6 +38,7 @@ const Inflation = ({
   const allReward = currentRewardMain + currentRewardOvm
   const allTime = allTimeInflationMain + allTimeInflationOvm
 
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.keyWrap}>
@@ -49,17 +50,17 @@ const Inflation = ({
       </div>
 
      
-        <ResponsiveContainer width={"100%"} height={200}>
+        <ResponsiveContainer width={"80%"} height={200}>
           <LineChart data={click === 1 ? inflationDataMain : click === 10 ? inflationDataOvm : inflationDataAll}>
             <Line
-              type="monotone"
+              type="linear"
               dataKey="snx_rewards"
               stroke="#8884d8"
               strokeWidth={3}
             />
             <Tooltip content={<CustomToolTip/>}/>
-            <YAxis domain={["dataMin - 15000", "dataMax + 15000"]} hide={true}/>
-            <XAxis dataKey={"date"} fontSize={14} />
+            <YAxis domain={["dataMin - 200000", "dataMax + 15000"]} hide={true}/>
+            <XAxis dataKey={"date"} fontSize={14} interval={"preserveStartEnd"} />
           </LineChart>
         </ResponsiveContainer>
      
