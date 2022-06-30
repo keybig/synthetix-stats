@@ -13,6 +13,7 @@ import {
 } from "recharts";
 import { useMemo, useState } from "react";
 import { formatMoney } from "../../../constants/format";
+import CustomToolTip from './tooltip'
 
 interface TVL {
   dayDataOvm: any[];
@@ -78,7 +79,6 @@ const TotalValueLocked = ({
   const mainData = timeFrame === 1 ? dayDataMain : timeFrame === 2 ? weekDataMain : monthDataMain
   const allData = timeFrame === 1 ? dayDataAll : timeFrame === 2 ? weekDataAll : monthDataAll
   
-  
 
   return (
     <div className={styles.container}>
@@ -108,9 +108,9 @@ const TotalValueLocked = ({
           <AreaChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
             <XAxis dataKey="date" fontSize={14} />
 
-            <Tooltip />
+            
             <Area
-              type="monotone"
+              type="linear"
               dataKey="debt"
               stackId="1"
               stroke="#31D8A4"
@@ -119,7 +119,7 @@ const TotalValueLocked = ({
               strokeWidth={2}
             />
             <Area
-              type="monotone"
+              type="linear"
               dataKey="wrapper"
               stackId="1"
               stroke="#ED1EFF"
@@ -127,7 +127,11 @@ const TotalValueLocked = ({
               fillOpacity={"60%"}
               strokeWidth={2}
             />
+            <Tooltip 
+              content={<CustomToolTip/>}
+               />
           </AreaChart>
+          
         </ResponsiveContainer>
       </div>
 

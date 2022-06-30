@@ -84,6 +84,8 @@
     font-weight:700;
 }
 
+
+
 @media(max-width: 960px){
     .container {
       padding:2rem 0 2rem;
