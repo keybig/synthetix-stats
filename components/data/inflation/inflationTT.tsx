@@ -4,7 +4,7 @@ import {
   NameType,
 } from 'recharts/src/component/DefaultTooltipContent';
 import { formatMoney, formatNumber } from '../../../constants/format';
-import styles from './tradeFeeTT.module.css'
+import styles from './inflationTT.module.css'
 
 // date
 // tvl
@@ -23,15 +23,12 @@ const CustomTooltip = ({
   if (active) {
 
     
-    const tradeFeeVal = payload && payload[0].value
-    const tradeFeeName = payload && payload[0].name
-
+    const rewardsTT = payload && payload[0].value
 
     return (
       <div className={styles.TTwrap}>
-        <p className={styles.TTfeeVal}>{tradeFeeName ? tradeFeeName : null}</p>
-        <p className={styles.TTfeeVal}>{tradeFeeVal ? formatMoney.format(tradeFeeVal) : 0}</p>
-
+        <p className={styles.TTlabel}>{label}</p>
+        <p className={styles.TTsnxReward}>{rewardsTT ? `${formatNumber.format(rewardsTT)} SNX` : 0}</p>
       </div>
     );
   }

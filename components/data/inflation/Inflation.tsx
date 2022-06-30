@@ -10,6 +10,8 @@ import {
   YAxis,
 } from "recharts";
 import { formatNumber } from "../../../constants/format";
+import CustomToolTip from './inflationTT'
+
 
 interface Inflation {
   click: number;
@@ -55,7 +57,7 @@ const Inflation = ({
               stroke="#8884d8"
               strokeWidth={3}
             />
-            <Tooltip />
+            <Tooltip content={<CustomToolTip/>}/>
             <YAxis domain={["dataMin - 15000", "dataMax + 15000"]} hide={true}/>
             <XAxis dataKey={"date"} fontSize={14} />
           </LineChart>
