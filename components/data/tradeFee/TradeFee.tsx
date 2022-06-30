@@ -3,6 +3,8 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
 import TradeFeeTable from "./TradeFeeTable";
 import { formatMoney, formatNumber } from "../../../constants/format";
+import CustomToolTip from './tradeFeeTT'
+
 
 interface Props  {
   allDailyFee: any[]
@@ -147,7 +149,7 @@ const TradeFee = ({
                 ))
               }
               </Pie>
-              <Tooltip />
+              <Tooltip content={<CustomToolTip/>}/>
             </PieChart>
           </ResponsiveContainer>
 
