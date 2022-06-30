@@ -11,6 +11,8 @@ import {
 } from "recharts";
 import { useState } from "react";
 import { formatNumber } from "../../../constants/format";
+import CustomToolTip from './tooltip'
+
 
 
 
@@ -98,7 +100,7 @@ const NumStaker = ({
             stroke="#8884d8"
             strokeWidth={2}
           />
-          <Tooltip />
+          <Tooltip content={<CustomToolTip/>}/>
           <YAxis domain={["dataMin - 1", "dataMax + 1"]} hide={true} />
           <XAxis dataKey={"date"} />
         </LineChart>
