@@ -14,7 +14,7 @@ body {
     rgba(0, 209, 255, 0.2),
     rgba(237, 30, 255, 0.2),
     rgba(11, 11, 34, 0.95) 99%
-  ), center/50%
+  ),
   url(../assets/bACKGROUND.webp);
   max-width: 1920px;
   margin:auto;
