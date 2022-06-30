@@ -1,19 +1,24 @@
-html,
-body {
+html
+{
   font-family: Arial, Helvetica, sans-serif;
-  background-image: linear-gradient(
-      0.5turn,
-      rgba(0, 209, 255, 0.1),
-      rgba(237, 30, 255, 0.1)
-    ),
-    url(../assets/bACKGROUND.webp);
-  background-color: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(384px);
-  margin: auto;
+  background-color: rgba(11, 11, 34, 1);
   box-sizing: border-box;
   width: 100%;
   height: auto;
+}
+
+body {
+  background: linear-gradient(
+    to left,
+    rgba(11, 11, 34, 0.95) 1%,
+    rgba(0, 209, 255, 0.2),
+    rgba(237, 30, 255, 0.2),
+    rgba(11, 11, 34, 0.95) 99%
+  ), center/50%
+  url(../assets/bACKGROUND.webp);
   max-width: 1920px;
+  margin:auto;
+
 }
 
 * {

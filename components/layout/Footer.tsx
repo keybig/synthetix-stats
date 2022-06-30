@@ -7,9 +7,11 @@ const Footer = () => {
   return (
     <div className={styles.footer}>
 
+
+
         <ul className={styles.row}>
-            <li className={styles.li}> Synthetix </li>
-            <li className={styles.li}> Grants Council </li>
+            <li className={styles.li}><a href='https://synthetix.io/' target="_blank" rel="noreferrer"> Synthetix </a></li>
+            <li className={styles.li}><a href='https://grants.synthetix.io/' target="_blank" rel="noreferrer"> Grants Council</a> </li>
             <li className={styles.li}> Tools </li>
             <li className={styles.li}> Teleporter </li> 
         </ul>
