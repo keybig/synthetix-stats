@@ -33,6 +33,19 @@
   margin:0.5rem 0;
 }
 
+.modalButton {
+  background: transparent;
+  color: white;
+  border: 0.125rem solid #f2f2f2;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+}
+
+.topRow {
+  display: flex;
+  justify-content: space-between;
+}
+
 .chart {
   display: flex;
   justify-content: space-between;
@@ -69,6 +82,10 @@
     padding: 1rem;
   }
 
+  .modalButton {
+    display: none;
+  }
+
   .content {
     padding: 1rem 0;
   }
@@ -81,6 +98,10 @@
 
   .chartkey {
     width: 100%;
+  }
+
+  .pieWrap {
+    width:100%;
   }
 
   .totalsynthsupply {

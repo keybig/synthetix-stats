@@ -1,0 +1,50 @@
+.mainTable {
+    border-collapse: collapse;
+    border-spacing: 2rem;
+    table-layout: fixed;
+   }
+
+.mainBody {
+    height:14.875rem;
+}
+   
+   .headRow {
+       color: #828295;
+       font-size: 1rem;
+   }
+   .headKey {
+       text-transform: capitalize;
+       font-weight: bold;
+       text-align: left;
+       padding: 1rem;
+   }
+   
+   .mainRow {
+       color: #ffffff;
+       font-size:1.5rem;
+   }
+   
+   .mainKey {
+       text-transform: capitalize;
+       text-align: left;
+       padding: 1rem;
+   }
+
+   .chartButton {
+    background: transparent;
+    border: none;
+    color: #00D1FF;
+    font-size: 2rem;
+    padding: 0 0 0 1rem;
+   }
+   
+  
+   
+   @media(max-width: 960px){
+       .mainTable {
+         margin:0;
+         padding:0;
+         width: 100%;
+       }
+   }
+   

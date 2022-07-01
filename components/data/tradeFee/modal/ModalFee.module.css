@@ -1,0 +1,125 @@
+.current {
+    background:#00D1FF;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
+    border: none;
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+  
+  .inactive {
+    color: #00D1FF;
+      border-radius: 6.25rem;
+      padding: 0.5rem 1.125rem;
+      margin: 0 0.125rem;
+      background: transparent;
+      border: none;
+      font-size: 0.875rem;
+      font-weight: 600;
+  }
+  
+  .wrapper {
+    grid-area: tradeFee;
+    background: rgba(11, 11, 34, 1);
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.625rem;
+    padding: 2rem;
+    border: 0.125rem solid #ffd75c;
+    width: 45rem;
+  }
+  
+  .title {
+    margin:0.5rem 0;
+    color: white;
+  }
+  
+  .modalButton {
+    background: transparent;
+    color: white;
+    border: 0.125rem solid #f2f2f2;
+    font-size: 0.75rem;
+    border-radius: 0.25rem;
+  }
+  
+  .topRow {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .chart {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+  }
+  
+  .pieWrap {
+    width:50%;
+  }
+  
+  .chartkey {
+    width: 50%;
+    
+  }
+  
+  .totalsynthsupply {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1.5rem;
+    text-align: right;
+    padding-top: 1rem;
+  }
+  
+  .totalsupplyamount {
+    color: #ffd753;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: right;
+    margin: 0;
+  }
+  
+  @media (max-width: 960px) {
+    .wrapper {
+      margin: 0;
+      padding: 1rem;
+      width:fit-content;
+    }
+  
+    .content {
+      padding: 1rem 0;
+    }
+  
+    .chart {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .pieWrap {
+        width:100%;
+    }
+  
+    .chartkey {
+      width: 100%;
+    }
+  
+    .totalsynthsupply {
+      padding: 1rem;
+    }
+  
+    .totalsupplyamount {
+      padding: 1rem;
+      font-size: 1.75rem;
+    }
+  
+    .current {
+      padding: 0.5rem;
+      font-size: 0.75rem;
+  }
+  
+    .inactive {
+      padding: 0.5rem;
+      font-size:0.75rem;
+  }
+  }
+  

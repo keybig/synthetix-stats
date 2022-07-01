@@ -1,14 +1,15 @@
-import styles from "./TradeFee.module.css";
+import styles from "./ModalFee.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
-import TradeFeeTable from "./TradeFeeTable";
-import { formatMoney, formatNumber } from "../../../constants/format";
-import CustomToolTip from './tradeFeeTT'
-import Modal from "../../modal/Modal";
-import ModalFee from "./modal/ModalFee";
+import TradeFeeTable from ".././TradeFeeTable";
+import { formatMoney, formatNumber } from "../../../../constants/format";
+import CustomToolTip from '.././tradeFeeTT'
+
+
 
 
 interface Props  {
+  closeModal: ()=>void;
   allDailyFee: any[]
   allSevenFee: any[]
   allThirtyFee: any[]
@@ -35,6 +36,7 @@ interface Props  {
 }
 
 const TradeFee = ({
+  closeModal,
   click,
   totalFeeAll,
   totalFeeMain,
@@ -68,15 +70,7 @@ const TradeFee = ({
   ];
 
   const [timeFrame, setTimeFrame] = useState<number>(1);
-
-  //modal
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const closeModal = () => {
-    setModalOpen(false)
-  }
  
-
   const handleActive = (buttons: any) => {
     setTimeFrame(buttons.id);
   };
@@ -123,43 +117,11 @@ const TradeFee = ({
       <h3 className={styles.title}>Trading Fees (sUSd Rewards)</h3>
       <button 
         className={styles.modalButton}
-        onClick={()=> setModalOpen(true)}
+        onClick={closeModal}
         >
             [ ]
       </button>
 
-      <Modal handleClose={closeModal} isOpen={modalOpen}>
-
-        <ModalFee
-          closeModal={closeModal}
-          click={click}
-          totalFeeAll={totalFeeAll}
-          totalFeeMain={totalFeeMain}
-          totalFeeOvm={totalFeeOvm}
-          mainTotalSynth={mainTotalSynth}
-          ovmTotalSynth={ovmTotalSynth}
-          allTotalSynth={allTotalSynth}
-          dailyFeeMain={dailyFeeMain}
-          dailyFeeOvm={dailyFeeOvm}
-          sevenFeeMain={sevenFeeMain}
-          sevenFeeOvm={sevenFeeOvm}
-          thirtyFeeMain={thirtyFeeMain}
-          thirtyFeeOvm={thirtyFeeOvm}
-          ninetyFeeMain={ninetyFeeMain}
-          ninetyFeeOvm={ninetyFeeOvm}
-          allDailyFee={allDailyFee}
-          allSevenFee={allSevenFee}
-          allThirtyFee={allThirtyFee}
-          allNinetyFee={allNinetyFee}
-          feeAll={feeAll}
-          feeMain={feeMain}
-          feeOvm={feeOvm}
-          totalIssuedSynth={feeOvm}
-
-        />
-
-        
-      </Modal>
       </div>
 
       <div className={styles.content}>

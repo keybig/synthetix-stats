@@ -88,6 +88,10 @@
       padding:1rem;
     }
 
+    .modalButton {
+        display:none;
+    }
+
     .title {
         padding: 0 1rem;
     }
