@@ -3,9 +3,13 @@
  border-spacing: 2rem;
  width: 100%;
  table-layout: auto;
-
+ background: rgba(16,16,78,1);
 }
 
+.theDiv {
+    display:flex;
+    justify-content: space-between;
+}
 .headRow {
     color: #828295;
     font-size: 0.8rem;
@@ -70,6 +74,34 @@
     color: #00D1FF;
     font-size: 2rem;
    }
+
+   .bottom {
+    text-align: right;
+    letter-spacing: 0.15rem;
+    margin: 1rem 0 0 0;
+}
+
+   .bottomTitle {
+    color: #828295;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+}
+
+.totalTrades {
+    font-size: 1.75rem;
+    font-weight:700;
+    color: white;
+    margin: 0.5rem 0;
+}
+
+.totalVolume {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #31D8A4;
+    margin: 0.5rem 0;
+}
 
 @media(max-width: 960px){
     .mainTable {

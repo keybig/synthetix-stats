@@ -1,14 +1,13 @@
 import { useMemo } from 'react'
 import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout, useBlockLayout } from 'react-table'
-import { formatMoney, formatNumber } from '../../../constants/format';
-import Modal from '../../modal/Modal';
-import styles from './TradeTable.module.css'
+import { formatMoney, formatNumber } from '../../../../constants/format';
+import Modal from '../../../modal/Modal';
+import styles from './ModalTradeTable.module.css'
 
 
-interface table  {
+interface ModalTable  {
   click: number;
   tableId: number;
-  modal: boolean;
   totalTradeStatsOvm: any[]
   dailyTradeStatsOvm: any[]
   thirtyTradeStatsOvm: any[]
@@ -25,20 +24,13 @@ interface table  {
   sevenTradeStatsAll: any[]
   thirtyTradeStatsAll: any[]
   ninetyTradeStatsAll: any[]
-  mainTrade:string;
-  ovmTrade:string;
-  allTrade:string;
-  mainVolume:string;
-  ovmVolume:string;
-  allVolume:string;
 }
 
 
 
 
-const TradeTable = ({
+const ModalTradeTable = ({
   click, 
-  modal,
   tableId, 
   totalTradeStatsAll, 
   totalTradeStatsMain, 
@@ -55,14 +47,8 @@ const TradeTable = ({
   dailyTradeStatsAll,
   sevenTradeStatsAll,
   thirtyTradeStatsAll,
-  ninetyTradeStatsAll,
-  mainTrade,
-  ovmTrade,
-  allTrade,
-  mainVolume,
-  ovmVolume,
-  allVolume
-}:table) => {
+  ninetyTradeStatsAll
+}:ModalTable) => {
 
  //const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
  // const tradeDep = tableId === 1 ? currentVol : totalVol
@@ -124,7 +110,6 @@ const TradeTable = ({
                 desc: true,
               },
             ],  
-            pageSize: !modal ? 4 : tradeTable.length
           }
         },  
         useSortBy,
@@ -193,42 +178,12 @@ const TradeTable = ({
         })}
     </tbody>
   </table>
-  <div className={styles.theDiv}>
-  
-  <div>
-  {tradeTable.length > 4 ? 
-      
-    <>
-      
-      <button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
-        {'<'}
-      </button>
-      
-      <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
-          {'>'}
-        </button>
-        
-        </> : null}
-      </div>
-  
- 
- 
-  <div className={styles.bottom}>
-        <h5 className={styles.bottomTitle}>Total N of Trades</h5>
-        <p className={styles.totalTrades}>
-          {click === 1 ? mainTrade : click === 10 ? ovmTrade : allTrade}
-        </p>
-        <h5 className={styles.bottomTitle}>Total Volume</h5>
-        <p className={styles.totalVolume}>
-          {click === 1 ? mainVolume : click === 10 ? ovmVolume : allVolume}
-        </p>
-      </div>
-      </div>
+
   </div>
     
 )
     
     
       }
-export default TradeTable
+export default ModalTradeTable
 

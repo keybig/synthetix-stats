@@ -3,7 +3,7 @@
   background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5))
     #402fc8;
   border-radius: 0.625rem;
-  padding: 1.875rem 3.125rem 1.875rem 1.875rem;
+  padding: 1rem 2rem;
   border: 0.125rem solid #ed1eff;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 1.125rem;
@@ -12,12 +12,13 @@
 .statstitle {
   color: white;
   text-transform: capitalize;
+  margin: 0.5rem;
 }
 
 .linkWrap {
   display: flex;
   justify-content: space-evenly;
-  padding: 0.25rem;
+  padding: 0 0.25rem;
 
 }
 
@@ -27,6 +28,7 @@
   color: rgba(255, 255, 255, 0.7);
   text-transform: capitalize;
   padding: 0;
+  margin: 0;
   width: 15rem;
 }
 

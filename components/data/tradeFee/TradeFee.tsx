@@ -110,7 +110,7 @@ const TradeFee = ({
 
   return (
     <div className={styles.wrapper}>
-      <h3>Trading Fees (sUSd Rewards)</h3>
+      <h3 className={styles.title}>Trading Fees (sUSd Rewards)</h3>
 
       <div className={styles.content}>
         {buttonMap.map((buttonMap) => (

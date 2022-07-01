@@ -1,11 +1,11 @@
-import styles from "./TradeActivity.module.css";
+import styles from "./ModalTable.module.css";
 import { useState, useMemo } from "react";
-import TradeTable from "./TradeTable";
-import { formatMoney, formatNumber } from "../../../constants/format";
-import Modal from '../../modal/Modal'
-import ModalTable from './modal/ModalTable'
+import TradeTable from "../TradeTable";
+import { formatMoney, formatNumber } from "../../../../constants/format";
+import ModalTradeTable from "./ModalTradeTable";
 
-interface TradeStats {
+interface ModalTradeStats {
+  closeModal: ()=>void;
   click: number
   tradeDataAll: any[]
   tradeDataMain: any[]
@@ -59,7 +59,8 @@ interface TradeStats {
   currentTotalTradeMain: number
   currentTotalTradeOvm: number
 }
-const TradeActivity = ({
+const ModalTable = ({
+  closeModal,
   click,
   tradeDataMain,
   totalVolMain,
@@ -101,7 +102,7 @@ const TradeActivity = ({
   ninetyVolOvm,
   ninetyTradeMain,
   ninetyTradeOvm
-}: TradeStats) => {
+}: ModalTradeStats) => {
 
   const buttonMap = [
     { id: 0, title: "Daily" },
@@ -113,29 +114,9 @@ const TradeActivity = ({
 
   const [timeFrame, setTimeFrame] = useState(1);
 
-  //modalnew
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const closeModal = () => {
-    setModalOpen(false)
-  }
-
-  const close = () => {
-
-    setModalOpen(false);
-    console.log('close')
-
-  }
-  const open = () => {
-    setModalOpen(true);
-    console.log('open')
-  }
-  //
   const handleActive = (buttons: any) => {
     setTimeFrame(buttons.id);
   };
-
- 
 
   const ovmVolume = timeFrame === 0 ?
     formatMoney.format(dailyVolOvm) :
@@ -200,69 +181,16 @@ const TradeActivity = ({
 
   return (
     <div className={styles.container}>
+      <div>
       <div className={styles.topRow}>
       <h3 className={styles.title}> Trading Activity</h3>
       <button 
         className={styles.modalButton}
-        onClick={()=> setModalOpen(true)}
+        onClick={closeModal}
+      
         >
             [ ]
       </button>
-     
-      <Modal handleClose={closeModal} isOpen={modalOpen}>
-
-
-        <ModalTable 
-          closeModal={closeModal}
-          click={click}
-          tradeDataMain={tradeDataMain}
-          totalVolMain={totalVolMain}
-          totalTradeMain={totalTradeMain}
-          tradeDataOvm={tradeDataOvm}
-          totalVolOvm={totalVolOvm}
-          totalTradeOvm={totalTradeOvm}
-          dailyTradeDataMain={dailyTradeDataMain}
-          currentTotalVolMain={currentTotalVolMain}
-          currentTotalTradeMain={currentTotalTradeMain}
-          dailyTradeDataOvm={dailyTradeDataOvm}
-          currentTotalVolOvm={currentTotalVolOvm}
-          currentTotalTradeOvm={currentTotalTradeOvm}
-          currentTradeDataAll={currentTradeDataAll}
-          tradeDataAll={tradeDataAll}
-          sevenTradeDataMain={sevenTradeDataMain}
-          sevenTradeDataOvm={sevenTradeDataOvm}
-          thirtyTradeDataMain={thirtyTradeDataMain}
-          thirtyTradeDataOvm={thirtyTradeDataOvm}
-          ninetyTradeDataMain={ninetyTradeDataMain}
-          ninetyTradeDataOvm={ninetyTradeDataOvm}
-          allDailyTradeData={allDailyTradeData}
-          allSevenTradeData={allSevenTradeData}
-          allThirtyTradeData={allThirtyTradeData}
-          allNinetyTradeData={allNinetyTradeData}
-          dailyVolMain={dailyVolMain}
-          dailyVolOvm={dailyVolOvm}
-          dailyTradeMain={dailyTradeMain}
-          dailyTradeOvm={dailyTradeOvm}
-          sevenVolMain={sevenVolMain}
-          sevenVolOvm={sevenVolOvm}
-          sevenTradeMain={sevenTradeMain}
-          sevenTradeOvm={sevenTradeOvm}
-          thirtyVolMain={thirtyVolMain}
-          thirtyVolOvm={thirtyVolOvm}
-          thirtyTradeMain={thirtyTradeMain}
-          thirtyTradeOvm={thirtyTradeOvm}
-          ninetyVolMain={ninetyVolMain}
-          ninetyVolOvm={ninetyVolOvm}
-          ninetyTradeMain={ninetyTradeMain}
-          ninetyTradeOvm={ninetyTradeOvm}
-          currentTradeDataMain={currentTradeDataAll}
-          currentTradeDataOvm={currentTradeDataAll}
-
-          />
-
-
-      
-        </Modal>
       </div>
       <div className={styles.buttonRow}>
         {buttonMap.map((buttonMap) => (
@@ -278,9 +206,9 @@ const TradeActivity = ({
         ))}
       </div>
       <div>
-        <TradeTable
+      </div>
+        <ModalTradeTable
           click={click}
-          modal={modalOpen}
           tableId={timeFrame}
           totalTradeStatsAll={tradeDataAll}
           totalTradeStatsMain={tradeDataMain}
@@ -298,18 +226,21 @@ const TradeActivity = ({
           sevenTradeStatsAll={allSevenTradeData}
           thirtyTradeStatsAll={allThirtyTradeData}
           ninetyTradeStatsAll={allNinetyTradeData}
-          mainTrade={mainTrade}
-          ovmTrade={ovmTrade}
-          allTrade={allTrade}
-          mainVolume={mainVolume}
-          ovmVolume={ovmVolume}
-          allVolume={allVolume}
 
         />
       </div>
-      
+      <div className={styles.bottom}>
+        <h5 className={styles.bottomTitle}>Total N of Trades</h5>
+        <p className={styles.totalTrades}>
+          {click === 1 ? mainTrade : click === 10 ? ovmTrade : allTrade}
+        </p>
+        <h5 className={styles.bottomTitle}>Total Volume</h5>
+        <p className={styles.totalVolume}>
+          {click === 1 ? mainVolume : click === 10 ? ovmVolume : allVolume}
+        </p>
+      </div>
     </div>
   );
 };
 
-export default TradeActivity;
+export default ModalTable;

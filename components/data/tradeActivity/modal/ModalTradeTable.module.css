@@ -1,0 +1,81 @@
+.mainTable {
+    border-collapse: collapse;
+    border-spacing: 2rem;
+    width: 100%;
+    table-layout: auto;
+    background: rgba(16,16,78,1);
+   
+   
+   }
+   
+   .headRow {
+       color: #828295;
+       font-size: 1.25rem;
+   }
+   .headKey {
+       text-transform: capitalize;
+       font-weight: bold;
+       text-align: left;
+       padding: 1rem;
+       border-bottom: 1px solid #828295;
+   }
+   
+   .mainRow {
+       color: #ffffff;
+       font-size:1.25rem;
+   }
+   
+   .mainKey {
+       text-transform: capitalize;
+       text-align: left;
+       border-bottom: 0.0625rem solid #828295;
+       padding: 1rem 0;
+   }
+   
+   .Lyra {
+       color: white;
+   }
+   
+   .Lyra::before {
+       content: url(../../../../public/Lyra.png);
+       padding-right: 1rem;
+       width: 50px;
+       margin-right: 6px;
+       margin-top: 6px;
+   }
+   
+   .Kwenta {
+       color: white;
+   }
+   
+   .Kwenta::before {
+       content: url(../../../../public/Kwenta.png);
+       padding-right: 1rem;
+   
+   }
+   
+   .Thales::before {
+       content: url(../../../../public/Thales.png);
+       padding-right: 1rem;
+       margin-right: 8px;
+       margin-top: 2px;
+   }
+   
+   .Thales {
+       color:azure;
+   }
+   
+   .chartButton {
+       background: transparent;
+       border: none;
+       color: #00D1FF;
+       font-size: 2rem;
+      }
+   
+   @media(max-width: 960px){
+       .mainTable {
+         margin:0;
+         padding:0;
+       }
+   }
+   
