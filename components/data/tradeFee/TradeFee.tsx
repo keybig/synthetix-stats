@@ -127,6 +127,7 @@ const TradeFee = ({
       </div>
 
       <div className={styles.chart}>
+        <div className={styles.pieWrap}>
           <ResponsiveContainer width={"99%"} height={300}>
             <PieChart>
               <Pie
@@ -152,6 +153,7 @@ const TradeFee = ({
               <Tooltip content={<CustomToolTip/>}/>
             </PieChart>
           </ResponsiveContainer>
+        </div>
 
         <div className={styles.chartkey}>
           <TradeFeeTable 

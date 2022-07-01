@@ -39,13 +39,12 @@
   margin: 2rem 0;
 }
 
-.piewrap {
-  width:200px;
-  height:300px;
+.pieWrap {
+  width:50%;
 }
 
 .chartkey {
-  margin-right:auto;
+  width: 50%;
   
 }
 
