@@ -110,6 +110,7 @@ const ModalTradeTable = ({
                 desc: true,
               },
             ],  
+            pageSize: 4,
           }
         },  
         useSortBy,
@@ -178,6 +179,17 @@ const ModalTradeTable = ({
         })}
     </tbody>
   </table>
+  {tradeTable.length > 4 ?
+
+<div>
+  <button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
+    {'<'}
+  </button>
+  <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
+    {'>'}
+  </button></div>
+
+: null}
 
   </div>
     

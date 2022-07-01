@@ -2,8 +2,12 @@
  border-collapse: collapse;
  border-spacing: 2rem;
  width: 100%;
- table-layout: auto;
+ table-layout: fixed;
  background: rgba(16,16,78,1);
+}
+
+.mainBody {
+    height: 12.875rem;
 }
 
 .theDiv {

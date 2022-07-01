@@ -1,16 +1,15 @@
 .mainTable {
     border-collapse: collapse;
     border-spacing: 2rem;
-    width: 100%;
-    table-layout: auto;
+    table-layout: fixed;
+    width:29rem;
+    height: 16.25rem;
     background: rgba(16,16,78,1);
-   
-   
    }
    
    .headRow {
        color: #828295;
-       font-size: 1.25rem;
+       font-size: 1rem;
    }
    .headKey {
        text-transform: capitalize;
@@ -22,7 +21,7 @@
    
    .mainRow {
        color: #ffffff;
-       font-size:1.25rem;
+       font-size:1rem;
    }
    
    .mainKey {
@@ -76,6 +75,7 @@
        .mainTable {
          margin:0;
          padding:0;
+         width:fit-content;
        }
    }
    

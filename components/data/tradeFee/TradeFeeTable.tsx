@@ -151,7 +151,7 @@ const TradeFeeTable = ({
         })}
 
       </thead>
-      <tbody {...getTableBodyProps()}>
+      <tbody {...getTableBodyProps()} className={styles.mainBody}>
 
         {page.map((row) => {
           prepareRow(row)

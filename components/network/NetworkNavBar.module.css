@@ -55,6 +55,7 @@
     .navMoreStats {
         justify-content: center;
         margin: auto;
+        padding: 0.5rem 0 0;
     }
 
     .navNetwork {

@@ -1,9 +1,13 @@
 .mainTable {
     border-collapse: collapse;
     border-spacing: 2rem;
+    table-layout: fixed;
     width: 100%;
-    table-layout: auto;
    }
+
+.mainBody {
+    height:14.875rem;
+}
    
    .headRow {
        color: #828295;
@@ -14,6 +18,7 @@
        font-weight: bold;
        text-align: left;
        padding: 1rem;
+       border-bottom: 1px solid white;
    }
    
    .mainRow {
@@ -41,6 +46,7 @@
        .mainTable {
          margin:0;
          padding:0;
+         width: 100%;
        }
    }
    

@@ -127,7 +127,7 @@ const TradeFee = ({
       </div>
 
       <div className={styles.chart}>
-          <ResponsiveContainer height={300} width={"100%"}>
+          <ResponsiveContainer width={"100%"} height={300}>
             <PieChart>
               <Pie
                 dataKey="value"

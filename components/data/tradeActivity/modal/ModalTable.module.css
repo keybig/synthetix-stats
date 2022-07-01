@@ -31,16 +31,16 @@
 }
 
 .buttonRow {
-    margin: 1rem;
+    margin:1rem 0 0;
 }
 
 .current {
     background:#00D1FF;
     border-radius: 6.25rem;
     padding: 0.5rem 1.125rem;
-    margin: 0 0.125rem;
+    margin: auto;
     border: none;
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 600;
 }
 
@@ -48,10 +48,10 @@
     color: #00D1FF;
     border-radius: 6.25rem;
     padding: 0.5rem 1.125rem;
-    margin: 0 0.125rem;
+    margin: auto;
     background: transparent;
     border: none;
-    font-size: 1rem;
+    font-size: 0.875rem;
     font-weight: 600;
 }
 

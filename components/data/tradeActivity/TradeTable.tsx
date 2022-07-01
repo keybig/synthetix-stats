@@ -111,7 +111,18 @@ const TradeTable = ({
         []
       )
       // @ts-ignore
-      const tableInstance = useTable(
+      const {
+        getTableProps,
+        getTableBodyProps,
+        headerGroups,
+        page,
+        canNextPage,
+        nextPage,
+        canPreviousPage,
+        previousPage,
+        prepareRow,
+        state:{pageSize}
+      } = useTable(
         //@ts-ignore
         {
           //@ts-ignore
@@ -124,24 +135,14 @@ const TradeTable = ({
                 desc: true,
               },
             ],  
-            pageSize: !modal ? 4 : tradeTable.length
+            pageSize: 4,
           }
         },  
         useSortBy,
         usePagination
         )
 
-      const {
-        getTableProps,
-        getTableBodyProps,
-        headerGroups,
-        page,
-        canNextPage,
-        nextPage,
-        canPreviousPage,
-        previousPage,
-        prepareRow,
-      } = tableInstance
+     
 
 
 
@@ -173,7 +174,7 @@ const TradeTable = ({
       )})}
       
     </thead>
-    <tbody {...getTableBodyProps()}>
+    <tbody {...getTableBodyProps()} className={styles.mainBody}>
      
     {page.map((row) => {
           prepareRow(row);
@@ -188,9 +189,15 @@ const TradeTable = ({
                   </td>
                 );
               })}
+         
             </tr>
+          
           );
+       
         })}
+       
+      
+      
     </tbody>
   </table>
   <div className={styles.theDiv}>
