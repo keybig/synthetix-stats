@@ -6,6 +6,9 @@ import { formatMoney, formatNumber } from "../../../constants/format";
 import CustomToolTip from './tradeFeeTT'
 import Modal from "../../modal/Modal";
 import ModalFee from "./modal/ModalFee";
+import {RiInformationFill} from "react-icons/ri"
+import {RiFullscreenLine} from "react-icons/ri"
+import InfoTooltip from '../../infoToolTip/InfoTooltip'
 
 
 interface Props  {
@@ -117,15 +120,31 @@ const TradeFee = ({
 
   const pieData = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 
+  const ttInfo = `Fees Earned by SNX Protocol. Updated every 15 minutes.`
+
+
   return (
     <div className={styles.wrapper}>
       <div className={styles.topRow}>
+      <div className={styles.titleRow}>
       <h3 className={styles.title}>Trading Fees (sUSd Rewards)</h3>
+      <InfoTooltip content={ttInfo}>
+
+      <span 
+        className={styles.icon}
+        onMouseEnter={()=>console.log("mouse enter")}
+        onMouseLeave={()=>console.log("mouse left")}
+        >
+      <RiInformationFill/>
+      </span>
+      </InfoTooltip>
+      </div>
       <button 
         className={styles.modalButton}
         onClick={()=> setModalOpen(true)}
         >
-            [ ]
+                        <RiFullscreenLine size={16}/>
+
       </button>
 
       <Modal handleClose={closeModal} isOpen={modalOpen}>

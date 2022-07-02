@@ -4,6 +4,10 @@ import TradeTable from "./TradeTable";
 import { formatMoney, formatNumber } from "../../../constants/format";
 import Modal from '../../modal/Modal'
 import ModalTable from './modal/ModalTable'
+import {RiInformationFill} from "react-icons/ri"
+import {RiFullscreenLine} from "react-icons/ri"
+import {MdFullscreen} from "react-icons/md"
+import InfoTooltip from '../../infoToolTip/InfoTooltip'
 
 interface TradeStats {
   click: number
@@ -197,16 +201,31 @@ const TradeActivity = ({
         timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
           formatNumber.format(allTotalTrade)
 
+          const ttInfo = `SNX Ecosystem Trading Activity. Updated every 15 minutes`
+
+
 
   return (
     <div className={styles.container}>
       <div className={styles.topRow}>
+      <div className={styles.titleRow}>
       <h3 className={styles.title}> Trading Activity</h3>
+      <InfoTooltip content={ttInfo}>
+
+      <span 
+        className={styles.icon}
+        onMouseEnter={()=>console.log("mouse enter")}
+        onMouseLeave={()=>console.log("mouse left")}
+        >
+      <RiInformationFill/>
+      </span>
+      </InfoTooltip>
+      </div>
       <button 
         className={styles.modalButton}
         onClick={()=> setModalOpen(true)}
         >
-            [ ]
+            <RiFullscreenLine size={16}/>
       </button>
      
       <Modal handleClose={closeModal} isOpen={modalOpen}>

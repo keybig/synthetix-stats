@@ -3,6 +3,8 @@ import { useState, useMemo } from "react";
 import TradeTable from "../TradeTable";
 import { formatMoney, formatNumber } from "../../../../constants/format";
 import ModalTradeTable from "./ModalTradeTable";
+import {RiFullscreenLine} from "react-icons/ri"
+
 
 interface ModalTradeStats {
   closeModal: ()=>void;
@@ -189,7 +191,7 @@ const ModalTable = ({
         onClick={closeModal}
       
         >
-            [ ]
+            <RiFullscreenLine size={16}/>
       </button>
       </div>
       <div className={styles.buttonRow}>

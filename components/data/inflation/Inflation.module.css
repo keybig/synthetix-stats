@@ -16,6 +16,16 @@
   margin: 0;
 }
 
+.titleRow {
+  display: flex;
+}
+
+.icon {
+  margin: 0 0.5rem;
+  align-self: center;
+  font-size: 1.125rem;
+}
+
 .subtitle {
   color: #828295;
   font-size: 0.75rem;

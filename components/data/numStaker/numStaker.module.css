@@ -18,6 +18,17 @@
     font-size: 0.875rem;
     font-weight: 700;
     margin: 0;
+    width: max-content;
+}
+
+.titleRow {
+    display:flex;
+}
+
+.icon {
+    margin: 0 0.5rem;
+    align-self: center;
+    font-size: 1.125rem;
 }
 
 .value {
@@ -59,13 +70,9 @@
 
 
 @media(max-width: 960px){
-    .container {
-        padding: 2rem;
-    }
 
     .button {
         padding: 0.5rem;
-
     }
 
     .inactive {

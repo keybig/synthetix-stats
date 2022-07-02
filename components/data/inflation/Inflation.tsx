@@ -11,6 +11,8 @@ import {
 } from "recharts";
 import { formatNumber } from "../../../constants/format";
 import CustomToolTip from './inflationTT'
+import {RiInformationFill} from "react-icons/ri"
+import InfoTooltip from '../../infoToolTip/InfoTooltip'
 
 
 interface Inflation {
@@ -38,11 +40,26 @@ const Inflation = ({
   const allReward = currentRewardMain + currentRewardOvm
   const allTime = allTimeInflationMain + allTimeInflationOvm
 
+  const ttInfo = `Weekly SNX Staking Rewards. Updated Weekly`
+
+
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.keyWrap}>
+        <div className={styles.titleRow}>
         <h3 className={styles.inflationTitle}>Inflation Fees (SNX Rewards)</h3>
+        <InfoTooltip content={ttInfo}>
+
+      <span 
+        className={styles.icon}
+        onMouseEnter={()=>console.log("mouse enter")}
+        onMouseLeave={()=>console.log("mouse left")}
+        >
+      <RiInformationFill/>
+      </span>
+      </InfoTooltip>
+        </div>
         <h5 className={styles.subtitle}>Current Epoch</h5>
         <p className={styles.currentEpoch}>{click === 1 ? formatNumber.format(currentRewardMain) : click === 10 ? formatNumber.format(currentRewardOvm) : formatNumber.format(allReward)}</p>
         <h5 className={styles.subtitle}>Up to date</h5>

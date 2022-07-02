@@ -14,10 +14,21 @@
     justify-content: space-between;
 }
 
+.titleRow {
+    display:flex;
+    justify-content: center;
+}
+
+.icon {
+    margin: 0 0.5rem;
+    align-self: center;
+    font-size: 1.125rem;
+}
+
 .modalButton {
     background: transparent;
     color: white;
-    border: 0.125rem solid #f2f2f2;
+    border: 0.0625rem solid #f2f2f2;
     font-size: 0.75rem;
     border-radius: 0.25rem;
 }
@@ -26,6 +37,7 @@
     color: white;
     font-size: 0.875rem;
     font-weight: 700;
+    margin:0;
 }
 
 .buttonRow {

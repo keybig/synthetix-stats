@@ -4,6 +4,7 @@ import { useState } from "react";
 import TradeFeeTable from ".././TradeFeeTable";
 import { formatMoney, formatNumber } from "../../../../constants/format";
 import CustomToolTip from '.././tradeFeeTT'
+import {RiFullscreenLine} from "react-icons/ri"
 
 
 
@@ -119,7 +120,7 @@ const TradeFee = ({
         className={styles.modalButton}
         onClick={closeModal}
         >
-            [ ]
+            <RiFullscreenLine size={16} />
       </button>
 
       </div>

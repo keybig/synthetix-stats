@@ -14,6 +14,9 @@ import {
 import { useMemo, useState } from "react";
 import { formatMoney } from "../../../constants/format";
 import CustomToolTip from './tooltip'
+import {RiInformationFill} from "react-icons/ri"
+import InfoTooltip from '../../infoToolTip/InfoTooltip'
+
 
 interface TVL {
   dayDataOvm: any[];
@@ -79,12 +82,27 @@ const TotalValueLocked = ({
   const mainData = timeFrame === 1 ? dayDataMain : timeFrame === 2 ? weekDataMain : monthDataMain
   const allData = timeFrame === 1 ? dayDataAll : timeFrame === 2 ? weekDataAll : monthDataAll
   
+  const ttInfo = `Total Value Locked within SNX Ecosystem. Updated every 15 minutes`
+
 
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>
         <div>
-          <h3 className={styles.tvl}>Total Value Locked</h3>
+          <div className={styles.titleRow}>
+          <h3 className={styles.tvl}>Total Value Locked </h3>
+          <InfoTooltip content={ttInfo}>
+
+      <span 
+        className={styles.icon}
+        onMouseEnter={()=>console.log("mouse enter")}
+        onMouseLeave={()=>console.log("mouse left")}
+        >
+      <RiInformationFill/>
+      </span>
+      </InfoTooltip>
+
+          </div>
           <p className={styles.values}>{click === 1 ? totalValueLockedMain : click === 10 ? totalValueLockedOvm : totalValueLockedAll}</p>
         </div>
 

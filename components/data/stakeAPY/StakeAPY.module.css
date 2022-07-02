@@ -24,3 +24,13 @@
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
 }
+
+.titleRow {
+    display:flex;
+}
+
+.icon {
+    margin: 0 0.5rem;
+    align-self: center;
+    font-size: 1.125rem;
+}

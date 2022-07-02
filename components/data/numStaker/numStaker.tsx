@@ -12,6 +12,9 @@ import {
 import { useState } from "react";
 import { formatNumber } from "../../../constants/format";
 import CustomToolTip from './tooltip'
+import InfoTooltip from "../../infoToolTip/InfoTooltip";
+import {RiInformationFill} from "react-icons/ri"
+
 
 
 
@@ -67,13 +70,28 @@ const NumStaker = ({
   const ovmData = timeFrame === 1 ? dayOvm : timeFrame === 2 ? weekOvm : monthOvm
   const mainData = timeFrame === 1 ? dayMain : timeFrame === 2 ? weekMain : monthMain
   const allData = timeFrame === 1 ? dayAll : timeFrame === 2 ? weekAll : monthAll
+
+  const ttInfo = `How many SNX is currently staked. Updated every 15 minutes`
+
   
 
   return (
     <div className={styles.container}>
       <div className={styles.topRow}>
         <div>
+          <div className={styles.titleRow}>
           <h3 className={styles.numStakerTitle}>Number of Individual Stakers</h3>
+          <InfoTooltip content={ttInfo}>
+
+      <span 
+        className={styles.icon}
+        onMouseEnter={()=>console.log("mouse enter")}
+        onMouseLeave={()=>console.log("mouse left")}
+        >
+      <RiInformationFill/>
+      </span>
+      </InfoTooltip>
+          </div>
           <p className={styles.value}>{click === 1 ? mainStaker : click === 10 ? ovmStaker : allStaker}</p>
         </div>
 
