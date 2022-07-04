@@ -43,6 +43,10 @@
     margin-left:auto;
 }
 
+.mobileMenu {
+    display:none;
+}
+
 
 .button {
     background:#00D1FF;
@@ -82,5 +86,21 @@
     .selectors {
         display: flex;
         flex-direction: column;
+    }
+
+    .mobileMenu {
+        display:block;
+    }
+
+    .selectBox {
+        appearance: none;
+        background-repeat: no-repeat;
+  background-size: 0.5em auto;
+  background-position: right 0.25em center;
+  padding-right: 1em;
+    }
+
+    .mainMenu {
+        display:none;
     }
 }

@@ -1,0 +1,123 @@
+.button {
+    background:#00D1FF;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.inactive {
+    color: #00D1FF;
+    border-radius: 6.25rem;
+    padding: 0.5rem 1.125rem;
+    margin: 0 0.125rem;
+    background: transparent;
+    border: none;
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+.ddWrap {
+  background-color: white;
+  margin: 2rem 1rem;
+}
+
+.reactSelect {
+  background-color: purple;
+}
+.navBar {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .navBar button {
+    z-index: 10;
+    cursor: pointer;
+    display: none;
+  }
+  
+  .menuNav { /* menu */
+    list-style:none;
+    margin: auto;
+  }
+  
+  .showMenuNav { /* mobile menu */
+    width: 100%;
+    overflow-y: scroll;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    background: darkcyan;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    overflow: hidden;
+    max-width: 290px;
+    z-index: 9;
+  }
+
+  .hideTest {
+    display: none;
+  }
+
+  .selection {
+    color: red;
+    background: gray;
+  }
+
+@media(max-width: 960px){
+
+.ddWrap {
+}
+
+.hideTest {
+    display: block;
+} 
+
+.navBar {
+    position: relative;
+  }
+  
+  .navBar button {
+    position: fixed;
+    left: 40px;
+    top: 40px;
+    z-index: 10;
+    cursor: pointer;
+  }
+  
+  .menuNav {
+    overflow-y: scroll;
+    list-style: none;
+    position: absolute;
+    top: 0;
+    background: rgb(218, 242, 242);
+    left: 0;
+    bottom: 0;
+    width: 0;
+    overflow: hidden;
+    max-width: 290px;
+    z-index: 9;
+  }
+  
+  .showMenuNav {
+    width: 100%;
+    overflow-y: scroll;
+    list-style: none;
+    position: fixed;
+    top: 0;
+    background: darkcyan;
+    left: 0;
+    bottom: 0;
+    height: 100vh;
+    overflow: hidden;
+    max-width: 290px;
+    z-index: 9;
+  }
+  
+  .menuNav li:first-child {
+    margin-top: 7rem;
+  }
+}

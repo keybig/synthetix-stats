@@ -14,6 +14,9 @@ import { formatNumber } from "../../../constants/format";
 import CustomToolTip from './tooltip'
 import InfoTooltip from "../../infoToolTip/InfoTooltip";
 import {RiInformationFill} from "react-icons/ri"
+import Select from 'react-select'
+import Dropdown from '../../dropdown/Dropdown'
+
 
 
 
@@ -61,10 +64,16 @@ const NumStaker = ({
     //{ id: 4, title: "one Year" }
   ];
 
+  const optionMap = [
+    { value: 1, label: "1 Day"},
+    { value: 2, label: "1 Week"},
+    { value: 3, label: "1 Month"}
+  ]
+
   const [timeFrame, setTimeFrame] = useState(1);
 
-  const handleActive = (buttons: any) => {
-    setTimeFrame(buttons.id);
+  const handleActive = (option: any) => {
+    setTimeFrame(option.value);
   };
 
   const ovmData = timeFrame === 1 ? dayOvm : timeFrame === 2 ? weekOvm : monthOvm
@@ -73,14 +82,13 @@ const NumStaker = ({
 
   const ttInfo = `How many SNX is currently staked. Updated every 15 minutes`
 
-  
 
   return (
     <div className={styles.container}>
       <div className={styles.topRow}>
         <div>
           <div className={styles.titleRow}>
-          <h3 className={styles.numStakerTitle}>Number of Individual Stakers</h3>
+          <h3 className={styles.numStakerTitle}>Number of Stakers</h3>
           <InfoTooltip content={ttInfo}>
 
       <span 
@@ -96,17 +104,29 @@ const NumStaker = ({
         </div>
 
         <div className={styles.selectors}>
-          {buttonMap.map((buttonMap) => (
-            <button
-              key={buttonMap.id}
-              onClick={() => handleActive(buttonMap)}
-              className={
-                buttonMap.id === timeFrame ? styles.button : styles.inactive
-              }
-            >
-              {buttonMap.title}
-            </button>
-          ))}
+
+          <div className={styles.mainMenu}>
+            {optionMap.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => handleActive(option)}
+                className={
+                  option.value === timeFrame ? styles.button : styles.inactive
+                }
+              >
+                {option.label}
+              </button>
+            ))}
+
+           
+          </div>
+
+          <div className={styles.mobileMenu}>
+          
+          <Dropdown instanceId={25} options={optionMap} update={(e)=>handleActive(e)} placeholder={optionMap[0].label}/>
+
+          </div>
+
         </div>
       </div>
 

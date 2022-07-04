@@ -16,6 +16,7 @@ import { formatMoney } from "../../../constants/format";
 import CustomToolTip from './tooltip'
 import {RiInformationFill} from "react-icons/ri"
 import InfoTooltip from '../../infoToolTip/InfoTooltip'
+import Dropdown from '../../dropdown/Dropdown'
 
 
 interface TVL {
@@ -53,16 +54,16 @@ const TotalValueLocked = ({
   totalWrapperMain,
 }:TVL) => {
 
-  const buttonMap = [
-    { id: 1, title: "One Day" },
-    { id: 2, title: "One Week" },
-    { id: 3, title: "One Month" },
-  ];
+  const optionMap = [
+    { value: 1, label: "1 Day"},
+    { value: 2, label: "1 Week"},
+    { value: 3, label: "1 Month"}
+  ]
 
   const [timeFrame, setTimeFrame] = useState(1);
 
-  const handleActive = (buttons: any) => {
-    setTimeFrame(buttons.id);
+  const handleActive = (option: any) => {
+    setTimeFrame(option.value);
   };
 
   // click === 1 ? mainnet : click === 10 ? optimism : click === 21 ? all networks
@@ -107,17 +108,24 @@ const TotalValueLocked = ({
         </div>
 
         <div className={styles.selectors}>
-          {buttonMap.map((buttonMap) => (
+          <div className={styles.mainMenu}>
+          {optionMap.map((option) => (
             <button
-              key={buttonMap.id}
-              onClick={() => handleActive(buttonMap)}
+              key={option.value}
+              onClick={() => handleActive(option)}
               className={
-                buttonMap.id === timeFrame ? styles.button : styles.inactive
+                option.value === timeFrame ? styles.button : styles.inactive
               }
             >
-              {buttonMap.title}
+              {option.label}
             </button>
           ))}
+          
+          </div>
+          <div className={styles.mobileMenu}>
+          <Dropdown instanceId={101} options={optionMap} update={(e)=>handleActive(e)} placeholder={optionMap[0].label}/>
+
+          </div>
         </div>
       </div>
 
