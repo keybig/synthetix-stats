@@ -8,12 +8,14 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  AreaChart,
+  Area,
 } from "recharts";
 import { useState } from "react";
 import { formatNumber } from "../../../constants/format";
 import CustomToolTip from './tooltip'
 import InfoTooltip from "../../infoToolTip/InfoTooltip";
-import {RiInformationFill} from "react-icons/ri"
+import { RiInformationFill } from "react-icons/ri"
 import Select from 'react-select'
 import Dropdown from '../../dropdown/Dropdown'
 
@@ -23,35 +25,35 @@ import Dropdown from '../../dropdown/Dropdown'
 
 
 interface NumStaker {
-      currentStakerAll: number;
-      currentStakerOvm: number;
-      currentStakerMain: number;
-      dayAll: any[];
-      dayMain: any[];
-      dayOvm: any[];
-      weekAll: any[];
-      weekMain: any[];
-      weekOvm: any[];
-      monthAll: any[];
-      monthMain: any[];
-      monthOvm: any[];
-      click: number;
+  currentStakerAll: number;
+  currentStakerOvm: number;
+  currentStakerMain: number;
+  dayAll: any[];
+  dayMain: any[];
+  dayOvm: any[];
+  weekAll: any[];
+  weekMain: any[];
+  weekOvm: any[];
+  monthAll: any[];
+  monthMain: any[];
+  monthOvm: any[];
+  click: number;
 }
 const NumStaker = ({
-      click,
-      currentStakerAll,
-      currentStakerOvm,
-      currentStakerMain,
-      dayAll,
-      dayMain,
-      dayOvm,
-      weekAll,
-      weekMain,
-      weekOvm,
-      monthAll,
-      monthMain,
-      monthOvm
-}:NumStaker) => {
+  click,
+  currentStakerAll,
+  currentStakerOvm,
+  currentStakerMain,
+  dayAll,
+  dayMain,
+  dayOvm,
+  weekAll,
+  weekMain,
+  weekOvm,
+  monthAll,
+  monthMain,
+  monthOvm
+}: NumStaker) => {
 
   const allStaker = formatNumber.format(currentStakerAll)
   const ovmStaker = formatNumber.format(currentStakerOvm)
@@ -65,9 +67,9 @@ const NumStaker = ({
   ];
 
   const optionMap = [
-    { value: 1, label: "1 Day"},
-    { value: 2, label: "1 Week"},
-    { value: 3, label: "1 Month"}
+    { value: 1, label: "1 Day" },
+    { value: 2, label: "1 Week" },
+    { value: 3, label: "1 Month" }
   ]
 
   const [timeFrame, setTimeFrame] = useState(1);
@@ -88,17 +90,17 @@ const NumStaker = ({
       <div className={styles.topRow}>
         <div>
           <div className={styles.titleRow}>
-          <h3 className={styles.numStakerTitle}>Number of Stakers</h3>
-          <InfoTooltip content={ttInfo}>
+            <h3 className={styles.numStakerTitle}>Number of Stakers</h3>
+            <InfoTooltip content={ttInfo}>
 
-      <span 
-        className={styles.icon}
-        onMouseEnter={()=>console.log("mouse enter")}
-        onMouseLeave={()=>console.log("mouse left")}
-        >
-      <RiInformationFill/>
-      </span>
-      </InfoTooltip>
+              <span
+                className={styles.icon}
+                onMouseEnter={() => console.log("mouse enter")}
+                onMouseLeave={() => console.log("mouse left")}
+              >
+                <RiInformationFill />
+              </span>
+            </InfoTooltip>
           </div>
           <p className={styles.value}>{click === 1 ? mainStaker : click === 10 ? ovmStaker : allStaker}</p>
         </div>
@@ -118,12 +120,12 @@ const NumStaker = ({
               </button>
             ))}
 
-           
+
           </div>
 
           <div className={styles.mobileMenu}>
-          
-          <Dropdown instanceId={25} options={optionMap} update={(e)=>handleActive(e)} placeholder={optionMap[0].label}/>
+
+            <Dropdown instanceId={25} options={optionMap} update={(e) => handleActive(e)} placeholder={optionMap[0].label} />
 
           </div>
 
@@ -131,17 +133,28 @@ const NumStaker = ({
       </div>
 
       <ResponsiveContainer height={300} width="100%">
-        <LineChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
-          <Line
+        <AreaChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
+          <defs>
+            <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="10%" stopColor="#8884d8" stopOpacity={0.2} />
+              <stop offset="50%" stopColor="#8884d8" stopOpacity={0.1} />
+
+              <stop offset="95%" stopColor="linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #402FC8;" stopOpacity={0.1} />
+
+            </linearGradient>
+          </defs>
+
+          <Area
             type="linear"
             dataKey="stakers"
             stroke="#8884d8"
             strokeWidth={2}
+            fill="url(#colorUv)"
           />
-          <Tooltip content={<CustomToolTip/>}/>
-          <YAxis domain={["dataMin - 5", "dataMax + 5"]} hide={true} />
+          <Tooltip content={<CustomToolTip />} />
+          <YAxis domain={["dataMin -10", "dataMax + 10"]} hide={true} />
           <XAxis dataKey={"date"} interval={"preserveStartEnd"} />
-        </LineChart>
+        </AreaChart>
       </ResponsiveContainer>
     </div>
   );

@@ -1,136 +1,129 @@
 .container {
-    grid-area: tvl;
-    background: #0B0B22;
-    display: flex;
-    flex-direction: column;
-    border-radius: 0.625rem;
-    padding: 1rem 2rem 0;
-    border: 0.125rem solid #13f2f2;
+  grid-area: tvl;
+  background: #0b0b22;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.625rem;
+  border: 0.125rem solid #13f2f2;
 }
 
 .topBar {
-    display: flex;
-
+  display: flex;
+  padding: 1rem 2rem 0;
 }
 
 .titleRow {
-    display:flex;
+  display: flex;
 }
 
 .icon {
-    margin: 0 0.5rem;
-    align-self: center;
-    font-size: 1.125rem;
+  margin: 0 0.5rem;
+  align-self: center;
+  font-size: 1.125rem;
 }
 
 .values {
-    font-size: 2.5rem;
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0.5rem 0;
-    color: #5CC6FF;
-    font-weight: 700;
+  font-size: 2.5rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0.5rem 0;
+  color: #5cc6ff;
+  font-weight: 700;
 }
 
 .tvl {
-    font-size: 1.125rem;
-    color: #ffffff;
-    margin: 0;
+  font-size: 1.125rem;
+  color: #ffffff;
+  margin: 0;
 }
 
 .selectors {
-    margin-left: auto;
+  margin-left: auto;
 }
 
-
 .button {
-    background:#00D1FF;
-    border-radius: 6.25rem;
-    padding: 0.5rem 1.125rem;
-    margin: 0 0.125rem;
-    border: none;
-    font-size: 0.75rem;
+  background: #00d1ff;
+  border-radius: 6.25rem;
+  padding: 0.5rem 1.125rem;
+  margin: 0 0.125rem;
+  border: none;
+  font-size: 0.75rem;
 }
 
 .inactive {
-    color: #00D1FF;
-    padding: 0.5rem 1.125rem;
-    margin: 0 0.125rem;
-    background: transparent;
-    border: none;
-    font-size: 0.75rem;
+  color: #00d1ff;
+  padding: 0.5rem 1.125rem;
+  margin: 0 0.125rem;
+  background: transparent;
+  border: none;
+  font-size: 0.75rem;
 }
 
 .responsive {
-    width: 100%;
-    height: 18.75rem;
-    margin: 0;
+  width: 100%;
+  height: 18.75rem;
+  margin: 0;
 }
 
 .bottom {
-    display: flex;
+  display: flex;
 }
 
 .debtPool {
-    padding: 0 0.625rem;
-    margin: 0 1.25rem;
+  padding: 0 0.625rem;
+  margin: 0 1.25rem;
 }
 
 .wrapper {
-    padding: 0 0.625rem;
-    margin: 0 1.875rem;
+  padding: 0 0.625rem;
+  margin: 0 1.875rem;
 }
 
 .stakingColor {
-    color: #41C79D;
-    font-size:0.75rem;
-    font-weight:700;
-    margin: 0;
+  color: #41c79d;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .wrapperColor {
-    color: #ED1EFF;
-    font-size: 0.75rem;
-    font-weight:700;
-    margin: 0;
+  color: #ed1eff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  margin: 0;
 }
 
 .debtWrapVal {
-    font-size: 1rem;
-    font-weight:700;
-    margin: 0.25rem 0;
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0.25rem 0;
 }
 
 .mobileMenu {
-    display:none;
+  display: none;
 }
 
-
-
-@media(max-width: 960px){
-
-    .tvl {
-        font-size: 0.875rem;
-    }
-
-    .mobileMenu {
-        display:block;
-    }
-
-    .mainMenu {
-        display:none;
-    }
-
-    .container {
-      padding:2rem 0 2rem;
-    }
-
-    .topBar {
-      padding:0 1rem;
-    }
-
-    .values {
-        font-size: 1.5rem;
-    }
-
-    
+@media (max-width: 960px) {
+  .tvl {
+    font-size: 0.875rem;
   }
+
+  .mobileMenu {
+    display: block;
+  }
+
+  .mainMenu {
+    display: none;
+  }
+
+  .container {
+    padding: 1rem 0;
+  }
+
+  .topBar {
+    padding: 0 1rem;
+  }
+
+  .values {
+    font-size: 1.5rem;
+  }
+}

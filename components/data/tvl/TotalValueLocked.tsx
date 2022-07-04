@@ -14,7 +14,7 @@ import {
 import { useMemo, useState } from "react";
 import { formatMoney } from "../../../constants/format";
 import CustomToolTip from './tooltip'
-import {RiInformationFill} from "react-icons/ri"
+import { RiInformationFill } from "react-icons/ri"
 import InfoTooltip from '../../infoToolTip/InfoTooltip'
 import Dropdown from '../../dropdown/Dropdown'
 
@@ -33,13 +33,13 @@ interface TVL {
   totalDebtMain: number;
   totalWrapperOvm: number;
   totalWrapperMain: number;
-  click:number;
+  click: number;
 }
 
 
 const TotalValueLocked = ({
   click,
-  dayDataOvm, 
+  dayDataOvm,
   dayDataMain,
   dayDataAll,
   weekDataOvm,
@@ -52,12 +52,12 @@ const TotalValueLocked = ({
   totalDebtMain,
   totalWrapperOvm,
   totalWrapperMain,
-}:TVL) => {
+}: TVL) => {
 
   const optionMap = [
-    { value: 1, label: "1 Day"},
-    { value: 2, label: "1 Week"},
-    { value: 3, label: "1 Month"}
+    { value: 1, label: "1 Day" },
+    { value: 2, label: "1 Week" },
+    { value: 3, label: "1 Month" }
   ]
 
   const [timeFrame, setTimeFrame] = useState(1);
@@ -82,7 +82,7 @@ const TotalValueLocked = ({
   const ovmData = timeFrame === 1 ? dayDataOvm : timeFrame === 2 ? weekDataOvm : monthDataOvm
   const mainData = timeFrame === 1 ? dayDataMain : timeFrame === 2 ? weekDataMain : monthDataMain
   const allData = timeFrame === 1 ? dayDataAll : timeFrame === 2 ? weekDataAll : monthDataAll
-  
+
   const ttInfo = `Total Value Locked within SNX Ecosystem. Updated every 15 minutes`
 
 
@@ -91,17 +91,17 @@ const TotalValueLocked = ({
       <div className={styles.topBar}>
         <div>
           <div className={styles.titleRow}>
-          <h3 className={styles.tvl}>Total Value Locked </h3>
-          <InfoTooltip content={ttInfo}>
+            <h3 className={styles.tvl}>Total Value Locked </h3>
+            <InfoTooltip content={ttInfo}>
 
-      <span 
-        className={styles.icon}
-        onMouseEnter={()=>console.log("mouse enter")}
-        onMouseLeave={()=>console.log("mouse left")}
-        >
-      <RiInformationFill/>
-      </span>
-      </InfoTooltip>
+              <span
+                className={styles.icon}
+                onMouseEnter={() => console.log("mouse enter")}
+                onMouseLeave={() => console.log("mouse left")}
+              >
+                <RiInformationFill />
+              </span>
+            </InfoTooltip>
 
           </div>
           <p className={styles.values}>{click === 1 ? totalValueLockedMain : click === 10 ? totalValueLockedOvm : totalValueLockedAll}</p>
@@ -109,21 +109,21 @@ const TotalValueLocked = ({
 
         <div className={styles.selectors}>
           <div className={styles.mainMenu}>
-          {optionMap.map((option) => (
-            <button
-              key={option.value}
-              onClick={() => handleActive(option)}
-              className={
-                option.value === timeFrame ? styles.button : styles.inactive
-              }
-            >
-              {option.label}
-            </button>
-          ))}
-          
+            {optionMap.map((option) => (
+              <button
+                key={option.value}
+                onClick={() => handleActive(option)}
+                className={
+                  option.value === timeFrame ? styles.button : styles.inactive
+                }
+              >
+                {option.label}
+              </button>
+            ))}
+
           </div>
           <div className={styles.mobileMenu}>
-          <Dropdown instanceId={101} options={optionMap} update={(e)=>handleActive(e)} placeholder={optionMap[0].label}/>
+            <Dropdown instanceId={101} options={optionMap} update={(e) => handleActive(e)} placeholder={optionMap[0].label} />
 
           </div>
         </div>
@@ -132,17 +132,20 @@ const TotalValueLocked = ({
       <div className={styles.responsive}>
         <ResponsiveContainer>
           <AreaChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
+      
             <XAxis dataKey="date" fontSize={14} />
 
-            
+
             <Area
               type="linear"
               dataKey="debt"
               stackId="1"
               stroke="#31D8A4"
               fill="#31D8A4"
-              fillOpacity={"60%"}
+              fillOpacity={"50%"}
               strokeWidth={2}
+            
+              
             />
             <Area
               type="linear"
@@ -150,14 +153,14 @@ const TotalValueLocked = ({
               stackId="1"
               stroke="#ED1EFF"
               fill="#ED1EFF"
-              fillOpacity={"60%"}
+              fillOpacity={"50%"}
               strokeWidth={2}
             />
-            <Tooltip 
-              content={<CustomToolTip/>}
-               />
+            <Tooltip
+              content={<CustomToolTip />}
+            />
           </AreaChart>
-          
+
         </ResponsiveContainer>
       </div>
 

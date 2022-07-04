@@ -54,6 +54,7 @@ const Dropdown = ({ options, update, instanceId, placeholder }:DropdownProps) =>
         styles={customStyles}
         placeholder={placeholder}
         isSearchable={false}
+        
     />
   )
 }
