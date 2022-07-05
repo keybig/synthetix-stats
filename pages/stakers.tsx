@@ -180,7 +180,7 @@ export async function getStaticProps() {
                     orderDirection: 'desc',
                     first: issuers,
                     where: { initialDebtOwnership_not: 0,
-                             balanceOf_gt:1
+                             collateral_gte:1
                      }
 
                 }, {
