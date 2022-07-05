@@ -2,6 +2,7 @@ import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getS
 import styles from '../styles/Dropdown.module.css'
 import { ReactChild, ReactFragment, ReactPortal, Key, useMemo, useState } from "react";
 import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
+import Image from "next/image";
 
 
 const Stakers = ({ mainStakers, ovmStakers }: any) => {
@@ -68,10 +69,39 @@ const Stakers = ({ mainStakers, ovmStakers }: any) => {
     return (
         <div className={styles.ddWrap}>
 
+            <div className={styles.images}>
+            <p> SNX Subgraph calling <strong>synthetix</strong> endpoint. This is what was used initially for the number of stakers.</p>
+            <p> See the definitions in right of image. Issuers are number currently staking, snxholders are number currently holding</p>
+            <p> Results in the middle of image, in the data object. The call used is the left of the image.</p>
+            <Image src="/../public/stakers/synthetix.png" layout="responsive" width={150} height={75}/>
+            </div>
+
+            <div className={styles.images}>
+            <p> SNX Subgraph calling <strong>totalActiveStakers</strong> endpoint. This is what was used in Grafana Dashboard for the number of stakers.</p>
+            <p> See the definitions in right of image. count are number currently seen staking</p>
+            <p> Results in the middle of image, in the data object. The call used is the left of the image.</p>
+            <Image src="/../public/stakers/totalactive.png" layout="responsive" width={150} height={75}/>
+            </div>
+
+            <div className={styles.images}>
+            <p> SNX Subgraph calling <strong>snxholder</strong> endpoint. This gives access to all snx holders.</p>
+            <p> See the definitions in right of image. Collateral represents SNX that is locked as of the last event and cannot be spent. I was assuming collateral {`>`} 0 === currently staking.</p>
+            <p> Also of note is initialDebtOwnership and debtEntryAtIndex. </p>
+            <p> Results in the middle of image, in the data object. The call used is the left of the image.</p>
+            <p> Below the image, is the full return of a call to <strong>snxholders</strong></p>
+            <Image src="/../public/stakers/snxholder.png" layout="responsive" width={150} height={75}/>
+            </div>
+
             <p>{`ETH Stakers: ${numMain}`}</p>
             <p>{`OVM Stakers: ${numOvm}`}</p>
             <button onClick={()=> handleNetwork(1)}>ETH Mainnet</button>
             <button onClick={()=> handleNetwork(10)}>Optimism</button>
+
+            <p> The data below is the full return from a call to <strong>snxholders</strong> with parameters of <em>initialDebtOwnership not 0 and collateral of greater than or equal to 1. </em></p>
+            <p> Use the buttons to switch between ETH and Optimism</p>
+            <p> The number of stakers above is based on this return</p>
+            <p> Cross referencing this data to the blockchain leads me to believe the call parameters need to be refined somehow</p>
+            <p> Thanks in advance to all input</p>
 
 <table {...getTableProps()} className={styles.mainTable}>
       <thead>
@@ -198,8 +228,8 @@ export async function getStaticProps() {
 
         }
 
-        const totalStakeOvm = await snxStakerCall(optimism_url, issuersOvm)
-        const totalStakeMain = await snxStakerCall(mainnet_url, issuersMain)
+        const totalStakeOvm = await snxStakerCall(optimism_url, holdersOvm)
+        const totalStakeMain = await snxStakerCall(mainnet_url, holdersMain)
 
         const mainStakers = totalStakeMain.map(item => {
             const address = item.id

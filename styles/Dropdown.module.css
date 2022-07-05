@@ -24,6 +24,12 @@
   margin: 2rem 1rem;
 }
 
+.images {
+  display: flex;
+  flex-direction: column;
+  margin:auto;
+}
+
 .reactSelect {
   background-color: purple;
 }

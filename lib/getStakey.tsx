@@ -74,7 +74,7 @@ export const stakit = async () => {
                 orderBy: 'collateral',
                 orderDirection: 'desc',
                 first: issuers,
-                where: { initialDebtOwnership_not: 0 }
+                where: { initialDebtOwnership_not: 0, collateral_gte: 1 }
 
             }, {
             id: true,
