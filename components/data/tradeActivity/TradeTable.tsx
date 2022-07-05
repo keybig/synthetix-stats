@@ -3,6 +3,11 @@ import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout, useBlock
 import { formatMoney, formatNumber } from '../../../constants/format';
 import Modal from '../../modal/Modal';
 import styles from './TradeTable.module.css'
+import { MdKeyboardArrowUp, MdOutlineKeyboardArrowDown, MdSwapVert } from 'react-icons/md'
+import UpDown from '../../icon/upDown';
+import Up from '../../icon/Up';
+import Down from '../../icon/Down';
+
 
 
 interface table  {
@@ -71,7 +76,6 @@ const TradeTable = ({
  const mainData = tableId === 0 ? dailyTradeStatsMain : tableId === 1 ? sevenTradeStatsMain : tableId === 2 ? thirtyTradeStatsMain : tableId === 3 ? ninetyTradeStatsMain : totalTradeStatsMain
  const allData = tableId === 0 ? dailyTradeStatsAll : tableId === 1 ? sevenTradeStatsAll : tableId === 2 ? thirtyTradeStatsAll : tableId === 3 ? ninetyTradeStatsAll : totalTradeStatsAll
 
- console.log(totalTradeStatsAll)
    
  const tradeTable = click === 1 ? mainData : click === 10 ? ovmData : allData
 
@@ -167,12 +171,15 @@ const TradeTable = ({
           return (
             <th key={key} {...restColumn} className={styles.headKey}>
               {column.render("Header")}
-              <span>
-                       {column.isSorted
-                           ? column.isSortedDesc
-                               ? '🔽'
-                               : '🔼'
-                           : ''}
+              <span className={styles.sorted}>
+                       {
+                           column.isSorted
+                               ? <Down/>
+                               : column.isSorted ?
+                               <Up/> :
+                               <UpDown/>
+                           }
+                         
                     </span>
             </th>
           );

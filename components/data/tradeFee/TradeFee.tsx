@@ -132,8 +132,6 @@ const TradeFee = ({
 
       <span 
         className={styles.icon}
-        onMouseEnter={()=>console.log("mouse enter")}
-        onMouseLeave={()=>console.log("mouse left")}
         >
       <RiInformationFill/>
       </span>

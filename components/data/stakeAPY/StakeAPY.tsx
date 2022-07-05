@@ -28,8 +28,6 @@ const StakeAPY = ({ovm, main, click, avg}:APY) => {
 
       <span 
         className={styles.icon}
-        onMouseEnter={()=>console.log("mouse enter")}
-        onMouseLeave={()=>console.log("mouse left")}
         >
       <RiInformationFill/>
       </span>

@@ -127,12 +127,10 @@ const TradeActivity = ({
   const close = () => {
 
     setModalOpen(false);
-    console.log('close')
 
   }
   const open = () => {
     setModalOpen(true);
-    console.log('open')
   }
   //
   const handleActive = (buttons: any) => {
