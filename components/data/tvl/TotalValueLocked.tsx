@@ -131,34 +131,38 @@ const TotalValueLocked = ({
 
       <div className={styles.responsive}>
         <ResponsiveContainer>
-          <AreaChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
+          <AreaChart 
+            data={click === 1 ? mainData : click === 10 ? ovmData : allData}
+            >
       
-            <XAxis dataKey="date" fontSize={14} />
+            
 
 
             <Area
               type="linear"
               dataKey="debt"
-              stackId="1"
               stroke="#31D8A4"
               fill="#31D8A4"
               fillOpacity={"50%"}
               strokeWidth={2}
+              stackId={1}
             
               
             />
             <Area
               type="linear"
               dataKey="wrapper"
-              stackId="1"
               stroke="#ED1EFF"
               fill="#ED1EFF"
               fillOpacity={"50%"}
               strokeWidth={2}
+              stackId={1}
             />
             <Tooltip
               content={<CustomToolTip />}
             />
+            <XAxis dataKey="date" fontSize={14} />
+            <YAxis scale={"linear"} allowDataOverflow={true} domain={["auto", "auto"]} hide={true} />
           </AreaChart>
 
         </ResponsiveContainer>

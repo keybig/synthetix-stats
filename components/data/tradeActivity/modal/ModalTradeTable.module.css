@@ -31,38 +31,125 @@
        padding: 1rem 0;
    }
    
-   .Lyra {
-       color: white;
-   }
-   
-   .Lyra::before {
-       content: url(../../../../public/Lyra.png);
-       padding-right: 1rem;
-       width: 50px;
-       margin-right: 6px;
-       margin-top: 6px;
-   }
-   
-   .Kwenta {
-       color: white;
-   }
-   
-   .Kwenta::before {
-       content: url(../../../../public/Kwenta.png);
-       padding-right: 1rem;
-   
-   }
-   
-   .Thales::before {
-       content: url(../../../../public/Thales.png);
-       padding-right: 1rem;
-       margin-right: 8px;
-       margin-top: 2px;
-   }
-   
-   .Thales {
-       color:azure;
-   }
+   .LYRA {
+    color: white;
+}
+
+.LYRA::before {
+    content: url(../../../../public/lyraLogo.svg);
+    padding-right: 1rem;
+}
+
+.KWENTA {
+    color: white;
+}
+
+.KWENTA::before {
+    content: url(../../../../public/kwentaLogo.svg);
+    padding-right: 1rem;
+
+}
+
+.THALES::before {
+    content: url(../../../../public/Thales.png);
+    padding-right: 1rem;
+    margin-right: 8px;
+    margin-top: 2px;
+}
+
+.THALES {
+    color:azure;
+
+}
+
+.oneInch {
+    color: white;
+}
+
+.oneInch::before {
+    content: url(../../../../public/3oneInch.svg);
+    padding-right: 1rem;
+
+}
+
+.CURVE {
+    color: white;
+}
+
+.CURVE::before {
+    content: url(../../../../public/CURVE.svg);
+    padding-right: 1rem;
+
+}
+
+.DHEDGE {
+    color: white;
+}
+
+.DHEDGE::before {
+    content: url(../../../../public/dhedge.svg);
+    padding-right: 1rem;
+
+}
+
+.ENZYME {
+    color: white;
+}
+
+.ENZYME::before {
+    content: url(../../../../public/enzyme.svg);
+    padding-right: 1rem;
+
+}
+
+.YEARN {
+    color: white;
+}
+
+.YEARN::before {
+    content: url(../../../../public/yearn.svg);
+    padding-right: 1rem;
+
+}
+
+.OTHER {
+    color: white;
+}
+
+.OTHER::before {
+    content: url(../../../../public/other.svg);
+    padding-right: 1rem;
+
+}
+
+.SADDLE {
+    color: white;
+}
+
+.SADDLE::before {
+    content: url(../../../../public/saddle.svg);
+    padding-right: 1rem;
+
+}
+
+.ibAMM {
+    color: white;
+}
+
+.ibAMM::before {
+    content: url(../../../../public/ibamm.svg);
+    padding-right: 1rem;
+
+}
+
+.SX {
+    color: white;
+}
+
+.SX::before {
+    content: url(../../../../public/other.svg);
+    padding-right: 1rem;
+}
    
    .chartButton {
        background: transparent;

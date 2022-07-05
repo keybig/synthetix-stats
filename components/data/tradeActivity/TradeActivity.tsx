@@ -214,8 +214,6 @@ const TradeActivity = ({
 
       <span 
         className={styles.icon}
-        onMouseEnter={()=>console.log("mouse enter")}
-        onMouseLeave={()=>console.log("mouse left")}
         >
       <RiInformationFill/>
       </span>
@@ -225,7 +223,7 @@ const TradeActivity = ({
         className={styles.modalButton}
         onClick={()=> setModalOpen(true)}
         >
-            <RiFullscreenLine size={16}/>
+            <RiFullscreenLine size={14}/>
       </button>
      
       <Modal handleClose={closeModal} isOpen={modalOpen}>

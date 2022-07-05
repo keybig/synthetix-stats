@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg class="flex-none w-40 md:w-64 lg:w-72 xl:w-96 h-40 md:h-64 lg:h-72 xl:h-96 max-w-full" width="30" height="30" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" version="1.1" viewBox="0 0 30 30" xmlns="http://www.w3.org/2000/svg">
+ <style>@keyframes e5ojfxdzkgl73_to__to{0%,60%{transform:translate(299.623519px,330.25237px)}to{transform:translate(79.206655px,274.591545px)}}@keyframes e5ojfxdzkgl74_to__to{0%,35%{transform:translate(168.927002px,296.314011px)}77.5%,to{transform:translate(365.96632px,313.012259px)}}@keyframes e5ojfxdzkgl75_to__to{0%{transform:translate(251.5px,76.5px)}47.5%,to{transform:translate(119.027238px,134.853682px)}}</style>
+ <defs>
+  <linearGradient id="logo-circle_svg__e5ojfxdzkgl73-fill" x1="156.48" x2="-180.44" y2="19.723" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#6F56FD" offset="0"/>
+   <stop stop-color="#00CABE" offset="1"/>
+  </linearGradient>
+  <linearGradient id="logo-circle_svg__e5ojfxdzkgl74-fill" x1="-186.12" x2="-248.24" y1="94.502" y2="-17.301" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#42F4CA" offset="0"/>
+   <stop stop-color="#5D89F8" offset="1"/>
+  </linearGradient>
+  <linearGradient id="logo-circle_svg__e5ojfxdzkgl75-fill" x1="175.81" x2="-202.6" y2="23.239" gradientUnits="userSpaceOnUse">
+   <stop stop-color="#6F56FD" offset="0"/>
+   <stop stop-color="#00CABE" offset="1"/>
+  </linearGradient>
+  <filter id="logo-circle_svg__e5ojfxdzkgl73-filter" x="-.24693" y="-.26522" width="1.4939" height="1.5304">
+   <feGaussianBlur result="result" stdDeviation="40,40"/>
+  </filter>
+  <filter id="logo-circle_svg__e5ojfxdzkgl74-filter" x="-.27114" y="-.30628" width="1.5423" height="1.6126">
+   <feGaussianBlur result="result" stdDeviation="40,40"/>
+  </filter>
+  <filter id="logo-circle_svg__e5ojfxdzkgl75-filter" x="-.22974" y="-.25887" width="1.4595" height="1.5177">
+   <feGaussianBlur result="result" stdDeviation="40,40"/>
+  </filter>
+ </defs>
+ <g transform="scale(.063475 .06383)" mask="url(#logo-circle_svg__e5ojfxdzkgl76)">
+  <g transform="translate(299.62 330.25)">
+   <ellipse transform="translate(20.386,-18.98)" rx="194.39" ry="180.98" fill="url(#logo-circle_svg__e5ojfxdzkgl73-fill)" filter="url(#logo-circle_svg__e5ojfxdzkgl73-filter)"/>
+  </g>
+  <g transform="translate(168.93 296.31)">
+   <ellipse transform="translate(-8.105,7.175)" rx="177.03" ry="156.72" fill="url(#logo-circle_svg__e5ojfxdzkgl74-fill)" filter="url(#logo-circle_svg__e5ojfxdzkgl74-filter)"/>
+  </g>
+  <g transform="translate(251.5,76.5)">
+   <ellipse transform="translate(-13.43,11.918)" rx="208.93" ry="185.42" fill="url(#logo-circle_svg__e5ojfxdzkgl75-fill)" filter="url(#logo-circle_svg__e5ojfxdzkgl75-filter)"/>
+  </g>
+  <mask id="logo-circle_svg__e5ojfxdzkgl76">
+   <path d="m472.63 235c0 129.79-105.8 235-236.31 235s-236.31-105.21-236.31-235 105.8-235 236.31-235 236.31 105.21 236.31 235zm-225.9-90.224c0-17.86 14.478-32.338 32.338-32.338s32.339 14.478 32.339 32.339v93.097h42.282v-67.427c0-10.304 8.353-18.657 18.657-18.657s18.657 8.353 18.657 18.657v67.427h-37.314v74.778c0 11.678-9.467 21.145-21.145 21.145-11.677 0-21.144-9.467-21.144-21.145v-74.777h-64.67v94.313c0 18.547-15.036 33.583-33.583 33.583s-33.582-15.036-33.582-33.583v-94.314h67.165zm-109.46 30.62c0-11.678 9.467-21.145 21.144-21.145 11.678 0 21.145 9.467 21.145 21.145v62.48h-42.289zm-27.363 121.51c15.112 0 27.363-12.251 27.363-27.363v-31.666h-54.727v31.666c0 15.112 12.251 27.363 27.364 27.363zm321.47-38.516c0 11.408-9.248 20.656-20.655 20.656-11.408 0-20.655-9.248-20.655-20.656v-20.425h41.31zm-369.49-61.507c-11.407 0-20.655 9.248-20.655 20.655v20.426h41.31v-20.426c0-11.407-9.247-20.655-20.655-20.655z" clip-rule="evenodd" fill="#fff" fill-rule="evenodd"/>
+  </mask>
+ </g>
+</svg>

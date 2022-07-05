@@ -77,9 +77,15 @@ const ModalTradeTable = ({
             accessor: 'col1', // accessor is the "key" in the data
             Cell: (cellProps:any) => {
               return (
-                <span className={styles[cellProps.value]}>
-                  {cellProps.value}
-                </span>
+                <span 
+                className={
+                  cellProps.value === "1INCH" ? 
+                    styles.oneInch : 
+                    cellProps.value === "0" ? 
+                    styles.OTHER : 
+                    styles[cellProps.value]}>
+               {cellProps.value}
+              </span>
               );
             },
           },

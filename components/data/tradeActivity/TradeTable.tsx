@@ -71,6 +71,7 @@ const TradeTable = ({
  const mainData = tableId === 0 ? dailyTradeStatsMain : tableId === 1 ? sevenTradeStatsMain : tableId === 2 ? thirtyTradeStatsMain : tableId === 3 ? ninetyTradeStatsMain : totalTradeStatsMain
  const allData = tableId === 0 ? dailyTradeStatsAll : tableId === 1 ? sevenTradeStatsAll : tableId === 2 ? thirtyTradeStatsAll : tableId === 3 ? ninetyTradeStatsAll : totalTradeStatsAll
 
+ console.log(totalTradeStatsAll)
    
  const tradeTable = click === 1 ? mainData : click === 10 ? ovmData : allData
 
@@ -91,8 +92,14 @@ const TradeTable = ({
             accessor: 'col1', // accessor is the "key" in the data
             Cell: (cellProps:any) => {
               return (
-                <span className={styles[cellProps.value]}>
-                  {cellProps.value}
+                <span 
+                  className={
+                    cellProps.value === "1INCH" ? 
+                      styles.oneInch : 
+                      cellProps.value === "0" ? 
+                      styles.OTHER : 
+                      styles[cellProps.value]}>
+                 {cellProps.value}
                 </span>
               );
             },
