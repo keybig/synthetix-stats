@@ -3,6 +3,9 @@ import styles from '../styles/Dropdown.module.css'
 import { ReactChild, ReactFragment, ReactPortal, Key, useMemo, useState } from "react";
 import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
 import Image from "next/image";
+import synthetix from '../public/synthetix.png'
+import snxholder from '../public/snxholder.png'
+import totalactive from '../public/totalactive.png'
 
 
 const Stakers = ({ mainStakers, ovmStakers }: any) => {
@@ -73,14 +76,14 @@ const Stakers = ({ mainStakers, ovmStakers }: any) => {
             <p> SNX Subgraph calling <strong>synthetix</strong> endpoint. This is what was used initially for the number of stakers.</p>
             <p> See the definitions in right of image. Issuers are number currently staking, snxholders are number currently holding</p>
             <p> Results in the middle of image, in the data object. The call used is the left of the image.</p>
-            <Image src="/../public/synthetix.png" layout="responsive" width={150} height={75}/>
+            <Image src={synthetix} layout="responsive" width={150} height={75}/>
             </div>
 
             <div className={styles.images}>
             <p> SNX Subgraph calling <strong>totalActiveStakers</strong> endpoint. This is what was used in Grafana Dashboard for the number of stakers.</p>
             <p> See the definitions in right of image. count are number currently seen staking</p>
             <p> Results in the middle of image, in the data object. The call used is the left of the image.</p>
-            <Image src="/../public/totalactive.png" layout="responsive" width={150} height={75}/>
+            <Image src={totalactive} layout="responsive" width={150} height={75}/>
             </div>
 
             <div className={styles.images}>
@@ -89,7 +92,7 @@ const Stakers = ({ mainStakers, ovmStakers }: any) => {
             <p> Also of note is initialDebtOwnership and debtEntryAtIndex. </p>
             <p> Results in the middle of image, in the data object. The call used is the left of the image.</p>
             <p> Below the image, is the full return of a call to <strong>snxholders</strong></p>
-            <Image src="/../public/snxholder.png" layout="responsive" width={150} height={75}/>
+            <Image src={snxholder} layout="responsive" width={150} height={75}/>
             </div>
 
             <p>{`ETH Stakers: ${numMain}`}</p>
