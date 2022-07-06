@@ -1,3 +1,4 @@
+import Arrow from "../../icon/Arrow";
 import styles from "./MoreStats.module.css";
 
 const MoreStats = () => {
@@ -17,7 +18,7 @@ const MoreStats = () => {
       <p className={styles.styledp}>SNX Grafana Dashboard </p>
 
         <button className={styles.advancedbutton}>
-          <a href={grafana} target="_blank" rel="noreferrer">Visit Grafana</a>
+          <a href={grafana} target="_blank" rel="noreferrer">Visit Grafana <Arrow/></a>
         </button>
       </div>
 
@@ -25,7 +26,7 @@ const MoreStats = () => {
       <p className={styles.styledp}>SNX Liquidations Dune </p>
 
         <button className={styles.advancedbutton}>
-          <a href={snxLiquidations} target="_blank" rel="noreferrer">Visit Dune</a>
+          <a href={snxLiquidations} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
         </button>
       </div>
 
@@ -33,7 +34,7 @@ const MoreStats = () => {
       <p className={styles.styledp}>SNX Fee Overview Dune </p>
 
         <button className={styles.advancedbutton}>
-          <a href={snxFeeOverview} target="_blank" rel="noreferrer">Visit Dune</a>
+          <a href={snxFeeOverview} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
         </button>
       </div>
 
@@ -41,7 +42,7 @@ const MoreStats = () => {
       <p className={styles.styledp}>SNX Futures Overview Dune </p>
 
         <button className={styles.advancedbutton}>
-          <a href={snxFuturesOverview} target="_blank" rel="noreferrer">Visit Dune</a>
+          <a href={snxFuturesOverview} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
         </button>
       </div>
     </div>

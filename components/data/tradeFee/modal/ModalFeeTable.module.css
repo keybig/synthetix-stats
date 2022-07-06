@@ -1,7 +1,8 @@
 .mainTable {
     border-collapse: collapse;
     border-spacing: 2rem;
-    table-layout: fixed;
+    table-layout: auto;
+    width: 20.25rem;
    }
 
 .mainBody {
@@ -10,18 +11,18 @@
    
    .headRow {
        color: #828295;
-       font-size: 1rem;
+       font-size: 0.75rem;
    }
    .headKey {
        text-transform: capitalize;
        font-weight: bold;
-       text-align: left;
+       text-align: center;
        padding: 1rem;
    }
    
    .mainRow {
        color: #ffffff;
-       font-size:1.5rem;
+       font-size:0.875rem;
    }
    
    .mainKey {
@@ -37,8 +38,69 @@
     font-size: 2rem;
     padding: 0 0 0 1rem;
    }
-   
+
+   .KWENTA {
+    color: #FFD75C;
+   }
+
+   .CURVE {
+    color: #ED1EFF;
+   }
+
+   .oneInch {
+    color:#00D1FF;
+   }
+
+   .LYRA {
+    color:#31D8A4;
+   }
+
+   .DHEDGE {
+    color:#FC8738;
+   }
+
+   .SX {
+    color:#0B03FC
+   }
+
+   .ENZYME {
+    color:#FC03E3
+   }
+
+   .ibAMM {
+    color:#20FC03
+   }
+
+   .YEARN {
+    color:#03FCA5;
+   }
+
+   .SADDLE {
+    color:#9403FC
+   }
+
+   .OTHER {
+    color:#21CDFC
+   }
+
+   .ZERO {
+    color:#FC0303
+   }
   
+   .sorted{
+    padding: 0 0 0 0.25rem;
+}
+
+.valueCell {
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+}
+
+.feeCell {
+    font-size: 0.75rem;
+    font-weight: 700;
+}
    
    @media(max-width: 960px){
        .mainTable {

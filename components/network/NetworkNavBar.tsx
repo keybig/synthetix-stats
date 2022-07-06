@@ -1,6 +1,7 @@
 import { NetworkId } from "@synthetixio/contracts-interface";
 import { ReactNode } from "react";
 import { QueryClient } from "react-query";
+import Arrow from "../icon/Arrow";
 
 import styles from "./NetworkNavBar.module.css";
 
@@ -49,7 +50,7 @@ const NetworkNavBar = (props: Props) => {
 
         <div className={styles.navMoreStats}>
           <button className={styles.navAdvancedStats}>
-            <a href={grafana} target="_blank" rel="noreferrer">Advanced Stats</a>
+            <a href={grafana} target="_blank" rel="noreferrer">Advanced Stats <Arrow/></a>
           </button>
         </div>
       </div>

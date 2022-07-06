@@ -3,12 +3,12 @@ import { useState, useMemo } from "react";
 import TradeTable from "../TradeTable";
 import { formatMoney, formatNumber } from "../../../../constants/format";
 import ModalTradeTable from "./ModalTradeTable";
-import {RiFullscreenLine, RiInformationFill} from "react-icons/ri"
+import { RiFullscreenLine, RiInformationFill } from "react-icons/ri"
 import InfoTooltip from "../../../infoToolTip/InfoTooltip";
 
 
 interface ModalTradeStats {
-  closeModal: ()=>void;
+  closeModal: () => void;
   click: number
   tradeDataAll: any[]
   tradeDataMain: any[]
@@ -180,48 +180,48 @@ const ModalTable = ({
       timeFrame === 2 ? formatNumber.format(allThirtyTrade) :
         timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
           formatNumber.format(allTotalTrade)
-          
-          const ttInfo = `SNX Ecosystem Trading Activity. Updated every 15 minutes`
+
+  const ttInfo = `SNX Ecosystem Trading Activity. Updated every 15 minutes`
 
 
   return (
     <div className={styles.container}>
       <div>
-      <div className={styles.topRow}>
-      <div className={styles.titleRow}>
-      <h3 className={styles.title}> Trading Activity</h3>
-      <InfoTooltip content={ttInfo}>
+        <div className={styles.topRow}>
+          <div className={styles.titleRow}>
+            <h3 className={styles.title}> Trading Activity</h3>
+            <InfoTooltip content={ttInfo}>
 
-<span 
-  className={styles.icon}
-  >
-<RiInformationFill/>
-</span>
-</InfoTooltip>
-</div>
-      <button 
-        className={styles.modalButton}
-        onClick={closeModal}
-      
-        >
-            <RiFullscreenLine size={16}/>
-      </button>
-      </div>
-      <div className={styles.buttonRow}>
-        {buttonMap.map((buttonMap) => (
+              <span
+                className={styles.icon}
+              >
+                <RiInformationFill />
+              </span>
+            </InfoTooltip>
+          </div>
           <button
-            key={buttonMap.id}
-            onClick={() => handleActive(buttonMap)}
-            className={
-              buttonMap.id === timeFrame ? styles.current : styles.inactive
-            }
+            className={styles.modalButton}
+            onClick={closeModal}
+
           >
-            {buttonMap.title}
+            <RiFullscreenLine size={16} />
           </button>
-        ))}
-      </div>
-      <div>
-      </div>
+        </div>
+        <div className={styles.buttonRow}>
+          {buttonMap.map((buttonMap) => (
+            <button
+              key={buttonMap.id}
+              onClick={() => handleActive(buttonMap)}
+              className={
+                buttonMap.id === timeFrame ? styles.current : styles.inactive
+              }
+            >
+              {buttonMap.title}
+            </button>
+          ))}
+        </div>
+        <div>
+        </div>
         <ModalTradeTable
           click={click}
           tableId={timeFrame}

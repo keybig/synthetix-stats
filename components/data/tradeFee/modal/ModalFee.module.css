@@ -28,19 +28,33 @@
     padding: 2rem;
     border: 0.125rem solid #ffd75c;
     width: 45rem;
+    color: white;
   }
   
   .title {
-    margin:0.5rem 0;
+    margin:0;
     color: white;
   }
+
+  .titleRow {
+    display:flex;
+    justify-content: center;
+}
+
+.icon {
+  margin: 0 0.5rem;
+  font-size: 1.125rem;
+}
   
   .modalButton {
     background: transparent;
     color: white;
-    border: 0.125rem solid #f2f2f2;
+    border: 1px solid rgba(130, 130, 149, 0.4);
     font-size: 0.75rem;
     border-radius: 0.25rem;
+    filter: drop-shadow(0px 0px 10px rgba(0, 0, 0, 0.9));
+    padding: 0.25rem;
+    display: flex;
   }
   
   .topRow {

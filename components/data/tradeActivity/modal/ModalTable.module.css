@@ -91,6 +91,11 @@
     margin: 0.5rem 0;
 }
 
+.icon {
+    margin: 0 0.5rem;
+    font-size: 1.125rem;
+}
+
 @media(max-width: 960px){
     .container {
       margin:0;

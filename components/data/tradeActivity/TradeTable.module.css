@@ -197,6 +197,10 @@
     padding: 0 0 0 0.25rem;
 }
 
+.numTradeCell {
+    text-align: center;
+}
+
 @media(max-width: 960px){
     .mainTable {
       margin:0;

@@ -4,6 +4,9 @@ import styles from './ModalFeeTable.module.css'
 import Image from 'next/image'
 import { keyframes } from 'styled-components'
 import { formatMoney } from '../../../../constants/format'
+import Down from '../../../icon/Down'
+import Up from '../../../icon/Up'
+import UpDown from '../../../icon/upDown'
 
 
 interface Props {
@@ -71,18 +74,19 @@ const TradeFeeTable = ({
       {
         Header: 'Protocol',
         accessor: 'name', // accessor is the "key" in the data
-        Cell: (cellProps: any) => {
-          return (
-            <span className={styles[cellProps.value]}>
-              {cellProps.value}
-            </span>
-          );
-        },
+        Cell: ({ value }:any) => { return <span className={styles.feeCell}> {value}</span> }
+
       },
       {
         Header: 'Fee Amt',
         accessor: 'value',
-        Cell: ({ value }) => { return formatMoney.format(value) }
+        Cell: ({ value }:any) => { return <span className={styles.valueCell}> {formatMoney.format(value)}</span> }
+      },
+      {
+        Header: 'Percent',
+        accessor: 'percent',
+        Cell: ({ value }:any) => { return <span className={styles.feeCell}> {value}</span> }
+
       }
     ],
     []
@@ -103,7 +107,7 @@ const TradeFeeTable = ({
         ],
         pageSize: 4,
 
-      }
+      },
     },
     useSortBy,
     usePagination
@@ -122,6 +126,8 @@ const TradeFeeTable = ({
   } = tableInstance
 
 
+  console.log(page)
+  console.log(page)
 
   return (
 
@@ -136,12 +142,12 @@ const TradeFeeTable = ({
                 return (
                   <th key={key} {...restColumn} className={styles.headKey}>
                     {column.render("Header")}
-                    <span>
+                    <span className={styles.sorted}>
                       {column.isSorted
-                        ? column.isSortedDesc
-                          ? '🔽'
-                          : '🔼'
-                        : ''}
+                               ? <Down/>
+                               : column.isSorted ?
+                               <Up/> :
+                               <UpDown/>}
                     </span>
                   </th>
                 )
@@ -154,11 +160,27 @@ const TradeFeeTable = ({
       <tbody {...getTableBodyProps()} className={styles.mainBody}>
 
         {page.map((row) => {
+          console.log(row)
+          const color = row.values.name
           prepareRow(row)
           const { key, ...restRowProps } = row.getRowProps()
+          const stylerow = row.values.name
+          const styleKey = 
+            row.values.name === "KWENTA" ?
+            "green" :
+            "purple"
+          console.log(stylerow)
+          console.log(row.values.name)
           return (
-            <tr key={key} {...restRowProps} className={styles.mainRow}>
+            <tr key={key} { ...restRowProps} className={
+              stylerow === "1INCH" ?
+              styles.oneInch :
+              stylerow === "0" ?
+              styles.ZERO :
+              styles[stylerow]
+            }>
               {row.cells.map((cell) => {
+                console.log(cell)
                 const { key, ...restCellProps } = cell.getCellProps()
                 return (
                   <td key={key} {...restCellProps} className={styles.mainKey}>
@@ -167,6 +189,8 @@ const TradeFeeTable = ({
                 )
               })}
             </tr>
+        
+
           )
         })}
       </tbody>

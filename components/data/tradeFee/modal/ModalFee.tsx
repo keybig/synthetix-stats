@@ -4,13 +4,15 @@ import { useState } from "react";
 import TradeFeeTable from ".././TradeFeeTable";
 import { formatMoney, formatNumber } from "../../../../constants/format";
 import CustomToolTip from '.././tradeFeeTT'
-import {RiFullscreenLine} from "react-icons/ri"
+import { RiFullscreenLine, RiInformationFill } from "react-icons/ri"
+import InfoTooltip from "../../../infoToolTip/InfoTooltip";
+import ModalFeeTable from "./ModalFeeTable";
 
 
 
 
-interface Props  {
-  closeModal: ()=>void;
+interface Props {
+  closeModal: () => void;
   allDailyFee: any[]
   allSevenFee: any[]
   allThirtyFee: any[]
@@ -60,8 +62,8 @@ const TradeFee = ({
   feeAll,
   feeMain,
   feeOvm
-}:Props) => {
- 
+}: Props) => {
+
   const buttonMap = [
     { id: 0, title: "Daily" },
     { id: 1, title: "7 Day" },
@@ -71,7 +73,7 @@ const TradeFee = ({
   ];
 
   const [timeFrame, setTimeFrame] = useState<number>(1);
- 
+
   const handleActive = (buttons: any) => {
     setTimeFrame(buttons.id);
   };
@@ -79,52 +81,64 @@ const TradeFee = ({
   const ovmFeeData = timeFrame === 0 ?
     dailyFeeOvm :
     timeFrame === 1 ?
-    sevenFeeOvm :
-    timeFrame === 2 ?
-    thirtyFeeOvm :
-    timeFrame === 3 ? 
-    ninetyFeeOvm : 
-    totalFeeOvm
+      sevenFeeOvm :
+      timeFrame === 2 ?
+        thirtyFeeOvm :
+        timeFrame === 3 ?
+          ninetyFeeOvm :
+          totalFeeOvm
 
   const mainFeeData = timeFrame === 0 ?
     dailyFeeMain :
     timeFrame === 1 ?
-    sevenFeeMain :
-    timeFrame === 2 ?
-    thirtyFeeMain :
-    timeFrame === 3 ? 
-    ninetyFeeMain : 
-    totalFeeMain
-  
+      sevenFeeMain :
+      timeFrame === 2 ?
+        thirtyFeeMain :
+        timeFrame === 3 ?
+          ninetyFeeMain :
+          totalFeeMain
+
   const allFeeData = timeFrame === 0 ?
     allDailyFee :
     timeFrame === 1 ?
-    allSevenFee :
-    timeFrame === 2 ?
-    allThirtyFee :
-    timeFrame === 3 ? 
-    allNinetyFee : 
-    totalFeeAll
+      allSevenFee :
+      timeFrame === 2 ?
+        allThirtyFee :
+        timeFrame === 3 ?
+          allNinetyFee :
+          totalFeeAll
 
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6", "#ed1515", "#21cdfc"];
-  const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4","#fc0303", "#0b03fc", "#fc03e3", "#20fc03", "#03fca5", "#9403fc"]
+  const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4", "#fc0303", "#0b03fc", "#fc03e3", "#20fc03", "#03fca5", "#9403fc"]
 
   const pieData = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
+
+  const ttInfo = `Fees Earned by SNX Protocol. Updated every 15 minutes.`
 
   return (
     <div className={styles.wrapper}>
       <div className={styles.topRow}>
-      <h3 className={styles.title}>Trading Fees (sUSd Rewards)</h3>
-      <button 
+        <div className={styles.titleRow}>
+          <h3 className={styles.title}>Trading Fees (sUSd Rewards)</h3>
+          <InfoTooltip content={ttInfo}>
+
+            <span
+              className={styles.icon}
+            >
+            <RiInformationFill />
+            </span>
+            </InfoTooltip>
+        </div>
+
+        <button
         className={styles.modalButton}
         onClick={closeModal}
         >
-            <RiFullscreenLine size={16} />
+        <RiFullscreenLine size={16} />
       </button>
 
       </div>
-
       <div className={styles.content}>
         {buttonMap.map((buttonMap) => (
           <button
@@ -150,26 +164,26 @@ const TradeFee = ({
                 data={pieData}
                 outerRadius={"99%"}
               >
-         
-              {
-                pieData.map((entry, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={color[index % color.length]}
-                    fillOpacity={"60%"}
-                    stroke={color[index % color.length]}
-                    strokeWidth={2}
-                  />
-                ))
-              }
+
+                {
+                  pieData.map((entry, index) => (
+                    <Cell
+                      key={`cell-${index}`}
+                      fill={color[index % color.length]}
+                      fillOpacity={"60%"}
+                      stroke={color[index % color.length]}
+                      strokeWidth={2}
+                    />
+                  ))
+                }
               </Pie>
-              <Tooltip content={<CustomToolTip/>}/>
+              <Tooltip content={<CustomToolTip />} />
             </PieChart>
           </ResponsiveContainer>
         </div>
 
         <div className={styles.chartkey}>
-          <TradeFeeTable 
+          <ModalFeeTable
             click={click}
             tableId={timeFrame}
             totalFeeAll={totalFeeAll}
@@ -187,8 +201,8 @@ const TradeFee = ({
             allSevenFee={allSevenFee}
             allThirtyFee={allThirtyFee}
             allNinetyFee={allNinetyFee}
-             />
-            
+          />
+
         </div>
       </div>
 

@@ -74,15 +74,19 @@ const TradeFeeTable = ({
       {
         Header: 'Protocol',
         accessor: 'name', // accessor is the "key" in the data
+        Cell: ({ value }:any) => { return <span className={styles.feeCell}> {value}</span> }
+
       },
       {
         Header: 'Fee Amt',
         accessor: 'value',
-        Cell: ({ value }:any) => { return formatMoney.format(value) }
+        Cell: ({ value }:any) => { return <span className={styles.valueCell}> {formatMoney.format(value)}</span> }
       },
       {
         Header: 'Percent',
         accessor: 'percent',
+        Cell: ({ value }:any) => { return <span className={styles.feeCell}> {value}</span> }
+
       }
     ],
     []

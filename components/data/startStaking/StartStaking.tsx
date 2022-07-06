@@ -1,3 +1,4 @@
+import Arrow from "../../icon/Arrow";
 import styles from "./StartStaking.module.css";
 
 const MoreStats = () => {
@@ -10,7 +11,7 @@ const MoreStats = () => {
     <p className={styles.styledp}>Visit SNX Staking DAPP to Start Staking</p>
 
       <button className={styles.advancedbutton}>
-        <a href={stakingUrl} target="_blank" rel="noreferrer">Staking DAPP</a>
+        <a href={stakingUrl} target="_blank" rel="noreferrer">Staking DAPP <Arrow/></a>
       </button>
     </div>
 

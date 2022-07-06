@@ -154,7 +154,7 @@ const ModalTradeTable = ({
           return (
             <th key={key} {...restColumn} className={styles.headKey}>
               {column.render("Header")}
-              <span>
+              <span className={styles.sorted}>
                        {   column.isSorted
                                ? <Down/>
                                : column.isSorted ?
