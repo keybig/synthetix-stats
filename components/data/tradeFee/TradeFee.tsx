@@ -2,7 +2,7 @@ import styles from "./TradeFee.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
 import TradeFeeTable from "./TradeFeeTable";
-import { formatMoney, formatNumber } from "../../../constants/format";
+import { formatMoney, formatNumber, formatPercent, formatPercentDec } from "../../../constants/format";
 import CustomToolTip from './tradeFeeTT'
 import Modal from "../../modal/Modal";
 import ModalFee from "./modal/ModalFee";
@@ -78,6 +78,9 @@ const TradeFee = ({
   const closeModal = () => {
     setModalOpen(false)
   }
+
+  console.log(allNinetyFee)
+  console.log(allThirtyFee)
  
 
   const handleActive = (buttons: any) => {
@@ -103,6 +106,12 @@ const TradeFee = ({
     timeFrame === 3 ? 
     ninetyFeeMain : 
     totalFeeMain
+
+
+
+
+
+  
   
   const allFeeData = timeFrame === 0 ?
     allDailyFee :
@@ -113,7 +122,6 @@ const TradeFee = ({
     timeFrame === 3 ? 
     allNinetyFee : 
     totalFeeAll
-
 
   const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6", "#ed1515", "#21cdfc"];
   const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4","#fc0303", "#0b03fc", "#fc03e3", "#20fc03", "#03fca5", "#9403fc"]
@@ -172,7 +180,6 @@ const TradeFee = ({
           feeMain={feeMain}
           feeOvm={feeOvm}
           totalIssuedSynth={feeOvm}
-
         />
 
         
@@ -209,9 +216,60 @@ const TradeFee = ({
                 pieData.map((entry, index) => (
                   <Cell
                     key={`cell-${index}`}
-                    fill={color[index % color.length]}
-                    fillOpacity={"60%"}
-                    stroke={color[index % color.length]}
+                    fill={
+                      entry.name === "KWENTA" ?
+                      "#FFD75C" :
+                      entry.name === "CURVE" ?
+                      "#ED1EFF" :
+                      entry.name === "1INCH" ?
+                      "#00D1FF" :
+                      entry.name === "LYRA" ?
+                      "#31D8A4" : 
+                      entry.name === "DHEDGE" ?
+                      "#FC8738" :
+                      entry.name === "SX" ?
+                      "#0b03fc" :
+                      entry.name === "ENZYME" ?
+                      "#fc03e3" :
+                      entry.name === "ibAMM" ?
+                      "#20fc03" :
+                      entry.name === "YEARN" ?
+                      "#03fca5" :
+                      entry.name === "SADDLE" ?
+                      "#9403fc" :
+                      entry.name === "OTHER" ?
+                      "#21cdfc" :
+                      entry.name === "0" ?
+                      "#fc0303" :
+                      "FF8042"}
+                    fillOpacity={"50%"}
+                    stroke={
+                      entry.name === "KWENTA" ?
+                      "#FFD75C" :
+                      entry.name === "CURVE" ?
+                      "#ED1EFF" :
+                      entry.name === "1INCH" ?
+                      "#00D1FF" :
+                      entry.name === "LYRA" ?
+                      "#31D8A4" : 
+                      entry.name === "DHEDGE" ?
+                      "#FC8738" :
+                      entry.name === "SX" ?
+                      "#0b03fc" :
+                      entry.name === "ENZYME" ?
+                      "#fc03e3" :
+                      entry.name === "ibAMM" ?
+                      "#20fc03" :
+                      entry.name === "YEARN" ?
+                      "#03fca5" :
+                      entry.name === "SADDLE" ?
+                      "#9403fc" :
+                      entry.name === "OTHER" ?
+                      "#21cdfc" :
+                      entry.name === "0" ?
+                      "#fc0303" :
+                      "FF8042"
+                    }
                     strokeWidth={2}
                   />
                 ))
