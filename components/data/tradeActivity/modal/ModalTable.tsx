@@ -3,7 +3,8 @@ import { useState, useMemo } from "react";
 import TradeTable from "../TradeTable";
 import { formatMoney, formatNumber } from "../../../../constants/format";
 import ModalTradeTable from "./ModalTradeTable";
-import {RiFullscreenLine} from "react-icons/ri"
+import {RiFullscreenLine, RiInformationFill} from "react-icons/ri"
+import InfoTooltip from "../../../infoToolTip/InfoTooltip";
 
 
 interface ModalTradeStats {
@@ -179,13 +180,25 @@ const ModalTable = ({
       timeFrame === 2 ? formatNumber.format(allThirtyTrade) :
         timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
           formatNumber.format(allTotalTrade)
+          
+          const ttInfo = `SNX Ecosystem Trading Activity. Updated every 15 minutes`
 
 
   return (
     <div className={styles.container}>
       <div>
       <div className={styles.topRow}>
+      <div className={styles.titleRow}>
       <h3 className={styles.title}> Trading Activity</h3>
+      <InfoTooltip content={ttInfo}>
+
+<span 
+  className={styles.icon}
+  >
+<RiInformationFill/>
+</span>
+</InfoTooltip>
+</div>
       <button 
         className={styles.modalButton}
         onClick={closeModal}

@@ -1,6 +1,9 @@
 import { useMemo } from 'react'
 import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout, useBlockLayout } from 'react-table'
 import { formatMoney, formatNumber } from '../../../../constants/format';
+import Down from '../../../icon/Down';
+import Up from '../../../icon/Up';
+import UpDown from '../../../icon/upDown';
 import Modal from '../../../modal/Modal';
 import styles from './ModalTradeTable.module.css'
 
@@ -152,11 +155,11 @@ const ModalTradeTable = ({
             <th key={key} {...restColumn} className={styles.headKey}>
               {column.render("Header")}
               <span>
-                       {column.isSorted
-                           ? column.isSortedDesc
-                               ? '🔽'
-                               : '🔼'
-                           : ''}
+                       {   column.isSorted
+                               ? <Down/>
+                               : column.isSorted ?
+                               <Up/> :
+                               <UpDown/>}
                     </span>
             </th>
           );
