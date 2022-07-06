@@ -8,11 +8,10 @@
 }
 
 .description {
-    line-height: 1.5em;
     font-size: 0.875rem;
     color: #FFFFFF;
-    padding: 0 15rem;
     text-align: center;
+    margin: auto;
 }
 
 @media(max-width: 960px){
