@@ -67,9 +67,9 @@
 
 
 .pieWrap {
-  width: 20rem;
-  height: 20rem;
-  
+  width: clamp(15rem, calc(15rem + 5vw), 20rem);
+  height: clamp(15rem, calc(15rem + 5vw), 20rem);
+
 }
 
 .chartkey {
@@ -102,12 +102,12 @@
     font-size: 0.875rem;
   }
 
-  .modalButton {
-    display: none;
-  }
-
   .content {
     padding: 1rem 0;
+  }
+
+  .chart {
+    align-items: center;
   }
 
   .totalsynthsupply {
