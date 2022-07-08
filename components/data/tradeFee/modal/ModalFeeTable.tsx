@@ -117,17 +117,12 @@ const TradeFeeTable = ({
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    page,
-    canNextPage,
-    nextPage,
-    canPreviousPage,
-    previousPage,
+    rows,
     prepareRow,
   } = tableInstance
 
 
-  console.log(page)
-  console.log(page)
+ 
 
   return (
 
@@ -159,18 +154,10 @@ const TradeFeeTable = ({
       </thead>
       <tbody {...getTableBodyProps()} className={styles.mainBody}>
 
-        {page.map((row) => {
-          console.log(row)
-          const color = row.values.name
+        {rows.map((row) => {
           prepareRow(row)
           const { key, ...restRowProps } = row.getRowProps()
           const stylerow = row.values.name
-          const styleKey = 
-            row.values.name === "KWENTA" ?
-            "green" :
-            "purple"
-          console.log(stylerow)
-          console.log(row.values.name)
           return (
             <tr key={key} { ...restRowProps} className={
               stylerow === "1INCH" ?
@@ -180,7 +167,6 @@ const TradeFeeTable = ({
               styles[stylerow]
             }>
               {row.cells.map((cell) => {
-                console.log(cell)
                 const { key, ...restCellProps } = cell.getCellProps()
                 return (
                   <td key={key} {...restCellProps} className={styles.mainKey}>
@@ -195,18 +181,6 @@ const TradeFeeTable = ({
         })}
       </tbody>
     </table>
-
-      {feeTable.length > 4 ?
-
-        <div>
-          <button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
-            {'<'}
-          </button>
-          <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
-            {'>'}
-          </button></div>
-
-        : null}
     </>
 
 

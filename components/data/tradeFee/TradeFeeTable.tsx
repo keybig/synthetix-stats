@@ -125,10 +125,6 @@ const TradeFeeTable = ({
     prepareRow,
   } = tableInstance
 
-
-  console.log(page)
-  console.log(page)
-
   return (
 
     <><table {...getTableProps()} className={styles.mainTable}>
@@ -160,17 +156,10 @@ const TradeFeeTable = ({
       <tbody {...getTableBodyProps()} className={styles.mainBody}>
 
         {page.map((row) => {
-          console.log(row)
-          const color = row.values.name
           prepareRow(row)
           const { key, ...restRowProps } = row.getRowProps()
           const stylerow = row.values.name
-          const styleKey = 
-            row.values.name === "KWENTA" ?
-            "green" :
-            "purple"
-          console.log(stylerow)
-          console.log(row.values.name)
+        
           return (
             <tr key={key} { ...restRowProps} className={
               stylerow === "1INCH" ?
@@ -180,7 +169,6 @@ const TradeFeeTable = ({
               styles[stylerow]
             }>
               {row.cells.map((cell) => {
-                console.log(cell)
                 const { key, ...restCellProps } = cell.getCellProps()
                 return (
                   <td key={key} {...restCellProps} className={styles.mainKey}>
@@ -194,7 +182,7 @@ const TradeFeeTable = ({
           )
         })}
       </tbody>
-    </table>
+      </table>
 
       {feeTable.length > 4 ?
 
@@ -207,6 +195,7 @@ const TradeFeeTable = ({
           </button></div>
 
         : null}
+       
     </>
 
 

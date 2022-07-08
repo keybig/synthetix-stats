@@ -16,24 +16,46 @@
 }
 .headRow {
     color: #828295;
-    font-size: 0.8rem;
+    font-size: 0.75rem;
 }
 .headKey {
     text-transform: capitalize;
     font-weight: bold;
-    text-align: left;
-    padding: 1rem;
-    border-bottom: 1px solid #828295;
+    text-align: center;
+    padding: 1rem 0 0.5rem;
+    border-bottom: 0.0625rem solid #828295;
 }
 
 .mainRow {
     color: #ffffff;
-    font-size:1rem;
+    font-size:clamp(0.875rem, 1vmax, 1rem);
 }
 
 .mainKey {
     text-transform: capitalize;
-    text-align: left;
+    text-align: center;
+    border-bottom: 0.0625rem solid #828295;
+    padding: 1rem 0;
+}
+
+.protocolCell {
+    text-transform: capitalize;
+    text-align: center;
+    vertical-align: bottom;
+    border-bottom: 0.0625rem solid #828295;
+    padding: 1rem 0;
+}
+
+.nOfTradesCell {
+    text-transform: capitalize;
+    text-align: center;
+    border-bottom: 0.0625rem solid #828295;
+    padding: 1rem 0;
+}
+
+.volumeCell {
+    text-transform: capitalize;
+    text-align: center;
     border-bottom: 0.0625rem solid #828295;
     padding: 1rem 0;
 }

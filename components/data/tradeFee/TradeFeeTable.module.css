@@ -2,7 +2,8 @@
     border-collapse: collapse;
     border-spacing: 2rem;
     table-layout: auto;
-    width: 20.25rem;
+    width: 50%;
+    margin:auto;
    }
 
 .mainBody {
@@ -22,12 +23,11 @@
    
    .mainRow {
        color: #ffffff;
-       font-size:0.875rem;
    }
    
    .mainKey {
        text-transform: capitalize;
-       text-align: left;
+       text-align: center;
        padding: 1rem;
    }
 
@@ -92,13 +92,13 @@
 }
 
 .valueCell {
-    font-size: 1rem;
+    font-size: clamp(0.75rem, 1vw, 2rem);
     font-weight: 700;
     color: white;
 }
 
 .feeCell {
-    font-size: 0.75rem;
+    font-size: clamp(0.75rem, 1vw, 2rem);
     font-weight: 700;
 }
    

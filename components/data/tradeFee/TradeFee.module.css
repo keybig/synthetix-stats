@@ -60,16 +60,19 @@
 
 .chart {
   display: flex;
-  justify-content: space-between;
   margin: 2rem 0;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
+
 .pieWrap {
-  width:50%;
+  width:50%
+  
 }
 
 .chartkey {
-  width: 50%;
+ width:30%
   
 }
 

@@ -120,7 +120,6 @@ export const activa = async() => {
           }
         })
 
-        console.log(tradeFeeArr)
          
       
   

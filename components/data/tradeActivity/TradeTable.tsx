@@ -111,12 +111,12 @@ const TradeTable = ({
           {
             Header: 'N of Trades',
             accessor: 'col2',
-            Cell: ({value}) => { return formatNumber.format(value)}
+            Cell: ({value}:any) => { return formatNumber.format(value)}
           },
           {
             Header: 'Volume',
             accessor: 'col3',
-            Cell: ({value}) => { return formatMoney.format(value)}
+            Cell: ({value}:any) => { return formatMoney.format(value)}
           }
         ],
         []
@@ -165,9 +165,11 @@ const TradeTable = ({
       {headerGroups.map((headerGroup) => {
         const { key, ...restHeaderGroupProps } = headerGroup.getHeaderGroupProps()
       return (
+        
         <tr key={key} {...restHeaderGroupProps} className={styles.headRow}>
         {headerGroup.headers.map((column) => {
           const { key, ...restColumn } = column.getHeaderProps(column.getSortByToggleProps());
+          console.log(headerGroup)
           return (
             <th key={key} {...restColumn} className={styles.headKey}>
               {column.render("Header")}
@@ -194,11 +196,21 @@ const TradeTable = ({
           prepareRow(row);
           const { key, ...restRowProps } = row.getRowProps();
           return (
+
             <tr key={key} {...restRowProps} className={styles.mainRow}>
               {row.cells.map((cell) => {
                 const { key, ...restCellProps } = cell.getCellProps();
+                console.log(`test ${cell.column.Header}`)
                 return (
-                  <td key={key} {...restCellProps} className={styles.mainKey}>
+                  <td key={key} {...restCellProps} className={
+                    cell.column.Header === "Protocol" ?
+                    styles.protocolCell :
+                    cell.column.Header === "N of Trades" ?
+                    styles.nOfTradesCell :
+                    cell.column.Header === "Volume" ?
+                    styles.volumeCell :
+                    styles.mainKey
+                  }>
                     {cell.render("Cell")}
                   </td>
                 );

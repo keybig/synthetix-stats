@@ -1,21 +1,28 @@
 .mainTable {
     border-collapse: collapse;
     border-spacing: 2rem;
-    table-layout: fixed;
-    width:29rem;
-    height: 16.25rem;
+    width: 29rem;
+    table-layout: auto;
     background: rgba(16,16,78,1);
    }
    
+   .mainBody {
+       height: 12.875rem;
+   }
+   
+   .theDiv {
+       display:flex;
+       justify-content: space-between;
+   }
    .headRow {
        color: #828295;
-       font-size: 1rem;
+       font-size: 0.75rem;
    }
    .headKey {
        text-transform: capitalize;
        font-weight: bold;
-       text-align: left;
-       padding: 1rem;
+       text-align: center;
+       padding: 1rem 0;
        border-bottom: 1px solid #828295;
    }
    
@@ -26,134 +33,130 @@
    
    .mainKey {
        text-transform: capitalize;
-       text-align: left;
+       text-align: center;
        border-bottom: 0.0625rem solid #828295;
        padding: 1rem 0;
    }
-
-   .sorted{
-    padding: 0 0 0 0.25rem;
-}
    
    .LYRA {
-    color: white;
-}
-
-.LYRA::before {
-    content: url(../../../../public/lyraLogo.svg);
-    padding-right: 1rem;
-}
-
-.KWENTA {
-    color: white;
-}
-
-.KWENTA::before {
-    content: url(../../../../public/kwentaLogo.svg);
-    padding-right: 1rem;
-
-}
-
-.THALES::before {
-    content: url(../../../../public/Thales.png);
-    padding-right: 1rem;
-    margin-right: 8px;
-    margin-top: 2px;
-}
-
-.THALES {
-    color:azure;
-
-}
-
-.oneInch {
-    color: white;
-}
-
-.oneInch::before {
-    content: url(../../../../public/3oneInch.svg);
-    padding-right: 1rem;
-
-}
-
-.CURVE {
-    color: white;
-}
-
-.CURVE::before {
-    content: url(../../../../public/CURVE.svg);
-    padding-right: 1rem;
-
-}
-
-.DHEDGE {
-    color: white;
-}
-
-.DHEDGE::before {
-    content: url(../../../../public/dhedge.svg);
-    padding-right: 1rem;
-
-}
-
-.ENZYME {
-    color: white;
-}
-
-.ENZYME::before {
-    content: url(../../../../public/enzyme.svg);
-    padding-right: 1rem;
-
-}
-
-.YEARN {
-    color: white;
-}
-
-.YEARN::before {
-    content: url(../../../../public/yearn.svg);
-    padding-right: 1rem;
-
-}
-
-.OTHER {
-    color: white;
-}
-
-.OTHER::before {
-    content: url(../../../../public/other.svg);
-    padding-right: 1rem;
-
-}
-
-.SADDLE {
-    color: white;
-}
-
-.SADDLE::before {
-    content: url(../../../../public/saddle.svg);
-    padding-right: 1rem;
-
-}
-
-.ibAMM {
-    color: white;
-}
-
-.ibAMM::before {
-    content: url(../../../../public/ibamm.svg);
-    padding-right: 1rem;
-
-}
-
-.SX {
-    color: white;
-}
-
-.SX::before {
-    content: url(../../../../public/other.svg);
-    padding-right: 1rem;
-}
+       color: white;
+   }
+   
+   .LYRA::before {
+       content: url(../../../../public/lyraLogo.svg);
+       padding-right: 1rem;
+   }
+   
+   .KWENTA {
+       color: white;
+   }
+   
+   .KWENTA::before {
+       content: url(../../../../public/kwentaLogo.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .THALES::before {
+       content: url(../../../../public/Thales.png);
+       padding-right: 1rem;
+       margin-right: 8px;
+       margin-top: 2px;
+   }
+   
+   .THALES {
+       color:azure;
+   
+   }
+   
+   .oneInch {
+       color: white;
+   }
+   
+   .oneInch::before {
+       content: url(../../../../public/3oneInch.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .CURVE {
+       color: white;
+   }
+   
+   .CURVE::before {
+       content: url(../../../../public/CURVE.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .DHEDGE {
+       color: white;
+   }
+   
+   .DHEDGE::before {
+       content: url(../../../../public/dhedge.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .ENZYME {
+       color: white;
+   }
+   
+   .ENZYME::before {
+       content: url(../../../../public/enzyme.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .YEARN {
+       color: white;
+   }
+   
+   .YEARN::before {
+       content: url(../../../../public/yearn.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .OTHER {
+       color: white;
+   }
+   
+   .OTHER::before {
+       content: url(../../../../public/other.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .SADDLE {
+       color: white;
+   }
+   
+   .SADDLE::before {
+       content: url(../../../../public/saddle.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .ibAMM {
+       color: white;
+   }
+   
+   .ibAMM::before {
+       content: url(../../../../public/ibamm.svg);
+       padding-right: 1rem;
+   
+   }
+   
+   .SX {
+       color: white;
+   }
+   
+   .SX::before {
+       content: url(../../../../public/other.svg);
+       padding-right: 1rem;
+   }
    
    .chartButton {
        background: transparent;
@@ -162,11 +165,194 @@
        font-size: 2rem;
       }
    
+      .bottom {
+       text-align: right;
+       letter-spacing: 0.15rem;
+       margin: 1rem 0 0 0;
+   }
+   
+      .bottomTitle {
+       color: #828295;
+       font-size: 0.75rem;
+       font-weight: 700;
+       font-family: Arial, Helvetica, sans-serif;
+       margin: 0;
+   }
+   
+   .totalTrades {
+       font-size: 1.75rem;
+       font-weight:700;
+       color: white;
+       margin: 0.5rem 0;
+   }
+   
+   .totalVolume {
+       font-size: 1.75rem;
+       font-weight: 700;
+       color: #31D8A4;
+       margin: 0.5rem 0;
+   }
+   
+   .sorted{
+       padding: 0 0 0 0.25rem;
+   }
+   
+   .numTradeCell {
+       text-align: center;
+   }
+   
    @media(max-width: 960px){
        .mainTable {
          margin:0;
          padding:0;
-         width:fit-content;
+         width:100%;
        }
+   
+       .SX {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .SX::before {
+           content: url(../../../../public/other.svg);
+       
+       }
+   
+       .LYRA {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .LYRA::before {
+           content: url(../../../../public/lyraLogo.svg);
+          
+       }
+       
+       .KWENTA {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .KWENTA::before {
+           content: url(../../../../public/kwentaLogo.svg);
+       
+       }
+       
+       .THALES::before {
+           content: url(../../../../public/Thales.png);
+           margin-right: 8px;
+           margin-top: 2px;
+       }
+       
+       .THALES {
+           color:azure;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       
+       }
+       
+       .oneInch {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .oneInch::before {
+           content: url(../../../../public/3oneInch.svg);
+       
+       }
+       
+       .CURVE {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .CURVE::before {
+           content: url(../../../../public/CURVE.svg);
+       
+       }
+       
+       .DHEDGE {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .DHEDGE::before {
+           content: url(../../../../public/dhedge.svg);
+       
+       }
+       
+       .ENZYME {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .ENZYME::before {
+           content: url(../../../../public/enzyme.svg);
+       
+       }
+       
+       .YEARN {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .YEARN::before {
+           content: url(../../../../public/yearn.svg);
+       
+       }
+       
+       .OTHER {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .OTHER::before {
+           content: url(../../../../public/other.svg);
+       
+       }
+       
+       .SADDLE {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .SADDLE::before {
+           content: url(../../../../public/saddle.svg);
+       
+       }
+       
+       .ibAMM {
+           color: white;
+           display:flex;
+           flex-direction: column;
+           align-items: center;
+       }
+       
+       .ibAMM::before {
+           content: url(../../../../public/ibamm.svg);
+       
+       }
+       
    }
    

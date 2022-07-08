@@ -123,18 +123,18 @@ const ModalTradeTable = ({
           }
         },  
         useSortBy,
-        usePagination
+       // usePagination
         )
 
       const {
         getTableProps,
         getTableBodyProps,
         headerGroups,
-        page,
-        canNextPage,
-        nextPage,
-        canPreviousPage,
-        previousPage,
+        rows,
+        //canNextPage,
+       // nextPage,
+       // canPreviousPage,
+       // previousPage,
         prepareRow,
       } = tableInstance
 
@@ -170,7 +170,7 @@ const ModalTradeTable = ({
     </thead>
     <tbody {...getTableBodyProps()}>
      
-    {page.map((row) => {
+    {rows.map((row) => {
           prepareRow(row);
           const { key, ...restRowProps } = row.getRowProps();
           return (
@@ -188,17 +188,7 @@ const ModalTradeTable = ({
         })}
     </tbody>
   </table>
-  {tradeTable.length > 4 ?
-
-<div>
-  <button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
-    {'<'}
-  </button>
-  <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
-    {'>'}
-  </button></div>
-
-: null}
+  
 
   </div>
     

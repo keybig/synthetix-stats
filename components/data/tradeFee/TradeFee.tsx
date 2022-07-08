@@ -78,9 +78,6 @@ const TradeFee = ({
   const closeModal = () => {
     setModalOpen(false)
   }
-
-  console.log(allNinetyFee)
-  console.log(allThirtyFee)
  
 
   const handleActive = (buttons: any) => {
@@ -202,7 +199,7 @@ const TradeFee = ({
 
       <div className={styles.chart}>
         <div className={styles.pieWrap}>
-          <ResponsiveContainer width={"99%"} height={300}>
+          <ResponsiveContainer>
             <PieChart>
               <Pie
                 dataKey="value"
@@ -210,6 +207,8 @@ const TradeFee = ({
                 isAnimationActive={false}
                 data={pieData}
                 outerRadius={"99%"}
+                cx={"40%"}
+                cy={"50%"}
               >
          
               {
@@ -278,9 +277,9 @@ const TradeFee = ({
               <Tooltip content={<CustomToolTip/>}/>
             </PieChart>
           </ResponsiveContainer>
-        </div>
+          </div>
 
-        <div className={styles.chartkey}>
+       <div className={styles.chartkey}>
           <TradeFeeTable 
             click={click}
             tableId={timeFrame}
@@ -300,8 +299,7 @@ const TradeFee = ({
             allThirtyFee={allThirtyFee}
             allNinetyFee={allNinetyFee}
              />
-            
-        </div>
+            </div>
       </div>
 
       <div>
