@@ -206,8 +206,8 @@ const TradeFee = ({
                 nameKey="name"
                 isAnimationActive={false}
                 data={pieData}
-                outerRadius={"99%"}
-                cx={"40%"}
+                outerRadius={"90%"}
+                cx={"50%"}
                 cy={"50%"}
               >
          

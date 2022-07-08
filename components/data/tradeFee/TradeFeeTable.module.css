@@ -2,7 +2,7 @@
     border-collapse: collapse;
     border-spacing: 2rem;
     table-layout: auto;
-    width: 50%;
+    width: fit-content;
     margin:auto;
    }
 
@@ -92,13 +92,13 @@
 }
 
 .valueCell {
-    font-size: clamp(0.75rem, 1vw, 2rem);
+    font-size: clamp(0.875rem, 1vw, 1.25rem);
     font-weight: 700;
     color: white;
 }
 
 .feeCell {
-    font-size: clamp(0.75rem, 1vw, 2rem);
+    font-size: clamp(0.875rem, 1vw, 1.25rem);
     font-weight: 700;
 }
    

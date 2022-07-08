@@ -18,7 +18,7 @@ body {
   url(../assets/bACKGROUND.webp);
   max-width: 1920px;
   margin:auto;
-  padding: 0 calc(1vw+1rem);
+  padding: 0 clamp(1rem, 2.5vw, 5rem);
 }
 
 * {
