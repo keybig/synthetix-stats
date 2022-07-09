@@ -83,112 +83,112 @@ const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/o
   const mainTwelveHourDebt = await fetchTVL(blocks.main.mainTwelveHourBlock, mainnet_url)
   const allTwelveHourDebt = ovmTwelveHourDebt + mainTwelveHourDebt
 
-  const ovmTwelveHourWrapper = await fetchTVL(blocks.ovm.ovmTwelveHourBlock, optimism_url)
-  const mainTwelveHourWrapper = await fetchTVL(blocks.main.mainTwelveHourBlock, mainnet_url)
+  const ovmTwelveHourWrapper = await fetchWrapper(blocks.ovm.ovmTwelveHourBlock, optimism_url)
+  const mainTwelveHourWrapper = await fetchWrapper(blocks.main.mainTwelveHourBlock, mainnet_url)
   const allTwelveHourWrapper = ovmTwelveHourWrapper + mainTwelveHourWrapper
 
   const ovmSixteenHourDebt = await fetchTVL(blocks.ovm.ovmSixteenHourBlock, optimism_url)
   const mainSixteenHourDebt = await fetchTVL(blocks.main.mainSixteenHourBlock, mainnet_url)
   const allSixteenHourDebt = ovmSixteenHourDebt + mainSixteenHourDebt
 
-  const ovmSixteenHourWrapper = await fetchTVL(blocks.ovm.ovmSixteenHourBlock, optimism_url)
-  const mainSixteenHourWrapper = await fetchTVL(blocks.main.mainSixteenHourBlock, mainnet_url)
+  const ovmSixteenHourWrapper = await fetchWrapper(blocks.ovm.ovmSixteenHourBlock, optimism_url)
+  const mainSixteenHourWrapper = await fetchWrapper(blocks.main.mainSixteenHourBlock, mainnet_url)
   const allSixteenHourWrapper = ovmSixteenHourWrapper + mainSixteenHourWrapper
 
   const ovmTwentyHourDebt = await fetchTVL(blocks.ovm.ovmTwentyHourBlock, optimism_url)
   const mainTwentyHourDebt = await fetchTVL(blocks.main.mainTwentyHourBlock, mainnet_url)
   const allTwentyHourDebt = ovmTwentyHourDebt + mainTwentyHourDebt
 
-  const ovmTwentyHourWrapper = await fetchTVL(blocks.ovm.ovmTwentyHourBlock, optimism_url)
-  const mainTwentyHourWrapper = await fetchTVL(blocks.main.mainTwentyHourBlock, mainnet_url)
+  const ovmTwentyHourWrapper = await fetchWrapper(blocks.ovm.ovmTwentyHourBlock, optimism_url)
+  const mainTwentyHourWrapper = await fetchWrapper(blocks.main.mainTwentyHourBlock, mainnet_url)
   const allTWentyHourWrapper = ovmTwentyHourWrapper + mainTwentyHourWrapper
 
   const ovmTwentyFourHourDebt = await fetchTVL(blocks.ovm.ovmTwentyFourHourBlock, optimism_url)
   const mainTwentyFourHourDebt = await fetchTVL(blocks.main.mainTwentyFourHourBlock, mainnet_url)
   const allTwentyFourHourDebt = ovmTwentyFourHourDebt + mainTwentyFourHourDebt
 
-  const ovmTwentyFourHourWrapper = await fetchTVL(blocks.ovm.ovmTwentyFourHourBlock, optimism_url)
-  const mainTwentyFourHourWrapper = await fetchTVL(blocks.main.mainTwentyFourHourBlock, mainnet_url)
+  const ovmTwentyFourHourWrapper = await fetchWrapper(blocks.ovm.ovmTwentyFourHourBlock, optimism_url)
+  const mainTwentyFourHourWrapper = await fetchWrapper(blocks.main.mainTwentyFourHourBlock, mainnet_url)
   const allTwentyFourHourWrapper = ovmTwentyFourHourDebt + mainTwentyFourHourWrapper
 
   const ovmTwoDayDebt = await fetchTVL(blocks.ovm.ovmTwoDayBlock, optimism_url)
   const mainTwoDayDebt = await fetchTVL(blocks.main.mainTwoDayBlock, mainnet_url)
   const allTwoDayDebt = ovmTwoDayDebt + mainTwoDayDebt
 
-  const ovmTwoDayWrapper = await fetchTVL(blocks.ovm.ovmTwoDayBlock, optimism_url)
-  const mainTwoDayWrapper = await fetchTVL(blocks.main.mainTwoDayBlock, mainnet_url)
+  const ovmTwoDayWrapper = await fetchWrapper(blocks.ovm.ovmTwoDayBlock, optimism_url)
+  const mainTwoDayWrapper = await fetchWrapper(blocks.main.mainTwoDayBlock, mainnet_url)
   const allTwoDayWrapper = ovmTwoDayWrapper + mainTwoDayWrapper
 
   const ovmThreeDayDebt = await fetchTVL(blocks.ovm.ovmThreeDayBlock, optimism_url)
   const mainThreeDayDebt = await fetchTVL(blocks.main.mainThreeDayBlock, mainnet_url)
   const allThreeDayDebt = ovmThreeDayDebt + mainThreeDayDebt
 
-  const ovmThreeDayWrapper = await fetchTVL(blocks.ovm.ovmThreeDayBlock, optimism_url)
-  const mainThreeDayWrapper = await fetchTVL(blocks.main.mainThreeDayBlock, mainnet_url)
+  const ovmThreeDayWrapper = await fetchWrapper(blocks.ovm.ovmThreeDayBlock, optimism_url)
+  const mainThreeDayWrapper = await fetchWrapper(blocks.main.mainThreeDayBlock, mainnet_url)
   const allThreeDayWrapper = ovmThreeDayWrapper + mainThreeDayWrapper
 
   const ovmFourDayDebt = await fetchTVL(blocks.ovm.ovmFourDayBlock, optimism_url)
   const mainFourDayDebt = await fetchTVL(blocks.main.mainFourDayBlock, mainnet_url)
   const allFourDayDebt = ovmFourDayDebt + mainFourDayDebt
 
-  const ovmFourDayWrapper = await fetchTVL(blocks.ovm.ovmFourDayBlock, optimism_url)
-  const mainFourDayWrapper = await fetchTVL(blocks.main.mainFourDayBlock, mainnet_url)
+  const ovmFourDayWrapper = await fetchWrapper(blocks.ovm.ovmFourDayBlock, optimism_url)
+  const mainFourDayWrapper = await fetchWrapper(blocks.main.mainFourDayBlock, mainnet_url)
   const allFourDayWrapper = ovmFourDayDebt + mainFourDayDebt
 
   const ovmFiveDayDebt = await fetchTVL(blocks.ovm.ovmFiveDayBlock, optimism_url)
   const mainFiveDayDebt = await fetchTVL(blocks.main.mainFiveDayBlock, mainnet_url)
   const allFiveDayDebt = ovmFiveDayDebt + mainFiveDayDebt
 
-  const ovmFiveDayWrapper = await fetchTVL(blocks.ovm.ovmFiveDayBlock, optimism_url)
-  const mainFiveDayWrapper = await fetchTVL(blocks.main.mainFiveDayBlock, mainnet_url)
+  const ovmFiveDayWrapper = await fetchWrapper(blocks.ovm.ovmFiveDayBlock, optimism_url)
+  const mainFiveDayWrapper = await fetchWrapper(blocks.main.mainFiveDayBlock, mainnet_url)
   const allFiveDayWrapper = ovmFiveDayWrapper + mainFiveDayWrapper
 
   const ovmSixDayDebt = await fetchTVL(blocks.ovm.ovmSixDayBlock, optimism_url)
   const mainSixDayDebt = await fetchTVL(blocks.main.mainSixDayBlock, mainnet_url)
   const allSixDayDebt = ovmSixDayDebt + mainSixDayDebt
 
-  const ovmSixDayWrapper = await fetchTVL(blocks.ovm.ovmSixDayBlock, optimism_url)
-  const mainSixDayWrapper = await fetchTVL(blocks.main.mainSixDayBlock, mainnet_url)
+  const ovmSixDayWrapper = await fetchWrapper(blocks.ovm.ovmSixDayBlock, optimism_url)
+  const mainSixDayWrapper = await fetchWrapper(blocks.main.mainSixDayBlock, mainnet_url)
   const allSixDayWrapper = ovmSixDayWrapper + mainSixDayWrapper
 
   const ovmTenDayDebt = await fetchTVL(blocks.ovm.ovmTenDayBlock, optimism_url)
   const mainTenDayDebt = await fetchTVL(blocks.main.mainTenDayBlock, mainnet_url)
   const allTenDayDebt = ovmTenDayDebt + mainTenDayDebt
 
-  const ovmTenDayWrapper = await fetchTVL(blocks.ovm.ovmTenDayBlock, optimism_url)
-  const mainTenDayWrapper = await fetchTVL(blocks.main.mainTenDayBlock, mainnet_url)
+  const ovmTenDayWrapper = await fetchWrapper(blocks.ovm.ovmTenDayBlock, optimism_url)
+  const mainTenDayWrapper = await fetchWrapper(blocks.main.mainTenDayBlock, mainnet_url)
   const allTenDayWrapper = ovmTenDayWrapper + mainTenDayWrapper
 
   const ovmFifteenDayDebt = await fetchTVL(blocks.ovm.ovmFifteenDayBlock, optimism_url)
   const mainFifteenDayDebt = await fetchTVL(blocks.main.mainFifteenDayBlock, mainnet_url)
   const allFifteenDayDebt = ovmFifteenDayDebt + mainFifteenDayDebt
 
-  const ovmFifteenDayWrapper = await fetchTVL(blocks.ovm.ovmFifteenDayBlock, optimism_url)
-  const mainFifteenDayWrapper = await fetchTVL(blocks.main.mainFifteenDayBlock, mainnet_url)
+  const ovmFifteenDayWrapper = await fetchWrapper(blocks.ovm.ovmFifteenDayBlock, optimism_url)
+  const mainFifteenDayWrapper = await fetchWrapper(blocks.main.mainFifteenDayBlock, mainnet_url)
   const allFifteenDayWrapper = ovmFifteenDayWrapper + mainFifteenDayWrapper
 
   const ovmTwentyDayDebt = await fetchTVL(blocks.ovm.ovmTwentyDayBlock, optimism_url)
   const mainTwentyDayDebt = await fetchTVL(blocks.main.mainTwentyDayBlock, mainnet_url)
   const allTwentyDayDebt = ovmTwentyDayDebt + mainTwentyDayDebt
 
-  const ovmTwentyDayWrapper = await fetchTVL(blocks.ovm.ovmTwentyDayBlock, optimism_url)
-  const mainTwentyDayWrapper = await fetchTVL(blocks.main.mainTwentyDayBlock, mainnet_url)
+  const ovmTwentyDayWrapper = await fetchWrapper(blocks.ovm.ovmTwentyDayBlock, optimism_url)
+  const mainTwentyDayWrapper = await fetchWrapper(blocks.main.mainTwentyDayBlock, mainnet_url)
   const allTwentyDayWrapper = ovmTwentyDayWrapper + mainTwentyDayWrapper
 
   const ovmTwentyFiveDayDebt = await fetchTVL(blocks.ovm.ovmTwentyFiveDayBlock, optimism_url)
   const mainTwentyFiveDayDebt = await fetchTVL(blocks.main.mainTwentyFiveDayBlock, mainnet_url)
   const allTwentyFiveDayDebt = ovmTwentyFiveDayDebt + mainTwentyFiveDayDebt
 
-  const ovmTwentyFiveDayWrapper = await fetchTVL(blocks.ovm.ovmTwentyFiveDayBlock, optimism_url)
-  const mainTwentyFiveDayWrapper = await fetchTVL(blocks.main.mainTwentyFiveDayBlock, mainnet_url)
+  const ovmTwentyFiveDayWrapper = await fetchWrapper(blocks.ovm.ovmTwentyFiveDayBlock, optimism_url)
+  const mainTwentyFiveDayWrapper = await fetchWrapper(blocks.main.mainTwentyFiveDayBlock, mainnet_url)
   const allTwentyFiveDayWrapper = ovmTwentyFiveDayWrapper + mainTwentyFiveDayWrapper
 
   const ovmThirtyDayDebt = await fetchTVL(blocks.ovm.ovmThirtyDayBlock, optimism_url)
   const mainThirtyDayDebt = await fetchTVL(blocks.main.mainThirtyDayBlock, mainnet_url)
   const allThirtyDayDebt = ovmThirtyDayDebt + mainThirtyDayDebt
 
-  const ovmThirtyDayWrapper = await fetchTVL(blocks.ovm.ovmThirtyDayBlock, optimism_url)
-  const mainThirtyDayWrapper = await fetchTVL(blocks.main.mainThirtyDayBlock, mainnet_url)
+  const ovmThirtyDayWrapper = await fetchWrapper(blocks.ovm.ovmThirtyDayBlock, optimism_url)
+  const mainThirtyDayWrapper = await fetchWrapper(blocks.main.mainThirtyDayBlock, mainnet_url)
   const allThirtyDayWrapper = ovmThirtyDayWrapper + mainThirtyDayWrapper
 
   // create the charts

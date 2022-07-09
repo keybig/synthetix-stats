@@ -1,21 +1,16 @@
 html
 {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: rgba(11, 11, 34, 1);
+ background: url(../assets/bACKGROUND.webp)
+;
   box-sizing: border-box;
+  background-color: #0B0B22;
+  background-size: contain;
   width: 100%;
   height: auto;
 }
 
 body {
-  background: linear-gradient(
-    to left,
-    rgba(11, 11, 34, 0.95) 1%,
-    rgba(0, 209, 255, 0.2),
-    rgba(237, 30, 255, 0.2),
-    rgba(11, 11, 34, 0.95) 99%
-  ),
-  url(../assets/bACKGROUND.webp);
   max-width: 1920px;
   margin:auto;
   padding: 0 clamp(1rem, calc(1rem + 3vw), 5rem);

@@ -5,6 +5,8 @@
   flex-direction: column;
   border-radius: 0.625rem;
   border: 0.125rem solid #13f2f2;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4);
+
 }
 
 .topBar {
@@ -26,7 +28,9 @@
   font-size: 2.5rem;
   font-family: Arial, Helvetica, sans-serif;
   margin: 0.5rem 0;
-  color: #5cc6ff;
+  background: linear-gradient(73.6deg, #85FFC4 2.11%, #5CC6FF 90.45%);;
+  background-clip:text;
+  color: transparent;
   font-weight: 700;
 }
 

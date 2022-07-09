@@ -22,10 +22,10 @@ const CustomTooltip = ({
 
   if (active) {
 
-    const debtVal = payload && payload[0].value
-    const wrapperVal = payload && payload[1].value
+    const debtVal = payload && payload[1].value
+    const wrapperVal = payload && payload[0].value
     const tvl = debtVal && wrapperVal ? debtVal + wrapperVal : 0
-
+  
     return (
       <div className={styles.TTwrap}>
         <p className={styles.TTlabel}>{label}</p>

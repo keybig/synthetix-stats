@@ -14,6 +14,7 @@
      "startStaking startStaking tradeFee tradeFee tradeFee";
      gap: clamp(0.875rem, 1vw, 1.875rem);
      justify-content: center;
+     ;
 }
 
 @media(max-width: 960px){

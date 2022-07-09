@@ -85,6 +85,7 @@ const TotalValueLocked = ({
 
   const ttInfo = `Total Value Locked within SNX Ecosystem. Updated every 15 minutes`
 
+  console.log(monthDataMain)
 
   return (
     <div className={styles.container}>
@@ -133,7 +134,15 @@ const TotalValueLocked = ({
             data={click === 1 ? mainData : click === 10 ? ovmData : allData}
             >
       
-            
+      <Area
+              type="linear"
+              dataKey="wrapper"
+              stroke="#ED1EFF"
+              fill="#ED1EFF"
+              fillOpacity={"50%"}
+              strokeWidth={2}
+              stackId={2}
+            />
 
 
             <Area
@@ -143,24 +152,22 @@ const TotalValueLocked = ({
               fill="#31D8A4"
               fillOpacity={"50%"}
               strokeWidth={2}
-              stackId={1}
+              stackId={2}
+              
             
               
             />
-            <Area
-              type="linear"
-              dataKey="wrapper"
-              stroke="#ED1EFF"
-              fill="#ED1EFF"
-              fillOpacity={"50%"}
-              strokeWidth={2}
-              stackId={1}
-            />
+            
             <Tooltip
               content={<CustomToolTip />}
             />
             <XAxis dataKey="date" fontSize={14} />
-            <YAxis scale={"linear"} allowDataOverflow={true} domain={["auto", "auto"]} hide={true} />
+            <YAxis 
+              scale={"linear"} 
+              allowDataOverflow={true} 
+              domain={['auto', 'auto']} 
+              hide={true}               
+              />
           </AreaChart>
 
         </ResponsiveContainer>

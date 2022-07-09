@@ -130,17 +130,26 @@ const NumStaker = ({
         </div>
       </div>
 
-      <ResponsiveContainer height={300} width="100%">
+      <ResponsiveContainer height={200} width="100%">
         <AreaChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="20%" stopColor="#8884d8" stopOpacity={0.3} />
-              <stop offset="50%" stopColor="#8884d8" stopOpacity={0.2} />
-              <stop offset="70%" stopColor="#8884d8" stopOpacity={0.1} />
-              <stop offset="90%" stopColor="linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #402FC8;" stopOpacity={0.1} />
+              <stop offset="10%" stopColor="#8884d8" stopOpacity={0.3} />
+              <stop offset="25%" stopColor="#8884d8" stopOpacity={0.2} />
+              <stop offset="50%" stopColor="#8884d8" stopOpacity={0.1} />
+              <stop offset="95%" stopColor="#8884d8" stopOpacity={0.05} />
+              <stop offset="99%" stopColor="linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #402FC8;" stopOpacity={0.1} />
 
             </linearGradient>
+
+           
+        <filter id="shadow" height="200%">
+            <feDropShadow dx="3" dy="10" stdDeviation="10" color="#8884d8"/>
+        </filter>
+  
+
           </defs>
+
 
           <Area
             type="linear"
