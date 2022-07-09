@@ -159,7 +159,7 @@ const TotalValueLocked = ({
             <Tooltip
               content={<CustomToolTip />}
             />
-            <XAxis dataKey="date" fontSize={14} />
+            <XAxis dataKey="date" fontSize={14} interval={"preserveStartEnd"} />
             <YAxis 
               scale={"linear"} 
               allowDataOverflow={true} 

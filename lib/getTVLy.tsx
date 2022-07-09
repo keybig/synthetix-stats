@@ -133,7 +133,7 @@ const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/o
 
   const ovmFourDayWrapper = await fetchWrapper(blocks.ovm.ovmFourDayBlock, optimism_url)
   const mainFourDayWrapper = await fetchWrapper(blocks.main.mainFourDayBlock, mainnet_url)
-  const allFourDayWrapper = ovmFourDayDebt + mainFourDayDebt
+  const allFourDayWrapper = ovmFourDayWrapper + mainFourDayWrapper
 
   const ovmFiveDayDebt = await fetchTVL(blocks.ovm.ovmFiveDayBlock, optimism_url)
   const mainFiveDayDebt = await fetchTVL(blocks.main.mainFiveDayBlock, mainnet_url)
