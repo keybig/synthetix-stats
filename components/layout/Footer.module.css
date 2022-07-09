@@ -1,9 +1,7 @@
 .footer {
     display: flex;
-    padding: 2rem 0;
-    justify-content: center;
+    padding: 1rem;
     align-items: center;
-    background: transparent;
     text-transform: uppercase;
     flex-direction: column;
     color: rgba(255, 255, 255, 0.4)
@@ -11,26 +9,40 @@
 
 .row {
     display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
     list-style: none;
-    margin: 0 2rem 2rem;
-    justify-content: space-between;
+    padding: 0.25rem 0.25rem 1rem 0.25rem;
+    margin: 0;
+
 }
 
-.footerNav {
-    display: flex;
-    justify-content: space-between;
-}
 
-.footerText {
-    font-size: 0.8rem;
-    margin: 2rem;
-}
 
 .li {
-    padding: 0 0.5rem;
+    padding: 0.25rem;
 }
 
 .li a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.4)
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.footerText {
+    font-size: 0.875rem;
+    text-align: center;
+    margin: 1rem 0.25rem;
+}
+
+.iconBar {
+    background: linear-gradient(320.66deg, #030B12 14.75%, #1C1F22 84.81%);
+    border-radius: 2.125rem;
+    display: flex;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    padding: 0 0.5rem;
+    margin: 0;
+}
+
+.iconItem {
+    padding: 0.5rem 0.625rem;
 }

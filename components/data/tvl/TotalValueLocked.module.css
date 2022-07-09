@@ -109,6 +109,7 @@
 @media (max-width: 960px) {
   .tvl {
     font-size: 0.875rem;
+    width: max-content;
   }
 
   .mobileMenu {
@@ -129,5 +130,20 @@
 
   .values {
     font-size: 1.5rem;
+  }
+
+  .bottom {
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .debtPool {
+    padding: 0;
+    margin: 0;
+  }
+  
+  .wrapper {
+    padding: 0;
+    margin: 0;
   }
 }

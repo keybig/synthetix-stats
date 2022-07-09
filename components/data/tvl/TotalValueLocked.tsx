@@ -85,8 +85,6 @@ const TotalValueLocked = ({
 
   const ttInfo = `Total Value Locked within SNX Ecosystem. Updated every 15 minutes`
 
-  console.log(monthDataMain)
-
   return (
     <div className={styles.container}>
       <div className={styles.topBar}>

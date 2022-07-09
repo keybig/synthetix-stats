@@ -58,6 +58,10 @@
   font-size: 1.125rem;
 }
 
+.buttonRow {
+  display: flex;
+}
+
 .chart {
   display: flex;
   margin: 2rem 0;
@@ -100,10 +104,11 @@
 
   .title {
     font-size: 0.875rem;
+    width: max-content;
   }
 
-  .content {
-    padding: 1rem 0;
+  .buttonRow {
+    padding: 0.5rem 0;
   }
 
   .chart {

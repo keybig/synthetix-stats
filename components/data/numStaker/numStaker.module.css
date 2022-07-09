@@ -104,4 +104,8 @@
     .mainMenu {
         display:none;
     }
+
+    .topRow {
+        padding: 1rem;
+    }
 }

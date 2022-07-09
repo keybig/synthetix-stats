@@ -7,6 +7,7 @@ import { formatMoney } from '../../../constants/format'
 import Down from '../../icon/Down'
 import Up from '../../icon/Up'
 import UpDown from '../../icon/upDown'
+import { MdFirstPage, MdChevronLeft, MdChevronRight, MdLastPage } from 'react-icons/md'
 
 
 interface Props {
@@ -92,7 +93,21 @@ const TradeFeeTable = ({
     []
   )
   // @ts-ignore
-  const tableInstance = useTable(
+  const {
+    getTableProps,
+    getTableBodyProps,
+    headerGroups,
+    page,
+    canNextPage,
+    nextPage,
+    canPreviousPage,
+    previousPage,
+    gotoPage,
+    pageOptions,
+    pageCount,
+    prepareRow,
+    state: {pageIndex, pageSize}
+  } = useTable(
     //@ts-ignore
     {
       //@ts-ignore
@@ -112,18 +127,6 @@ const TradeFeeTable = ({
     useSortBy,
     usePagination
   )
-
-  const {
-    getTableProps,
-    getTableBodyProps,
-    headerGroups,
-    page,
-    canNextPage,
-    nextPage,
-    canPreviousPage,
-    previousPage,
-    prepareRow,
-  } = tableInstance
 
   return (
 
@@ -184,18 +187,32 @@ const TradeFeeTable = ({
       </tbody>
       </table>
 
-      {feeTable.length > 4 ?
+      <div className={styles.tableNav}>
+        
+        <div>
+        <button className={styles.chartButton} onClick={() => gotoPage(0)} disabled={!canPreviousPage}>
+          <MdFirstPage/>
+        </button>
+        <button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
+          <MdChevronLeft/>
+        </button>
+        </div>
+
+        <span className={styles.tableNavKey}>
+            {pageIndex + 1} of {pageOptions.length}
+        </span>
 
         <div>
-          <button className={styles.chartButton} onClick={() => previousPage()} disabled={!canPreviousPage}>
-            {'<'}
-          </button>
-          <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
-            {'>'}
-          </button></div>
-
-        : null}
+        <button className={styles.chartButton} onClick={() => nextPage()} disabled={!canNextPage}>
+          <MdChevronRight/>
+        </button>
+        <button className={styles.chartButton} onClick={() => gotoPage(pageCount - 1)} disabled={!canNextPage}>
+          <MdLastPage/>
+        </button>
+        </div>
        
+        
+      </div>
     </>
 
 

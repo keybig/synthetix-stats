@@ -1,5 +1,7 @@
 import styles from './Footer.module.css'
 import Image from 'next/image'
+import { BsDiscord, BsGithub, BsTwitter } from 'react-icons/bs'
+import SnxLogo from '../icon/snxLogo'
 
 
 
@@ -16,11 +18,15 @@ const Footer = () => {
             <li className={styles.li}> Teleporter </li> 
         </ul>
 
-        <Image src="/Frame.png" height={36} width={46} alt="hello"></Image>
+        <SnxLogo/>
 
         <p className={styles.footerText}>Built and Maintained by the Grants Council and the Synthetix Community</p>
 
-        <Image src="/Icons.png" height={50} width={150} alt="hello"></Image>
+        <span className={styles.iconBar}>
+          <a href="#" className={styles.iconItem}><BsDiscord color='white'/></a>
+          <a href="#" className={styles.iconItem}><BsTwitter color='white'/></a>
+          <a href="#" className={styles.iconItem}><BsGithub color='white'/></a>
+        </span>
 
 
     </div>

@@ -11,7 +11,7 @@
 
 .theDiv {
     display:flex;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 .headRow {
     color: #828295;
@@ -207,8 +207,28 @@
     background: transparent;
     border: none;
     color: #00D1FF;
-    font-size: 2rem;
+    font-size: 1.25rem;
+    padding: 0.5rem 0;
    }
+
+.chartButton[disabled] {
+    color: #828295;
+
+}
+
+   .tableNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+   }
+
+   .tableNavKey {
+    color: #828295;
+    font-size: 0.875rem;
+
+   }
+
+
 
    .bottom {
     text-align: right;

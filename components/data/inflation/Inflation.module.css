@@ -78,4 +78,20 @@
   .inflateWrap {
     width: 100%;
   }
+
+  .titleRow {
+    padding: 0 0 0.125rem;
+  }
+
+  .subtitle {
+    margin: 0;
+  }
+
+  .currentEpoch {
+    margin: 0 0 0.5rem;
+  }
+
+  .toDate {
+    margin: 0 0 0.5rem;
+  }
 }

@@ -22,7 +22,7 @@ const Dropdown = ({ options, update, instanceId, placeholder }:DropdownProps) =>
           background: "#00D1FF",
           borderRadius:"0.625rem",
           padding:0,
-          width:"8rem"
+          width:"6rem"
         }),
         singleValue: (provided:any, state:any) => ({
           ...provided,
@@ -42,7 +42,16 @@ const Dropdown = ({ options, update, instanceId, placeholder }:DropdownProps) =>
           color:"#10104E",
           textAlign:"center",
           fontSize:"0.75rem"
-        })
+        }),
+        indicatorContainer: (provided:any) => ({
+          ...provided,
+          padding: 0,
+          margin: 0,
+        }),
+        dropdownIndicator: (provided:any) => ({
+          ...provided,
+          color: "#10104E"
+        }),
         
       }
 
@@ -54,6 +63,10 @@ const Dropdown = ({ options, update, instanceId, placeholder }:DropdownProps) =>
         styles={customStyles}
         placeholder={placeholder}
         isSearchable={false}
+        components={{
+          IndicatorSeparator: () => null
+        }}
+        classNamePrefix={'testin'}
         
     />
   )

@@ -183,7 +183,7 @@ const TradeFee = ({
       </Modal>
       </div>
 
-      <div className={styles.content}>
+      <div className={styles.buttonRow}>
         {buttonMap.map((buttonMap) => (
           <button
             key={buttonMap.id}

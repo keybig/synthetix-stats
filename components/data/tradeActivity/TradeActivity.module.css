@@ -45,6 +45,7 @@
 
 .buttonRow {
     margin: 0;
+    display: flex;
 }
 
 .current {
@@ -103,12 +104,8 @@
       padding:1rem;
     }
 
-    .title {
-        padding: 0 1rem;
-    }
-
     .buttonRow {
-        padding: 1rem 0;
+        padding: 0.5rem 0;
     }
 
     .current {
