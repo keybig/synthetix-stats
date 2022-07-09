@@ -8,17 +8,18 @@
   border-radius: 0.625rem;
   padding: 1rem 2rem 0;
   border: 0.125rem solid #ed1eff;
+  flex-wrap: wrap;
 }
 
 .inflationTitle {
   font-size: 0.875rem;
   font-weight: 700;
-  width:max-content;
   margin: 0;
 }
 
 .titleRow {
   display: flex;
+  flex-wrap:wrap;
 }
 
 .icon {
@@ -50,7 +51,12 @@
 
 .keyWrap {
   padding: 0 1rem 0 0;
-  width: 18rem;
+  width: 40%
+}
+
+.inflateWrap {
+  width: 60%;
+  height:10rem;
 }
 
 @media (max-width: 960px) {
@@ -63,5 +69,13 @@
 
   .subtitle {
     margin: 1rem 0 0 0;
+  }
+
+  .keyWrap {
+    width: 100%;
+  }
+
+  .inflateWrap {
+    width: 100%;
   }
 }

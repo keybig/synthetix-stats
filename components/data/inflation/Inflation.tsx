@@ -64,8 +64,8 @@ const Inflation = ({
         <p className={styles.toDate}>{click === 1 ? formatNumber.format(allTimeInflationMain) : click === 10 ? formatNumber.format(allTimeInflationOvm) : formatNumber.format(allTime)}</p>
       </div>
 
-
-      <ResponsiveContainer width={"80%"} height={200}>
+      <div className={styles.inflateWrap}>
+      <ResponsiveContainer>
         <LineChart data={click === 1 ? inflationDataMain : click === 10 ? inflationDataOvm : inflationDataAll}>
           <Line
             type="linear"
@@ -78,6 +78,7 @@ const Inflation = ({
           <XAxis dataKey={"date"} fontSize={14} interval={"preserveStartEnd"} />
         </LineChart>
       </ResponsiveContainer>
+    </div>
 
 
     </div>
