@@ -77,7 +77,7 @@ const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/o
 
   const ovmEightHourWrapper = await fetchTVL(blocks.ovm.ovmEightHourBlock, optimism_url)
   const mainEightHourWrapper = await fetchTVL(blocks.main.mainEightHourBlock, mainnet_url)
-  const allEightHourWrapper = ovmEightHourDebt + ovmEightHourWrapper
+  const allEightHourWrapper = mainEightHourWrapper + ovmEightHourWrapper
 
   const ovmTwelveHourDebt = await fetchTVL(blocks.ovm.ovmTwelveHourBlock, optimism_url)
   const mainTwelveHourDebt = await fetchTVL(blocks.main.mainTwelveHourBlock, mainnet_url)
