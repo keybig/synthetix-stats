@@ -132,58 +132,28 @@ const TotalValueLocked = ({
             data={click === 1 ? mainData : click === 10 ? ovmData : allData}
           >
 
-            <defs>
-              <filter id="dropShadow">
-                <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
-                <feOffset dx="20" dy="4" />
-                <feMerge>
-                  <feMergeNode />
-                  <feMergeNode in="SourceGraphic" />
-                </feMerge>
-              </filter>
-
-
-              <linearGradient id="myGradient" filter="url(#dropShadow)" className="debtLine">
-                <stop offset="0%" stopColor="#31d8a4" opacity={0.1} />
-                <stop offset="20%" stopColor="#31d8a4" opacity={0.3} />
-                <stop offset="30%" stopColor="#31d8a4" opacity={0.5} />
-                <stop offset="70%" stopColor="#31d8a4" opacity={0.7} />
-                <stop offset="100%" stopColor="#31d8a4" />
-              </linearGradient>
-
-
-
-
-
-
-
-            </defs>
-
             <Area
               type="linear"
               dataKey="wrapper"
-              fillOpacity={"80%"}
+              stroke="#ED1EFF"
+              fill="#ED1EFF"
+              fillOpacity={0.6}
+              strokeWidth={2}
               stackId={2}
-              style={{
-                "stroke": "#ED1EFF",
-                "fill": "#ED1EFF",
-
-              }}
-
             />
 
 
             <Area
               type="linear"
               dataKey="debt"
-              stroke="url(#myGradient)"
-              fill="white"
-              fillOpacity={"100%"}
-              strokeWidth={20}
               stackId={2}
-
-
+              fill="#31D8A4"
+              fillOpacity={0.6}
+              stroke="#31D8A4"
+              strokeWidth={2}
             />
+
+
 
             <Tooltip
               content={<CustomToolTip />}
