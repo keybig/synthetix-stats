@@ -10,6 +10,9 @@ import {
   ResponsiveContainer,
   AreaChart,
   Area,
+  ComposedChart,
+  BarChart,
+  Bar,
 } from "recharts";
 import { useMemo, useState } from "react";
 import { formatMoney } from "../../../constants/format";
@@ -60,7 +63,19 @@ const TotalValueLocked = ({
     { value: 3, label: "1 Month" }
   ]
 
+  const dataWrapMap = [
+    { value: 1, label: "1 Day" },
+    { value: 2, label: "1 Week" },
+    { value: 3, label: "1 Month" }
+  ]
+
   const [timeFrame, setTimeFrame] = useState(1);
+
+  const [dataWrap, setDataWrap] = useState(1);
+
+  const handleDataWrap = (option: any) => {
+    setDataWrap(option.value)
+  }
 
   const handleActive = (option: any) => {
     setTimeFrame(option.value);
@@ -128,44 +143,66 @@ const TotalValueLocked = ({
 
       <div className={styles.responsive}>
         <ResponsiveContainer>
-          <AreaChart
+          <ComposedChart
             data={click === 1 ? mainData : click === 10 ? ovmData : allData}
           >
+            <defs>
+              <linearGradient id="wrapperL" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="20%" stopColor="#ED1EFF" stopOpacity={1} />
+                <stop offset="50%" stopColor="#ED1EFF" stopOpacity={0.9} />
+                <stop offset="70%" stopColor="#ED1EFF" stopOpacity={0.9} />
+                <stop offset="90%" stopColor="#ED1EFF" stopOpacity={0.95} />
+                <stop offset="100%" stopColor="#ED1EFF" stopOpacity={1} />
+
+              </linearGradient>
+              <linearGradient id="debtL" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="1%" stopColor="#31D8A4" stopOpacity={0.75} />
+                <stop offset="50%" stopColor="#31D8A4" stopOpacity={0.5} />
+                <stop offset="95%" stopColor="#31D8A4" stopOpacity={0.1} />
+              </linearGradient>
+
+              <filter id="shadow" height="200%">
+                <feDropShadow dx="0" dy="10" stdDeviation="10" />
+              </filter>
+
+             
+
+            </defs>
+            <XAxis dataKey="date" fontSize={14} interval={"preserveStartEnd"} />
+            <YAxis
+              scale={"auto"}
+              allowDataOverflow={true}
+              hide={true}
+            
+            />
 
             <Area
               type="linear"
               dataKey="wrapper"
-              stroke="#ED1EFF"
-              fill="#ED1EFF"
-              fillOpacity={0.6}
-              strokeWidth={2}
-              stackId={2}
+              fill="url(#wrapperL)"
+              fillOpacity={1}
             />
 
 
             <Area
               type="linear"
               dataKey="debt"
-              stackId={2}
-              fill="#31D8A4"
-              fillOpacity={0.6}
-              stroke="#31D8A4"
-              strokeWidth={2}
+              fill="url(#debtL)"
+              fillOpacity={1}
             />
+
+            <Line  type="linear" dataKey="debt" stroke="#31D8A4" strokeWidth={5} dot={false} />
+            <Line  type="linear" dataKey="wrapper" stroke="#ED1EFF" strokeWidth={5} dot={false} />
+
+
 
 
 
             <Tooltip
               content={<CustomToolTip />}
-            />
-            <XAxis dataKey="date" fontSize={14} interval={"preserveStartEnd"} />
-            <YAxis
-              scale={"linear"}
-              allowDataOverflow={true}
-              domain={['auto', 'auto']}
-              hide={true}
-            />
-          </AreaChart>
+            />*
+
+          </ComposedChart>
 
         </ResponsiveContainer>
       </div>
