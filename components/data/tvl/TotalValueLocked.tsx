@@ -128,44 +128,73 @@ const TotalValueLocked = ({
 
       <div className={styles.responsive}>
         <ResponsiveContainer>
-          <AreaChart 
+          <AreaChart
             data={click === 1 ? mainData : click === 10 ? ovmData : allData}
-            >
-      
-      <Area
+          >
+
+            <defs>
+              <filter id="dropShadow">
+                <feGaussianBlur in="SourceAlpha" stdDeviation="2" />
+                <feOffset dx="20" dy="4" />
+                <feMerge>
+                  <feMergeNode />
+                  <feMergeNode in="SourceGraphic" />
+                </feMerge>
+              </filter>
+
+
+              <linearGradient id="myGradient" filter="url(#dropShadow)" className="debtLine">
+                <stop offset="0%" stopColor="#31d8a4" opacity={0.1} />
+                <stop offset="20%" stopColor="#31d8a4" opacity={0.3} />
+                <stop offset="30%" stopColor="#31d8a4" opacity={0.5} />
+                <stop offset="70%" stopColor="#31d8a4" opacity={0.7} />
+                <stop offset="100%" stopColor="#31d8a4" />
+              </linearGradient>
+
+
+
+
+
+
+
+            </defs>
+
+            <Area
               type="linear"
               dataKey="wrapper"
-              stroke="#ED1EFF"
-              fill="#ED1EFF"
-              fillOpacity={"50%"}
-              strokeWidth={2}
+              fillOpacity={"80%"}
               stackId={2}
+              style={{
+                "stroke": "#ED1EFF",
+                "fill": "#ED1EFF",
+
+              }}
+
             />
 
 
             <Area
               type="linear"
               dataKey="debt"
-              stroke="#31D8A4"
-              fill="#31D8A4"
-              fillOpacity={"50%"}
-              strokeWidth={2}
+              stroke="url(#myGradient)"
+              fill="white"
+              fillOpacity={"100%"}
+              strokeWidth={20}
               stackId={2}
-              
-            
-              
+
+
             />
-            
+
             <Tooltip
               content={<CustomToolTip />}
             />
             <XAxis dataKey="date" fontSize={14} interval={"preserveStartEnd"} />
-            <YAxis 
-              scale={"linear"} 
-              allowDataOverflow={true} 
-              domain={['auto', 'auto']} 
-              hide={true}               
-              />
+            <YAxis
+              scale={"linear"}
+              allowDataOverflow={true}
+              domain={['auto', 'auto']}
+              hide={true}
+            />
           </AreaChart>
 
         </ResponsiveContainer>
