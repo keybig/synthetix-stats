@@ -14,7 +14,7 @@ function MyApp({ Component, pageProps,  }: AppProps) {
   return (
     <>
     <Head>
-      <title>The Title</title>
+      <title>SNX Stats</title>
       <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     </Head>
     

@@ -41,7 +41,7 @@
 .protocolCell {
     text-transform: capitalize;
     text-align: left;
-    vertical-align: bottom;
+    vertical-align: middle;
     border-bottom: 0.0625rem solid #828295;
     padding: 0.5rem 0;
     font-weight: 400;
