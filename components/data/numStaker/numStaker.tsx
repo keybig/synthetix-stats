@@ -134,11 +134,8 @@ const NumStaker = ({
         <AreaChart data={click === 1 ? mainData : click === 10 ? ovmData : allData}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="10%" stopColor="#8884d8" stopOpacity={0.3} />
-              <stop offset="25%" stopColor="#8884d8" stopOpacity={0.2} />
-              <stop offset="50%" stopColor="#8884d8" stopOpacity={0.1} />
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0.05} />
-              <stop offset="99%" stopColor="linear-gradient(0deg, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), #402FC8;" stopOpacity={0.1} />
+              <stop offset="5%" stopColor="#402FC8" stopOpacity={1} />
+              <stop offset="95%" stopColor="#402FC8" stopOpacity={0.1} />
 
             </linearGradient>
 
@@ -155,8 +152,9 @@ const NumStaker = ({
             type="linear"
             dataKey="stakers"
             stroke="#8884d8"
-            strokeWidth={2}
+            strokeWidth={3}
             fill="url(#colorUv)"
+            fillOpacity={0.4}
           />
           <Tooltip content={<CustomToolTip />} />
           <YAxis domain={["auto", "auto"]} hide={true} />

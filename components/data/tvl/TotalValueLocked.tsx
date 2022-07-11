@@ -143,22 +143,21 @@ const TotalValueLocked = ({
 
       <div className={styles.responsive}>
         <ResponsiveContainer>
-          <ComposedChart
+          <AreaChart
             data={click === 1 ? mainData : click === 10 ? ovmData : allData}
+          
+           
           >
             <defs>
               <linearGradient id="wrapperL" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="20%" stopColor="#ED1EFF" stopOpacity={1} />
-                <stop offset="50%" stopColor="#ED1EFF" stopOpacity={0.9} />
-                <stop offset="70%" stopColor="#ED1EFF" stopOpacity={0.9} />
-                <stop offset="90%" stopColor="#ED1EFF" stopOpacity={0.95} />
-                <stop offset="100%" stopColor="#ED1EFF" stopOpacity={1} />
+                <stop offset="5%" stopColor="#ED1EFF" stopOpacity={1} />
+                <stop offset="95%" stopColor="#0b0b22" stopOpacity={0.1} />
+              
 
               </linearGradient>
               <linearGradient id="debtL" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="1%" stopColor="#31D8A4" stopOpacity={0.75} />
-                <stop offset="50%" stopColor="#31D8A4" stopOpacity={0.5} />
-                <stop offset="95%" stopColor="#31D8A4" stopOpacity={0.1} />
+                <stop offset="5%" stopColor="#31D8A4" stopOpacity={1} />
+                <stop offset="95%" stopColor="#0b0b22" stopOpacity={0.1} />
               </linearGradient>
 
               <filter id="shadow" height="200%">
@@ -170,9 +169,10 @@ const TotalValueLocked = ({
             </defs>
             <XAxis dataKey="date" fontSize={14} interval={"preserveStartEnd"} />
             <YAxis
-              scale={"auto"}
-              allowDataOverflow={true}
+              scale={"linear"}
               hide={true}
+              interval="preserveStartEnd"
+              tickCount={5}
             
             />
 
@@ -180,7 +180,10 @@ const TotalValueLocked = ({
               type="linear"
               dataKey="wrapper"
               fill="url(#wrapperL)"
-              fillOpacity={1}
+              fillOpacity={0.6}
+              stackId={2}
+              strokeWidth={5}
+              stroke="#ED1EFF"
             />
 
 
@@ -188,21 +191,18 @@ const TotalValueLocked = ({
               type="linear"
               dataKey="debt"
               fill="url(#debtL)"
-              fillOpacity={1}
+              fillOpacity={0.6}
+              stackId={2}
+              strokeWidth={5}
+              stroke="#31D8A4"
             />
-
-            <Line  type="linear" dataKey="debt" stroke="#31D8A4" strokeWidth={5} dot={false} />
-            <Line  type="linear" dataKey="wrapper" stroke="#ED1EFF" strokeWidth={5} dot={false} />
-
-
-
-
+            
 
             <Tooltip
               content={<CustomToolTip />}
-            />*
+            />
 
-          </ComposedChart>
+          </AreaChart>
 
         </ResponsiveContainer>
       </div>
