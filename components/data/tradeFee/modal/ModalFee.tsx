@@ -168,11 +168,62 @@ const TradeFee = ({
                 {
                   pieData.map((entry, index) => (
                     <Cell
-                      key={`cell-${index}`}
-                      fill={color[index % color.length]}
-                      fillOpacity={"60%"}
-                      stroke={color[index % color.length]}
-                      strokeWidth={2}
+                    key={`cell-${index}`}
+                    fill={
+                      entry.name === "KWENTA" ?
+                      "#FFD75C" :
+                      entry.name === "CURVE" ?
+                      "#ED1EFF" :
+                      entry.name === "1INCH" ?
+                      "#00D1FF" :
+                      entry.name === "LYRA" ?
+                      "#31D8A4" : 
+                      entry.name === "DHEDGE" ?
+                      "#FC8738" :
+                      entry.name === "SX" ?
+                      "#0b03fc" :
+                      entry.name === "ENZYME" ?
+                      "#fc03e3" :
+                      entry.name === "ibAMM" ?
+                      "#20fc03" :
+                      entry.name === "YEARN" ?
+                      "#03fca5" :
+                      entry.name === "SADDLE" ?
+                      "#9403fc" :
+                      entry.name === "OTHER" ?
+                      "#21cdfc" :
+                      entry.name === "0" ?
+                      "#fc0303" :
+                      "FF8042"}
+                    fillOpacity={"50%"}
+                    stroke={
+                      entry.name === "KWENTA" ?
+                      "#FFD75C" :
+                      entry.name === "CURVE" ?
+                      "#ED1EFF" :
+                      entry.name === "1INCH" ?
+                      "#00D1FF" :
+                      entry.name === "LYRA" ?
+                      "#31D8A4" : 
+                      entry.name === "DHEDGE" ?
+                      "#FC8738" :
+                      entry.name === "SX" ?
+                      "#0b03fc" :
+                      entry.name === "ENZYME" ?
+                      "#fc03e3" :
+                      entry.name === "ibAMM" ?
+                      "#20fc03" :
+                      entry.name === "YEARN" ?
+                      "#03fca5" :
+                      entry.name === "SADDLE" ?
+                      "#9403fc" :
+                      entry.name === "OTHER" ?
+                      "#21cdfc" :
+                      entry.name === "0" ?
+                      "#fc0303" :
+                      "FF8042"
+                    }
+                    strokeWidth={2}
                     />
                   ))
                 }
