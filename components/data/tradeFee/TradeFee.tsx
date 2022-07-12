@@ -247,7 +247,7 @@ const TradeFee = ({
                       entry.name === "0" ?
                       "#fc0303" :
                       "FF8042"}
-                    fillOpacity={0.35}
+                    fillOpacity={0.3}
                     stroke={
                       entry.name === "KWENTA" ?
                       "#FFD75C" :
@@ -278,7 +278,7 @@ const TradeFee = ({
                     strokeWidth={2}
                     strokeOpacity={1}
                     style={{
-                      filter: `drop-shadow(0px 0px 0.7px ${
+                      filter: `drop-shadow(0px 0px 7px ${
                         entry.name === "KWENTA" ?
                       "#FFD75C" :
                       entry.name === "CURVE" ?
