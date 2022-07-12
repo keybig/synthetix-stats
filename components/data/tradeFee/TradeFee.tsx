@@ -201,6 +201,12 @@ const TradeFee = ({
         <div className={styles.pieWrap}>
           <ResponsiveContainer>
             <PieChart>
+              <defs>
+              <filter id="shadow" height="200%">
+                <feDropShadow dx="0" dy="10" stdDeviation="10" floodColor={"#FFD75C"} />
+               
+              </filter>
+              </defs>
               <Pie
                 dataKey="value"
                 nameKey="name"
@@ -241,7 +247,7 @@ const TradeFee = ({
                       entry.name === "0" ?
                       "#fc0303" :
                       "FF8042"}
-                    fillOpacity={"50%"}
+                    fillOpacity={0.35}
                     stroke={
                       entry.name === "KWENTA" ?
                       "#FFD75C" :
@@ -270,6 +276,38 @@ const TradeFee = ({
                       "FF8042"
                     }
                     strokeWidth={2}
+                    strokeOpacity={1}
+                    style={{
+                      filter: `drop-shadow(0px 0px 0.7px ${
+                        entry.name === "KWENTA" ?
+                      "#FFD75C" :
+                      entry.name === "CURVE" ?
+                      "#ED1EFF" :
+                      entry.name === "1INCH" ?
+                      "#00D1FF" :
+                      entry.name === "LYRA" ?
+                      "#31D8A4" : 
+                      entry.name === "DHEDGE" ?
+                      "#FC8738" :
+                      entry.name === "SX" ?
+                      "#0b03fc" :
+                      entry.name === "ENZYME" ?
+                      "#fc03e3" :
+                      entry.name === "ibAMM" ?
+                      "#20fc03" :
+                      entry.name === "YEARN" ?
+                      "#03fca5" :
+                      entry.name === "SADDLE" ?
+                      "#9403fc" :
+                      entry.name === "OTHER" ?
+                      "#21cdfc" :
+                      entry.name === "0" ?
+                      "#fc0303" :
+                      "FF8042"
+                      }`
+                    }}
+                  
+                    
                   />
                 ))
               }
