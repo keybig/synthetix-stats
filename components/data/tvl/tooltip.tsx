@@ -25,7 +25,6 @@ const CustomTooltip = ({
     const debtVal = payload && payload[1].value
     const wrapperVal = payload && payload[0].value
     const tvl = debtVal && wrapperVal ? debtVal + wrapperVal : 0
-    console.log(payload)
   
     return (
       <div className={styles.TTwrap}>

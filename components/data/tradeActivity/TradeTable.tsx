@@ -175,7 +175,6 @@ const TradeTable = ({
               <tr key={key} {...restHeaderGroupProps} className={styles.headRow}>
                 {headerGroup.headers.map((column) => {
                   const { key, ...restColumn } = column.getHeaderProps(column.getSortByToggleProps());
-                  console.log(headerGroup)
                   return (
                     <th key={key} {...restColumn} className={styles.headKey}>
                       {column.render("Header")}
@@ -207,7 +206,6 @@ const TradeTable = ({
               <tr key={key} {...restRowProps} className={styles.mainRow}>
                 {row.cells.map((cell) => {
                   const { key, ...restCellProps } = cell.getCellProps();
-                  console.log(`test ${cell.column.Header}`)
                   return (
                     <td key={key} {...restCellProps} className={
                       cell.column.Header === "Protocol" ?

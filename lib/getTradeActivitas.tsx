@@ -394,8 +394,7 @@ export const activa = async() => {
      const dailyTotalFeeMain = dailyTradeMain.dayFeeData
      const dailyFeeCollectMain = dailyTradeMain.dayTotalFee
 
-     console.log(dailyFeeCollectMain)
-     console.log(dailyFeeCollectOvm)
+     
 
 
       // 7 day
@@ -589,9 +588,7 @@ export const activa = async() => {
         return acc;
       }, []);
 
-      console.log(allDailyFeeArr)
-      console.log(allDailyFee)
-      console.log(allSevenFeeArr)
+     
 
 
 
