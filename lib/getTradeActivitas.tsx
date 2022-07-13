@@ -41,17 +41,17 @@ export const activa = async() => {
       
         const tradeDataArrTemp: any[] = [];
         const tradeFeeArrTemp: any[] = [];
-      
+      1
         tradeDataCall.forEach((item) => {
           if (item.usdVolume.toNumber() > 500000) {           
           const obj = {
-            col1: item.id === undefined ? null : item.id,
+            col1: item.id === undefined ? null : item.id === "0" ? "LYRA" : item.id,
             col2: item.trades.toNumber(),
             col3: item.usdVolume.toNumber(),
           };
           tradeDataArrTemp.push(obj);
           const feeObj = {
-            name: item.id === undefined ? null : item.id,
+            name: item.id === undefined ? null : item.id === "0" ? "LYRA" : item.id,
             value: item.usdFees.toNumber(),
           };
           tradeFeeArrTemp.push(feeObj);
@@ -289,8 +289,7 @@ export const activa = async() => {
           network,
         {
           where: { 
-            timestamp_gte: startTime,
-            usdVolume_gt: 100
+            timestamp_gte: startTime
            },
           orderBy: "timestamp",
           orderDirection: "desc",
@@ -307,8 +306,9 @@ export const activa = async() => {
       const dayTradeDataArr: any[] = [];
     
       dayEpochTradeData.forEach((item) => {
+        const partner = item.partner === undefined ? null : item.partner === "0" ? "LYRA" : item.partner
         const obj = {
-          col1: item.partner.toString(),
+          col1: partner,
           col2: item.trades.toNumber(),
           col3: item.usdVolume.toNumber(),
         };
@@ -342,8 +342,9 @@ export const activa = async() => {
         const dayFeeDataArr: any[] = [];
     
         dayEpochTradeData.forEach((item) => {
+          const partner = item.partner === undefined ? null : item.partner === "0" ? "LYRA" : item.partner
             const obj = {
-              name: item.partner === undefined ? null : item.partner,
+              name:  partner,
               value: item.usdFees.toNumber(),
             };
            dayFeeDataArr.push(obj);
@@ -392,6 +393,9 @@ export const activa = async() => {
      const dailyTotalTradeMain = dailyTradeMain.dayTradeNum
      const dailyTotalFeeMain = dailyTradeMain.dayFeeData
      const dailyFeeCollectMain = dailyTradeMain.dayTotalFee
+
+     console.log(dailyFeeCollectMain)
+     console.log(dailyFeeCollectOvm)
 
 
       // 7 day
@@ -525,65 +529,69 @@ export const activa = async() => {
       }, []);
 
       const allTotalFee = allTotalTradeFeeArr.reduce((acc, cur) => {
-        const { name, value, percent } = cur;
-        const item = acc.find((it: { name: string }) => it.name === name);
+        const item = acc.find((it: { name: string }) => it.name === cur.name);
         if (item) {
-          item.value += value;
+          item.value += cur.value;
           item.percent = formatPercentDec.format((item.value)/feeCollectAll)
         } else {
-          acc.push({ name, value, percent });
+          cur.percent = formatPercentDec.format((cur.value)/feeCollectAll)
+          acc.push(cur);
         }
         return acc;
       }, []);
 
       const allSevenFee = allSevenFeeArr.reduce((acc, cur) => {
-        const { name, value, percent } = cur;
-        const item = acc.find((it: { name: string }) => it.name === name);
+        const item = acc.find((it: { name: string }) => it.name === cur.name);
         if (item) {
-          item.value += value;
+          item.value += cur.value;
           item.percent = formatPercentDec.format((item.value)/allSevenFeeCollect)
         } else {
-          acc.push({ name, value, percent });
+          cur.percent = formatPercentDec.format((cur.value)/allSevenFeeCollect)
+          acc.push(cur);
         }
         return acc;
       }, []);
 
       const allThirtyFee = allThirtyFeeArr.reduce((acc, cur) => {
-        const { name, value, percent } = cur;
-        const item = acc.find((it: { name: string }) => it.name === name);
+        const item = acc.find((it: { name: string }) => it.name === cur.name);
         if (item) {
-          item.value += value;
+          item.value += cur.value;
           item.percent = formatPercentDec.format((item.value)/allThirtyFeeCollect)
         } else {
-          acc.push({ name, value, percent });
+          cur.percent = formatPercentDec.format((cur.value)/allThirtyFeeCollect)
+          acc.push(cur);
         }
         return acc;
       }, []);
 
       const allNinetyFee = allNinetyFeeArr.reduce((acc, cur) => {
-        const { name, value, percent } = cur;
-        const item = acc.find((it: { name: string }) => it.name === name);
+        const item = acc.find((it: { name: string }) => it.name === cur.name);
         if (item) {
-          item.value += value;
+          item.value += cur.value;
           item.percent = formatPercentDec.format((item.value)/allNinetyFeeCollect)
         } else {
-          acc.push({ name, value, percent });
+          cur.percent = formatPercentDec.format((cur.value)/allNinetyFeeCollect)
+          acc.push(cur);
         }
+
         return acc;
       }, []);
 
       const allDailyFee = allDailyFeeArr.reduce((acc, cur) => {
-        const { name, value, percent } = cur;
-        const item = acc.find((it: { name: string }) => it.name === name);
+        const item = acc.find((it: { name: string }) => it.name === cur.name);
         if (item) {
-          item.value += value;
-          item.percent = formatPercentDec.format((item.value)/allDailyFeeCollect)
+          item.value += cur.value;
+          item.percent = formatPercentDec.format(item.value/allDailyFeeCollect)
         } else {
-          acc.push({ name, value, percent });
+          cur.percent = formatPercentDec.format(cur.value/allDailyFeeCollect)
+          acc.push(cur);
         }
         return acc;
       }, []);
 
+      console.log(allDailyFeeArr)
+      console.log(allDailyFee)
+      console.log(allSevenFeeArr)
 
 
 
