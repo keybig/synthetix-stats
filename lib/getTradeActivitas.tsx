@@ -243,6 +243,7 @@ export const activa = async() => {
      const dailyTotalTradeMain = dailyTradeMain.dayTradeNum
      const dailyTotalFeeMain = dailyTradeMain.dayFeeData
      const dailyFeeCollectMain = dailyTradeMain.dayTotalFee
+     console.log(`dfcm: ${dailyFeeCollectMain}`)
 
      
 
@@ -502,7 +503,19 @@ allThirtyFee,
 allNinetyFee,
 feeCollectAll,
 feeCollectMain,
-feeCollectOvm
+feeCollectOvm,
+dailyFeeCollectMain,
+dailyFeeCollectOvm,
+allDailyFeeCollect,
+sevenFeeCollectMain,
+sevenFeeCollectOvm,
+allSevenFeeCollect,
+thirtyFeeCollectMain,
+thirtyFeeCollectOvm,
+allThirtyFeeCollect,
+ninetyFeeCollectMain,
+ninetyFeeCollectOvm,
+allNinetyFeeCollect
    
   };
 };

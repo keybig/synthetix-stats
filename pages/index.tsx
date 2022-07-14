@@ -157,6 +157,18 @@ const Home = (props: any) => {
           feeAll={props.active.feeCollectAll}
           feeMain={props.active.feeCollectMain}
           feeOvm={props.active.feeCollectOvm}
+          dailyFeeCollectOvm={props.active.dailyFeeCollectOvm}
+          dailyFeeCollectMain={props.active.dailyFeeCollectMain}
+          allDailyFeeCollect={props.active.allDailyFeeCollect}
+          sevenFeeCollectMain={props.active.sevenFeeCollectMain}
+          sevenFeeCollectOvm={props.active.sevenFeeCollectOvm}
+          allSevenFeeCollect={props.active.allSevenFeeCollect}
+          thirtyFeeCollectMain={props.active.thirtyFeeCollectMain}
+          thirtyFeeCollectOvm={props.active.thirtyFeeCollectOvm}
+          allThirtyFeeCollect={props.active.allThirtyFeeCollect}
+          ninetyFeeCollectMain={props.active.ninetyFeeCollectMain}
+          ninetyFeeCollectOvm={props.active.ninetyFeeCollectOvm}
+          allNinetyFeeCollect={props.active.allNinetyFeeCollect}
         />
 
         <MoreStats/>
