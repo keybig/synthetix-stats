@@ -43,13 +43,13 @@ export const stakit = async () => {
     const issuersMain = snxMain.issuers
     const holdersMain = snxMain.snxHolders
 
-    const snxHolderTotal = async (network: string, holders: number) => {
+    const snxHolderTotal = async (network: string, issuers: number) => {
         const snxHolderTotal = await getSNXHolders(
             network,
             {
                 orderBy: 'balanceOf',
                 orderDirection: 'desc',
-                first: holders,
+                first: issuers,
             }, {
             id: true,
             balanceOf: true,
@@ -64,8 +64,8 @@ export const stakit = async () => {
 
     }
 
-    const totalSupplyOvm = await snxHolderTotal(optimism_url, holdersOvm)
-    const totalSupplyMain = await snxHolderTotal(mainnet_url, holdersMain)
+    const totalSupplyOvm = await snxHolderTotal(optimism_url, issuersOvm)
+    const totalSupplyMain = await snxHolderTotal(mainnet_url, issuersMain)
 
     const snxStakerCall = async (network: string, holders: number) => {
         const snxStakerTotal = await getSNXHolders(
