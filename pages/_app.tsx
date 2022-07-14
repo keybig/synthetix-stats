@@ -1,12 +1,7 @@
 import type { AppProps } from 'next/app'
-import useSynthetixQueries, { createQueryContext, SynthetixQueryContextProvider } from '@synthetixio/queries'
-import { QueryClient, QueryClientProvider } from 'react-query'
-import { ReactQueryDevtools } from 'react-query/devtools'
 import '../styles/globals.css'
 import Layout from '../components/layout/Layout'
 import Head from 'next/head'
-import { useContext, useState } from 'react'
-import { NetworkId } from '@synthetixio/contracts-interface'
 
 
 function MyApp({ Component, pageProps,  }: AppProps) {
