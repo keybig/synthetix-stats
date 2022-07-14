@@ -28,7 +28,6 @@ interface Props {
   thirtyFeeMain: any[]
   ninetyFeeOvm: any[]
   ninetyFeeMain: any[]
-  totalIssuedSynth: number;
   click: number;
   ovmTotalSynth: number;
   mainTotalSynth: number;

@@ -2,12 +2,7 @@ import NetworkNavBar from "../components/network/NetworkNavBar";
 import Subheader from "../components/subheader/Subheader";
 import { useState } from "react";
 import { useRouter } from "next/router";
-import { staking } from "../lib/getStaker";
-import { getTradeActivity } from "../lib/getTradeActivity";
 import { getTvl } from "../lib/getTVLy";
-import { numStaker } from "../lib/getNumStaker";
-import { blocky } from "../lib/getBlock";
-import { getDebtStates } from "../subgraph-ovm";
 import styles from "../styles/Main.module.css";
 import SnxStaked from "../components/data/snxStaked/SnxStaked";
 import TotalValueLocked from "../components/data/tvl/TotalValueLocked";
@@ -149,7 +144,6 @@ const Home = (props: any) => {
         />
 
         <TradeFee
-          totalIssuedSynth={props.tradey.totalSynth}
           click={netId}
           totalFeeAll={props.active.allTotalFee}
           totalFeeMain={props.active.totalFeeMain}
@@ -184,7 +178,6 @@ const Home = (props: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const tradey = await getTradeActivity();
   const theTVL = await getTvl();
   const staka = await stakit()
   const numberStake = await numStakey()
@@ -195,7 +188,6 @@ export async function getStaticProps() {
   return {
     props: {
       theTVL,
-      tradey,
       staka,
       numberStake,
       active
