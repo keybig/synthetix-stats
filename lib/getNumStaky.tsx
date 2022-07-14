@@ -1,4 +1,4 @@
-import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getSynths } from "../subgraph-ovm";
+import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getSynths, getTotalActiveStakers } from "../subgraph-ovm";
 import { blocky } from "./getBlocky";
 import getTime from "./getTime";
 
@@ -13,13 +13,13 @@ export const numStakey = async () => {
 
     const fetchNumStaker = async (network: string, block:number) => {
         
-        const snxStaker = await getSynthetixById(
+        const snxStaker = await getTotalActiveStakers(
             network,
-            { id: "1", block: { number: block } },
-            { issuers: true },
+            { block: { number: block } },
+            { count: true },
         )
 
-        const issuers = snxStaker.issuers.toNumber()
+        const issuers = snxStaker[0].count.toNumber()
 
         return issuers
     }

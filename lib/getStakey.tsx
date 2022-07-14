@@ -27,7 +27,7 @@ export const stakit = async () => {
         )
 
         const issuers = snxAll.issuers.toNumber()
-        const snxHolders = snxAll.issuers.toNumber()
+        const snxHolders = snxAll.snxHolders.toNumber()
 
         return {
             issuers,
@@ -67,14 +67,14 @@ export const stakit = async () => {
     const totalSupplyOvm = await snxHolderTotal(optimism_url, holdersOvm)
     const totalSupplyMain = await snxHolderTotal(mainnet_url, holdersMain)
 
-    const snxStakerCall = async (network: string, issuers: number) => {
+    const snxStakerCall = async (network: string, holders: number) => {
         const snxStakerTotal = await getSNXHolders(
             network,
             {
                 orderBy: 'collateral',
                 orderDirection: 'desc',
-                first: issuers,
-                where: { initialDebtOwnership_not: 0, collateral_gte: 1 }
+                first: holders,
+                where: { initialDebtOwnership_not: 0 }
 
             }, {
             id: true,
@@ -90,8 +90,8 @@ export const stakit = async () => {
 
     }
 
-    const totalStakeOvm = await snxStakerCall(optimism_url, issuersOvm)
-    const totalStakeMain = await snxStakerCall(mainnet_url, issuersMain)
+    const totalStakeOvm = await snxStakerCall(optimism_url, holdersOvm)
+    const totalStakeMain = await snxStakerCall(mainnet_url, holdersMain)
     const totalStakeAll = totalStakeMain + totalStakeOvm
 
     const stakeValueOvm = totalStakeOvm * snxRate

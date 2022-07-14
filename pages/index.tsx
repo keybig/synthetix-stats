@@ -184,9 +184,7 @@ const Home = (props: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const stakeParent = await staking();
   const tradey = await getTradeActivity();
-  const numStake = await numStaker();
   const theTVL = await getTvl();
   const staka = await stakit()
   const numberStake = await numStakey()
@@ -196,8 +194,6 @@ export async function getStaticProps() {
 
   return {
     props: {
-      stakeParent,
-      numStake,
       theTVL,
       tradey,
       staka,
