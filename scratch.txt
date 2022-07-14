@@ -1,9 +1,0 @@
-checklist:
-
-inflation y-axis
-numstaker y-axis
-
-convert all px to rem (static units to dynamic units)
-justify-content on main grid
-increase margins on increasing screen size
-responsive container aspect-ratio

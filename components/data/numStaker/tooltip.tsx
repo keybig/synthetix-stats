@@ -1,9 +1,5 @@
 import { TooltipProps } from 'recharts';
-import {
-  ValueType,
-  NameType,
-} from 'recharts/src/component/DefaultTooltipContent';
-import { formatMoney, formatNumber } from '../../../constants/format';
+import { formatNumber } from '../../../constants/format';
 import styles from './Tooltip.module.css'
 
 // date

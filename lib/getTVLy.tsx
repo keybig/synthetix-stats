@@ -1,15 +1,11 @@
-import useSynthetixQueries from "@synthetixio/queries";
-import { useEffect, useState } from "react";
 import getTime from "../lib/getTime";
-import { getDebtStates, getRateUpdates, getWrappers } from "../subgraph-ovm";
+import { getDebtStates, getWrappers } from "../subgraph-ovm";
 import { blocky } from '../lib/getBlocky'
 
 
 
   // start data collection at 5 minutes ago to allow data sync
 
-  const ts = Math.floor((Date.now() / 1e3));
-  const { times } = getTime()
   const { timeStamp } = getTime()
 
   const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"

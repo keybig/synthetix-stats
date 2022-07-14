@@ -1,6 +1,5 @@
 import styles from "./StakeAPY.module.css";
 import { formatPercent } from "../../../constants/format";
-import { useMemo } from "react";
 import InfoTooltip from "../../infoToolTip/InfoTooltip";
 import {RiInformationFill} from "react-icons/ri"
 

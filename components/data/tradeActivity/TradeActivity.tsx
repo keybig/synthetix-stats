@@ -1,12 +1,11 @@
 import styles from "./TradeActivity.module.css";
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import TradeTable from "./TradeTable";
 import { formatMoney, formatNumber } from "../../../constants/format";
 import Modal from '../../modal/Modal'
 import ModalTable from './modal/ModalTable'
 import {RiInformationFill} from "react-icons/ri"
 import {RiFullscreenLine} from "react-icons/ri"
-import {MdFullscreen} from "react-icons/md"
 import InfoTooltip from '../../infoToolTip/InfoTooltip'
 
 interface TradeStats {
@@ -39,9 +38,7 @@ interface TradeStats {
   ninetyTradeMain: number
 
 
-  currentTradeDataAll: any[]
-  currentTradeDataMain: any[]
-  currentTradeDataOvm: any[]
+ 
   dailyTradeDataOvm: any[]
   dailyTradeDataMain: any[]
   sevenTradeDataOvm: any[]
@@ -56,12 +53,7 @@ interface TradeStats {
   allNinetyTradeData: any[]
 
 
-  currentTotalVolMain: number
-  currentTotalVolOvm: number
-
-
-  currentTotalTradeMain: number
-  currentTotalTradeOvm: number
+  
 }
 const TradeActivity = ({
   click,
@@ -72,12 +64,7 @@ const TradeActivity = ({
   totalVolOvm,
   totalTradeOvm,
   dailyTradeDataMain,
-  currentTotalVolMain,
-  currentTotalTradeMain,
   dailyTradeDataOvm,
-  currentTotalVolOvm,
-  currentTotalTradeOvm,
-  currentTradeDataAll,
   tradeDataAll,
   sevenTradeDataMain,
   sevenTradeDataOvm,
@@ -124,14 +111,6 @@ const TradeActivity = ({
     setModalOpen(false)
   }
 
-  const close = () => {
-
-    setModalOpen(false);
-
-  }
-  const open = () => {
-    setModalOpen(true);
-  }
   //
   const handleActive = (buttons: any) => {
     setTimeFrame(buttons.id);
@@ -237,12 +216,7 @@ const TradeActivity = ({
           totalVolOvm={totalVolOvm}
           totalTradeOvm={totalTradeOvm}
           dailyTradeDataMain={dailyTradeDataMain}
-          currentTotalVolMain={currentTotalVolMain}
-          currentTotalTradeMain={currentTotalTradeMain}
           dailyTradeDataOvm={dailyTradeDataOvm}
-          currentTotalVolOvm={currentTotalVolOvm}
-          currentTotalTradeOvm={currentTotalTradeOvm}
-          currentTradeDataAll={currentTradeDataAll}
           tradeDataAll={tradeDataAll}
           sevenTradeDataMain={sevenTradeDataMain}
           sevenTradeDataOvm={sevenTradeDataOvm}
@@ -270,8 +244,6 @@ const TradeActivity = ({
           ninetyVolOvm={ninetyVolOvm}
           ninetyTradeMain={ninetyTradeMain}
           ninetyTradeOvm={ninetyTradeOvm}
-          currentTradeDataMain={currentTradeDataAll}
-          currentTradeDataOvm={currentTradeDataAll}
 
           />
 
@@ -295,12 +267,10 @@ const TradeActivity = ({
       <div>
         <TradeTable
           click={click}
-          modal={modalOpen}
           tableId={timeFrame}
           totalTradeStatsAll={tradeDataAll}
           totalTradeStatsMain={tradeDataMain}
           totalTradeStatsOvm={tradeDataOvm}
-          currentTradeStatsAll={currentTradeDataAll}
           dailyTradeStatsMain={dailyTradeDataMain}
           dailyTradeStatsOvm={dailyTradeDataOvm}
           sevenTradeStatsMain={sevenTradeDataMain}

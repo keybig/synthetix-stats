@@ -1,12 +1,8 @@
 import styles from "./numStaker.module.css";
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   AreaChart,
   Area,
@@ -16,7 +12,6 @@ import { formatNumber } from "../../../constants/format";
 import CustomToolTip from './tooltip'
 import InfoTooltip from "../../infoToolTip/InfoTooltip";
 import { RiInformationFill } from "react-icons/ri"
-import Select from 'react-select'
 import Dropdown from '../../dropdown/Dropdown'
 
 
@@ -58,13 +53,6 @@ const NumStaker = ({
   const allStaker = formatNumber.format(currentStakerAll)
   const ovmStaker = formatNumber.format(currentStakerOvm)
   const mainStaker = formatNumber.format(currentStakerMain)
-
-  const buttonMap = [
-    { id: 1, title: "Daily" },
-    { id: 2, title: "1 Week" },
-    { id: 3, title: "1 Month" },
-    //{ id: 4, title: "one Year" }
-  ];
 
   const optionMap = [
     { value: 1, label: "1 Day" },

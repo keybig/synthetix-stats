@@ -1,4 +1,4 @@
-import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getSynths, getTotalActiveStakers } from "../subgraph-ovm";
+import { getTotalActiveStakers } from "../subgraph-ovm";
 import { blocky } from "./getBlocky";
 import getTime from "./getTime";
 

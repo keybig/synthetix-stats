@@ -1,8 +1,7 @@
 import styles from "./ModalFee.module.css";
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from "recharts";
 import { useState } from "react";
-import TradeFeeTable from ".././TradeFeeTable";
-import { formatMoney, formatNumber } from "../../../../constants/format";
+import { formatMoney } from "../../../../constants/format";
 import CustomToolTip from '.././tradeFeeTT'
 import { RiFullscreenLine, RiInformationFill } from "react-icons/ri"
 import InfoTooltip from "../../../infoToolTip/InfoTooltip";
@@ -29,9 +28,6 @@ interface Props {
   ninetyFeeOvm: any[]
   ninetyFeeMain: any[]
   click: number;
-  ovmTotalSynth: number;
-  mainTotalSynth: number;
-  allTotalSynth: number;
   feeOvm: number;
   feeMain: number;
   feeAll: number;
@@ -43,9 +39,6 @@ const TradeFee = ({
   totalFeeAll,
   totalFeeMain,
   totalFeeOvm,
-  mainTotalSynth,
-  ovmTotalSynth,
-  allTotalSynth,
   dailyFeeMain,
   dailyFeeOvm,
   sevenFeeMain,
@@ -108,9 +101,7 @@ const TradeFee = ({
           totalFeeAll
 
 
-  const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#f60ce6", "#ed1515", "#21cdfc"];
-  const color = ["#FFD75C", "#00D1FF", "#ED1EFF", "#FC8738", "#31D8A4", "#fc0303", "#0b03fc", "#fc03e3", "#20fc03", "#03fca5", "#9403fc"]
-
+  
   const pieData = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 
   const ttInfo = `Fees Earned by SNX Protocol. Updated every 15 minutes.`
@@ -194,7 +185,7 @@ const TradeFee = ({
                       entry.name === "0" ?
                       "#fc0303" :
                       "FF8042"}
-                    fillOpacity={"50%"}
+                    fillOpacity={0.3}
                     stroke={
                       entry.name === "KWENTA" ?
                       "#FFD75C" :
@@ -223,7 +214,39 @@ const TradeFee = ({
                       "FF8042"
                     }
                     strokeWidth={2}
-                    />
+                    strokeOpacity={1}
+                    style={{
+                      filter: `drop-shadow(0px 0px 7px ${
+                        entry.name === "KWENTA" ?
+                      "#FFD75C" :
+                      entry.name === "CURVE" ?
+                      "#ED1EFF" :
+                      entry.name === "1INCH" ?
+                      "#00D1FF" :
+                      entry.name === "LYRA" ?
+                      "#31D8A4" : 
+                      entry.name === "DHEDGE" ?
+                      "#FC8738" :
+                      entry.name === "SX" ?
+                      "#0b03fc" :
+                      entry.name === "ENZYME" ?
+                      "#fc03e3" :
+                      entry.name === "ibAMM" ?
+                      "#20fc03" :
+                      entry.name === "YEARN" ?
+                      "#03fca5" :
+                      entry.name === "SADDLE" ?
+                      "#9403fc" :
+                      entry.name === "OTHER" ?
+                      "#21cdfc" :
+                      entry.name === "0" ?
+                      "#fc0303" :
+                      "FF8042"
+                      }`
+                    }}
+                  
+                    
+                  />
                   ))
                 }
               </Pie>

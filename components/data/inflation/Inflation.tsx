@@ -1,7 +1,5 @@
 import styles from "./Inflation.module.css";
-import styled from "styled-components";
 import {
-  Legend,
   Line,
   LineChart,
   ResponsiveContainer,
@@ -19,8 +17,10 @@ interface Inflation {
   click: number;
   currentRewardOvm: number;
   currentRewardMain: number;
+  currentRewardAll: number;
   allTimeInflationOvm: number;
   allTimeInflationMain: number;
+  allTimeInflationAll: number;
   inflationDataOvm: any[];
   inflationDataMain: any[];
   inflationDataAll: any[];
@@ -30,15 +30,17 @@ const Inflation = ({
   click,
   currentRewardMain,
   currentRewardOvm,
+  currentRewardAll,
   allTimeInflationMain,
   allTimeInflationOvm,
+  allTimeInflationAll,
   inflationDataMain,
   inflationDataOvm,
   inflationDataAll
 }: Inflation) => {
 
-  const allReward = currentRewardMain + currentRewardOvm
-  const allTime = allTimeInflationMain + allTimeInflationOvm
+  //const allReward = currentRewardMain + currentRewardOvm
+ // const allTime = allTimeInflationMain + allTimeInflationOvm
 
   const ttInfo = `Weekly SNX Staking Rewards. Updated Weekly`
 
@@ -59,9 +61,9 @@ const Inflation = ({
           </InfoTooltip>
         </div>
         <h5 className={styles.subtitle}>Current Epoch</h5>
-        <p className={styles.currentEpoch}>{click === 1 ? formatNumber.format(currentRewardMain) : click === 10 ? formatNumber.format(currentRewardOvm) : formatNumber.format(allReward)}</p>
+        <p className={styles.currentEpoch}>{click === 1 ? formatNumber.format(currentRewardMain) : click === 10 ? formatNumber.format(currentRewardOvm) : formatNumber.format(currentRewardAll)}</p>
         <h5 className={styles.subtitle}>Up to date</h5>
-        <p className={styles.toDate}>{click === 1 ? formatNumber.format(allTimeInflationMain) : click === 10 ? formatNumber.format(allTimeInflationOvm) : formatNumber.format(allTime)}</p>
+        <p className={styles.toDate}>{click === 1 ? formatNumber.format(allTimeInflationMain) : click === 10 ? formatNumber.format(allTimeInflationOvm) : formatNumber.format(allTimeInflationAll)}</p>
       </div>
 
       <div className={styles.inflateWrap}>

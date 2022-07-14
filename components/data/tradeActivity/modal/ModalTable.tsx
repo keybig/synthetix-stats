@@ -1,6 +1,5 @@
 import styles from "./ModalTable.module.css";
-import { useState, useMemo } from "react";
-import TradeTable from "../TradeTable";
+import { useState } from "react";
 import { formatMoney, formatNumber } from "../../../../constants/format";
 import ModalTradeTable from "./ModalTradeTable";
 import { RiFullscreenLine, RiInformationFill } from "react-icons/ri"
@@ -38,9 +37,7 @@ interface ModalTradeStats {
   ninetyTradeMain: number
 
 
-  currentTradeDataAll: any[]
-  currentTradeDataMain: any[]
-  currentTradeDataOvm: any[]
+
   dailyTradeDataOvm: any[]
   dailyTradeDataMain: any[]
   sevenTradeDataOvm: any[]
@@ -53,14 +50,6 @@ interface ModalTradeStats {
   allSevenTradeData: any[]
   allThirtyTradeData: any[]
   allNinetyTradeData: any[]
-
-
-  currentTotalVolMain: number
-  currentTotalVolOvm: number
-
-
-  currentTotalTradeMain: number
-  currentTotalTradeOvm: number
 }
 const ModalTable = ({
   closeModal,
@@ -72,12 +61,7 @@ const ModalTable = ({
   totalVolOvm,
   totalTradeOvm,
   dailyTradeDataMain,
-  currentTotalVolMain,
-  currentTotalTradeMain,
   dailyTradeDataOvm,
-  currentTotalVolOvm,
-  currentTotalTradeOvm,
-  currentTradeDataAll,
   tradeDataAll,
   sevenTradeDataMain,
   sevenTradeDataOvm,
@@ -228,7 +212,6 @@ const ModalTable = ({
           totalTradeStatsAll={tradeDataAll}
           totalTradeStatsMain={tradeDataMain}
           totalTradeStatsOvm={tradeDataOvm}
-          currentTradeStatsAll={currentTradeDataAll}
           dailyTradeStatsMain={dailyTradeDataMain}
           dailyTradeStatsOvm={dailyTradeDataOvm}
           sevenTradeStatsMain={sevenTradeDataMain}

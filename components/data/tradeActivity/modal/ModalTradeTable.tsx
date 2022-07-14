@@ -1,10 +1,9 @@
 import { useMemo } from 'react'
-import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout, useBlockLayout } from 'react-table'
+import { useTable, useSortBy } from 'react-table'
 import { formatMoney, formatNumber } from '../../../../constants/format';
 import Down from '../../../icon/Down';
 import Up from '../../../icon/Up';
 import UpDown from '../../../icon/upDown';
-import Modal from '../../../modal/Modal';
 import styles from './ModalTradeTable.module.css'
 
 
@@ -21,7 +20,6 @@ interface ModalTable  {
   thirtyTradeStatsMain: any[]
   sevenTradeStatsMain: any[]
   ninetyTradeStatsMain: any[]
-  currentTradeStatsAll: any[]
   totalTradeStatsAll: any[]
   dailyTradeStatsAll: any[]
   sevenTradeStatsAll: any[]
@@ -38,7 +36,6 @@ const ModalTradeTable = ({
   totalTradeStatsAll, 
   totalTradeStatsMain, 
   totalTradeStatsOvm, 
-  currentTradeStatsAll, 
   dailyTradeStatsMain, 
   dailyTradeStatsOvm,
   sevenTradeStatsMain,
@@ -53,8 +50,6 @@ const ModalTradeTable = ({
   ninetyTradeStatsAll
 }:ModalTable) => {
 
- //const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
- // const tradeDep = tableId === 1 ? currentVol : totalVol
 
  const ovmData = tableId === 0 ? dailyTradeStatsOvm : tableId === 1 ? sevenTradeStatsOvm : tableId === 2 ? thirtyTradeStatsOvm : tableId === 3 ? ninetyTradeStatsOvm : totalTradeStatsOvm
  const mainData = tableId === 0 ? dailyTradeStatsMain : tableId === 1 ? sevenTradeStatsMain : tableId === 2 ? thirtyTradeStatsMain : tableId === 3 ? ninetyTradeStatsMain : totalTradeStatsMain

@@ -1,20 +1,13 @@
 import styles from "./TotalValueLocked.module.css";
 import {
-  LineChart,
-  Line,
   XAxis,
   YAxis,
-  CartesianGrid,
   Tooltip,
-  Legend,
   ResponsiveContainer,
   AreaChart,
   Area,
-  ComposedChart,
-  BarChart,
-  Bar,
 } from "recharts";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { formatMoney } from "../../../constants/format";
 import CustomToolTip from './tooltip'
 import { RiInformationFill } from "react-icons/ri"
@@ -63,19 +56,12 @@ const TotalValueLocked = ({
     { value: 3, label: "1 Month" }
   ]
 
-  const dataWrapMap = [
-    { value: 1, label: "1 Day" },
-    { value: 2, label: "1 Week" },
-    { value: 3, label: "1 Month" }
-  ]
+ 
 
   const [timeFrame, setTimeFrame] = useState(1);
 
-  const [dataWrap, setDataWrap] = useState(1);
 
-  const handleDataWrap = (option: any) => {
-    setDataWrap(option.value)
-  }
+  
 
   const handleActive = (option: any) => {
     setTimeFrame(option.value);

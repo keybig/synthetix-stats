@@ -1,8 +1,6 @@
-import React, { useMemo } from 'react'
-import { useTable, useSortBy, useGroupBy, usePagination } from 'react-table'
+import { useMemo } from 'react'
+import { useTable, useSortBy, usePagination } from 'react-table'
 import styles from './TradeFeeTable.module.css'
-import Image from 'next/image'
-import { keyframes } from 'styled-components'
 import { formatMoney } from '../../../constants/format'
 import Down from '../../icon/Down'
 import Up from '../../icon/Up'
@@ -106,7 +104,7 @@ const TradeFeeTable = ({
     pageOptions,
     pageCount,
     prepareRow,
-    state: {pageIndex, pageSize}
+    state: {pageIndex}
   } = useTable(
     //@ts-ignore
     {

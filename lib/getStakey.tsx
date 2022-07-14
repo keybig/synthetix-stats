@@ -1,4 +1,4 @@
-import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById, getSynths } from "../subgraph-ovm";
+import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById } from "../subgraph-ovm";
 
 // staking, apy, inflation
 
@@ -163,6 +163,7 @@ export const stakit = async () => {
 
     }
 
+
     const ovmFeePeriod = await snxFeePeriods(optimism_url)
     const mainFeePeriod = await snxFeePeriods(mainnet_url)
 
@@ -199,10 +200,9 @@ export const stakit = async () => {
 
     // Inflation
 
+    const apyOvm = ((feeOvm / (snxRate * totalStakeOvm)) + (rewardOvm/ totalStakeOvm)) * 52
 
-
-    const apyOvm = (feeOvm / (snxRate * totalStakeOvm) * 52 + (rewardOvm / totalStakeOvm) * 52)
-    const apyMain = (feeOvm / (snxRate * totalStakeMain) * 52 + (rewardMain / totalStakeMain) * 52)
+    const apyMain = ((feeMain / (snxRate * totalStakeMain)) + (rewardMain / totalStakeMain)) * 52
     const apyAvg = (apyMain + apyOvm) / 2
 
 
@@ -223,8 +223,10 @@ export const stakit = async () => {
         apyAvg,
         rewardMain,
         rewardOvm,
+        rewardAll,
         rewardsAmountMain,
         rewardsAmountOvm,
+        rewardsAmountAll,
         inflationDataMain,
         inflationDataOvm,
         inflationDataAll

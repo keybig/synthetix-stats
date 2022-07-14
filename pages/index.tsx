@@ -1,7 +1,6 @@
 import NetworkNavBar from "../components/network/NetworkNavBar";
 import Subheader from "../components/subheader/Subheader";
 import { useState } from "react";
-import { useRouter } from "next/router";
 import { getTvl } from "../lib/getTVLy";
 import styles from "../styles/Main.module.css";
 import SnxStaked from "../components/data/snxStaked/SnxStaked";
@@ -18,7 +17,6 @@ import MoreStats from "../components/data/moreStats/MoreStats";
 import StartStaking from "../components/data/startStaking/StartStaking";
 
 const Home = (props: any) => {
-  const router = useRouter();
 
   const [netId, setNetId] = useState<number>(20);
 
@@ -94,13 +92,7 @@ const Home = (props: any) => {
           totalTradeMain={props.active.totalTradeMain}
           totalVolOvm={props.active.totalVolOvm}
           totalTradeOvm={props.active.totalTradeOvm}
-          currentTradeDataMain={props.active.currentTradeDataMain}
-          currentTotalVolMain={props.active.currentTotalVolMain}
-          currentTotalTradeMain={props.active.currentTotalTradeMain}
-          currentTradeDataOvm={props.active.currentTradeDataOvm}
-          currentTotalVolOvm={props.active.currentTotalVolOvm}
-          currentTotalTradeOvm={props.active.currentTotalTradeOvm}
-          currentTradeDataAll={props.active.allCurrentTradeData}
+          
           tradeDataAll={props.active.allTotalTradeData}
           sevenTradeDataMain={props.active.sevenTradeDataMain}
           sevenTradeDataOvm={props.active.sevenTradeDataOvm}
@@ -136,8 +128,10 @@ const Home = (props: any) => {
           click={netId}
           currentRewardMain={props.staka.rewardMain}
           currentRewardOvm={props.staka.rewardOvm}
+          currentRewardAll={props.staka.rewardAll}
           allTimeInflationMain={props.staka.rewardsAmountMain}
           allTimeInflationOvm={props.staka.rewardsAmountOvm}
+          allTimeInflationAll={props.staka.rewardsAmountAll}
           inflationDataMain={props.staka.inflationDataMain}
           inflationDataOvm={props.staka.inflationDataOvm}
           inflationDataAll={props.staka.inflationDataAll}
@@ -148,9 +142,6 @@ const Home = (props: any) => {
           totalFeeAll={props.active.allTotalFee}
           totalFeeMain={props.active.totalFeeMain}
           totalFeeOvm={props.active.totalFeeOvm}
-          ovmTotalSynth={props.active.ovmTotalSynth}
-          mainTotalSynth={props.active.mainTotalSynth}
-          allTotalSynth={props.active.mainTotalSynth}
           dailyFeeMain={props.active.dailyTotalFeeMain}
           dailyFeeOvm={props.active.dailyTotalFeeOvm}
           sevenFeeMain={props.active.sevenTotalFeeMain}

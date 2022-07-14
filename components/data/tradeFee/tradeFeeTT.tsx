@@ -1,9 +1,5 @@
 import { TooltipProps } from 'recharts';
-import {
-  ValueType,
-  NameType,
-} from 'recharts/src/component/DefaultTooltipContent';
-import { formatMoney, formatNumber } from '../../../constants/format';
+import { formatMoney } from '../../../constants/format';
 import styles from './tradeFeeTT.module.css'
 
 // date
@@ -13,7 +9,6 @@ import styles from './tradeFeeTT.module.css'
 const CustomTooltip = ({
   active,
   payload,
-  label,
 }: TooltipProps<number, string>) => {
 
 

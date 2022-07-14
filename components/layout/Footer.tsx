@@ -1,5 +1,4 @@
 import styles from './Footer.module.css'
-import Image from 'next/image'
 import { BsDiscord, BsGithub, BsTwitter } from 'react-icons/bs'
 import SnxLogo from '../icon/snxLogo'
 

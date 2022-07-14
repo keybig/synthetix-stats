@@ -1,22 +1,17 @@
 import { useMemo } from 'react'
-import { useTable, useSortBy, useGroupBy, usePagination, useFlexLayout, useBlockLayout } from 'react-table'
+import { useTable, useSortBy, usePagination } from 'react-table'
 import { formatMoney, formatNumber } from '../../../constants/format';
-import Modal from '../../modal/Modal';
 import styles from './TradeTable.module.css'
-import { MdKeyboardArrowUp, MdOutlineKeyboardArrowDown, MdSwapVert, MdChevronLeft, MdChevronRight, MdFirstPage, MdLastPage } from 'react-icons/md'
+import { MdChevronLeft, MdChevronRight, MdFirstPage, MdLastPage } from 'react-icons/md'
 import UpDown from '../../icon/upDown';
 import Up from '../../icon/Up';
 import Down from '../../icon/Down';
-import RightArrow from '../../icon/Right';
-import LeftArrow from '../../icon/Left';
-import { FaChevronRight } from 'react-icons/fa'
 
 
 
 interface table {
   click: number;
   tableId: number;
-  modal: boolean;
   totalTradeStatsOvm: any[]
   dailyTradeStatsOvm: any[]
   thirtyTradeStatsOvm: any[]
@@ -27,7 +22,6 @@ interface table {
   thirtyTradeStatsMain: any[]
   sevenTradeStatsMain: any[]
   ninetyTradeStatsMain: any[]
-  currentTradeStatsAll: any[]
   totalTradeStatsAll: any[]
   dailyTradeStatsAll: any[]
   sevenTradeStatsAll: any[]
@@ -46,12 +40,10 @@ interface table {
 
 const TradeTable = ({
   click,
-  modal,
   tableId,
   totalTradeStatsAll,
   totalTradeStatsMain,
   totalTradeStatsOvm,
-  currentTradeStatsAll,
   dailyTradeStatsMain,
   dailyTradeStatsOvm,
   sevenTradeStatsMain,
@@ -72,8 +64,7 @@ const TradeTable = ({
   allVolume
 }: table) => {
 
-  //const tradeTable = tableId === 1 ? currentTradeStats : totalTradeStats
-  // const tradeDep = tableId === 1 ? currentVol : totalVol
+
 
   const ovmData = tableId === 0 ? dailyTradeStatsOvm : tableId === 1 ? sevenTradeStatsOvm : tableId === 2 ? thirtyTradeStatsOvm : tableId === 3 ? ninetyTradeStatsOvm : totalTradeStatsOvm
   const mainData = tableId === 0 ? dailyTradeStatsMain : tableId === 1 ? sevenTradeStatsMain : tableId === 2 ? thirtyTradeStatsMain : tableId === 3 ? ninetyTradeStatsMain : totalTradeStatsMain
@@ -138,7 +129,7 @@ const TradeTable = ({
     pageOptions,
     pageCount,
     prepareRow,
-    state: { pageSize, pageIndex }
+    state: { pageIndex }
   } = useTable(
     //@ts-ignore
     {
