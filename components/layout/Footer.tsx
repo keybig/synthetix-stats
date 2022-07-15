@@ -13,7 +13,7 @@ const Footer = () => {
         <ul className={styles.row}>
             <li className={styles.li}><a href='https://synthetix.io/' target="_blank" rel="noreferrer"> Synthetix </a></li>
             <li className={styles.li}><a href='https://grants.synthetix.io/' target="_blank" rel="noreferrer"> Grants Council</a> </li>
-            <li className={styles.li}> Tools </li>
+            <li className={styles.li}><a href='https://tools.synthetix.io/' target="_blank" rel="noreferrer"> Tools</a> </li>
             <li className={styles.li}> Teleporter </li> 
         </ul>
 
@@ -22,9 +22,9 @@ const Footer = () => {
         <p className={styles.footerText}>Built and Maintained by the Grants Council and the Synthetix Community</p>
 
         <span className={styles.iconBar}>
-          <a href="#" className={styles.iconItem}><BsDiscord color='white'/></a>
-          <a href="#" className={styles.iconItem}><BsTwitter color='white'/></a>
-          <a href="#" className={styles.iconItem}><BsGithub color='white'/></a>
+          <a href="https://discord.com/invite/AEdUHzt" className={styles.iconItem}><BsDiscord color='white'/></a>
+          <a href="https://twitter.com/synthetix_io" className={styles.iconItem}><BsTwitter color='white'/></a>
+          <a href="https://github.com/synthetixio" className={styles.iconItem}><BsGithub color='white'/></a>
         </span>
 
 
