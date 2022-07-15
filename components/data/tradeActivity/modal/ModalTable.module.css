@@ -6,7 +6,7 @@
     padding: 2rem;
     border: 0.125rem solid #31D8A4;
     color:white;
-    width: min(75vw, 500px);
+    width: fit-content;
  
 }
 
