@@ -1,4 +1,4 @@
-import getTime from "../lib/getTime";
+import getTime from "./getTime";
 import { getRateUpdates } from "../subgraph-ovm";
 
 
@@ -9,7 +9,7 @@ import { getRateUpdates } from "../subgraph-ovm";
   const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
 const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
 
-  export const blocky = async() => {
+  export const block = async() => {
 
     const getBlock = async(time:number, network:string) => {
       const blockCall = await getRateUpdates(

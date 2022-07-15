@@ -2,7 +2,7 @@ import { getFeePeriods, getLatestRateById, getSNXHolders, getSynthetixById } fro
 
 // staking, apy, inflation
 
-export const stakit = async () => {
+export const staker = async () => {
     const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
     const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
 

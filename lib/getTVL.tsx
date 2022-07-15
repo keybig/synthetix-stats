@@ -1,6 +1,7 @@
-import getTime from "../lib/getTime";
+import getTime from "./getTime";
 import { getDebtStates, getWrappers } from "../subgraph-ovm";
-import { blocky } from '../lib/getBlocky'
+import { block } from './getBlock'
+
 
 
 
@@ -11,9 +12,9 @@ import { blocky } from '../lib/getBlocky'
   const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
 const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
 
-  export const getTvl = async() => {
+  export const getTVL = async() => {
 
-    const blocks = await blocky()
+    const blocks = await block()
 
     const fetchTVL = async(block:number, network:string) => {
         const tvlCall = await getDebtStates(

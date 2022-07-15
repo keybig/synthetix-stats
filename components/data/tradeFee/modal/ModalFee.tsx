@@ -31,6 +31,18 @@ interface Props {
   feeOvm: number;
   feeMain: number;
   feeAll: number;
+  dailyFeeCollectMain: number;
+  dailyFeeCollectOvm: number;
+  allDailyFeeCollect: number;
+  sevenFeeCollectMain: number;
+  sevenFeeCollectOvm: number;
+  allSevenFeeCollect: number;
+  thirtyFeeCollectMain: number;
+  thirtyFeeCollectOvm: number;
+  allThirtyFeeCollect: number;
+  ninetyFeeCollectMain: number;
+  ninetyFeeCollectOvm: number;
+  allNinetyFeeCollect: number;
 }
 
 const TradeFee = ({
@@ -53,7 +65,19 @@ const TradeFee = ({
   allNinetyFee,
   feeAll,
   feeMain,
-  feeOvm
+  feeOvm,
+  dailyFeeCollectMain,
+  dailyFeeCollectOvm,
+  allDailyFeeCollect,
+  sevenFeeCollectMain,
+  sevenFeeCollectOvm,
+  allSevenFeeCollect,
+  thirtyFeeCollectMain,
+  thirtyFeeCollectOvm,
+  allThirtyFeeCollect,
+  ninetyFeeCollectMain,
+  ninetyFeeCollectOvm,
+  allNinetyFeeCollect
 }: Props) => {
 
   const buttonMap = [
@@ -105,6 +129,42 @@ const TradeFee = ({
   const pieData = click === 1 ? mainFeeData : click === 10 ? ovmFeeData : allFeeData
 
   const ttInfo = `Fees Earned by SNX Protocol. Updated every 15 minutes.`
+
+  const ovmFeeTotal = timeFrame === 0 ?
+    dailyFeeCollectOvm :
+    timeFrame === 1 ?
+      sevenFeeCollectOvm :
+      timeFrame === 2 ?
+        thirtyFeeCollectOvm :
+        timeFrame === 3 ?
+          ninetyFeeCollectOvm :
+          feeOvm
+
+  const mainFeeTotal = timeFrame === 0 ?
+    dailyFeeCollectMain :
+    timeFrame === 1 ?
+      sevenFeeCollectMain :
+      timeFrame === 2 ?
+        thirtyFeeCollectMain :
+        timeFrame === 3 ?
+          ninetyFeeCollectMain :
+          feeMain
+
+  const allFeeTotal = timeFrame === 0 ?
+    allDailyFeeCollect :
+    timeFrame === 1 ?
+      allSevenFeeCollect :
+      timeFrame === 2 ?
+        allThirtyFeeCollect :
+        timeFrame === 3 ?
+          allNinetyFeeCollect :
+          feeAll
+
+  const totalFeeData = click === 1 ?
+    formatMoney.format(mainFeeTotal) :
+    click === 10 ?
+      formatMoney.format(ovmFeeTotal) :
+      formatMoney.format(allFeeTotal)
 
   return (
     <div className={styles.wrapper}>
@@ -281,8 +341,9 @@ const TradeFee = ({
 
       <div>
         <p className={styles.totalsynthsupply}>Total Fee Earned</p>
-        <p className={styles.totalsupplyamount}>{click === 1 ? formatMoney.format(feeMain) : click === 10 ? formatMoney.format(feeOvm) : formatMoney.format(feeAll)}</p>
+        <p className={styles.totalsupplyamount}>{totalFeeData}</p>
       </div>
+
     </div>
   );
 };

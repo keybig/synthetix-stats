@@ -1,13 +1,14 @@
 import { getTotalActiveStakers } from "../subgraph-ovm";
-import { blocky } from "./getBlocky";
+import { block } from "./getBlock";
 import getTime from "./getTime";
 
 
-export const numStakey = async () => {
+
+export const numStaker = async () => {
     const mainnet_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/mainnet-main"
     const optimism_url = "https://api.thegraph.com/subgraphs/name/synthetixio-team/optimism-main"
 
-    const blocks = await blocky()
+    const blocks = await block()
     const { timeStamp } = getTime();
 
 

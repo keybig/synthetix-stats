@@ -48,14 +48,13 @@ const TradeFeeTable = ({
   allDailyFee,
   allSevenFee,
   allThirtyFee,
-  allNinetyFee
+  allNinetyFee,
+  
 
 }: Props) => {
 
-
   const ovmFeeData = tableId === 0 ? dailyFeeOvm : tableId === 1 ? sevenFeeOvm : tableId === 2 ? thirtyFeeOvm : tableId === 3 ? ninetyFeeOvm : totalFeeOvm
   const mainFeeData = tableId === 0 ? dailyFeeMain : tableId === 1 ? sevenFeeMain : tableId === 2 ? thirtyFeeMain : tableId === 3 ? ninetyFeeMain : totalFeeMain
-
   const allFeeData = tableId === 0 ? allDailyFee : tableId === 1 ? allSevenFee : tableId === 2 ? allThirtyFee : tableId === 3 ? allNinetyFee : totalFeeAll
 
 
@@ -165,8 +164,6 @@ const TradeFeeTable = ({
             <tr key={key} { ...restRowProps} className={
               stylerow === "1INCH" ?
               styles.oneInch :
-              stylerow === "0" ?
-              styles.ZERO :
               styles[stylerow]
             }>
               {row.cells.map((cell) => {

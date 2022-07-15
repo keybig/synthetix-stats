@@ -1,7 +1,7 @@
 import NetworkNavBar from "../components/network/NetworkNavBar";
 import Subheader from "../components/subheader/Subheader";
 import { useState } from "react";
-import { getTvl } from "../lib/getTVLy";
+import { getTVL } from "../lib/getTVL";
 import styles from "../styles/Main.module.css";
 import SnxStaked from "../components/data/snxStaked/SnxStaked";
 import TotalValueLocked from "../components/data/tvl/TotalValueLocked";
@@ -10,9 +10,9 @@ import NumStaker from "../components/data/numStaker/numStaker";
 import TradeActivity from "../components/data/tradeActivity/TradeActivity";
 import Inflation from "../components/data/inflation/Inflation";
 import TradeFee from "../components/data/tradeFee/TradeFee";
-import { stakit } from "../lib/getStakey";
-import { numStakey} from "../lib/getNumStaky"
-import { activa } from "../lib/getTradeActivitas";
+import { staker } from "../lib/getStaker";
+import { numStaker} from "../lib/getNumStaker"
+import { tradeData } from "../lib/getTradeData";
 import MoreStats from "../components/data/moreStats/MoreStats";
 import StartStaking from "../components/data/startStaking/StartStaking";
 
@@ -28,19 +28,20 @@ const Home = (props: any) => {
     <div>
       <Subheader />
       <NetworkNavBar handle={handleNetwork} current={netId}/>
+   
 
       <div className={styles.container}>
         <SnxStaked
           click={netId}
-          percentStakeAll={props.staka.percentStakedAll}
-          percentStakeMain={props.staka.percentStakedMain}
-          percentStakeOvm={props.staka.percentStakedOvm}
-          stakeAmountAll={props.staka.totalStakeAll}
-          stakeAmountMain={props.staka.totalStakeMain}
-          stakeAmountOvm={props.staka.totalStakeOvm}
-          stakeValueAll={props.staka.stakeValueAll}
-          stakeValueMain={props.staka.stakeValueMain}
-          stakeValueOvm={props.staka.stakeValueOvm}
+          percentStakeAll={props.stake.percentStakedAll}
+          percentStakeMain={props.stake.percentStakedMain}
+          percentStakeOvm={props.stake.percentStakedOvm}
+          stakeAmountAll={props.stake.totalStakeAll}
+          stakeAmountMain={props.stake.totalStakeMain}
+          stakeAmountOvm={props.stake.totalStakeOvm}
+          stakeValueAll={props.stake.stakeValueAll}
+          stakeValueMain={props.stake.stakeValueMain}
+          stakeValueOvm={props.stake.stakeValueOvm}
         />
 
 <TotalValueLocked
@@ -61,9 +62,9 @@ const Home = (props: any) => {
         />
         <StakeAPY
           click={netId}
-          avg={props.staka.apyAvg}
-          ovm={props.staka.apyOvm}
-          main={props.staka.apyMain}
+          avg={props.stake.apyAvg}
+          ovm={props.stake.apyOvm}
+          main={props.stake.apyMain}
          />
         <NumStaker
           click={netId}
@@ -86,93 +87,94 @@ const Home = (props: any) => {
 
         <TradeActivity
           click={netId}
-          tradeDataMain={props.active.tradeDataMain}
-          tradeDataOvm={props.active.tradeDataOvm}
-          totalVolMain={props.active.totalVolMain}
-          totalTradeMain={props.active.totalTradeMain}
-          totalVolOvm={props.active.totalVolOvm}
-          totalTradeOvm={props.active.totalTradeOvm}
+          tradeDataMain={props.trades.tradeDataMain}
+          tradeDataOvm={props.trades.tradeDataOvm}
+          totalVolMain={props.trades.totalVolMain}
+          totalTradeMain={props.trades.totalTradeMain}
+          totalVolOvm={props.trades.totalVolOvm}
+          totalTradeOvm={props.trades.totalTradeOvm}
           
-          tradeDataAll={props.active.allTotalTradeData}
-          sevenTradeDataMain={props.active.sevenTradeDataMain}
-          sevenTradeDataOvm={props.active.sevenTradeDataOvm}
-          thirtyTradeDataMain={props.active.thirtyTradeDataMain}
-          thirtyTradeDataOvm={props.active.thirtyTradeDataOvm}
-          ninetyTradeDataMain={props.active.ninetyTradeDataMain}
-          ninetyTradeDataOvm={props.active.ninetyTradeDataOvm}
-          dailyTradeDataMain={props.active.dailyTradeDataMain}
-          dailyTradeDataOvm={props.active.dailyTradeDataOvm}
-          allDailyTradeData={props.active.allDailyTradeData}
-          allSevenTradeData={props.active.allSevenTradeData}
-          allThirtyTradeData={props.active.allThirtyTradeData}
-          allNinetyTradeData={props.active.allNinetyTradeData}
-          dailyVolOvm={props.active.dailyTotalVolOvm}
-          dailyVolMain={props.active.dailyTotalVolMain}
-          sevenVolMain={props.active.sevenTotalVolMain}
-          sevenVolOvm={props.active.sevenTotalVolOvm}
-          thirtyVolMain={props.active.thirtyTotalVolMain}
-          thirtyVolOvm={props.active.thirtyTotalVolOvm}
-          ninetyVolMain={props.active.ninetyTotalVolMain}
-          ninetyVolOvm={props.active.ninetyTotalVolOvm}
-          dailyTradeOvm={props.active.dailyTotalTradeOvm}
-          dailyTradeMain={props.active.dailyTotalTradeMain}
-          sevenTradeOvm={props.active.sevenTotalTradeOvm}
-          sevenTradeMain={props.active.sevenTotalTradeMain}
-          thirtyTradeOvm={props.active.thirtyTotalTradeOvm}
-          thirtyTradeMain={props.active.thirtyTotalTradeMain}
-          ninetyTradeOvm={props.active.ninetyTotalTradeOvm}
-          ninetyTradeMain={props.active.ninetyTotalTradeMain}
+          tradeDataAll={props.trades.allTotalTradeData}
+          sevenTradeDataMain={props.trades.sevenTradeDataMain}
+          sevenTradeDataOvm={props.trades.sevenTradeDataOvm}
+          thirtyTradeDataMain={props.trades.thirtyTradeDataMain}
+          thirtyTradeDataOvm={props.trades.thirtyTradeDataOvm}
+          ninetyTradeDataMain={props.trades.ninetyTradeDataMain}
+          ninetyTradeDataOvm={props.trades.ninetyTradeDataOvm}
+          dailyTradeDataMain={props.trades.dailyTradeDataMain}
+          dailyTradeDataOvm={props.trades.dailyTradeDataOvm}
+          allDailyTradeData={props.trades.allDailyTradeData}
+          allSevenTradeData={props.trades.allSevenTradeData}
+          allThirtyTradeData={props.trades.allThirtyTradeData}
+          allNinetyTradeData={props.trades.allNinetyTradeData}
+          dailyVolOvm={props.trades.dailyTotalVolOvm}
+          dailyVolMain={props.trades.dailyTotalVolMain}
+          sevenVolMain={props.trades.sevenTotalVolMain}
+          sevenVolOvm={props.trades.sevenTotalVolOvm}
+          thirtyVolMain={props.trades.thirtyTotalVolMain}
+          thirtyVolOvm={props.trades.thirtyTotalVolOvm}
+          ninetyVolMain={props.trades.ninetyTotalVolMain}
+          ninetyVolOvm={props.trades.ninetyTotalVolOvm}
+          dailyTradeOvm={props.trades.dailyTotalTradeOvm}
+          dailyTradeMain={props.trades.dailyTotalTradeMain}
+          sevenTradeOvm={props.trades.sevenTotalTradeOvm}
+          sevenTradeMain={props.trades.sevenTotalTradeMain}
+          thirtyTradeOvm={props.trades.thirtyTotalTradeOvm}
+          thirtyTradeMain={props.trades.thirtyTotalTradeMain}
+          ninetyTradeOvm={props.trades.ninetyTotalTradeOvm}
+          ninetyTradeMain={props.trades.ninetyTotalTradeMain}
         />
 
         <Inflation
           click={netId}
-          currentRewardMain={props.staka.rewardMain}
-          currentRewardOvm={props.staka.rewardOvm}
-          currentRewardAll={props.staka.rewardAll}
-          allTimeInflationMain={props.staka.rewardsAmountMain}
-          allTimeInflationOvm={props.staka.rewardsAmountOvm}
-          allTimeInflationAll={props.staka.rewardsAmountAll}
-          inflationDataMain={props.staka.inflationDataMain}
-          inflationDataOvm={props.staka.inflationDataOvm}
-          inflationDataAll={props.staka.inflationDataAll}
-        />
+          currentRewardMain={props.stake.rewardMain}
+          currentRewardOvm={props.stake.rewardOvm}
+          currentRewardAll={props.stake.rewardAll}
+          allTimeInflationMain={props.stake.rewardsAmountMain}
+          allTimeInflationOvm={props.stake.rewardsAmountOvm}
+          allTimeInflationAll={props.stake.rewardsAmountAll}
+          inflationDataMain={props.stake.inflationDataMain}
+          inflationDataOvm={props.stake.inflationDataOvm}
+          inflationDataAll={props.stake.inflationDataAll}
+        />        
 
         <TradeFee
           click={netId}
-          totalFeeAll={props.active.allTotalFee}
-          totalFeeMain={props.active.totalFeeMain}
-          totalFeeOvm={props.active.totalFeeOvm}
-          dailyFeeMain={props.active.dailyTotalFeeMain}
-          dailyFeeOvm={props.active.dailyTotalFeeOvm}
-          sevenFeeMain={props.active.sevenTotalFeeMain}
-          sevenFeeOvm={props.active.sevenTotalFeeOvm}
-          thirtyFeeMain={props.active.thirtyTotalFeeMain}
-          thirtyFeeOvm={props.active.thirtyTotalFeeOvm}
-          ninetyFeeMain={props.active.ninetyTotalFeeMain}
-          ninetyFeeOvm={props.active.ninetyTotalFeeOvm}
-          allDailyFee={props.active.allDailyFee}
-          allSevenFee={props.active.allSevenFee}
-          allThirtyFee={props.active.allThirtyFee}
-          allNinetyFee={props.active.allNinetyFee}
-          feeAll={props.active.feeCollectAll}
-          feeMain={props.active.feeCollectMain}
-          feeOvm={props.active.feeCollectOvm}
-          dailyFeeCollectOvm={props.active.dailyFeeCollectOvm}
-          dailyFeeCollectMain={props.active.dailyFeeCollectMain}
-          allDailyFeeCollect={props.active.allDailyFeeCollect}
-          sevenFeeCollectMain={props.active.sevenFeeCollectMain}
-          sevenFeeCollectOvm={props.active.sevenFeeCollectOvm}
-          allSevenFeeCollect={props.active.allSevenFeeCollect}
-          thirtyFeeCollectMain={props.active.thirtyFeeCollectMain}
-          thirtyFeeCollectOvm={props.active.thirtyFeeCollectOvm}
-          allThirtyFeeCollect={props.active.allThirtyFeeCollect}
-          ninetyFeeCollectMain={props.active.ninetyFeeCollectMain}
-          ninetyFeeCollectOvm={props.active.ninetyFeeCollectOvm}
-          allNinetyFeeCollect={props.active.allNinetyFeeCollect}
+          totalFeeAll={props.trades.allTotalFee}
+          totalFeeMain={props.trades.totalFeeMain}
+          totalFeeOvm={props.trades.totalFeeOvm}
+          dailyFeeMain={props.trades.dailyTotalFeeMain}
+          dailyFeeOvm={props.trades.dailyTotalFeeOvm}
+          sevenFeeMain={props.trades.sevenTotalFeeMain}
+          sevenFeeOvm={props.trades.sevenTotalFeeOvm}
+          thirtyFeeMain={props.trades.thirtyTotalFeeMain}
+          thirtyFeeOvm={props.trades.thirtyTotalFeeOvm}
+          ninetyFeeMain={props.trades.ninetyTotalFeeMain}
+          ninetyFeeOvm={props.trades.ninetyTotalFeeOvm}
+          allDailyFee={props.trades.allDailyFee}
+          allSevenFee={props.trades.allSevenFee}
+          allThirtyFee={props.trades.allThirtyFee}
+          allNinetyFee={props.trades.allNinetyFee}
+          feeAll={props.trades.feeCollectAll}
+          feeMain={props.trades.feeCollectMain}
+          feeOvm={props.trades.feeCollectOvm}
+          dailyFeeCollectOvm={props.trades.dailyFeeCollectOvm}
+          dailyFeeCollectMain={props.trades.dailyFeeCollectMain}
+          allDailyFeeCollect={props.trades.allDailyFeeCollect}
+          sevenFeeCollectMain={props.trades.sevenFeeCollectMain}
+          sevenFeeCollectOvm={props.trades.sevenFeeCollectOvm}
+          allSevenFeeCollect={props.trades.allSevenFeeCollect}
+          thirtyFeeCollectMain={props.trades.thirtyFeeCollectMain}
+          thirtyFeeCollectOvm={props.trades.thirtyFeeCollectOvm}
+          allThirtyFeeCollect={props.trades.allThirtyFeeCollect}
+          ninetyFeeCollectMain={props.trades.ninetyFeeCollectMain}
+          ninetyFeeCollectOvm={props.trades.ninetyFeeCollectOvm}
+          allNinetyFeeCollect={props.trades.allNinetyFeeCollect}
         />
 
         <MoreStats/>
         <StartStaking/>
+
       </div>
     </div>
   );
@@ -181,19 +183,19 @@ const Home = (props: any) => {
 export default Home;
 
 export async function getStaticProps() {
-  const theTVL = await getTvl();
-  const staka = await stakit()
-  const numberStake = await numStakey()
-  const active = await activa()
+  const theTVL = await getTVL();
+  const stake = await staker()
+  const numberStake = await numStaker()
+  const trades = await tradeData()
 
-  // tests below, keep above
+
 
   return {
     props: {
       theTVL,
-      staka,
+      stake,
       numberStake,
-      active
+      trades
     },
   };
 }
