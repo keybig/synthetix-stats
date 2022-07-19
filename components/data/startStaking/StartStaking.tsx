@@ -8,7 +8,7 @@ const MoreStats = () => {
     <h4 className={styles.statstitle}>Start Staking</h4>
 
     <div className={styles.linkWrap}>
-    <p className={styles.styledp}>Visit SNX Staking DAPP to Start Staking</p>
+    <p className={styles.styledp}>Start Staking SNX</p>
 
       <button className={styles.advancedbutton}>
         <a href={stakingUrl} target="_blank" rel="noreferrer">Staking DAPP <Arrow/></a>

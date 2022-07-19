@@ -14,7 +14,6 @@ const Footer = () => {
             <li className={styles.li}><a href='https://synthetix.io/' target="_blank" rel="noreferrer"> Synthetix </a></li>
             <li className={styles.li}><a href='https://grants.synthetix.io/' target="_blank" rel="noreferrer"> Grants Council</a> </li>
             <li className={styles.li}><a href='https://tools.synthetix.io/' target="_blank" rel="noreferrer"> Tools</a> </li>
-            <li className={styles.li}> Teleporter </li> 
         </ul>
 
         <SnxLogo/>

@@ -28,7 +28,7 @@ const MoreStats = () => {
       <p className={styles.styledp}>Synthetix Dune Analytics </p>
 
         <button className={styles.advancedbutton}>
-          <a href={snxAnalytics} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
+          <a href={snxAnalytics} target="_blank" rel="noreferrer">Visit Tools Site <Arrow/></a>
         </button>
       </div>
 
