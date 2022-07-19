@@ -29,7 +29,7 @@
   text-transform: capitalize;
   padding: 0;
   margin: 0;
-  width: fit-content;
+  width: 15rem;
 }
 
 .advancedbutton {
@@ -40,7 +40,7 @@
   padding: 0.5rem 1.125rem;
   margin: 0px 2px;
   border: 0.0625rem solid black;
-  width: 10rem;
+  width: 12rem;
 }
 
 .advancedbutton a {
@@ -55,10 +55,10 @@
 
 @media(max-width: 960px){
   .wrapper {
-      padding: 1rem 0.5rem;
+      padding: 1rem 0rem 0.5rem 0.5rem;
   }
 
   .linkWrap {
-    padding: 1rem;
+    padding: 0.5rem 0rem 0.5rem 0.25rem;
   }
 }

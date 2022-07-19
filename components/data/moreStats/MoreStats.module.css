@@ -2,7 +2,7 @@
     grid-area: moreStats;
     background: top url(../../../public/moreStatsBg.svg),#201864;
     border-radius: 0.625rem;
-    padding: 1rem 2rem 0;
+    padding: 1rem 2rem;
     border: 0.125rem solid #ed1eff;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 1.125rem;
@@ -45,7 +45,7 @@
     padding: 0.5rem 1.125rem;
     margin: 0px 2px;
     border: 0.0625rem solid black;
-    width: 10rem;
+    width: 12rem;
   }
   
   .advancedbutton a {
@@ -60,14 +60,10 @@
 
   @media(max-width: 960px){
     .wrapper {
-        padding: 1rem 0.5rem;
-    }
-
-    .advancedbutton a {
-      font-size: 0.75rem;
+        padding: 1rem 0rem 0.5rem 0.5rem;
     }
   
     .linkWrap {
-      padding: 1rem;
+      padding: 0.5rem 0 0.5rem 0.25rem;
     }
   }
