@@ -19,36 +19,25 @@ export const tradeData = async () => {
       { id: true, usdVolume: true, usdFees: true, trades: true }
     );
 
-    const tradeDataArrTemp: any[] = [];
-    const tradeFeeArrTemp: any[] = [];
+    const tradeDataArrTemp: any[] =  tradeDataCall.map((item) => {
+      const nameId = item.id === "0" ? "LYRA" : item.id
+      const name = item.usdVolume.toNumber() > 500000 ? nameId : "OTHER"
+      const obj = {
+        col1: name,
+        col2: item.trades.toNumber(),
+        col3: item.usdVolume.toNumber(),
+      };
+      return obj
+    });
 
-    tradeDataCall.forEach((item) => {
-      if (item.usdVolume.toNumber() > 500000) {
-        const obj = {
-          col1: item.id === undefined ? null : item.id === "0" ? "LYRA" : item.id,
-          col2: item.trades.toNumber(),
-          col3: item.usdVolume.toNumber(),
-        };
-        tradeDataArrTemp.push(obj);
-        const feeObj = {
-          name: item.id === undefined ? null : item.id === "0" ? "LYRA" : item.id,
-          value: item.usdFees.toNumber(),
-        };
-        tradeFeeArrTemp.push(feeObj);
-      }
-      else {
-        const obj = {
-          col1: "OTHER",
-          col2: item.trades.toNumber(),
-          col3: item.usdVolume.toNumber(),
-        };
-        tradeDataArrTemp.push(obj);
-        const feeObj = {
-          name: "OTHER",
-          value: item.usdFees.toNumber(),
-        };
-        tradeFeeArrTemp.push(feeObj);
-      }
+    const tradeFeeArrTemp: any[] = tradeDataCall.map((item) => {
+      const nameId = item.id === "0" ? "LYRA" : item.id
+      const name = item.usdVolume.toNumber() > 500000 ? nameId : "OTHER"
+      const obj = {
+        name: name,
+        value: item.usdFees.toNumber(),
+      };
+      return obj
     });
 
     // reduce other in tradeDataArr and tradeFeeArr
@@ -138,11 +127,13 @@ export const tradeData = async () => {
     const dayEpochTradeData = await getDailyExchangePartners(
       network,
       {
-        where: {
-          timestamp_gte: startTime
-        },
+        first: 1000,
         orderBy: "timestamp",
         orderDirection: "desc",
+        where: {
+          timestamp_gt: startTime
+        },
+       
       },
       {
         timestamp: true,
@@ -153,16 +144,14 @@ export const tradeData = async () => {
       },
     );
 
-    const dayTradeDataArr: any[] = [];
-
-    dayEpochTradeData.forEach((item) => {
-      const partner = item.partner === undefined ? null : item.partner === "0" ? "LYRA" : item.partner
+    const dayTradeDataArr: any[] = dayEpochTradeData.map((item) => {
+      const partner = item.partner === "0" ? "LYRA" : item.partner
       const obj = {
         col1: partner,
         col2: item.trades.toNumber(),
         col3: item.usdVolume.toNumber(),
       };
-      dayTradeDataArr.push(obj);
+      return obj
     });
 
     const dayTradeStats = dayTradeDataArr.reduce((acc, cur) => {
@@ -189,15 +178,15 @@ export const tradeData = async () => {
       return sum + cur.usdFees.toNumber();
     }, 0)
 
-    const dayFeeDataArr: any[] = [];
+    //const dayFeeDataArr: any[] = [];
 
-    dayEpochTradeData.forEach((item) => {
-      const partner = item.partner === undefined ? null : item.partner === "0" ? "LYRA" : item.partner
+    const dayFeeDataArr: any[] = dayEpochTradeData.map((item) => {
+      const partner = item.partner === "0" ? "LYRA" : item.partner
       const obj = {
         name: partner,
         value: item.usdFees.toNumber(),
       };
-      dayFeeDataArr.push(obj);
+      return obj;
     });
 
     const dayFeeDataPrep = dayFeeDataArr.reduce((sum, cur) => {

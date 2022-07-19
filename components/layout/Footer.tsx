@@ -22,9 +22,9 @@ const Footer = () => {
         <p className={styles.footerText}>Built and Maintained by the Grants Council and the Synthetix Community</p>
 
         <span className={styles.iconBar}>
-          <a href="https://discord.com/invite/AEdUHzt" className={styles.iconItem}><BsDiscord color='white'/></a>
-          <a href="https://twitter.com/synthetix_io" className={styles.iconItem}><BsTwitter color='white'/></a>
-          <a href="https://github.com/synthetixio" className={styles.iconItem}><BsGithub color='white'/></a>
+          <a href="https://discord.com/invite/AEdUHzt" target="_blank" rel="noreferrer" className={styles.iconItem}><BsDiscord color='white'/></a>
+          <a href="https://twitter.com/synthetix_io" target="_blank" rel="noreferrer" className={styles.iconItem}><BsTwitter color='white'/></a>
+          <a href="https://github.com/synthetixio" target="_blank" rel="noreferrer" className={styles.iconItem}><BsGithub color='white'/></a>
         </span>
 
 

@@ -10,12 +10,14 @@ const MoreStats = () => {
 
   const snxFuturesOverview = "https://dune.com/drethereum/Synthetix-Futures:-Overview"
 
+  const snxAnalytics = "https://tools.synthetix.io/analytics"
+
   return (
     <div className={styles.wrapper}>
       <h4 className={styles.statstitle}>More Advanced Stats</h4>
 
       <div className={styles.linkWrap}>
-      <p className={styles.styledp}>SNX Grafana Dashboard </p>
+      <p className={styles.styledp}>Synthetix Detailed Stats </p>
 
         <button className={styles.advancedbutton}>
           <a href={grafana} target="_blank" rel="noreferrer">Visit Grafana <Arrow/></a>
@@ -23,28 +25,14 @@ const MoreStats = () => {
       </div>
 
       <div className={styles.linkWrap}>
-      <p className={styles.styledp}>SNX Liquidations Dune </p>
+      <p className={styles.styledp}>Synthetix Dune Analytics </p>
 
         <button className={styles.advancedbutton}>
-          <a href={snxLiquidations} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
+          <a href={snxAnalytics} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
         </button>
       </div>
 
-      <div className={styles.linkWrap}>
-      <p className={styles.styledp}>SNX Fee Overview Dune </p>
-
-        <button className={styles.advancedbutton}>
-          <a href={snxFeeOverview} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
-        </button>
-      </div>
-
-      <div className={styles.linkWrap}>
-      <p className={styles.styledp}>SNX Futures Overview Dune </p>
-
-        <button className={styles.advancedbutton}>
-          <a href={snxFuturesOverview} target="_blank" rel="noreferrer">Visit Dune <Arrow/></a>
-        </button>
-      </div>
+      
     </div>
   );
 };
