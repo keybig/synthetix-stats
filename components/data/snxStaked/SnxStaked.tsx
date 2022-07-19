@@ -1,6 +1,6 @@
 import styles from "./SnxStaked.module.css";
 import { formatMoney, formatNumber, formatPercent } from "../../../constants/format";
-import {RiInformationFill} from "react-icons/ri"
+import { RiInformationFill } from "react-icons/ri"
 import InfoTooltip from '../../infoToolTip/InfoTooltip'
 
 interface Staked {
@@ -17,17 +17,17 @@ interface Staked {
 }
 
 const SnxStaked = ({
-  click, 
-  percentStakeAll, 
-  percentStakeMain, 
-  percentStakeOvm, 
-  stakeAmountAll, 
-  stakeAmountMain, 
+  click,
+  percentStakeAll,
+  percentStakeMain,
+  percentStakeOvm,
+  stakeAmountAll,
+  stakeAmountMain,
   stakeAmountOvm,
   stakeValueAll,
   stakeValueMain,
   stakeValueOvm,
-}:Staked) => {
+}: Staked) => {
 
   const percentMain = formatPercent.format(percentStakeMain)
   const percentOvm = formatPercent.format(percentStakeOvm)
@@ -41,20 +41,21 @@ const SnxStaked = ({
   const valueOvm = formatMoney.format(stakeValueOvm)
   const valueAll = formatMoney.format(stakeValueAll)
 
-  const ttInfo = `How many SNX is staked compared to total supply. Updated every 15 minutes.`
-
+  const ttInfo =
+    click === 20 ?
+      `How many SNX is staked across all layers, compared to the total supply across all layers. Updated every 15 minutes` :
+      `How many SNX is staked compared to total supply. Updated every 15 minutes.`
 
   return (
     <div className={styles.snxStaked}>
       <div className={styles.titleRow}>
-      <h3 className={styles.title}>SNX Staked </h3>
-      <InfoTooltip content={ttInfo}>
+        <h3 className={styles.title}>SNX Staked </h3>
+        <InfoTooltip content={ttInfo}>
 
-      <span className={styles.icon}>
-      <RiInformationFill/>
-      </span>
-      </InfoTooltip>
-
+          <span className={styles.icon}>
+            <RiInformationFill />
+          </span>
+        </InfoTooltip>
       </div>
       <p className={styles.percentStaked}>{click === 1 ? percentMain : click === 10 ? percentOvm : percentAll}</p>
       <h3 className={styles.secondaryHeading}>Total SNX Staked</h3>
