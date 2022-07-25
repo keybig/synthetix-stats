@@ -101,7 +101,7 @@ const TradeFee = ({
     setTimeFrame(buttons.id);
   };
 
-  
+
 
   const ovmFeeData = timeFrame === 0 ?
     dailyFeeOvm :
@@ -189,13 +189,17 @@ const TradeFee = ({
             </span>
           </InfoTooltip>
         </div>
-        <button
-          className={styles.modalButton}
-          onClick={() => setModalOpen(true)}
-        >
-          <RiFullscreenLine size={16} />
+        <div className={styles.modalButtonWrap}>
+          <span className={styles.modalButtonText}>Expand</span>
 
-        </button>
+          <button
+            className={styles.modalButton}
+            onClick={() => setModalOpen(true)}
+          >
+            <RiFullscreenLine size={16} />
+
+          </button>
+        </div>
 
         <Modal handleClose={closeModal} isOpen={modalOpen}>
 
@@ -329,30 +333,30 @@ const TradeFee = ({
                       strokeOpacity={1}
                       style={{
                         filter: `drop-shadow(0px 0px 7px ${entry.name === "KWENTA" ?
-                            "#FFD75C" :
-                            entry.name === "CURVE" ?
-                              "#ED1EFF" :
-                              entry.name === "1INCH" ?
-                                "#00D1FF" :
-                                entry.name === "LYRA" ?
-                                  "#31D8A4" :
-                                  entry.name === "DHEDGE" ?
-                                    "#FC8738" :
-                                    entry.name === "SX" ?
-                                      "#0b03fc" :
-                                      entry.name === "ENZYME" ?
-                                        "#fc03e3" :
-                                        entry.name === "ibAMM" ?
-                                          "#20fc03" :
-                                          entry.name === "YEARN" ?
-                                            "#03fca5" :
-                                            entry.name === "SADDLE" ?
-                                              "#9403fc" :
-                                              entry.name === "OTHER" ?
-                                                "#21cdfc" :
-                                                entry.name === "0" ?
-                                                  "#fc0303" :
-                                                  "FF8042"
+                          "#FFD75C" :
+                          entry.name === "CURVE" ?
+                            "#ED1EFF" :
+                            entry.name === "1INCH" ?
+                              "#00D1FF" :
+                              entry.name === "LYRA" ?
+                                "#31D8A4" :
+                                entry.name === "DHEDGE" ?
+                                  "#FC8738" :
+                                  entry.name === "SX" ?
+                                    "#0b03fc" :
+                                    entry.name === "ENZYME" ?
+                                      "#fc03e3" :
+                                      entry.name === "ibAMM" ?
+                                        "#20fc03" :
+                                        entry.name === "YEARN" ?
+                                          "#03fca5" :
+                                          entry.name === "SADDLE" ?
+                                            "#9403fc" :
+                                            entry.name === "OTHER" ?
+                                              "#21cdfc" :
+                                              entry.name === "0" ?
+                                                "#fc0303" :
+                                                "FF8042"
                           }`
                       }}
 

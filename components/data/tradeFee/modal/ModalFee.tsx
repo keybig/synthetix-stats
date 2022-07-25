@@ -180,6 +180,8 @@ const TradeFee = ({
             </span>
             </InfoTooltip>
         </div>
+        <div className={styles.modalButtonWrap}>
+        <span className={styles.modalButtonText}>Close</span>
 
         <button
         className={styles.modalButton}
@@ -187,6 +189,7 @@ const TradeFee = ({
         >
         <RiFullscreenLine size={16} />
       </button>
+      </div>
 
       </div>
       <div className={styles.content}>

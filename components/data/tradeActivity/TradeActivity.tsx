@@ -4,8 +4,8 @@ import TradeTable from "./TradeTable";
 import { formatMoney, formatNumber } from "../../../constants/format";
 import Modal from '../../modal/Modal'
 import ModalTable from './modal/ModalTable'
-import {RiInformationFill} from "react-icons/ri"
-import {RiFullscreenLine} from "react-icons/ri"
+import { RiInformationFill } from "react-icons/ri"
+import { RiFullscreenLine } from "react-icons/ri"
 import InfoTooltip from '../../infoToolTip/InfoTooltip'
 
 interface TradeStats {
@@ -38,7 +38,7 @@ interface TradeStats {
   ninetyTradeMain: number
 
 
- 
+
   dailyTradeDataOvm: any[]
   dailyTradeDataMain: any[]
   sevenTradeDataOvm: any[]
@@ -53,7 +53,7 @@ interface TradeStats {
   allNinetyTradeData: any[]
 
 
-  
+
 }
 const TradeActivity = ({
   click,
@@ -116,7 +116,7 @@ const TradeActivity = ({
     setTimeFrame(buttons.id);
   };
 
- 
+
 
   const ovmVolume = timeFrame === 0 ?
     formatMoney.format(dailyVolOvm) :
@@ -178,77 +178,80 @@ const TradeActivity = ({
         timeFrame === 3 ? formatNumber.format(allNinetyTrade) :
           formatNumber.format(allTotalTrade)
 
-          const ttInfo = `SNX Ecosystem Trading Activity. Updated every 15 minutes`
+  const ttInfo = `SNX Ecosystem Trading Activity. Updated every 15 minutes`
 
 
 
   return (
     <div className={styles.container}>
       <div className={styles.topRow}>
-      <div className={styles.titleRow}>
-      <h3 className={styles.title}> Trading Activity</h3>
-      <InfoTooltip content={ttInfo}>
+        <div className={styles.titleRow}>
+          <h3 className={styles.title}> Trading Activity</h3>
+          <InfoTooltip content={ttInfo}>
 
-      <span 
-        className={styles.icon}
+            <span
+              className={styles.icon}
+            >
+              <RiInformationFill />
+            </span>
+          </InfoTooltip>
+        </div>
+        <div className={styles.modalButtonWrap}>
+          <span className={styles.modalButtonText}>Expand</span>
+        <button
+          className={styles.modalButton}
+          onClick={() => setModalOpen(true)}
         >
-      <RiInformationFill/>
-      </span>
-      </InfoTooltip>
-      </div>
-      <button 
-        className={styles.modalButton}
-        onClick={()=> setModalOpen(true)}
-        >
-            <RiFullscreenLine size={14}/>
-      </button>
-     
-      <Modal handleClose={closeModal} isOpen={modalOpen}>
+          <RiFullscreenLine size={14} />
+        </button>
+        </div>
+
+        <Modal handleClose={closeModal} isOpen={modalOpen}>
 
 
-        <ModalTable 
-          closeModal={closeModal}
-          click={click}
-          tradeDataMain={tradeDataMain}
-          totalVolMain={totalVolMain}
-          totalTradeMain={totalTradeMain}
-          tradeDataOvm={tradeDataOvm}
-          totalVolOvm={totalVolOvm}
-          totalTradeOvm={totalTradeOvm}
-          dailyTradeDataMain={dailyTradeDataMain}
-          dailyTradeDataOvm={dailyTradeDataOvm}
-          tradeDataAll={tradeDataAll}
-          sevenTradeDataMain={sevenTradeDataMain}
-          sevenTradeDataOvm={sevenTradeDataOvm}
-          thirtyTradeDataMain={thirtyTradeDataMain}
-          thirtyTradeDataOvm={thirtyTradeDataOvm}
-          ninetyTradeDataMain={ninetyTradeDataMain}
-          ninetyTradeDataOvm={ninetyTradeDataOvm}
-          allDailyTradeData={allDailyTradeData}
-          allSevenTradeData={allSevenTradeData}
-          allThirtyTradeData={allThirtyTradeData}
-          allNinetyTradeData={allNinetyTradeData}
-          dailyVolMain={dailyVolMain}
-          dailyVolOvm={dailyVolOvm}
-          dailyTradeMain={dailyTradeMain}
-          dailyTradeOvm={dailyTradeOvm}
-          sevenVolMain={sevenVolMain}
-          sevenVolOvm={sevenVolOvm}
-          sevenTradeMain={sevenTradeMain}
-          sevenTradeOvm={sevenTradeOvm}
-          thirtyVolMain={thirtyVolMain}
-          thirtyVolOvm={thirtyVolOvm}
-          thirtyTradeMain={thirtyTradeMain}
-          thirtyTradeOvm={thirtyTradeOvm}
-          ninetyVolMain={ninetyVolMain}
-          ninetyVolOvm={ninetyVolOvm}
-          ninetyTradeMain={ninetyTradeMain}
-          ninetyTradeOvm={ninetyTradeOvm}
+          <ModalTable
+            closeModal={closeModal}
+            click={click}
+            tradeDataMain={tradeDataMain}
+            totalVolMain={totalVolMain}
+            totalTradeMain={totalTradeMain}
+            tradeDataOvm={tradeDataOvm}
+            totalVolOvm={totalVolOvm}
+            totalTradeOvm={totalTradeOvm}
+            dailyTradeDataMain={dailyTradeDataMain}
+            dailyTradeDataOvm={dailyTradeDataOvm}
+            tradeDataAll={tradeDataAll}
+            sevenTradeDataMain={sevenTradeDataMain}
+            sevenTradeDataOvm={sevenTradeDataOvm}
+            thirtyTradeDataMain={thirtyTradeDataMain}
+            thirtyTradeDataOvm={thirtyTradeDataOvm}
+            ninetyTradeDataMain={ninetyTradeDataMain}
+            ninetyTradeDataOvm={ninetyTradeDataOvm}
+            allDailyTradeData={allDailyTradeData}
+            allSevenTradeData={allSevenTradeData}
+            allThirtyTradeData={allThirtyTradeData}
+            allNinetyTradeData={allNinetyTradeData}
+            dailyVolMain={dailyVolMain}
+            dailyVolOvm={dailyVolOvm}
+            dailyTradeMain={dailyTradeMain}
+            dailyTradeOvm={dailyTradeOvm}
+            sevenVolMain={sevenVolMain}
+            sevenVolOvm={sevenVolOvm}
+            sevenTradeMain={sevenTradeMain}
+            sevenTradeOvm={sevenTradeOvm}
+            thirtyVolMain={thirtyVolMain}
+            thirtyVolOvm={thirtyVolOvm}
+            thirtyTradeMain={thirtyTradeMain}
+            thirtyTradeOvm={thirtyTradeOvm}
+            ninetyVolMain={ninetyVolMain}
+            ninetyVolOvm={ninetyVolOvm}
+            ninetyTradeMain={ninetyTradeMain}
+            ninetyTradeOvm={ninetyTradeOvm}
 
           />
 
 
-      
+
         </Modal>
       </div>
       <div className={styles.buttonRow}>
@@ -292,7 +295,7 @@ const TradeActivity = ({
 
         />
       </div>
-      
+
     </div>
   );
 };

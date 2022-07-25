@@ -36,6 +36,17 @@
     display: flex;
 }
 
+.modalButtonWrap {
+    display: flex;
+    align-items: center;
+}
+
+.modalButtonText {
+    color:#828295;
+    font-size: 0.625rem;
+    padding: 0 0.5rem;
+}
+
 
 .title {
     color: white;

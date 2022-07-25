@@ -183,13 +183,15 @@ const ModalTable = ({
               </span>
             </InfoTooltip>
           </div>
-          <button
-            className={styles.modalButton}
-            onClick={closeModal}
-
-          >
-            <RiFullscreenLine size={16} />
-          </button>
+          <div className={styles.modalButtonWrap}>
+            <span className={styles.modalButtonText}>Close</span>
+            <button
+              className={styles.modalButton}
+              onClick={closeModal}
+            >
+              <RiFullscreenLine size={16} />
+            </button>
+          </div>
         </div>
         <div className={styles.buttonRow}>
           {buttonMap.map((buttonMap) => (

@@ -56,6 +56,17 @@
     padding: 0.25rem;
     display: flex;
   }
+
+  .modalButtonWrap {
+    display: flex;
+    align-items: center;
+}
+
+.modalButtonText {
+    color:#828295;
+    font-size: 0.625rem;
+    padding: 0 0.5rem;
+}
   
   .topRow {
     display: flex;
