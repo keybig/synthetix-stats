@@ -36,125 +36,171 @@
        border-bottom: 0.0625rem solid #828295;
        padding: 1rem 0;
    }
+
+   .protocolCell {
+    text-transform: capitalize;
+    text-align: left;
+    vertical-align: middle;
+    border-bottom: 0.0625rem solid #828295;
+    padding: 0.5rem 0;
+    font-weight: 400;
+}
+
+.nOfTradesCell {
+    text-transform: capitalize;
+    text-align: center;
+    border-bottom: 0.0625rem solid #828295;
+    padding: 1rem 0;
+}
+
+.volumeCell {
+    text-transform: capitalize;
+    text-align: center;
+    border-bottom: 0.0625rem solid #828295;
+    padding: 1rem 0;
+}
    
    .LYRA {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .LYRA::before {
        content: url(../../../../public/lyraLogo.svg);
-       padding-right: 1rem;
    }
    
    .KWENTA {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .KWENTA::before {
        content: url(../../../../public/kwentaLogo.svg);
-       padding-right: 1rem;
    
    }
    
    .THALES::before {
        content: url(../../../../public/Thales.png);
-       padding-right: 1rem;
-       margin-right: 8px;
-       margin-top: 2px;
+   
    }
    
    .THALES {
        color:azure;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    
    }
    
    .oneInch {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .oneInch::before {
        content: url(../../../../public/3oneInch.svg);
-       padding-right: 1rem;
    
    }
    
    .CURVE {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .CURVE::before {
        content: url(../../../../public/CURVE.svg);
-       padding-right: 1rem;
    
    }
    
    .DHEDGE {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .DHEDGE::before {
        content: url(../../../../public/dhedge.svg);
-       padding-right: 1rem;
    
    }
    
    .ENZYME {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .ENZYME::before {
        content: url(../../../../public/enzyme.svg);
-       padding-right: 1rem;
    
    }
    
    .YEARN {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .YEARN::before {
        content: url(../../../../public/yearn.svg);
-       padding-right: 1rem;
    
    }
    
    .OTHER {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .OTHER::before {
        content: url(../../../../public/other.svg);
-       padding-right: 1rem;
    
    }
    
    .SADDLE {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .SADDLE::before {
        content: url(../../../../public/saddle.svg);
-       padding-right: 1rem;
    
    }
    
    .ibAMM {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .ibAMM::before {
        content: url(../../../../public/ibamm.svg);
-       padding-right: 1rem;
    
    }
    
    .SX {
        color: white;
+       display:flex;
+       flex-direction: column;
+       align-items: center;
    }
    
    .SX::before {
        content: url(../../../../public/other.svg);
-       padding-right: 1rem;
    }
    
    .chartButton {

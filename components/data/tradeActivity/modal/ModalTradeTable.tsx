@@ -173,7 +173,15 @@ const ModalTradeTable = ({
               {row.cells.map((cell) => {
                 const { key, ...restCellProps } = cell.getCellProps();
                 return (
-                  <td key={key} {...restCellProps} className={styles.mainKey}>
+                  <td key={key} {...restCellProps} className={
+                    cell.column.Header === "Protocol" ?
+                        styles.protocolCell :
+                        cell.column.Header === "N of Trades" ?
+                          styles.nOfTradesCell :
+                          cell.column.Header === "Volume" ?
+                            styles.volumeCell :
+                            styles.mainKey
+                  }>
                     {cell.render("Cell")}
                   </td>
                 );
