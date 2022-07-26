@@ -1,6 +1,7 @@
 import styles from './Footer.module.css'
 import { BsDiscord, BsGithub, BsTwitter } from 'react-icons/bs'
 import SnxLogo from '../icon/snxLogo'
+import SnxIcon from '../icon/snxIcon'
 
 
 
@@ -24,6 +25,7 @@ const Footer = () => {
           <a href="https://discord.com/invite/AEdUHzt" target="_blank" rel="noreferrer" className={styles.iconItem}><BsDiscord color='white'/></a>
           <a href="https://twitter.com/synthetix_io" target="_blank" rel="noreferrer" className={styles.iconItem}><BsTwitter color='white'/></a>
           <a href="https://github.com/synthetixio" target="_blank" rel="noreferrer" className={styles.iconItem}><BsGithub color='white'/></a>
+          <a href="https://blog.synthetix.io" target="_blank" rel="noreferrer" className={styles.iconItem}><SnxIcon/></a>
         </span>
 
 
