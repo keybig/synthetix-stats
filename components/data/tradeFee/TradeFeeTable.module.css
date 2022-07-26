@@ -1,13 +1,13 @@
 .mainTable {
     border-collapse: collapse;
     border-spacing: 2rem;
-    table-layout: auto;
-    width: fit-content;
-    margin:auto;
+    table-layout: fixed;
+    width: 100%;
    }
 
 .mainBody {
     height:14.875rem;
+    text-align: center;
 }
    
    .headRow {
@@ -46,7 +46,7 @@
 
    .tableNav {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
    }
 

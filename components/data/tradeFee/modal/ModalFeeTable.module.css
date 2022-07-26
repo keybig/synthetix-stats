@@ -1,12 +1,12 @@
 .mainTable {
     border-collapse: collapse;
     border-spacing: 2rem;
-    table-layout: auto;
-    width: 20.25rem;
+    table-layout: fixed;
+    width: 100%;
    }
 
 .mainBody {
-    height:14.875rem;
+    height:auto;
 }
    
    .headRow {
@@ -27,7 +27,7 @@
    
    .mainKey {
        text-transform: capitalize;
-       text-align: left;
+       text-align: center;
        padding: 1rem;
    }
 
