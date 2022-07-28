@@ -1,0 +1,41 @@
+.container {
+    text-align:center;
+}
+
+.heading {
+    font-size: 2.5rem;
+    color:#FFFFFF;
+}
+
+.description {
+    font-size: 0.875rem;
+    color: #FFFFFF;
+    text-align: center;
+    margin: auto;
+    padding: 0.5rem;
+}
+
+.link {
+    font-weight: 700;
+    font-size: 0.875rem;
+    text-decoration: none;
+    color: #00D1FF;
+    padding-left: 0.25rem;
+}
+
+.list {
+    margin: 0;
+    padding: 0;
+}
+
+@media(max-width: 960px){
+    .description {
+        padding:1rem 0;
+        text-align: center;
+    }
+
+    .heading {
+        margin:0.25rem;
+    }
+    
+  }
